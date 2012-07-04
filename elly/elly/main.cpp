@@ -7,13 +7,22 @@
 //
 
 #include <iostream>
-#include "/usr/local/include/boost/program_options.hpp"
+#include "utils/OptionParser.h"
 
-namespace po = boost::program_options;
 
 int main(int argc, const char * argv[])
 {
-    std::cout << "Welcome to Elly!\n";
+
+    int rs_parse_options = elly::utils::parse_options(argc, argv);
+
+    std::cout << "##### Elly " << elly::utils::config::version_number << " #####"<< std::endl;
+    
+    if (rs_parse_options == 1){
+        return 0;
+    }
+
+    
+    
+    
     return 0;
 }
-
