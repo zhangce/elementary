@@ -202,6 +202,7 @@
 				E111978D15A4B9EE00562975 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
