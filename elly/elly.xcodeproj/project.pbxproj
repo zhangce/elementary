@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E111978F15A4BAB900562975 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E111978E15A4BAB900562975 /* main.cpp */; };
+		E16E324415A4F17A008C69B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16E324215A4F17A008C69B6 /* main.cpp */; };
+		E186EBB915A50EAB001DC23D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBB815A50EAB001DC23D /* SenTestingKit.framework */; };
+		E186EBBB15A50EAB001DC23D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBBA15A50EAB001DC23D /* Cocoa.framework */; };
+		E186EBC515A50EAB001DC23D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E186EBC315A50EAB001DC23D /* InfoPlist.strings */; };
+		E186EBC815A50EAB001DC23D /* elly_test.m in Sources */ = {isa = PBXBuildFile; fileRef = E186EBC715A50EAB001DC23D /* elly_test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +28,21 @@
 
 /* Begin PBXFileReference section */
 		E111978115A4B9EE00562975 /* elly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = elly; sourceTree = BUILT_PRODUCTS_DIR; };
-		E111978E15A4BAB900562975 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E111979015A4BAC600562975 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
+		E16E324115A4F17A008C69B6 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
+		E16E324215A4F17A008C69B6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E16E324515A4F1A7008C69B6 /* OptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionParser.h; sourceTree = "<group>"; };
+		E16E324615A4F246008C69B6 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E186EBB815A50EAB001DC23D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E186EBBA15A50EAB001DC23D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		E186EBBD15A50EAB001DC23D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E186EBBE15A50EAB001DC23D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E186EBBF15A50EAB001DC23D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E186EBC215A50EAB001DC23D /* elly_test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "elly_test-Info.plist"; sourceTree = "<group>"; };
+		E186EBC415A50EAB001DC23D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E186EBC615A50EAB001DC23D /* elly_test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = elly_test.h; sourceTree = "<group>"; };
+		E186EBC715A50EAB001DC23D /* elly_test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = elly_test.m; sourceTree = "<group>"; };
+		E186EBC915A50EAB001DC23D /* elly_test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "elly_test-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +53,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E186EBB215A50EAB001DC23D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E186EBB915A50EAB001DC23D /* SenTestingKit.framework in Frameworks */,
+				E186EBBB15A50EAB001DC23D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -43,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				E111978415A4B9EE00562975 /* elly */,
+				E186EBC015A50EAB001DC23D /* elly_test */,
+				E186EBB715A50EAB001DC23D /* Frameworks */,
 				E111978215A4B9EE00562975 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				E111978115A4B9EE00562975 /* elly */,
+				E186EBB615A50EAB001DC23D /* elly_test.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,10 +87,60 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
-				E111979015A4BAC600562975 /* elly.1 */,
-				E111978E15A4BAB900562975 /* main.cpp */,
+				E16E324115A4F17A008C69B6 /* elly.1 */,
+				E16E324215A4F17A008C69B6 /* main.cpp */,
+				E16E324315A4F17A008C69B6 /* utils */,
 			);
 			path = elly;
+			sourceTree = "<group>";
+		};
+		E16E324315A4F17A008C69B6 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E16E324515A4F1A7008C69B6 /* OptionParser.h */,
+				E16E324615A4F246008C69B6 /* Config.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		E186EBB715A50EAB001DC23D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E186EBB815A50EAB001DC23D /* SenTestingKit.framework */,
+				E186EBBA15A50EAB001DC23D /* Cocoa.framework */,
+				E186EBBC15A50EAB001DC23D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E186EBBC15A50EAB001DC23D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E186EBBD15A50EAB001DC23D /* AppKit.framework */,
+				E186EBBE15A50EAB001DC23D /* CoreData.framework */,
+				E186EBBF15A50EAB001DC23D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E186EBC015A50EAB001DC23D /* elly_test */ = {
+			isa = PBXGroup;
+			children = (
+				E186EBC615A50EAB001DC23D /* elly_test.h */,
+				E186EBC715A50EAB001DC23D /* elly_test.m */,
+				E186EBC115A50EAB001DC23D /* Supporting Files */,
+			);
+			path = elly_test;
+			sourceTree = "<group>";
+		};
+		E186EBC115A50EAB001DC23D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E186EBC215A50EAB001DC23D /* elly_test-Info.plist */,
+				E186EBC315A50EAB001DC23D /* InfoPlist.strings */,
+				E186EBC915A50EAB001DC23D /* elly_test-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +162,24 @@
 			productName = elly;
 			productReference = E111978115A4B9EE00562975 /* elly */;
 			productType = "com.apple.product-type.tool";
+		};
+		E186EBB515A50EAB001DC23D /* elly_test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E186EBCA15A50EAB001DC23D /* Build configuration list for PBXNativeTarget "elly_test" */;
+			buildPhases = (
+				E186EBB115A50EAB001DC23D /* Sources */,
+				E186EBB215A50EAB001DC23D /* Frameworks */,
+				E186EBB315A50EAB001DC23D /* Resources */,
+				E186EBB415A50EAB001DC23D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = elly_test;
+			productName = elly_test;
+			productReference = E186EBB615A50EAB001DC23D /* elly_test.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,20 +203,67 @@
 			projectRoot = "";
 			targets = (
 				E111978015A4B9EE00562975 /* elly */,
+				E186EBB515A50EAB001DC23D /* elly_test */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E186EBB315A50EAB001DC23D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E186EBC515A50EAB001DC23D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E186EBB415A50EAB001DC23D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E111977D15A4B9EE00562975 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E111978F15A4BAB900562975 /* main.cpp in Sources */,
+				E16E324415A4F17A008C69B6 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E186EBB115A50EAB001DC23D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E186EBC815A50EAB001DC23D /* elly_test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E186EBC315A50EAB001DC23D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E186EBC415A50EAB001DC23D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E111978915A4B9EE00562975 /* Debug */ = {
@@ -143,8 +287,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lboost_program_options-mt";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -164,7 +310,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-lboost_program_options-mt";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -180,6 +328,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E186EBCB15A50EAB001DC23D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "elly_test/elly_test-Prefix.pch";
+				INFOPLIST_FILE = "elly_test/elly_test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E186EBCC15A50EAB001DC23D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "elly_test/elly_test-Prefix.pch";
+				INFOPLIST_FILE = "elly_test/elly_test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -203,6 +375,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E186EBCA15A50EAB001DC23D /* Build configuration list for PBXNativeTarget "elly_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E186EBCB15A50EAB001DC23D /* Debug */,
+				E186EBCC15A50EAB001DC23D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
