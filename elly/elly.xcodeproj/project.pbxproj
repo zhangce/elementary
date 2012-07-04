@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E111978615A4B9EE00562975 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E111978515A4B9EE00562975 /* main.cpp */; };
-		E111978815A4B9EE00562975 /* elly.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E111978715A4B9EE00562975 /* elly.1 */; };
+		E111978F15A4BAB900562975 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E111978E15A4BAB900562975 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +17,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				E111978815A4B9EE00562975 /* elly.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -26,8 +24,8 @@
 
 /* Begin PBXFileReference section */
 		E111978115A4B9EE00562975 /* elly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = elly; sourceTree = BUILT_PRODUCTS_DIR; };
-		E111978515A4B9EE00562975 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E111978715A4B9EE00562975 /* elly.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
+		E111978E15A4BAB900562975 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E111979015A4BAC600562975 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +58,8 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
-				E111978515A4B9EE00562975 /* main.cpp */,
-				E111978715A4B9EE00562975 /* elly.1 */,
+				E111979015A4BAC600562975 /* elly.1 */,
+				E111978E15A4BAB900562975 /* main.cpp */,
 			);
 			path = elly;
 			sourceTree = "<group>";
@@ -117,7 +115,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E111978615A4B9EE00562975 /* main.cpp in Sources */,
+				E111978F15A4BAB900562975 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
