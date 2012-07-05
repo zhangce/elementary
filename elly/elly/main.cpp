@@ -6,18 +6,38 @@
 //  Copyright (c) 2012 University of Wisconsin-Madison. All rights reserved.
 //
 
-#include <iostream>
+#include "utils/Common.h"
+
 #include "utils/OptionParser.h"
+
+
+namespace elly{
+    
+    class elly{
+    public:
+      
+        elly(){
+            
+        }
+        
+        ~elly(){}
+    };
+    
+}
 
 
 int main(int argc, const char * argv[])
 {
 
-    int rs_parse_options = elly::utils::parse_options(argc, argv);
-
-    std::cout << "##### Elly " << elly::utils::config::version_number << " #####"<< std::endl;
+    elly::utils::Config config;
     
-    if (rs_parse_options == 1){
+    elly::utils::log() << "##### Elly " << 
+            config.version_number << 
+            " #####" << std::endl;
+    
+    int rs_parse_options = elly::utils::parse_options(config, argc, argv);
+
+    if (rs_parse_options != 0){
         return 0;
     }
 

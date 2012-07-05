@@ -14,14 +14,43 @@
 
 namespace elly{
     namespace utils{
-        namespace config{
+        class Config{
+        public:
             
             std::string version_number;
          
+            std::string ui_verbose;
+            std::string ui_logfile;
+            std::string ui_logverbose;
+            
+            std::string rt_input;
+            std::string rt_output;
+            std::string rt_workdir;
+            
+            std::string rt_mode;
+            
+            int rt_thin;
+            int rt_burnin;
+            
+            Config(){
+                version_number = "0.1";
+                
+                ui_verbose = "info";
+                ui_logfile = "";
+                ui_logverbose = "debug";
+                
+                rt_input   = "";
+                rt_output  = "";
+                rt_workdir = "";
+                
+                rt_mode    = "";
+                
+                rt_thin    = 1;
+                rt_burnin  = 1;
+            }
             
             
-            
-        }
+        };
     }
 }
 
