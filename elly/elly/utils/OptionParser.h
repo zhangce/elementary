@@ -15,8 +15,18 @@
 namespace po = boost::program_options;
 
 namespace elly {
+    
+    /*!
+     *  utils used by elly.
+     */
     namespace utils{
         
+        /*!
+         * prepare an object of boost::program_options::options_description
+         * used by boost::program_options.
+         *
+         * \return object of boost::program_options::options_description
+         */
         po::options_description parse_options_prepare(){
             
             po::options_description desc("Allowed options");
@@ -47,6 +57,16 @@ namespace elly {
             return desc;
         }
         
+        
+        /*!
+         * fill in configuration into elly::utils::Config object, which will be
+         * used by an elly::Elly object.
+         *
+         * \param config elly::utils::Config object to fill in
+         * \param po::variables_map see details in http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html
+         * \param po::options_description see details in http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html
+         *
+         */
         int parse_option_fill_in_config(elly::utils::Config &config, po::variables_map &vm, po::options_description & desc){
             
             if(vm.count("help")){
@@ -104,6 +124,12 @@ namespace elly {
             
         }
 
+        /*!
+         * Given an object of elly::utils::Config, check whether it is good to use.
+         *
+         * \param config elly::utils::Config object to check 
+         * \throw std::exception if it is not a good elly::utils::Config.
+         */
         void parse_option_post(elly::utils::Config &config){
             
             if(config.rt_input.compare("") == 0){
@@ -120,7 +146,15 @@ namespace elly {
 
         }
 
-        
+        /*!
+         * 
+         * use the input of an main() function, fill in the an object of elly::utils::Config.
+         *
+         * \param config an object of elly::utils::Config to fill in
+         * \param ac argc in main()
+         * \param av argv in main()
+         * \return 1 if there is "--help" in options; 0 otherwise.
+         */
         int parse_options(elly::utils::Config &config, int ac, const char * av[]){
             
             po::options_description desc = parse_options_prepare();
