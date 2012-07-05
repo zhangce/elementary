@@ -32,7 +32,9 @@ namespace elly{
             int rt_thin;
             int rt_burnin;
             
+            
             Config(){
+                
                 version_number = "0.1";
                 
                 ui_verbose = "info";
@@ -47,6 +49,7 @@ namespace elly{
                 
                 rt_thin    = 1;
                 rt_burnin  = 1;
+                
             }
             
             
