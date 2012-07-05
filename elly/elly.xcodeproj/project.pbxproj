@@ -32,6 +32,7 @@
 		E16E324215A4F17A008C69B6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E16E324515A4F1A7008C69B6 /* OptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionParser.h; sourceTree = "<group>"; };
 		E16E324615A4F246008C69B6 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E183316815A533CF00A988D6 /* Inf_marginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inf_marginal.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E186EBB815A50EAB001DC23D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -91,6 +92,7 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
+				E183316515A5333000A988D6 /* inf */,
 				E16E324115A4F17A008C69B6 /* elly.1 */,
 				E16E324215A4F17A008C69B6 /* main.cpp */,
 				E16E324315A4F17A008C69B6 /* utils */,
@@ -107,6 +109,28 @@
 				E185EE4A15A51728009C6FBA /* Common.h */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		E183316515A5333000A988D6 /* inf */ = {
+			isa = PBXGroup;
+			children = (
+				E183316815A533CF00A988D6 /* Inf_marginal.h */,
+			);
+			path = inf;
+			sourceTree = "<group>";
+		};
+		E183316915A534D200A988D6 /* LR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LR;
+			sourceTree = "<group>";
+		};
+		E183316A15A534D200A988D6 /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tmp;
 			sourceTree = "<group>";
 		};
 		E186EBB715A50EAB001DC23D /* Frameworks */ = {
@@ -152,6 +176,8 @@
 		E186EBCD15A50F77001DC23D /* data */ = {
 			isa = PBXGroup;
 			children = (
+				E183316915A534D200A988D6 /* LR */,
+				E183316A15A534D200A988D6 /* tmp */,
 				E186EBCE15A50F89001DC23D /* config_test.cfg */,
 			);
 			path = data;
