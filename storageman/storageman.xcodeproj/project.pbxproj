@@ -1,0 +1,211 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1FCDE3A15ABABA40072A077 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1FCDE3915ABABA40072A077 /* main.cpp */; };
+		E1FCDE3C15ABABA40072A077 /* storageman.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1FCDE3B15ABABA40072A077 /* storageman.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E1FCDE3315ABABA40072A077 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				E1FCDE3C15ABABA40072A077 /* storageman.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E1FCDE3515ABABA40072A077 /* storageman */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = storageman; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1FCDE3915ABABA40072A077 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E1FCDE3B15ABABA40072A077 /* storageman.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = storageman.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1FCDE3215ABABA40072A077 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1FCDE2A15ABABA40072A077 = {
+			isa = PBXGroup;
+			children = (
+				E1FCDE3815ABABA40072A077 /* storageman */,
+				E1FCDE3615ABABA40072A077 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1FCDE3615ABABA40072A077 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1FCDE3515ABABA40072A077 /* storageman */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1FCDE3815ABABA40072A077 /* storageman */ = {
+			isa = PBXGroup;
+			children = (
+				E1FCDE3915ABABA40072A077 /* main.cpp */,
+				E1FCDE3B15ABABA40072A077 /* storageman.1 */,
+			);
+			path = storageman;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1FCDE3415ABABA40072A077 /* storageman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1FCDE3F15ABABA40072A077 /* Build configuration list for PBXNativeTarget "storageman" */;
+			buildPhases = (
+				E1FCDE3115ABABA40072A077 /* Sources */,
+				E1FCDE3215ABABA40072A077 /* Frameworks */,
+				E1FCDE3315ABABA40072A077 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = storageman;
+			productName = storageman;
+			productReference = E1FCDE3515ABABA40072A077 /* storageman */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1FCDE2C15ABABA40072A077 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "University of Wisconsin-Madison";
+			};
+			buildConfigurationList = E1FCDE2F15ABABA40072A077 /* Build configuration list for PBXProject "storageman" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1FCDE2A15ABABA40072A077;
+			productRefGroup = E1FCDE3615ABABA40072A077 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1FCDE3415ABABA40072A077 /* storageman */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1FCDE3115ABABA40072A077 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FCDE3A15ABABA40072A077 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E1FCDE3D15ABABA40072A077 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E1FCDE3E15ABABA40072A077 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E1FCDE4015ABABA40072A077 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E1FCDE4115ABABA40072A077 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1FCDE2F15ABABA40072A077 /* Build configuration list for PBXProject "storageman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1FCDE3D15ABABA40072A077 /* Debug */,
+				E1FCDE3E15ABABA40072A077 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1FCDE3F15ABABA40072A077 /* Build configuration list for PBXNativeTarget "storageman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1FCDE4015ABABA40072A077 /* Debug */,
+				E1FCDE4115ABABA40072A077 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1FCDE2C15ABABA40072A077 /* Project object */;
+}
