@@ -14,6 +14,7 @@
 
 namespace elly{
     namespace utils{
+        
         class Config{
         public:
             
@@ -33,6 +34,9 @@ namespace elly{
             int rt_burnin;
             
             
+            int sys_nthreads;
+            
+            
             Config(){
                 
                 version_number = "0.1";
@@ -50,10 +54,13 @@ namespace elly{
                 rt_thin    = 1;
                 rt_burnin  = 1;
                 
+                sys_nthreads = 1;
+                
             }
             
             
         };
+        
     }
 }
 

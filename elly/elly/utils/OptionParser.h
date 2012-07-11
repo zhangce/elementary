@@ -51,6 +51,9 @@ namespace elly {
             ("rt.thin", po::value<int>(), "Collect one sample every #rt.thin iterations. [DEFAULT=1]")
             ("rt.burnin", po::value<int>(), "Ignore the first #rt.burnin collected samples. [DEFAULT=1]")
             
+            // sys.*    (system)
+            ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
+            
              
             ;
             
@@ -117,6 +120,11 @@ namespace elly {
             if(vm.count("rt.burnin")){
                 config.rt_burnin = vm["rt.burnin"].as<int>();
                 elly::utils::log() << "  | rt.burnin = " << config.rt_burnin << std::endl;
+            }
+            
+            if(vm.count("sys.threads")){
+                config.sys_nthreads = vm["sys.threads"].as<int>();
+                elly::utils::log() << "  | sys.threads = " << config.sys_nthreads << std::endl;
             }
             
             

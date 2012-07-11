@@ -16,4 +16,20 @@
 #include "Log.h"
 #include "Config.h"
 
+
+namespace elly{
+    namespace utils{
+                
+        struct FactorTuple{
+            int factor_id;
+            int variable_id;
+            int pos;
+            int aux;
+        };
+        
+    }
+}
+
+
+
 #endif

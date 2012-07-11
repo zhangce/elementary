@@ -22,8 +22,6 @@
 		E16E324415A4F17A008C69B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16E324215A4F17A008C69B6 /* main.cpp */; };
 		E186EBB915A50EAB001DC23D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBB815A50EAB001DC23D /* SenTestingKit.framework */; };
 		E186EBBB15A50EAB001DC23D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBBA15A50EAB001DC23D /* Cocoa.framework */; };
-		E186EBC515A50EAB001DC23D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E186EBC315A50EAB001DC23D /* InfoPlist.strings */; };
-		E186EBC815A50EAB001DC23D /* elly_test.m in Sources */ = {isa = PBXBuildFile; fileRef = E186EBC715A50EAB001DC23D /* elly_test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,19 +128,26 @@
 		E16E324615A4F246008C69B6 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		E183316815A533CF00A988D6 /* Inf_marginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inf_marginal.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		E1866D4D15AC1788003AB862 /* Buffer_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_file.h; sourceTree = "<group>"; };
+		E1866D4E15AC1788003AB862 /* Buffer_mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_mm.h; sourceTree = "<group>"; };
+		E1866D4F15AC1788003AB862 /* Buffer_mmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_mmap.h; sourceTree = "<group>"; };
+		E1866D5015AC1788003AB862 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		E1866D5115AC1788003AB862 /* IntsBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntsBlock.h; sourceTree = "<group>"; };
+		E1866D5215AC1788003AB862 /* KeyValue_fl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValue_fl.h; sourceTree = "<group>"; };
+		E1866D5315AC1788003AB862 /* KeyValue_vl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValue_vl.h; sourceTree = "<group>"; };
+		E1866D5515AC1788003AB862 /* SlottedPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlottedPage.h; sourceTree = "<group>"; };
+		E1866D5715AC1788003AB862 /* UniformPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniformPage.h; sourceTree = "<group>"; };
+		E1866D5A15AC1FCE003AB862 /* InFileCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InFileCorrelationRelation.h; sourceTree = "<group>"; };
 		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E186EBB815A50EAB001DC23D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		E186EBBA15A50EAB001DC23D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		E186EBBD15A50EAB001DC23D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E186EBBE15A50EAB001DC23D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E186EBBF15A50EAB001DC23D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E186EBC215A50EAB001DC23D /* elly_test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "elly_test-Info.plist"; sourceTree = "<group>"; };
-		E186EBC415A50EAB001DC23D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E186EBC615A50EAB001DC23D /* elly_test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = elly_test.h; sourceTree = "<group>"; };
-		E186EBC715A50EAB001DC23D /* elly_test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = elly_test.m; sourceTree = "<group>"; };
-		E186EBC915A50EAB001DC23D /* elly_test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "elly_test-Prefix.pch"; sourceTree = "<group>"; };
 		E186EBCE15A50F89001DC23D /* config_test.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config_test.cfg; sourceTree = "<group>"; };
 		E186EBCF15A5134F001DC23D /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		E18799A215A93AAB0026F196 /* FactorFileParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactorFileParser.h; sourceTree = "<group>"; };
+		E189273A15A6F4FE00CFFD0B /* Factor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Factor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,7 +275,6 @@
 				E1071CD715A60F6400999BDF /* Doxyfile */,
 				E186EBCD15A50F77001DC23D /* data */,
 				E111978415A4B9EE00562975 /* elly */,
-				E186EBC015A50EAB001DC23D /* elly_test */,
 				E186EBB715A50EAB001DC23D /* Frameworks */,
 				E111978215A4B9EE00562975 /* Products */,
 			);
@@ -288,10 +292,13 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
+				E1866D5915AC1FB9003AB862 /* dstruct */,
+				E189273915A6F4EF00CFFD0B /* adhoc */,
 				E183316515A5333000A988D6 /* inf */,
-				E16E324115A4F17A008C69B6 /* elly.1 */,
-				E16E324215A4F17A008C69B6 /* main.cpp */,
+				E1866D4C15AC1788003AB862 /* storageman */,
 				E16E324315A4F17A008C69B6 /* utils */,
+				E16E324215A4F17A008C69B6 /* main.cpp */,
+				E16E324115A4F17A008C69B6 /* elly.1 */,
 			);
 			path = elly;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 				E16E324615A4F246008C69B6 /* Config.h */,
 				E186EBCF15A5134F001DC23D /* Log.h */,
 				E185EE4A15A51728009C6FBA /* Common.h */,
+				E18799A215A93AAB0026F196 /* FactorFileParser.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -329,6 +337,31 @@
 			path = tmp;
 			sourceTree = "<group>";
 		};
+		E1866D4C15AC1788003AB862 /* storageman */ = {
+			isa = PBXGroup;
+			children = (
+				E1866D4D15AC1788003AB862 /* Buffer_file.h */,
+				E1866D4E15AC1788003AB862 /* Buffer_mm.h */,
+				E1866D4F15AC1788003AB862 /* Buffer_mmap.h */,
+				E1866D5015AC1788003AB862 /* Common.h */,
+				E1866D5115AC1788003AB862 /* IntsBlock.h */,
+				E1866D5215AC1788003AB862 /* KeyValue_fl.h */,
+				E1866D5315AC1788003AB862 /* KeyValue_vl.h */,
+				E1866D5515AC1788003AB862 /* SlottedPage.h */,
+				E1866D5715AC1788003AB862 /* UniformPage.h */,
+			);
+			name = storageman;
+			path = ../../storageman/storageman;
+			sourceTree = "<group>";
+		};
+		E1866D5915AC1FB9003AB862 /* dstruct */ = {
+			isa = PBXGroup;
+			children = (
+				E1866D5A15AC1FCE003AB862 /* InFileCorrelationRelation.h */,
+			);
+			path = dstruct;
+			sourceTree = "<group>";
+		};
 		E186EBB715A50EAB001DC23D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,26 +382,6 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		E186EBC015A50EAB001DC23D /* elly_test */ = {
-			isa = PBXGroup;
-			children = (
-				E186EBC615A50EAB001DC23D /* elly_test.h */,
-				E186EBC715A50EAB001DC23D /* elly_test.m */,
-				E186EBC115A50EAB001DC23D /* Supporting Files */,
-			);
-			path = elly_test;
-			sourceTree = "<group>";
-		};
-		E186EBC115A50EAB001DC23D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E186EBC215A50EAB001DC23D /* elly_test-Info.plist */,
-				E186EBC315A50EAB001DC23D /* InfoPlist.strings */,
-				E186EBC915A50EAB001DC23D /* elly_test-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E186EBCD15A50F77001DC23D /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +390,14 @@
 				E186EBCE15A50F89001DC23D /* config_test.cfg */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		E189273915A6F4EF00CFFD0B /* adhoc */ = {
+			isa = PBXGroup;
+			children = (
+				E189273A15A6F4FE00CFFD0B /* Factor.h */,
+			);
+			path = adhoc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +470,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E186EBC515A50EAB001DC23D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,22 +516,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E186EBC815A50EAB001DC23D /* elly_test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E186EBC315A50EAB001DC23D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E186EBC415A50EAB001DC23D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E111978915A4B9EE00562975 /* Debug */ = {

@@ -25,9 +25,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1866D4315ABDB49003AB862 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		E1866D4515ABDD41003AB862 /* Buffer_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Buffer_file.h; sourceTree = "<group>"; };
+		E1866D4615ABE583003AB862 /* Buffer_mmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Buffer_mmap.h; sourceTree = "<group>"; };
 		E1FCDE3515ABABA40072A077 /* storageman */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = storageman; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FCDE3915ABABA40072A077 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E1FCDE3B15ABABA40072A077 /* storageman.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = storageman.1; sourceTree = "<group>"; };
+		E1FCDE4215ABABDD0072A077 /* IntsBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntsBlock.h; sourceTree = "<group>"; };
+		E1FCDE4315ABB0030072A077 /* SlottedPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlottedPage.h; sourceTree = "<group>"; };
+		E1FCDE4415ABB61F0072A077 /* Buffer_mm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Buffer_mm.h; sourceTree = "<group>"; };
+		E1FCDE4515ABC5500072A077 /* KeyValue_vl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyValue_vl.h; sourceTree = "<group>"; };
+		E1FCDE4615ABCC280072A077 /* KeyValue_fl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyValue_fl.h; sourceTree = "<group>"; };
+		E1FCDE4815ABCD610072A077 /* UniformPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniformPage.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,15 @@
 			children = (
 				E1FCDE3915ABABA40072A077 /* main.cpp */,
 				E1FCDE3B15ABABA40072A077 /* storageman.1 */,
+				E1FCDE4315ABB0030072A077 /* SlottedPage.h */,
+				E1FCDE4815ABCD610072A077 /* UniformPage.h */,
+				E1866D4515ABDD41003AB862 /* Buffer_file.h */,
+				E1FCDE4415ABB61F0072A077 /* Buffer_mm.h */,
+				E1866D4615ABE583003AB862 /* Buffer_mmap.h */,
+				E1FCDE4515ABC5500072A077 /* KeyValue_vl.h */,
+				E1FCDE4615ABCC280072A077 /* KeyValue_fl.h */,
+				E1FCDE4215ABABDD0072A077 /* IntsBlock.h */,
+				E1866D4315ABDB49003AB862 /* Common.h */,
 			);
 			path = storageman;
 			sourceTree = "<group>";
@@ -204,6 +222,7 @@
 				E1FCDE4115ABABA40072A077 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
