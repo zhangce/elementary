@@ -1,0 +1,217 @@
+Database schema     = tuffy_ces_macbook_air_local_czhang_5379
+Current directory   = /Users/czhang/Library/Developer/Xcode/DerivedData/elly-gdinuobqtcyzyzffwdafokevruku/Build/Products/Debug
+Temporary directory = /tmp/tuffy-workspace/tuffy_ces_macbook_air_local_czhang_5379
+*** Welcome to Tuffy 0.3!
+>>> Running partition-aware inference.
+>>> Connecting to RDBMS at jdbc:postgresql://localhost:5432/postgres
+### Checking existence of tuffy_ces_macbook_air_local_czhang_5379
+### Creating schema tuffy_ces_macbook_air_local_czhang_5379
+>>> Parsing program file: /Users/czhang/Desktop/Codes/mia/elly/aux/tuffy-0.3-may2012/samples/smoke/prog.mln
+
+Clause1
+[weight=0.5] sign='+' 
+   !Smokes(v0)
+ v  Cancer(v0)
+
+
+Clause2
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v0)
+ v  Smokes(v1)
+
+
+Clause3
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v1)
+ v  Smokes(v0)
+
+>>> Parsing query file: /Users/czhang/Desktop/Codes/mia/elly/aux/tuffy-0.3-may2012/samples/smoke/query.db
+>>> Creating predicate table pred_friends
+>>> Creating predicate table pred_smokes
+>>> Creating predicate table pred_cancer
+>>> Parsing evidence file: /Users/czhang/Desktop/Codes/mia/elly/aux/tuffy-0.3-may2012/samples/smoke/evidence.db
+>>> Storing symbol tables...
+    constants = 6
+>>> Storing evidence...
+>>> KBMC: Identifying relevant atoms/clauses...
+Cancer(v1)
+>>> KBMC: Materializing predicates...
+    Smokes(v1) - 6 tuples
+    Cancer(v1) - 6 tuples
+    Skipped Friends
+>>> Marking queries...
+>>> Storing query Cancer(v1)
+    updated 6 rows
+>>> Grounding...
+>>> Computing closure of active atoms...
+>>> Activating soft evidence atoms...
+>>> Reactivating already active atoms...
+### active unknown atoms = 0
+>>> Round #1:
+>>> Grounding Clause1
+[weight=0.5] sign='+' 
+   !Smokes(v0)
+ v  Cancer(v0)
+
+SELECT DISTINCT t2.club as club2, t2.id as id2 FROM pred_smokes t1 LEFT OUTER JOIN pred_cancer t2 ON (t2.person1=t1.person1) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_smokes))) AND ((t2.truth='0') OR (t2.id IS NULL) OR (t2.id IN (SELECT * FROM act_pred_cancer)) OR ((t2.club < 2))) AND (1=1)
+    Created 2 groundings
+>>> Expanding active atoms...
+    Found 2 new active atoms for predicate [Cancer]
+
+>>> Grounding Clause2
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v0)
+ v  Smokes(v1)
+
+SELECT DISTINCT t3.club as club3, t3.id as id3 FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person1) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person2) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_friends))) AND ((t2.truth='1') OR (t2.id IN (SELECT * FROM act_pred_smokes))) AND ((t3.truth='0') OR (t3.id IS NULL) OR (t3.id IN (SELECT * FROM act_pred_smokes)) OR ((t3.club < 2))) AND (1=1)
+    Created 2 groundings
+>>> Expanding active atoms...
+    Found 2 new active atoms for predicate [Smokes]
+
+>>> Grounding Clause3
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v1)
+ v  Smokes(v0)
+
+SELECT DISTINCT t3.club as club3, t3.id as id3 FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person2) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person1) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_friends))) AND ((t2.truth='1') OR (t2.id IN (SELECT * FROM act_pred_smokes))) AND ((t3.truth='0') OR (t3.id IS NULL) OR (t3.id IN (SELECT * FROM act_pred_smokes)) OR ((t3.club < 2))) AND (1=1)
+    Created 0 groundings
+>>> Expanding active atoms...
+    Found no new atoms.
+
+
+>>> Round #2:
+>>> Grounding Clause1
+[weight=0.5] sign='+' 
+   !Smokes(v0)
+ v  Cancer(v0)
+
+SELECT DISTINCT t2.club as club2, t2.id as id2 FROM pred_smokes t1 LEFT OUTER JOIN pred_cancer t2 ON (t2.person1=t1.person1) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_smokes))) AND ((t2.truth='0') OR (t2.id IS NULL) OR (t2.id IN (SELECT * FROM act_pred_cancer)) OR ((t2.club < 2))) AND (1=1)
+    Created 4 groundings
+>>> Expanding active atoms...
+    Found 2 new active atoms for predicate [Cancer]
+
+>>> Grounding Clause2
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v0)
+ v  Smokes(v1)
+
+SELECT DISTINCT t3.club as club3, t3.id as id3 FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person1) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person2) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_friends))) AND ((t2.truth='1') OR (t2.id IN (SELECT * FROM act_pred_smokes))) AND ((t3.truth='0') OR (t3.id IS NULL) OR (t3.id IN (SELECT * FROM act_pred_smokes)) OR ((t3.club < 2))) AND (1=1)
+    Created 2 groundings
+>>> Expanding active atoms...
+    Found no new atoms.
+
+>>> Grounding Clause3
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v1)
+ v  Smokes(v0)
+
+SELECT DISTINCT t3.club as club3, t3.id as id3 FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person2) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person1) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_friends))) AND ((t2.truth='1') OR (t2.id IN (SELECT * FROM act_pred_smokes))) AND ((t3.truth='0') OR (t3.id IS NULL) OR (t3.id IN (SELECT * FROM act_pred_smokes)) OR ((t3.club < 2))) AND (1=1)
+    Created 0 groundings
+>>> Expanding active atoms...
+    Found no new atoms.
+
+
+>>> Round #3:
+>>> Grounding Clause1
+[weight=0.5] sign='+' 
+   !Smokes(v0)
+ v  Cancer(v0)
+
+SELECT DISTINCT t2.club as club2, t2.id as id2 FROM pred_smokes t1 LEFT OUTER JOIN pred_cancer t2 ON (t2.person1=t1.person1) WHERE ((t1.truth='1') OR (t1.id IN (SELECT * FROM act_pred_smokes))) AND ((t2.truth='0') OR (t2.id IS NULL) OR (t2.id IN (SELECT * FROM act_pred_cancer)) OR ((t2.club < 2))) AND (1=1)
+    Created 4 groundings
+>>> Expanding active atoms...
+    Found no new atoms.
+
+
+>>> Gathering active atoms...
+--- Not using atoms from Friends
++++ Using atoms from Cancer
+INSERT INTO mln0_atoms(atomid,tupleID,predID,truth,prob,isquery,isqueryevid) SELECT (case when atomid is null then nextval('seq_atom_ids') else atomid end),p.id,2,truth,prior,(club=1),(club=3) FROM pred_cancer p LEFT OUTER JOIN act_pred_cancer ta  ON p.id=ta.id WHERE p.atomid>0 or ta.id IS NOT NULL
+UPDATE pred_cancer pt SET atomID=ra.atomID  FROM mln0_atoms ra  WHERE ra.predID=2 AND ra.tupleID=pt.id
+analyzing table
++++ Using atoms from Smokes
+INSERT INTO mln0_atoms(atomid,tupleID,predID,truth,prob,isquery,isqueryevid) SELECT (case when atomid is null then nextval('seq_atom_ids') else atomid end),p.id,1,truth,prior,(club=1),(club=3) FROM pred_smokes p LEFT OUTER JOIN act_pred_smokes ta  ON p.id=ta.id WHERE p.atomid>0 or ta.id IS NOT NULL
+UPDATE pred_smokes pt SET atomID=ra.atomID  FROM mln0_atoms ra  WHERE ra.predID=1 AND ra.tupleID=pt.id
+analyzing table
+### active atoms = 6
+>>> Computing active clauses...
+>>> Grounding clauses...
+>>> Grounding clause 1 / 3
+Clause1
+[weight=0.5] sign='+' 
+   !Smokes(v0)
+ v  Cancer(v0)
+
+SELECT (CASE WHEN unitNegativeClause(list2)>=0 THEN list2 ELSE array[-list2[1]] END) AS list, (CASE WHEN unitNegativeClause(list2)>=0 THEN weight2 ELSE -weight2 END) AS weight, (CASE WHEN unitNegativeClause(list2)>=0 THEN 1 ELSE -1 END) AS fcid , (CASE WHEN unitNegativeClause(list2)>=0 THEN ('1.' || ffid) ELSE ('-1.' || ffid) END) AS ffcid FROM (SELECT UNIQ(SORT(ARRAY[-(CASE WHEN t1.id IS NULL THEN 0 WHEN t1.atomID IS NULL THEN 0 ELSE t1.atomID END), (CASE WHEN t2.id IS NULL THEN 0 WHEN t2.atomID IS NULL THEN 0 ELSE t2.atomID END)]-0)) as list2, CAST(0.5 AS FLOAT8) as weight2 ,CAST('0' as TEXT) as ffid  FROM pred_smokes t1 LEFT OUTER JOIN pred_cancer t2 ON (t2.person1=t1.person1) WHERE (1=1) AND ((t1.truth=TRUE) OR (t1.atomID IS NOT NULL)) AND ((t2.truth=FALSE) OR (t2.id IS NULL) OR (t2.club < 2 OR t2.prior IS NOT NULL)) AND CAST(0.5 AS FLOAT8) > 0 ) as Clause1 WHERE array_upper(list2,1)>=1
+### took [0 min, 0.006 sec]
+### new clauses = 4; total = 4
+
+>>> Grounding clause 2 / 3
+Clause2
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v0)
+ v  Smokes(v1)
+
+SELECT (CASE WHEN unitNegativeClause(list2)>=0 THEN list2 ELSE array[-list2[1]] END) AS list, (CASE WHEN unitNegativeClause(list2)>=0 THEN weight2 ELSE -weight2 END) AS weight, (CASE WHEN unitNegativeClause(list2)>=0 THEN 2 ELSE -2 END) AS fcid , (CASE WHEN unitNegativeClause(list2)>=0 THEN ('2.' || ffid) ELSE ('-2.' || ffid) END) AS ffcid FROM (SELECT UNIQ(SORT(ARRAY[-(CASE WHEN t2.id IS NULL THEN 0 WHEN t2.atomID IS NULL THEN 0 ELSE t2.atomID END), (CASE WHEN t3.id IS NULL THEN 0 WHEN t3.atomID IS NULL THEN 0 ELSE t3.atomID END)]-0)) as list2, CAST(0.4 AS FLOAT8) as weight2 ,CAST('0' as TEXT) as ffid  FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person1) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person2) WHERE (1=1) AND ((t1.truth=TRUE) OR (t1.atomID IS NOT NULL)) AND ((t2.truth=TRUE) OR (t2.atomID IS NOT NULL)) AND ((t3.truth=FALSE) OR (t3.id IS NULL) OR (t3.club < 2 OR t3.prior IS NOT NULL)) AND CAST(0.4 AS FLOAT8) > 0 ) as Clause2 WHERE array_upper(list2,1)>=1
+### took [0 min, 0.004 sec]
+### new clauses = 3; total = 7
+
+>>> Grounding clause 3 / 3
+Clause3
+[weight=0.4] sign='+' 
+   !Friends(v0, v1)
+ v !Smokes(v1)
+ v  Smokes(v0)
+
+SELECT (CASE WHEN unitNegativeClause(list2)>=0 THEN list2 ELSE array[-list2[1]] END) AS list, (CASE WHEN unitNegativeClause(list2)>=0 THEN weight2 ELSE -weight2 END) AS weight, (CASE WHEN unitNegativeClause(list2)>=0 THEN 3 ELSE -3 END) AS fcid , (CASE WHEN unitNegativeClause(list2)>=0 THEN ('3.' || ffid) ELSE ('-3.' || ffid) END) AS ffcid FROM (SELECT UNIQ(SORT(ARRAY[-(CASE WHEN t2.id IS NULL THEN 0 WHEN t2.atomID IS NULL THEN 0 ELSE t2.atomID END), (CASE WHEN t3.id IS NULL THEN 0 WHEN t3.atomID IS NULL THEN 0 ELSE t3.atomID END)]-0)) as list2, CAST(0.4 AS FLOAT8) as weight2 ,CAST('0' as TEXT) as ffid  FROM pred_friends t1 JOIN pred_smokes t2 ON (t2.person1=t1.person2) LEFT OUTER JOIN pred_smokes t3 ON (t3.person1=t1.person1) WHERE (1=1) AND ((t1.truth=TRUE) OR (t1.atomID IS NOT NULL)) AND ((t2.truth=TRUE) OR (t2.atomID IS NOT NULL)) AND ((t3.truth=FALSE) OR (t3.id IS NULL) OR (t3.club < 2 OR t3.prior IS NOT NULL)) AND CAST(0.4 AS FLOAT8) > 0 ) as Clause3 WHERE array_upper(list2,1)>=1
+### took [0 min, 0.004 sec]
+### new clauses = 0; total = 7
+
+### total grounding = [0 min, 0.019 sec]
+>>> Adding unit clauses for soft evidence...
+### soft-evidence clauses = 0
+>>> Adding key constraint clauses...
+>>> Consolidating ground clauses...
+### took [0 min, 0.006 sec]
+### atoms = 6; clauses = 6
+>>> Partitioning MRF...
+>>> Partitioning atoms...
+    maxRAM = 4.294967296E9
+### Num of components = 4
+### Num of partitions = 4
+>>> Computing component/partition sizes...
+>>> Writing partitioning scheme into database...
+>>> Writing mln0_atom_part
+>>> Writing mln0_query_components
+>>> Partitioning the MRF into 4 parts...
+>>> Writing mln0_clause_part
+------BEGIN: PARTITION STATS------
+#atoms = 6
+#clauses = 6
+#components = 4
+#partitions = 4
+#max_comp_size = 460.0
+#max_part_size = 460.0
+#split_component = 0
+#max_num_atoms_in_comp = 2.0
+#max_num_atoms_in_part = 2.0
+#max_partitions_in_one_comp = 1
+#cut_clauses = 0
+------ END: PARTITION STATS-------
+>>> Grouping Components into Buckets...
+### 4 components; 4 partitions; 1 buckets
+### 4 components; 4 partitions; 1 buckets
+>>> Running marginal inference on 4 components (grouped into 1 bucket)
+### Average Cost NaN
+>>> Writing answer to file: /Users/czhang/Desktop/Codes/mia/elly/data/tmp/tmp_tuffy_dummy_output
+>>> Cleaning up temporary data
+    Data remains in schema 'tuffy_ces_macbook_air_local_czhang_5379'.
+    Removing temporary dir '/tmp/tuffy-workspace/tuffy_ces_macbook_air_local_czhang_5379'...OK
+*** Tuffy exited at 9:24:14 7/11/12 after running for [0 min, 1.595 sec]
