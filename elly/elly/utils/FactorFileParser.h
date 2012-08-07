@@ -12,21 +12,31 @@
 #include <vector>
 #include "Common.h"
 
-#include "../dstruct/InFileCorrelationRelation.h"
+#include "../dstruct/StandardCorrelationRelation.h"
+#include "../dstruct/VariableFactorRelation.h"
+#include "../dstruct/VariableAssignmentRelation.h"
+#include "../dstruct/AbstractCorrelationRelation.h"
+
+#include "../../../storageman/storageman/Buffer_mmap.h"
 
 #include <fstream>
 
 //#include "/usr/local/include/boost/program_options.hpp"
 //namespace po = boost::program_options;
 
-    //////!!!!!!!! TODO: so ugly !!!!!!!!!!!!!!
-#include "/usr/local/include/boost/property_tree/ptree.hpp"
-#include "/usr/local/include/boost/property_tree/ini_parser.hpp"
-#include "/usr/local/include/boost/foreach.hpp"
+#include "boost/property_tree/ptree.hpp"
+#include "boost/property_tree/ini_parser.hpp"
+#include "boost/foreach.hpp"
 
+#include "../factors/factor_inits.h"
+#include "../factors/factor_register.h"
+
+
+namespace mia{
 namespace elly{
     namespace utils{
     
+        
         class FactorFileParser{
         public:
             std::string folder_name;
@@ -34,7 +44,10 @@ namespace elly{
             
             elly::utils::Config config;
         
-            std::vector<mia::elly::dstruct::InFileCorrelationRelation> crs;
+            std::vector<mia::elly::dstruct::AbstractCorrelationRelation* > crs;
+            mia::elly::dstruct::VariableFactorRelation vf;
+            mia::elly::dstruct::VariableAssignmentRelation va;
+            
             
             FactorFileParser(std::string _folder_name, elly::utils::Config& _config){
                 folder_name = _folder_name;
@@ -76,6 +89,9 @@ namespace elly{
                     }
                     
                 }
+                
+                
+                
                 
                 
                 if(itype.compare("mln") == 0){
@@ -187,59 +203,108 @@ namespace elly{
                 
                 if(itype.compare("file") == 0){
                 
-                
                     for(boost::property_tree::ptree::const_iterator it = pt.begin();
                         it != end; ++it){
                         
                         if(it->first.compare("type") == 0){
                             continue;
                         }
+                        
+                        if(it->first.compare("__vf") == 0){
+                            
+                            BOOST_FOREACH(boost::property_tree::ptree::value_type &v,
+                                          pt.get_child(it->first)){
+                                
+                                if(v.first.compare("type") == 0){
+                                    vf.filetype = v.second.data();
+                                    va.filetype = v.second.data();
+                                }
+                                
+                                if(v.first.compare("file") == 0){
+                                    vf.filename = v.second.data();
+                                    va.filename = v.second.data();
+                                }
+                                
+                            }
+                                                        
+                            continue;
+                        }
                     
-                        mia::elly::dstruct::InFileCorrelationRelation cr;
-                        cr.factor_name = it->first;
+                        //mia::elly::dstruct::StandardCorrelationRelation<mia::sm::Buffer_mm> * cr =
+                        //new mia::elly::dstruct::StandardCorrelationRelation<mia::sm::Buffer_mm>;
+                        
+                        //mia::elly::dstruct::StandardCorrelationRelation<mia::sm::Buffer_mmap> * cr =
+                        //new mia::elly::dstruct::StandardCorrelationRelation<mia::sm::Buffer_mmap>;
+                        
+                        int func_id = -1;
+                        BOOST_FOREACH(boost::property_tree::ptree::value_type &v,
+                                      pt.get_child(it->first)){
+                            if(v.first.compare("func") == 0){
+                                func_id = atoi(v.second.data().c_str());
+                            }
+                        }
+                        assert(func_id != -1);
+
+                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<mia::sm::Buffer_mm>(func_id);
+                        
+                        cr->factor_name = it->first;
                     
                         BOOST_FOREACH(boost::property_tree::ptree::value_type &v,
                                   pt.get_child(it->first)){
                         
                             if(v.first.compare("fid") == 0){
-                                cr.function_id = atoi(v.second.data().c_str());
+                                cr->factor_id = atoi(v.second.data().c_str());
                             }
-                        
+
+                            if(v.first.compare("func") == 0){
+                                cr->function_id = atoi(v.second.data().c_str());
+                            }
+                            
                             if(v.first.compare("type") == 0){
-                                cr.filetype = v.second.data();
+                                cr->filetype = v.second.data();
                             }
                         
                             if(v.first.compare("file") == 0){
-                                cr.filename = v.second.data();
+                                cr->filename = v.second.data();
                             }
                         
                         }
                     
-                        crs.push_back(cr);
+                        if(crs.size() != cr->factor_id){
+                            mia::elly::utils::logerr() << " ERROR: INPUT factor must be 0,1,..." << std::endl;
+                            assert(false);
+                        }
+                        crs.push_back((mia::elly::dstruct::AbstractCorrelationRelation *)cr);
                     
                     }
                 
                     elly::utils::log() << "  | Parsed " << crs.size() << " factors: " << std::endl;
                     for(int ff = 0; ff < crs.size(); ff++){
                 
-                        elly::utils::log() << "    + Factor [" << crs[ff].factor_name << "]:" << std::endl;
+                        elly::utils::log() << "    + Factor [" << crs[ff]->factor_name << "]:" << std::endl;
 
-                        elly::utils::log() << "      - function_id = " << crs[ff].function_id << "" << std::endl;
+                        elly::utils::log() << "      - function_id = " << crs[ff]->function_id << "" << std::endl;
 
-                        elly::utils::log() << "      - filename = " << crs[ff].filename << "" << std::endl;
+                        elly::utils::log() << "      - filename = " << crs[ff]->filename << "" << std::endl;
                     
-                        elly::utils::log() << "      - filetype = " << crs[ff].filetype << "" << std::endl;
+                        elly::utils::log() << "      - filetype = " << crs[ff]->filetype << "" << std::endl;
                 
                     }
                 
                     elly::utils::log() << ">> Preparing " << crs.size() << " factors: " << std::endl;
                     for(int ff = 0; ff < crs.size(); ff++){
                     
-                        elly::utils::log() << "  | Factor [" << crs[ff].factor_name << "]:" << std::endl;
+                        elly::utils::log() << "  | Factor [" << crs[ff]->factor_name << "]:" << std::endl;
                     
-                        crs[ff].prepare();
+                        crs[ff]->prepare();
                     
                     }
+                    
+                    elly::utils::log() << ">> Initializing variable assignments to random..." << std::endl;
+                    va.prepare();
+                    
+                    elly::utils::log() << ">> Preparing variable-factor relation..." << std::endl;
+                    vf.prepare();
                     
                 }
                 
@@ -250,7 +315,7 @@ namespace elly{
     
     }
 }
-
+}
 
 
 #endif

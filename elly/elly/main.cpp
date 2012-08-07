@@ -14,27 +14,175 @@
 
 #include "utils/FactorFileParser.h"
 
+#include "../../storageman/storageman/Buffer_mm.h"
+#include "../../storageman/storageman/KeyValue_fl.h"
+#include "../../storageman/storageman/KeyValue_vl.h"
 
+#include "mat/Materialization_lazy.h"
+#include "factors/factor_inits.h"
+
+#include "factors/factor_register.h"
+
+#include "alg/GibbsSampler.h"
+
+#include <pthread.h>
+
+
+namespace mia{
 namespace elly{
     
+    class SampleTask{
+    public:
+        int vid;
+        mia::elly::mat::Materialization_lazy * mat;
+        bool isShuffle;
+        int * nchange;
+    };
+    
+    void* mapper_sample(void* sampleTask){
+        
+        //return NULL;
+        
+        SampleTask* task = (SampleTask*) sampleTask;
+        
+        mia::elly::SampleInput sampleInput;
+        task->mat->retrieve(task->vid, sampleInput);
+        
+        //sampleInput.print();
+                
+        int rs;
+        if(task->isShuffle == false){
+            rs = mia::elly::alg::GibbsSampling(sampleInput);
+        }else{
+            rs = mia::elly::alg::Shuffle(sampleInput);
+        }
+        
+        if(rs != sampleInput.vvalue){
+            (*task->nchange) ++;
+        }
+        
+        task->mat->update(sampleInput, rs);
+        
+        return NULL;
+        
+    }
+    
+        
     class Elly{
     public:
         
-        elly::utils::Config config;
         
-        Elly(elly::utils::Config &_config){
+        int nepoch;
+        
+        void generate_tasks_and_map(mia::elly::mat::Materialization_lazy * mat){
+            
+            mia::elly::utils::Timer timer;
+            
+            int nchange = 0;
+            
+            int nthreads = config.sys_nthreads;
+            int nvariables = mat->getNVariable();
+            
+            mia::elly::utils::log() << ">> EPOCH #" << nepoch << ". Parallelizing inference using " << nthreads << " threads..." << std::endl;
+            
+            int nchunk = 0;
+            
+            bool isShuffle = (nepoch == 0);
+            
+            mia::elly::utils::log() << "  | isShuffle = " << isShuffle << std::endl;
+            
+            pthread_t* threads = new pthread_t[nthreads];
+            
+            for(int nv=0; nv<nvariables; nv+=nthreads){
+                
+                if(nchunk % 100000 == 0){
+                    mia::elly::utils::log() << "  | Chunk #" << nchunk << ": VID in { ";
+                }
+                
+                int nexecutor = 0;
+                for(int nv2=nv; nv2<nvariables && nv2-nv<nthreads; nv2++){
+                    
+                    if(nchunk % 100000 == 0){
+                        mia::elly::utils::log() << nv2 << " ";
+                    }
+                    
+                    SampleTask task;
+                    task.vid = nv2;
+                    task.mat = mat;
+                    task.isShuffle = isShuffle;
+                    task.nchange = &nchange;
+                    
+                    ////////// STUPID: FIX ME ///////////
+                    //mapper_sample(&task);
+                    //pthread_create(&threads[nexecutor], 0, mapper_sample, &task);
+                    mapper_sample(&task);
+                    
+                    nexecutor ++;
+                    
+                }
+                
+                if(nchunk % 100000 == 0){
+                    mia::elly::utils::log() << "}" << std::endl;
+                }
+                
+                //for (int i = 0; i < nexecutor; i++) {
+                //
+                //    pthread_join(threads[i], 0);
+                //}
+                
+                nchunk ++;
+            }
+                    
+            mia::elly::utils::log() << "  # change = " << nchange << std::endl;
+            
+            mia::elly::utils::log() << "  elapsed = " << timer.elapsed() << " seconds." << std::endl;
+            
+        }
+       
+        mia::elly::utils::Config config;
+        
+        Elly(mia::elly::utils::Config &_config){
             config = _config;
         }
         
+        void map(){
+            
+        }
+        
         void run(){
+            
+            mia::elly::utils::FactorFileParser fp(config.rt_input, config);
+            fp.parse();
+            
+            mia::elly::mat::Materialization_lazy mat(&fp);
+            mat.materialize();
+            
             
             if(config.rt_mode.compare("map") == 0){
                 
             }
 
             if(config.rt_mode.compare("marginal") == 0){
-                elly::inf::Inf_marginal inf(config);
-                inf.infer();
+            
+                nepoch = 0;
+                
+                for(nepoch; nepoch < 100; nepoch ++){
+                    
+                    generate_tasks_and_map(&mat);
+                
+                    char outputfile[1000];
+                    sprintf(outputfile, "%s-%d.txt", config.rt_output.c_str(), nepoch);
+                
+                    mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                    
+                    std::ofstream fout(outputfile);
+                    for(int v=0;v<mat.parserrs->va.nvariable;v++){
+                        fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+                    }
+                    fout.close();
+                    
+                }
+                        
             }
 
             if(config.rt_mode.compare("mle") == 0){
@@ -51,6 +199,7 @@ namespace elly{
         ~Elly(){}
     };
     
+}
 }
 
 /*
@@ -77,32 +226,27 @@ void test_kv_intkey(){
 }*/
 
 
-#include "../../storageman/storageman/Buffer_mm.h"
-#include "../../storageman/storageman/KeyValue_fl.h"
-#include "../../storageman/storageman/KeyValue_vl.h"
-
 int main(int argc, const char * argv[])
 {
 
-    elly::utils::Config config;
+    mia::elly::utils::Config config;
     
-    elly::utils::log() << "##### Elly " << 
+    mia::elly::utils::log() << "##### Elly " << 
             config.version_number << 
             " #####" << std::endl;
     
-    int rs_parse_options = elly::utils::parse_options(config, argc, argv);
+    int rs_parse_options = mia::elly::utils::parse_options(config, argc, argv);
 
     if (rs_parse_options != 0){
         return 0;
     }
-
-    elly::utils::FactorFileParser fp(config.rt_input, config);
-    fp.parse();
     
-
+    mia::elly::factors::register_potentials();
+    mia::elly::factors::register_updates();
     
-    elly::Elly elly_instance(config);
+    mia::elly::Elly elly_instance(config);
     elly_instance.run();
+    
     
     
     

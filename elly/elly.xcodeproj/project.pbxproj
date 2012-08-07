@@ -122,10 +122,15 @@
 		E1071D2B15A60F6C00999BDF /* tab_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_s.png; sourceTree = "<group>"; };
 		E1071D2C15A60F6C00999BDF /* tabs.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tabs.css; sourceTree = "<group>"; };
 		E111978115A4B9EE00562975 /* elly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = elly; sourceTree = BUILT_PRODUCTS_DIR; };
+		E14CAAF415C1898100288FFB /* factor_inits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_inits.h; sourceTree = "<group>"; };
+		E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableFactorRelation.h; sourceTree = "<group>"; };
 		E16E324115A4F17A008C69B6 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
 		E16E324215A4F17A008C69B6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E16E324515A4F1A7008C69B6 /* OptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionParser.h; sourceTree = "<group>"; };
 		E16E324615A4F246008C69B6 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableAssignmentRelation.h; sourceTree = "<group>"; };
+		E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_lazy.h; sourceTree = "<group>"; };
+		E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GibbsSampler.h; sourceTree = "<group>"; };
 		E183316815A533CF00A988D6 /* Inf_marginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inf_marginal.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		E1866D4D15AC1788003AB862 /* Buffer_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_file.h; sourceTree = "<group>"; };
@@ -137,7 +142,7 @@
 		E1866D5315AC1788003AB862 /* KeyValue_vl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValue_vl.h; sourceTree = "<group>"; };
 		E1866D5515AC1788003AB862 /* SlottedPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlottedPage.h; sourceTree = "<group>"; };
 		E1866D5715AC1788003AB862 /* UniformPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniformPage.h; sourceTree = "<group>"; };
-		E1866D5A15AC1FCE003AB862 /* InFileCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InFileCorrelationRelation.h; sourceTree = "<group>"; };
+		E1866D5A15AC1FCE003AB862 /* StandardCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardCorrelationRelation.h; sourceTree = "<group>"; };
 		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E186EBB815A50EAB001DC23D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		E186EBBA15A50EAB001DC23D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -148,6 +153,10 @@
 		E186EBCF15A5134F001DC23D /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		E18799A215A93AAB0026F196 /* FactorFileParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactorFileParser.h; sourceTree = "<group>"; };
 		E189273A15A6F4FE00CFFD0B /* Factor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Factor.h; sourceTree = "<group>"; };
+		E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractCorrelationRelation.h; sourceTree = "<group>"; };
+		E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalCorrelationRelation.h; sourceTree = "<group>"; };
+		E1CBA0FF15D0543400A81577 /* factor_register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_register.h; sourceTree = "<group>"; };
+		E1CBA10015D0D76E00A81577 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +301,10 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
+				E17E98E315C3EDC30048AAB2 /* alg */,
+				E17E98E115C3DC0D0048AAB2 /* mat */,
+				E14CAAF115C186DB00288FFB /* factors */,
+				E14CAAF215C186DB00288FFB /* relations */,
 				E1866D5915AC1FB9003AB862 /* dstruct */,
 				E189273915A6F4EF00CFFD0B /* adhoc */,
 				E183316515A5333000A988D6 /* inf */,
@@ -303,6 +316,22 @@
 			path = elly;
 			sourceTree = "<group>";
 		};
+		E14CAAF115C186DB00288FFB /* factors */ = {
+			isa = PBXGroup;
+			children = (
+				E14CAAF415C1898100288FFB /* factor_inits.h */,
+				E1CBA0FF15D0543400A81577 /* factor_register.h */,
+			);
+			path = factors;
+			sourceTree = "<group>";
+		};
+		E14CAAF215C186DB00288FFB /* relations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = relations;
+			sourceTree = "<group>";
+		};
 		E16E324315A4F17A008C69B6 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,8 +340,25 @@
 				E186EBCF15A5134F001DC23D /* Log.h */,
 				E185EE4A15A51728009C6FBA /* Common.h */,
 				E18799A215A93AAB0026F196 /* FactorFileParser.h */,
+				E1CBA10015D0D76E00A81577 /* Timer.h */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		E17E98E115C3DC0D0048AAB2 /* mat */ = {
+			isa = PBXGroup;
+			children = (
+				E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */,
+			);
+			path = mat;
+			sourceTree = "<group>";
+		};
+		E17E98E315C3EDC30048AAB2 /* alg */ = {
+			isa = PBXGroup;
+			children = (
+				E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */,
+			);
+			path = alg;
 			sourceTree = "<group>";
 		};
 		E183316515A5333000A988D6 /* inf */ = {
@@ -357,7 +403,11 @@
 		E1866D5915AC1FB9003AB862 /* dstruct */ = {
 			isa = PBXGroup;
 			children = (
-				E1866D5A15AC1FCE003AB862 /* InFileCorrelationRelation.h */,
+				E1866D5A15AC1FCE003AB862 /* StandardCorrelationRelation.h */,
+				E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */,
+				E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */,
+				E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */,
+				E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */,
 			);
 			path = dstruct;
 			sourceTree = "<group>";
@@ -444,7 +494,7 @@
 		E111977815A4B9EE00562975 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "University of Wisconsin-Madison";
 			};
 			buildConfigurationList = E111977B15A4B9EE00562975 /* Build configuration list for PBXProject "elly" */;
@@ -525,7 +575,7 @@
 		E111978915A4B9EE00562975 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -543,18 +593,24 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
+					"/Users/czhang/Downloads/stxxl-1.3.1/lib/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-I/usr/local/include/";
 				OTHER_LDFLAGS = "-lboost_program_options-mt";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include/**";
 			};
 			name = Debug;
 		};
 		E111978A15A4B9EE00562975 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
@@ -566,30 +622,49 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
+					"/Users/czhang/Downloads/stxxl-1.3.1/lib/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-I/usr/local/include/";
 				OTHER_LDFLAGS = "-lboost_program_options-mt";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include/**";
 			};
 			name = Release;
 		};
 		E111978C15A4B9EE00562975 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/czhang/Downloads/stxxl-1.3.1/include";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-lpthread",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/czhang/Downloads/stxxl-1.3.1/include";
 			};
 			name = Debug;
 		};
 		E111978D15A4B9EE00562975 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/czhang/Downloads/stxxl-1.3.1/include";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-lpthread",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/czhang/Downloads/stxxl-1.3.1/include";
 			};
 			name = Release;
 		};
 		E186EBCB15A50EAB001DC23D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "elly_test/elly_test-Prefix.pch";
@@ -602,6 +677,7 @@
 		E186EBCC15A50EAB001DC23D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "elly_test/elly_test-Prefix.pch";

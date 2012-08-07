@@ -38,20 +38,31 @@ public:
     
     void set(int key, TYPE block){
         
+        
+        //std::cout << "want to set key " << key << " to " << block << std::endl;
+        
         assert(key <= ckey + 1 && key >= 0);    // only inc. set or inplace set
         
         int c_pageid = key/PageNVALUE;
         int c_slotid = key%PageNVALUE;
         
-        int v_pageid, v_slotid;
+        if(key == ckey + 1){    // push
+            
+            int v_pageid, v_slotid;
+            buf_values.push(block, v_pageid, v_slotid);
         
-        buf_values.push(block, v_pageid, v_slotid);
+            //std::cout << "calc'ed: " << c_pageid << "," << c_slotid << ";"
+            //<< "actual: " << v_pageid << "," << v_slotid << std::endl;
         
-        //std::cout << "calc'ed: " << c_pageid << "," << c_slotid << ";"
-        //<< "actual: " << v_pageid << "," << v_slotid << std::endl;
+            assert(c_pageid == v_pageid);
+            assert(c_slotid == v_slotid);
+        }else{                  // inplace update
+            
+            buf_values.set(c_pageid, c_slotid, block);
+            
+        }
         
-        assert(c_pageid == v_pageid);
-        assert(c_slotid == v_slotid);
+        
         
         if(ckey < key){
             ckey = key;

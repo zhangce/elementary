@@ -11,25 +11,27 @@
 
 #include "../utils/Config.h"
 
+namespace mia{
 namespace elly {
     namespace inf{
         
         class Inf_marginal{
         public:
             
-            elly::utils::Config config;
+            mia::elly::utils::Config config;
             
-            Inf_marginal(elly::utils::Config &_config){
+            Inf_marginal(mia::elly::utils::Config &_config){
                 config = _config;
             }
             
             void infer(){
-                elly::utils::log() << ">> Executing marginal inference..." << std::endl;
+                mia::elly::utils::log() << ">> Executing marginal inference..." << std::endl;
             }
             
         };
         
     }
+}
 }
 
 

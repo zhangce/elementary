@@ -15,6 +15,7 @@
 #include "/usr/local/include/boost/program_options.hpp"
 namespace po = boost::program_options;
 
+namespace mia {
 namespace elly {
     
     /*!
@@ -215,6 +216,7 @@ namespace elly {
                 
                 
     }
+}
 }
 
 

@@ -19,7 +19,7 @@ namespace mia{
     namespace sm{
 
 
-template<template<template<class C> class A, class B> class BUFFER>
+template<template<template<class C> class A, class B> class BUFFER, class TYPE = IntsBlock>
 class KeyValue_vl{
 public:
     
@@ -55,29 +55,35 @@ public:
         
         //std::cout << c_pageid << " " << c_slotid << std::endl;
         
-        int v_pageid, v_slotid;
+        if(key == ckey + 1){    // push
+            int v_pageid, v_slotid;
         
-        buf_values.push(block, v_pageid, v_slotid);
+            buf_values.push(block, v_pageid, v_slotid);
                 
-        IntPair k_block;
-        k_block.first = v_pageid;
-        k_block.second = v_slotid;
+            IntPair k_block;
+            k_block.first = v_pageid;
+            k_block.second = v_slotid;
         
-        int k_pageid, k_slotid;
+            int k_pageid, k_slotid;
         
-        buf_keyoffs.push(k_block, k_pageid, k_slotid);
+            buf_keyoffs.push(k_block, k_pageid, k_slotid);
         
-        //std::cout << key << std::endl;
-        //std::cout << "calc'ed: " << c_pageid << "," << c_slotid << ";"
-        //<< "actual: " << k_pageid << "," << k_slotid << std::endl;
+            //std::cout << key << std::endl;
+            //std::cout << "calc'ed: " << c_pageid << "," << c_slotid << ";"
+            //<< "actual: " << k_pageid << "," << k_slotid << std::endl;
         
-        assert(c_pageid == k_pageid);    //calcualted is same as actual.
-        assert(c_slotid == k_slotid);    //calcualted is same as actual.        
+            assert(c_pageid == k_pageid);    //calcualted is same as actual.
+            assert(c_slotid == k_slotid);    //calcualted is same as actual.
+        }else{  // update
+            
+            IntPair k_block = buf_keyoffs.get(c_pageid, c_slotid);
+            buf_values.set(k_block.first, k_block.second, block);
+            
+        }
         
         if(ckey < key){
             ckey = key;
         }
-        
         
     }
     
