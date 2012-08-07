@@ -46,7 +46,7 @@ namespace mia{
                     return ret;
                 }
                 
-                void update(int key, void * new_content){
+                void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to){
                     assert(false);  // it is so weird that a StandardCorrelationRelation needs any update because nothing will change
                 }
                                 
@@ -73,6 +73,10 @@ namespace mia{
                             
                             kv.set(fid, fstate.state);
                             nfactor ++;
+                            
+                            pthread_mutex_t * sem = new pthread_mutex_t;
+                            pthread_mutex_init(sem, NULL);
+                            sems.push_back(sem);
                             
                         }
                         

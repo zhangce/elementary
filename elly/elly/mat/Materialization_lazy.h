@@ -41,6 +41,10 @@ namespace mia{
                 
                 void update(mia::elly::SampleInput & sampleInput, int newvalue){
                  
+                    //char aaa[1000];
+                    //sprintf(aaa, "%d from %d to %d\n", sampleInput.vid, sampleInput.vvalue, newvalue );
+                    //std::cout << aaa << std::endl;
+                    
                     parserrs->va.set(sampleInput.vid, newvalue);
                     
                     int crid, fid, aux, vpos, funcid;
@@ -56,25 +60,34 @@ namespace mia{
                         funcid = sampleInput.funcids[nf];
                         
                         if(vpos == -1){
-                            parserrs->crs[crid]->update(fid, mb);
+                            //parserrs->crs[crid]->lock(fid);
+                            
+                            parserrs->crs[crid]->update(fid, funcs_update[funcid], sampleInput.vid, sampleInput.vvalue, newvalue);
+                            
+                            //parserrs->crs[crid]->release(fid);
                         }
-                                                
+                        
                     }
-
-                    
+                
+                    //for(int nf=0; nf<sampleInput.fids.size();nf ++){
+                    //
+                    //    crid = sampleInput.crids[nf];
+                    //    fid = sampleInput.fids[nf];
+                    //
+                    //    //todo: should we lock variables?
+                    //    parserrs->crs[crid]->release(fid);
+                    //
+                    //}
                 }
 
                 
                 // get mia::elly:SampleInput object as input to sampler
                 void retrieve(int vid, mia::elly::SampleInput & rs){
                     
-                    assert(rs.mbs.size() == 0);
-                    assert(rs.pos_of_sample_variable.size() == 0);
-                    assert(rs.auxs.size() == 0);
                     
-                    rs.vid = vid;
-                    rs.vvalue = parserrs->va.lookup(vid);
-                    rs.vdomain = parserrs->va.lookup_domain(vid);
+                    //assert(rs.mbs.size() == 0);
+                    //assert(rs.pos_of_sample_variable.size() == 0);
+                    //assert(rs.auxs.size() == 0);
                     
                     // first get a list of factors of vid
                     mia::sm::IntsBlock factors = parserrs->vf.lookup(vid);
@@ -88,12 +101,18 @@ namespace mia{
                     int currentNFactor = 0;
                     int currentNVariable = 0;
                     
+                    //for(int factor=1;factor<factors.size;factor+=2){
+                    //    crid = factors.get<int>(factor);
+                    //    fid = factors.get<int>(factor+1);
+                    //    parserrs->crs[crid]->lock(fid);
+                    //}
+                                        
+                    rs.vid = vid;
+                    rs.vvalue = parserrs->va.lookup(vid);
+                    rs.vdomain = parserrs->va.lookup_domain(vid);
+                    
                     // for each factor
                     for(int factor=1;factor<factors.size;factor+=2){
-                        
-                        
-                        std::vector<int> * empty = new std::vector<int>;
-                        
                         
                         crid = factors.get<int>(factor);
                         fid = factors.get<int>(factor+1);  
@@ -106,6 +125,8 @@ namespace mia{
                         // if not incremental factor
                         if(funcs_incremental[parserrs->crs[crid]->function_id] == false){
                         
+                            std::vector<int> * empty = new std::vector<int>;
+                            
                             //std::cout << crid << ", " << fid << std::endl;
                             mia::sm::IntsBlock * mb =
                                 (mia::sm::IntsBlock*) parserrs->crs[crid]->lookup(fid);
@@ -150,6 +171,9 @@ namespace mia{
                             rs.auxs.push_back(-1);
                             rs.pos_of_sample_variable.push_back(-1);
                             void * mb = (void*) parserrs->crs[crid]->lookup(fid);
+                            
+                            //std::cout << mb << std::endl;
+                            
                             rs.mbs.push_back(mb);
                             
                         }

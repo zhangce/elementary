@@ -157,6 +157,7 @@
 		E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalCorrelationRelation.h; sourceTree = "<group>"; };
 		E1CBA0FF15D0543400A81577 /* factor_register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_register.h; sourceTree = "<group>"; };
 		E1CBA10015D0D76E00A81577 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		E1CBA10115D0FC8F00A81577 /* KeyValue_fl_fastmm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyValue_fl_fastmm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +393,7 @@
 				E1866D5015AC1788003AB862 /* Common.h */,
 				E1866D5115AC1788003AB862 /* IntsBlock.h */,
 				E1866D5215AC1788003AB862 /* KeyValue_fl.h */,
+				E1CBA10115D0FC8F00A81577 /* KeyValue_fl_fastmm.h */,
 				E1866D5315AC1788003AB862 /* KeyValue_vl.h */,
 				E1866D5515AC1788003AB862 /* SlottedPage.h */,
 				E1866D5715AC1788003AB862 /* UniformPage.h */,

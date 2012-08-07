@@ -38,7 +38,6 @@ public:
     
     void set(int key, TYPE block){
         
-        
         //std::cout << "want to set key " << key << " to " << block << std::endl;
         
         assert(key <= ckey + 1 && key >= 0);    // only inc. set or inplace set

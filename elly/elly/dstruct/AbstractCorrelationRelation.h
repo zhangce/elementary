@@ -25,13 +25,33 @@ namespace mia{
                 std::string filename;
                 std::string filetype;
                 
+                std::vector<pthread_mutex_t* > sems;    // assume in-memory semaphores
+                
                 int nfactor;
+                
+                void lock(int fid){
+                    //std::cout << "lock" << fid << std::endl;
+                    pthread_mutex_lock(sems[fid]);
+                    //std::cout << "donelock" << fid << std::endl;
+                }
+                
+                void release(int fid){
+                    //std::cout << "unlock" << fid << std::endl;
+                    pthread_mutex_unlock(sems[fid]);
+                    //std::cout << "doneunlock" << fid << std::endl;
+                }
+                
+                ~AbstractCorrelationRelation(){
+                    for(int i=0;i<sems.size();i++){
+                        pthread_mutex_destroy(sems[i]);
+                    }
+                }
                 
                 virtual void * lookup(int fid) = 0;
                 
                 virtual void prepare() = 0;
                 
-                virtual void update(int key, void * new_content) = 0;
+                virtual void update(int key, void (*func_update)(void * , int , int , int ), int vid, int from, int to) = 0;
                 
             };
             

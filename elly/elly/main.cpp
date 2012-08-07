@@ -33,7 +33,9 @@ namespace elly{
     
     class SampleTask{
     public:
-        int vid;
+        int lower;
+        int upper;
+        int step;
         mia::elly::mat::Materialization_lazy * mat;
         bool isShuffle;
         int * nchange;
@@ -45,23 +47,30 @@ namespace elly{
         
         SampleTask* task = (SampleTask*) sampleTask;
         
-        mia::elly::SampleInput sampleInput;
-        task->mat->retrieve(task->vid, sampleInput);
-        
-        //sampleInput.print();
-                
-        int rs;
-        if(task->isShuffle == false){
-            rs = mia::elly::alg::GibbsSampling(sampleInput);
-        }else{
-            rs = mia::elly::alg::Shuffle(sampleInput);
+        for(int vid=task->lower;vid<task->upper;vid+=task->step){
+            
+            mia::elly::SampleInput sampleInput;
+            task->mat->retrieve(vid, sampleInput);
+            
+            //sampleInput.print();
+            
+            int rs;
+            if(task->isShuffle == false){
+                //rs = 0;
+                rs = mia::elly::alg::GibbsSampling(sampleInput);
+            }else{
+                rs = mia::elly::alg::Shuffle(sampleInput);
+            }
+            
+            if(rs != sampleInput.vvalue){
+                (*task->nchange) ++;
+            }
+
+            //if(task->isShuffle == true){
+            task->mat->update(sampleInput, rs);
+            //}
+            
         }
-        
-        if(rs != sampleInput.vvalue){
-            (*task->nchange) ++;
-        }
-        
-        task->mat->update(sampleInput, rs);
         
         return NULL;
         
@@ -83,9 +92,8 @@ namespace elly{
             int nthreads = config.sys_nthreads;
             int nvariables = mat->getNVariable();
             
-            mia::elly::utils::log() << ">> EPOCH #" << nepoch << ". Parallelizing inference using " << nthreads << " threads..." << std::endl;
             
-            int nchunk = 0;
+            mia::elly::utils::log() << ">> EPOCH #" << nepoch << ". Parallelizing inference using " << nthreads << " threads..." << std::endl;
             
             bool isShuffle = (nepoch == 0);
             
@@ -93,44 +101,23 @@ namespace elly{
             
             pthread_t* threads = new pthread_t[nthreads];
             
-            for(int nv=0; nv<nvariables; nv+=nthreads){
-                
-                if(nchunk % 100000 == 0){
-                    mia::elly::utils::log() << "  | Chunk #" << nchunk << ": VID in { ";
-                }
-                
-                int nexecutor = 0;
-                for(int nv2=nv; nv2<nvariables && nv2-nv<nthreads; nv2++){
+            for(int nv=0; nv<nthreads; nv++){
+                                    
+                SampleTask * task = new SampleTask;
+                task->lower = nv;
+                task->upper = nvariables;
+                task->step = nthreads;
+                task->mat = mat;
+                task->isShuffle = isShuffle;
+                task->nchange = &nchange;
                     
-                    if(nchunk % 100000 == 0){
-                        mia::elly::utils::log() << nv2 << " ";
-                    }
-                    
-                    SampleTask task;
-                    task.vid = nv2;
-                    task.mat = mat;
-                    task.isShuffle = isShuffle;
-                    task.nchange = &nchange;
-                    
-                    ////////// STUPID: FIX ME ///////////
-                    //mapper_sample(&task);
-                    //pthread_create(&threads[nexecutor], 0, mapper_sample, &task);
-                    mapper_sample(&task);
-                    
-                    nexecutor ++;
-                    
-                }
-                
-                if(nchunk % 100000 == 0){
-                    mia::elly::utils::log() << "}" << std::endl;
-                }
-                
-                //for (int i = 0; i < nexecutor; i++) {
-                //
-                //    pthread_join(threads[i], 0);
-                //}
-                
-                nchunk ++;
+                pthread_create(&threads[nv], 0, mapper_sample, task);
+
+            }
+            
+            for (int i = 0; i < nthreads; i++) {
+            
+                pthread_join(threads[i], 0);
             }
                     
             mia::elly::utils::log() << "  # change = " << nchange << std::endl;

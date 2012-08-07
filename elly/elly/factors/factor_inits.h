@@ -57,26 +57,44 @@ double potential_ldacount50(void * state, int aux, int vpos, int value){
     return log(pstate->counts[value]+1);
 }
 
+
 double potential_ldacount50_samedoc(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    return +log(1.0 + pstate->counts[value]);
+    return 1.0 + pstate->counts[value];
+    
+    //std::cout << pstate->counts[value] << std::endl;
+    
+    //return +log(1.0 + pstate->counts[value]);
 }
 
 double potential_ldacount50_sametopic(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    return -log(1.0 + pstate->counts[value]);
+    return 1.0/(1.0 + pstate->counts[value]);
+    
+    //std::cout << pstate->counts[value] << std::endl;
+    
+    //return -log(1.0 + pstate->counts[value]);
 }
 
 double potential_ldacount50_sameword(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    return +log(0.1 + pstate->counts[value]);
+    
+    //std::cout << pstate->counts[value] << std::endl;
+    return 0.1 + pstate->counts[value];
+    //return +log(0.1 + pstate->counts[value]);
 }
 
 
 void update_ldacount50(void * state, int vpos, int from, int to){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    pstate->counts[from] --;
-    pstate->counts[to] ++;
+    
+    if(from == to){
+        return;
+    }
+    
+    pstate->counts[from] = pstate->counts[from] - 1;
+    pstate->counts[to] = pstate->counts[to] + 1;
+    
 }
 
 

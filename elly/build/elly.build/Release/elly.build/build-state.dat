@@ -1,0 +1,85 @@
+Telly
+v5
+r1
+cCheck dependencies
+cCompileC build/elly.build/Release/elly.build/Objects-normal/x86_64/main.o /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly normal x86_64
+cGenerateDSYMFile /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c000000004FF015DA00000000000000AA
+t1341134298
+s170
+
+N/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly
+t2
+s0
+
+N/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM
+t2
+s0
+
+N/Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/elly.LinkFileList
+c000000005020D56E0000000000000066
+t1344329070
+s102
+
+N/Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp
+c000000005020CDB40000000000001CA9
+t1344327092
+s7337
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies8e1ec7ee0cd1b541^86e6ceee0cd1b541^-1528"warning: no rule to process file '$(PROJECT_DIR)/html/dynsections.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/jquery.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/all_63.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/all_65.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/all_69.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/all_70.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_63.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_65.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_69.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/functions_70.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/namespaces_65.js' of type sourcecode.javascript for architecture x86_64warning: no rule to process file '$(PROJECT_DIR)/html/search/search.js' of type sourcecode.javascript for architecture x86_6412(21%IDEActivityLogMessage2@123"Warning: no rule to process file '$(PROJECT_DIR)/html/dynsections.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@118"Warning: no rule to process file '$(PROJECT_DIR)/html/jquery.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@125"Warning: no rule to process file '$(PROJECT_DIR)/html/search/all_63.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@125"Warning: no rule to process file '$(PROJECT_DIR)/html/search/all_65.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@125"Warning: no rule to process file '$(PROJECT_DIR)/html/search/all_69.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@125"Warning: no rule to process file '$(PROJECT_DIR)/html/search/all_70.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@129"Warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_63.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@129"Warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_65.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@129"Warning: no rule to process file '$(PROJECT_DIR)/html/search/classes_69.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@131"Warning: no rule to process file '$(PROJECT_DIR)/html/search/functions_70.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@132"Warning: no rule to process file '$(PROJECT_DIR)/html/search/namespaces_65.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@125"Warning: no rule to process file '$(PROJECT_DIR)/html/search/search.js' of type sourcecode.javascript for architecture x86_64-366021870#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--0#1#0#--18"Check dependencies36"3B0788A8-94E4-44F0-87A8-B3E8A8D8C11E-
+
+CCompileC build/elly.build/Release/elly.build/Objects-normal/x86_64/main.o /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s366021870.814114
+e366021874.456738
+r1
+xCompileC
+xbuild/elly.build/Release/elly.build/Objects-normal/x86_64/main.o
+x/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:9:
+o/Users/czhang/Desktop/Codes/mia/elly/elly/utils/Common.h:40:17: warning: cannot delete expression with pointer-to-'void' type 'void *'
+o                delete mbs[i];
+o                ^      ~~~~~~
+oIn file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:15:
+oIn file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/FactorFileParser.h:15:
+oIn file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/../dstruct/StandardCorrelationRelation.h:20:
+o/Users/czhang/Desktop/Codes/mia/elly/elly/utils/../dstruct/../factors/factor_inits.h:103:23: warning: unused variable 'pmb' [-Wunused-variable]
+o    std::vector<int>* pmb = (std::vector<int>*)mb;
+o                      ^
+o/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:156:21: warning: expression result unused [-Wunused-value]
+o                for(nepoch; nepoch < 100; nepoch ++){
+o                    ^~~~~~
+o3 warnings generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection58"Compile /Users/czhang/Desktop/Codes/mia/elly/elly/main.cppada5d0ee0cd1b541^eeeb74f20cd1b541^-989"In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:9:/Users/czhang/Desktop/Codes/mia/elly/elly/utils/Common.h:40:17: warning: cannot delete expression with pointer-to-'void' type 'void *'                delete mbs[i];                ^      ~~~~~~In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:15:In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/FactorFileParser.h:15:In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/../dstruct/StandardCorrelationRelation.h:20:/Users/czhang/Desktop/Codes/mia/elly/elly/utils/../dstruct/../factors/factor_inits.h:103:23: warning: unused variable 'pmb' [-Wunused-variable]    std::vector<int>* pmb = (std::vector<int>*)mb;                      ^/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:156:21: warning: expression result unused [-Wunused-value]                for(nepoch; nepoch < 100; nepoch ++){                    ^~~~~~3 warnings generated.3(36%IDEClangDiagnosticActivityLogMessage2@61"Cannot delete expression with pointer-to-'void' type 'void *'-366021874#18446744073709551615#0#1(2@75"In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:9:-366021874#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^8#9#8#9#153#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/utils/Common.h0000000000000000^39#16#39#16#613#0#14"Semantic Issue1(3@72"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/utils/Common.h0000000000000000^39#23#39#29#620#5#-2@21"Unused variable 'pmb'-366021874#18446744073709551615#0#3(2@76"In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp:15:-366021874#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^14#9#14#9#244#0#21"Clang LLVM 1.0 Notice--2@92"In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/FactorFileParser.h:15:-366021874#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@82"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/utils/FactorFileParser.h0000000000000000^14#9#14#9#267#0#21"Clang LLVM 1.0 Notice--2@114"In file included from /Users/czhang/Desktop/Codes/mia/elly/elly/utils/../dstruct/StandardCorrelationRelation.h:20:-366021874#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/dstruct/StandardCorrelationRelation.h0000000000000000^19#9#19#9#472#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@80"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/factors/factor_inits.h0000000000000000^102#22#102#22#2315#0#19"Unused Entity Issue--2@24"Expression result unused-366021874#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^155#20#155#20#4069#0#19"Unused Entity Issue2(3@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^155#20#155#26#4069#0#3@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^155#20#155#26#4069#0#-0#0#0#-19%DVTDocumentLocation4@66"file://localhost/Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp0000000000000000^2029"CompileC build/elly.build/Release/elly.build/Objects-normal/x86_64/main.o elly/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/czhang/Desktop/Codes/mia/elly    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-sign-compare -Wshorten-64-to-32 -Wno-newline-eof -Wc++11-extensions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.7 -g -fvisibility=hidden -fvisibility-inlines-hidden -Wno-sign-conversion -I/Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/elly.hmap -I/Users/czhang/Downloads/stxxl-1.3.1/include -I/Users/czhang/Desktop/Codes/mia/elly/build/Release/include -I/Users/czhang/Downloads/stxxl-1.3.1/include -I/Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/DerivedSources/x86_64 -I/Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/DerivedSources -F/Users/czhang/Desktop/Codes/mia/elly/build/Release -I/usr/local/include/ -MMD -MT dependencies -MF /Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/main.dia -c /Users/czhang/Desktop/Codes/mia/elly/elly/main.cpp -o /Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/main.o36"842CDE6E-3350-4F10-B52A-3BB76C6B36F3-
+
+CGenerateDSYMFile /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly
+s366021874.502112
+e366021874.594296
+r1
+xGenerateDSYMFile
+x/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM
+x/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Generating /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYMcfa180f20cd1b541^e62498f20cd1b541^---0#0#0#-19%DVTDocumentLocation2@76"file://localhost/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM000000000080d041^324"GenerateDSYMFile build/Release/elly.dSYM build/Release/elly    cd /Users/czhang/Desktop/Codes/mia/elly    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly -o /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly.dSYM36"1E2D7C2B-EB79-46C5-9072-5A83B7876843-
+
+CLd /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly normal x86_64
+s366021874.464035
+e366021874.495779
+r1
+xLd
+x/Users/czhang/Desktop/Codes/mia/elly/build/Release/elly
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Link /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly97e276f20cd1b541^e1ec7ef20cd1b541^---0#0#0#--970"Ld build/Release/elly normal x86_64    cd /Users/czhang/Desktop/Codes/mia/elly    setenv MACOSX_DEPLOYMENT_TARGET 10.7    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -L/Users/czhang/Desktop/Codes/mia/elly/build/Release -L/usr/local/lib -L/usr/local/lib/ImageMagick-6.6.9 -L/usr/local/lib/pkgconfig -L/usr/local/lib/ImageMagick-6.6.9/modules-Q16 -L/usr/local/lib/ImageMagick-6.6.9/modules-Q16/coders -L/usr/local/lib/ImageMagick-6.6.9/modules-Q16/filters -L/Users/czhang/Downloads/stxxl-1.3.1/lib -F/Users/czhang/Desktop/Codes/mia/elly/build/Release -filelist /Users/czhang/Desktop/Codes/mia/elly/build/elly.build/Release/elly.build/Objects-normal/x86_64/elly.LinkFileList -mmacosx-version-min=10.7 -lboost_program_options-mt -lpthread -o /Users/czhang/Desktop/Codes/mia/elly/build/Release/elly36"1BA38985-5072-496F-BB2D-8BA160D35849-
+
