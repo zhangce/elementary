@@ -60,11 +60,11 @@ namespace mia{
                     //kv.adhoc_update(fid, from, to);
                     //release(fid);
                     
-                    lock(fid);
+                    //lock(fid);
                     TYPE rr = kv.get(fid);
                     func_update(&rr, vid, from, to);
                     kv.set(fid, rr);
-                    release(fid);
+                    //release(fid);
                 
                 }
                 

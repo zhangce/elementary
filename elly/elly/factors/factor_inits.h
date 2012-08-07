@@ -60,28 +60,28 @@ double potential_ldacount50(void * state, int aux, int vpos, int value){
 
 double potential_ldacount50_samedoc(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    return 1.0 + pstate->counts[value];
+    //return 1.0 + pstate->counts[value];
     
     //std::cout << pstate->counts[value] << std::endl;
     
-    //return +log(1.0 + pstate->counts[value]);
+    return +log(1.0 + pstate->counts[value]);
 }
 
 double potential_ldacount50_sametopic(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
-    return 1.0/(1.0 + pstate->counts[value]);
+    //return 1.0/(1.0 + pstate->counts[value]);
     
     //std::cout << pstate->counts[value] << std::endl;
     
-    //return -log(1.0 + pstate->counts[value]);
+    return -log(1.0 + pstate->counts[value]);
 }
 
 double potential_ldacount50_sameword(void * state, int aux, int vpos, int value){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     
     //std::cout << pstate->counts[value] << std::endl;
-    return 0.1 + pstate->counts[value];
-    //return +log(0.1 + pstate->counts[value]);
+    //return 0.1 + pstate->counts[value];
+    return +log(0.1 + pstate->counts[value]);
 }
 
 

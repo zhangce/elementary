@@ -24,22 +24,6 @@ namespace mia {
                 
                 //mia::elly::utils::log() << "  | V" << sampleInput.vid << " <~~ " << targetValue << " from " << sampleInput.vvalue << std::endl;
 
-                
-                /*void * mb;
-                int vpos, funcid;
-                for(int nf=0; nf<sampleInput.fids.size();nf ++){
-                    
-                    mb = sampleInput.mbs[nf];
-                    vpos = sampleInput.pos_of_sample_variable[nf];
-                    funcid = sampleInput.funcids[nf];
-                    
-                    if( funcs_update[funcid] != NULL){
-                        
-                        funcs_update[funcid](mb, vpos, sampleInput.vvalue, targetValue);
-                        
-                    }
-                }*/
-
                 return targetValue;
                   
             }
@@ -55,9 +39,8 @@ namespace mia {
                 
                 std::vector<double> potentials;
                 for(int i=0;i<sampleInput.vdomain;i++){
-                    //potentials.push_back(0);
-                    
-                    potentials.push_back(1);
+                    potentials.push_back(0);
+                    //potentials.push_back(1);
                 }
                                 
                 for(int nf=0; nf<sampleInput.fids.size();nf ++){
@@ -75,18 +58,18 @@ namespace mia {
 
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
                         
-                        //potentials[value] += potential;
-                        potentials[value] *= potential;
+                        potentials[value] += potential;
+                        //potentials[value] *= potential;
                     }
                     
                 }
                 
-                //double pfunc = -10000000;;
-                double pfunc = 0;
+                double pfunc = -10000000;;
+                //double pfunc = 0;
                 for(int value=0; value < sampleInput.vdomain; value ++){
                     
-                    //pfunc = mia::elly::utils::logadd(potentials[value], pfunc);
-                    pfunc += potentials[value];
+                    pfunc = mia::elly::utils::logadd(potentials[value], pfunc);
+                    //pfunc += potentials[value];
                 }
                 
                 //mia::elly::utils::log() << "  | log potential func = " << pfunc << std::endl;
@@ -100,8 +83,8 @@ namespace mia {
                 int targetValue = -1;
                 for(int value=0; value < sampleInput.vdomain; value ++){
                     
-                    //pmeta = exp( potentials[value] - pfunc );
-                    pmeta = potentials[value]/pfunc;
+                    pmeta = exp( potentials[value] - pfunc );
+                    //pmeta = potentials[value]/pfunc;
                     
                     //mia::elly::utils::log() << "    + Pr[V" << sampleInput.vid << " = " << value << "] = " << pmeta << std::endl;
                     
@@ -120,25 +103,7 @@ namespace mia {
                 assert(targetValue != -1);
                 
                 //mia::elly::utils::log() << "  | V" << sampleInput.vid << " <~~ " << targetValue << " from " << sampleInput.vvalue << std::endl;
-                
-                /*
-                for(int nf=0; nf<sampleInput.fids.size();nf ++){
-                    
-                    mb = sampleInput.mbs[nf];
-                    vpos = sampleInput.pos_of_sample_variable[nf];
-                    funcid = sampleInput.funcids[nf];
-                    
-                    if( funcs_update[funcid] != NULL){
-                    
-                        funcs_update[funcid](mb, vpos, sampleInput.vvalue, targetValue);
-                        
-                    }
-                    
-                    
-                }*/
-
-                
-                
+                               
                 return targetValue;
                 
             }

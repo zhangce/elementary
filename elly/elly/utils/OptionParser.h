@@ -11,8 +11,7 @@
 
 #include "Common.h"
 
-    //////!!!!!!!! TODO: so ugly !!!!!!!!!!!!!!
-#include "/usr/local/include/boost/program_options.hpp"
+#include "boost/program_options.hpp"
 namespace po = boost::program_options;
 
 namespace mia {
