@@ -14,6 +14,8 @@
 
 #include "utils/FactorFileParser.h"
 
+#include "utils/Timer.h"
+
 #include "../../storageman/storageman/Buffer_mm.h"
 #include "../../storageman/storageman/KeyValue_fl.h"
 #include "../../storageman/storageman/KeyValue_vl.h"
@@ -24,6 +26,8 @@
 #include "factors/factor_register.h"
 
 #include "alg/GibbsSampler.h"
+
+
 
 #include <pthread.h>
 
@@ -39,6 +43,14 @@ namespace elly{
         mia::elly::mat::Materialization_lazy * mat;
         bool isShuffle;
         int * nchange;
+        int * naccept;
+        
+        bool tally;
+        bool train;
+        
+        double stepSize;
+        
+        double temparature;
     };
     
     void* mapper_sample(void* sampleTask){
@@ -50,25 +62,64 @@ namespace elly{
         for(int vid=task->lower;vid<task->upper;vid+=task->step){
             
             mia::elly::SampleInput sampleInput;
-            task->mat->retrieve(vid, sampleInput);
+            task->mat->retrieve(vid, sampleInput, task->train);
+            
+            sampleInput.stepSize = task->stepSize;
             
             //sampleInput.print();
             
             int rs;
-            if(task->isShuffle == false){
-                //rs = 0;
-                rs = mia::elly::alg::GibbsSampling(sampleInput);
-            }else{
+            if(task->isShuffle == true){
                 rs = mia::elly::alg::Shuffle(sampleInput);
+            }else{
+                rs = mia::elly::alg::GibbsSampling(sampleInput);
             }
             
             if(rs != sampleInput.vvalue){
                 (*task->nchange) ++;
             }
 
-            //if(task->isShuffle == true){
-            task->mat->update(sampleInput, rs);
-            //}
+            if(task->isShuffle == true){
+                
+                if(rs != sampleInput.vvalue){
+                    (*task->naccept) ++;
+                }
+                
+                task->mat->update(sampleInput, rs);
+            }else{
+                
+                if(task->temparature == -1){
+                    
+                    task->mat->update(sampleInput, rs, task->tally);
+                    
+                }else{
+                    
+                    if(sampleInput.log_improve_ratio > 0){
+                        if(rs != sampleInput.vvalue){
+                            (*task->naccept) ++;
+                        }
+                        task->mat->update(sampleInput, rs);
+                    }else{
+                    
+                        double p_accept = exp(
+                            sampleInput.log_improve_ratio/task->temparature
+                                              );
+                        
+                        double random = drand48();
+                        if(random < p_accept){
+                            if(rs != sampleInput.vvalue){
+                                (*task->naccept) ++;
+                            }
+                            task->mat->update(sampleInput, rs);
+                        }else{
+                            task->mat->update(sampleInput, sampleInput.vvalue);
+                        }
+                    
+                    }
+                    
+                }
+                
+            }
             
         }
         
@@ -83,17 +134,27 @@ namespace elly{
         
         int nepoch;
         
-        void generate_tasks_and_map(mia::elly::mat::Materialization_lazy * mat){
+        void generate_tasks_and_map(mia::elly::mat::Materialization_lazy * mat, double temparature = -1, bool tally = false, bool train = false, double stepSize = -1){
             
             mia::elly::utils::Timer timer;
             
             int nchange = 0;
+            int naccept = 0;
             
             int nthreads = config.sys_nthreads;
             int nvariables = mat->getNVariable();
             
-            
-            mia::elly::utils::log() << ">> EPOCH #" << nepoch << ". Parallelizing inference using " << nthreads << " threads..." << std::endl;
+            if(temparature == -1){
+             
+                if(stepSize == -1){
+                    mia::elly::utils::log() << ">> Gibbs Sampling EPOCH #" << nepoch << ". [# Threads = " << nthreads << "]" << std::endl;
+                }else{
+                    mia::elly::utils::log() << ">> Weight Learning EPOCH #" << nepoch << ". [# Threads = " << nthreads << "] [Step = " << stepSize << "]" << std::endl;
+                    
+                }
+            }else{
+                mia::elly::utils::log() << ">> Simulated Annealing EPOCH #" << nepoch << ". [# Threads = " << nthreads << "] [Temparature = " << temparature << "]" << std::endl;
+            }
             
             bool isShuffle = (nepoch == 0);
             
@@ -110,6 +171,14 @@ namespace elly{
                 task->mat = mat;
                 task->isShuffle = isShuffle;
                 task->nchange = &nchange;
+                task->naccept = &naccept;
+                
+                task->tally = tally;
+                task->train = train;
+                
+                task->stepSize = stepSize;
+                
+                task->temparature = temparature;
                     
                 pthread_create(&threads[nv], 0, mapper_sample, task);
 
@@ -121,6 +190,10 @@ namespace elly{
             }
                     
             mia::elly::utils::log() << "  # change = " << nchange << std::endl;
+            
+            if(temparature != -1){
+                mia::elly::utils::log() << "  # accept = " << naccept << std::endl;
+            }
             
             mia::elly::utils::log() << "  elapsed = " << timer.elapsed() << " seconds." << std::endl;
             
@@ -136,6 +209,11 @@ namespace elly{
             
         }
         
+        double sa_temparature(int _nepoch){
+                // todo: this is so ad hoc
+            return 1.0 - 1.0*_nepoch/config.rt_nepoch;
+        }
+        
         void run(){
             
             mia::elly::utils::FactorFileParser fp(config.rt_input, config);
@@ -147,37 +225,114 @@ namespace elly{
             
             if(config.rt_mode.compare("map") == 0){
                 
+                mia::elly::utils::log() << ">> Running MAP inference..." << std::endl;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                    generate_tasks_and_map(&mat, sa_temparature(nepoch));
+                }
+                
+                char outputfile[1000];
+                sprintf(outputfile, "%s-map.txt", config.rt_output.c_str());
+                
+                mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                
+                std::ofstream fout(outputfile);
+                for(int v=0;v<mat.parserrs->va.nvariable;v++){
+                    fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+                }
+                fout.close();
+                
+            }
+            
+            if(config.rt_mode.compare("sample") == 0){
+                
+                mia::elly::utils::log() << ">> Running Gibbs sampling to get one sample..." << std::endl;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                    generate_tasks_and_map(&mat);
+                }
+                
+                char outputfile[1000];
+                sprintf(outputfile, "%s-sample.txt", config.rt_output.c_str());
+                
+                mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                
+                std::ofstream fout(outputfile);
+                for(int v=0;v<mat.parserrs->va.nvariable;v++){
+                    fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+                }
+                fout.close();
+                
             }
 
             if(config.rt_mode.compare("marginal") == 0){
-            
-                nepoch = 0;
                 
-                for(nepoch; nepoch < 100; nepoch ++){
+                mia::elly::utils::log() << ">> Running marginal inference..." << std::endl;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
                     
-                    generate_tasks_and_map(&mat);
+                    generate_tasks_and_map(&mat, -1, true);
                 
-                    char outputfile[1000];
-                    sprintf(outputfile, "%s-%d.txt", config.rt_output.c_str(), nepoch);
+                }
                 
-                    mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                
+                char outputfile[1000];
+                sprintf(outputfile, "%s-marginal.txt", config.rt_output.c_str());
+                
+                mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                
+                std::ofstream fout(outputfile);
+                for(int v=0;v<mat.parserrs->va.nvariable;v++){
+                    int sum = 0;
                     
-                    std::ofstream fout(outputfile);
-                    for(int v=0;v<mat.parserrs->va.nvariable;v++){
-                        fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+                    mia::sm::IntsBlock block = mat.parserrs->vt.lookup(v);
+                    for(int i=0;i<block.size;i++){
+                        sum += block.content[i];
                     }
-                    fout.close();
+                    
+                    for(int i=0;i<block.size;i++){
+                    
+                        if(block.content[i] == 0){
+                            continue;
+                        }
+                        
+                        fout << v << "\t" << i << "\t" << (1.0*block.content[i]/sum) << std::endl;
+                    
+                    }
                     
                 }
+                fout.close();
+                 
                         
-            }
-
-            if(config.rt_mode.compare("mle") == 0){
-                
             }
 
             if(config.rt_mode.compare("learn") == 0){
                 
+                mia::elly::utils::log() << ">> Learning weight..." << std::endl;
+                
+                double initstep = config.rt_learn_initstep;
+                double decay = config.rt_learn_decay;
+                
+                double step = initstep;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                    
+                    generate_tasks_and_map(&mat, -1, false, true, step);
+                    
+                    step = step * decay;
+                    
+                }
+                
+                mia::elly::utils::log() << ">> Dumping new weights..." << std::endl;
+                for(int i=0;i<mat.parserrs->crs.size();i++){
+                   
+                    if(mat.parserrs->crs[i]->mapfilename.compare("") != 0){
+                        elly::utils::log() << "  | Factor [" << mat.parserrs->crs[i]->factor_name << "]: " <<
+                        mat.parserrs->crs[i]->mapfilename
+                        << std::endl;
+                        mat.parserrs->crs[i]->dump_weights();
+                    }
+                }
             }
 
             
@@ -216,6 +371,8 @@ void test_kv_intkey(){
 int main(int argc, const char * argv[])
 {
 
+    mia::elly::utils::Timer timer;
+    
     mia::elly::utils::Config config;
     
     mia::elly::utils::log() << "##### Elly " << 
@@ -234,55 +391,7 @@ int main(int argc, const char * argv[])
     mia::elly::Elly elly_instance(config);
     elly_instance.run();
     
-    
-    
-    
-    
-    /*
-    mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
-    mia::sm::IntsBlock block;
-    block.append<int>(1);
-    kv.set(0, block);
-    block.content[0] = 2;
-    kv.set(1, block);
-    block.content[0] = 3;
-    kv.set(2, block);
-    
-    std::cout << 0 << " = " << kv.get(0).get<int>(0) << std::endl;
-    std::cout << 1 << " = " << kv.get(1).get<int>(0) << std::endl;
-    std::cout << 2 << " = " << kv.get(2).get<int>(0) << std::endl;
-    */
-    
-//    test_kv_intkey();
-    
-    /*
-    
-    elly::mem::buffer_mm bmm;
-    int a=5;
-    bmm.push_back<int>(a);
-    a=10;
-    bmm.push_back<int>(a);
-    a=100;
-    bmm.push_back<int>(a);
-    a=1000;
-    bmm.push_back<int>(200);
-    
-    
-    for(int i=0;i<100000;i++){
-        bmm.push_back<int>(i);
-    }
-    
-    std::cout << *bmm.get<int>(0) << std::endl;
-    std::cout << *bmm.get<int>(4) << std::endl;
-    std::cout << *bmm.get<int>(8) << std::endl;
-    std::cout << *bmm.get<int>(12) << std::endl;
-    
-    std::cout << *bmm.uniform_get<int>(0) << std::endl;
-    std::cout << *bmm.uniform_get<int>(1) << std::endl;
-    std::cout << *bmm.uniform_get<int>(2) << std::endl;
-    std::cout << *bmm.uniform_get<int>(3) << std::endl;
-    */
-    
+    mia::elly::utils::log() << ">> Elly exited. [" << timer.elapsed() << " seconds]" << std::endl;
     
     return 0;
 }

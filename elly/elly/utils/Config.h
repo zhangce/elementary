@@ -32,7 +32,10 @@ namespace elly{
             
             int rt_thin;
             int rt_burnin;
+            int rt_nepoch;
             
+            double rt_learn_initstep;
+            double rt_learn_decay;
             
             int sys_nthreads;
             
@@ -53,6 +56,10 @@ namespace elly{
                 
                 rt_thin    = 1;
                 rt_burnin  = 1;
+                rt_nepoch  = 10;
+                
+                rt_learn_initstep = 0.01;
+                rt_learn_decay = 1.0;
                 
                 sys_nthreads = 1;
                 

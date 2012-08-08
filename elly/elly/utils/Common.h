@@ -44,6 +44,8 @@ namespace elly{
         std::vector<int> pos_of_sample_variable;
         std::vector<int> auxs;
         
+        std::vector<std::vector<double>* > weights;
+        
         std::vector<void*> mbs;
         
         std::vector<int> crids;
@@ -53,7 +55,12 @@ namespace elly{
         
         int vid;
         int vvalue;
+        int vtrain;
         int vdomain;
+        
+        double stepSize;
+        
+        double log_improve_ratio;
         
         void print(){
             

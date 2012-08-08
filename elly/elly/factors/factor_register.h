@@ -15,11 +15,14 @@
 #include "../dstruct/IncrementalCorrelationRelation.h"
 #include "../dstruct/AbstractCorrelationRelation.h"
 
-typedef double (*FUNC_POTENTIAL)(void * , int, int, int);
+typedef double (*FUNC_POTENTIAL)(void * , int, int, int, std::vector<double>* );
 typedef void (*FUNC_UPDATE)(void * , int , int , int );
+
+typedef double (*FUNC_GRADIENT)(void * , int , int , int , int, std::vector<double>*, double);
 
 FUNC_POTENTIAL funcs_potential[10];
 FUNC_UPDATE    funcs_update[10];
+FUNC_GRADIENT  funcs_gradient[10];
 
 bool           funcs_incremental[10];
 
@@ -37,6 +40,14 @@ namespace mia{
                 funcs_potential[4] = potential_ldacount50_sameword;
                 funcs_potential[5] = potential_ldacount50_sametopic;
                 
+                
+                funcs_gradient[0] = gradient_unigram;
+                funcs_gradient[1] = gradient_zero;
+                funcs_gradient[2] = gradient_zero;
+                
+                funcs_gradient[3] = gradient_zero;
+                funcs_gradient[4] = gradient_zero;
+                funcs_gradient[5] = gradient_zero;
                 
             }
             

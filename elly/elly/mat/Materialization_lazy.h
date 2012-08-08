@@ -39,9 +39,14 @@ namespace mia{
                     return parserrs->va.nvariable;
                 }
                 
-                void update(mia::elly::SampleInput & sampleInput, int newvalue){
+                void update(mia::elly::SampleInput & sampleInput, int newvalue, bool tally = false){
                  
                     parserrs->va.set(sampleInput.vid, newvalue);
+                    
+                    if(tally == true){
+                        parserrs->vt.tally(sampleInput.vid, newvalue);
+                    }
+                    
                     
                     int crid, fid, aux, vpos, funcid;
                     void * mb;
@@ -77,11 +82,19 @@ namespace mia{
                         parserrs->crs[crid]->release(fid);
                     
                     }
+                    
+                    
                 }
 
                 
                 // get mia::elly:SampleInput object as input to sampler
-                void retrieve(int vid, mia::elly::SampleInput & rs){
+                void retrieve(int vid, mia::elly::SampleInput & rs, bool train = false){
+                    
+                    if(train == true){
+                        rs.vtrain = parserrs->vtrain.lookup(vid);
+                    }else{
+                        rs.vtrain = -2;
+                    }
                     
                     // first get a list of factors of vid
                     mia::sm::IntsBlock factors = parserrs->vf.lookup(vid);
@@ -91,6 +104,7 @@ namespace mia{
                     int mbvid;
                     int mbvvalue;
                     int aux;
+                    
                     
                     int currentNFactor = 0;
                     int currentNVariable = 0;
@@ -116,6 +130,7 @@ namespace mia{
                         rs.fids.push_back(fid);
                         
                         rs.funcids.push_back(parserrs->crs[crid]->function_id);
+                        rs.weights.push_back(&parserrs->crs[crid]->weights);
                         
                         // if not incremental factor
                         if(funcs_incremental[parserrs->crs[crid]->function_id] == false){
@@ -127,7 +142,7 @@ namespace mia{
                                 (mia::sm::IntsBlock*) parserrs->crs[crid]->lookup(fid);
                         
                             aux = mb->get<int>(0);
-                        
+                            
                             rs.auxs.push_back(aux);
                         
                             // for each variables in that factor, fetch current values
@@ -180,11 +195,7 @@ namespace mia{
                     //rs.print();
                     
                 }
-                
-                
-                
-                
-                
+                                
             };
         
         }

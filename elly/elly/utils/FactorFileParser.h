@@ -14,8 +14,10 @@
 
 #include "../dstruct/StandardCorrelationRelation.h"
 #include "../dstruct/VariableFactorRelation.h"
+#include "../dstruct/VariableTallyRelation.h"
 #include "../dstruct/VariableAssignmentRelation.h"
 #include "../dstruct/AbstractCorrelationRelation.h"
+#include "../dstruct/VariableTrainingRelation.h"
 
 #include "../../../storageman/storageman/Buffer_mmap.h"
 
@@ -47,6 +49,9 @@ namespace elly{
             std::vector<mia::elly::dstruct::AbstractCorrelationRelation* > crs;
             mia::elly::dstruct::VariableFactorRelation vf;
             mia::elly::dstruct::VariableAssignmentRelation va;
+            
+            mia::elly::dstruct::VariableTallyRelation vt;
+            mia::elly::dstruct::VariableTrainingRelation vtrain;
             
             
             FactorFileParser(std::string _folder_name, elly::utils::Config& _config){
@@ -218,16 +223,39 @@ namespace elly{
                                 if(v.first.compare("type") == 0){
                                     vf.filetype = v.second.data();
                                     va.filetype = v.second.data();
+                                    vt.filetype = v.second.data();
+                                    vtrain.filetype = v.second.data();
                                 }
                                 
                                 if(v.first.compare("file") == 0){
                                     vf.filename = v.second.data();
                                     va.filename = v.second.data();
+                                    vt.filename = v.second.data();
+                                    vtrain.filename = v.second.data();
                                 }
                                 
                             }
                                                         
                             continue;
+                        }
+                        
+                        if(it->first.compare("__train") == 0){
+                            
+                            BOOST_FOREACH(boost::property_tree::ptree::value_type &v,
+                                          pt.get_child(it->first)){
+                                
+                                if(v.first.compare("type") == 0){
+                                    vtrain.filetype = v.second.data();
+                                }
+                                
+                                if(v.first.compare("file") == 0){
+                                    vtrain.filename = v.second.data();
+                                }
+                                
+                            }
+                            
+                            continue;
+                            
                         }
                     
                         //mia::elly::dstruct::StandardCorrelationRelation<mia::sm::Buffer_mm> * cr =
@@ -250,6 +278,7 @@ namespace elly{
                         
                         
                         cr->factor_name = it->first;
+                        cr->mapfilename = "";
                     
                         BOOST_FOREACH(boost::property_tree::ptree::value_type &v,
                                   pt.get_child(it->first)){
@@ -268,6 +297,10 @@ namespace elly{
                         
                             if(v.first.compare("file") == 0){
                                 cr->filename = v.second.data();
+                            }
+                            
+                            if(v.first.compare("weight") == 0){
+                                cr->mapfilename = v.second.data();
                             }
                         
                         }
@@ -299,14 +332,25 @@ namespace elly{
                         elly::utils::log() << "  | Factor [" << crs[ff]->factor_name << "]:" << std::endl;
                     
                         crs[ff]->prepare();
+                        crs[ff]->prepare_weights();
                     
                     }
                     
-                    elly::utils::log() << ">> Initializing variable assignments to random..." << std::endl;
+                    elly::utils::log() << ">> Initializing variable assignments to 0..." << std::endl;
                     va.prepare();
                     
                     elly::utils::log() << ">> Preparing variable-factor relation..." << std::endl;
                     vf.prepare();
+
+                    if(config.rt_mode.compare("marginal") == 0){
+                        elly::utils::log() << ">> Preparing variable tally relation..." << std::endl;
+                        vt.prepare();
+                    }
+                    
+                    if(config.rt_mode.compare("learn") == 0){
+                        elly::utils::log() << ">> Preparing variable training relation..." << std::endl;
+                        vtrain.prepare();
+                    }
                     
                 }
                 

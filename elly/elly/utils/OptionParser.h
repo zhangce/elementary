@@ -51,6 +51,10 @@ namespace elly {
             
             ("rt.thin", po::value<int>(), "Collect one sample every #rt.thin iterations. [DEFAULT=1]")
             ("rt.burnin", po::value<int>(), "Ignore the first #rt.burnin collected samples. [DEFAULT=1]")
+            ("rt.nepoch", po::value<int>(), "Number of iterations (epochs) to run. [DEFAULT=10]")
+            
+            ("rt.learn_initstep", po::value<double>(), "Initial step size for SGD learning. [DEFAULT=0.01]")
+            ("rt.learn_decay", po::value<double>(), "Decay factor for SGD learning step size after each epoch. [DEFAULT=1.00]")
             
             // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
@@ -122,6 +126,22 @@ namespace elly {
                 config.rt_burnin = vm["rt.burnin"].as<int>();
                 elly::utils::log() << "  | rt.burnin = " << config.rt_burnin << std::endl;
             }
+            
+            if(vm.count("rt.nepoch")){
+                config.rt_nepoch = vm["rt.nepoch"].as<int>();
+                elly::utils::log() << "  | rt.nepoch = " << config.rt_nepoch << std::endl;
+            }
+            
+            if(vm.count("rt.learn_initstep")){
+                config.rt_learn_initstep = vm["rt.learn_initstep"].as<double>();
+                elly::utils::log() << "  | rt.learn_initstep = " << config.rt_learn_initstep << std::endl;
+            }
+            
+            if(vm.count("rt.learn_decay")){
+                config.rt_learn_decay = vm["rt.learn_decay"].as<double>();
+                elly::utils::log() << "  | rt.learn_decay = " << config.rt_learn_decay << std::endl;
+            }
+
             
             if(vm.count("sys.threads")){
                 config.sys_nthreads = vm["sys.threads"].as<int>();

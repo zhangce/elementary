@@ -25,6 +25,54 @@ namespace mia{
                 std::string filename;
                 std::string filetype;
                 
+                std::string mapfilename;
+                std::vector<double> weights;    // assume in-memory weights
+                
+                void prepare_weights(){
+                    
+                    if(mapfilename.compare("") == 0){
+                        return;
+                    }
+                    
+                    std::ifstream fin( mapfilename.c_str() );
+                    double weight;
+                    
+                    int nweight = 0;
+                    while(fin >> weight){
+                        weights.push_back(weight);
+                        nweight ++;
+                    }
+                    
+                    mia::elly::utils::log() << "    + # weights = " << nweight << std::endl;
+                    
+                    fin.close();
+                    
+                }
+                
+                void dump_weights(){
+                    
+                    if(mapfilename.compare("") == 0){
+                        mia::elly::utils::log() << "    + no weights " << std::endl;
+                        return;
+                    }
+                    
+                    std::ofstream fout( mapfilename.c_str() );
+                    
+                    int nweight = 0;
+                    
+                    for(int i=0;i<weights.size();i++){
+                        fout << weights[i] << std::endl;
+                        nweight ++;
+                    }
+                    
+                    mia::elly::utils::log() << "    + # weights = " << nweight << std::endl;
+                    
+                    fout.close();
+                    
+                }
+                
+                
+                
                 std::vector<pthread_mutex_t* > sems;    // assume in-memory semaphores
                 
                 int nfactor;

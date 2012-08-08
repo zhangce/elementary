@@ -36,6 +36,7 @@ namespace mia {
                 int crid, fid, aux, vpos, funcid;
                 double potential;
                 void* mb;
+                std::vector<double>* weights;
                 
                 std::vector<double> potentials;
                 for(int i=0;i<sampleInput.vdomain;i++){
@@ -51,10 +52,11 @@ namespace mia {
                     mb = sampleInput.mbs[nf];
                     vpos = sampleInput.pos_of_sample_variable[nf];
                     funcid = sampleInput.funcids[nf];
+                    weights = sampleInput.weights[nf];
                     
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
-                        potential = funcs_potential[funcid](mb, aux, vpos, value);
+                        potential = funcs_potential[funcid](mb, aux, vpos, value, weights);
 
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
                         
@@ -101,6 +103,31 @@ namespace mia {
                 //    std::cout << "accum = " << accum << std::endl;
                 //}
                 assert(targetValue != -1);
+                
+                sampleInput.log_improve_ratio = potentials[targetValue] - potentials[sampleInput.vvalue];
+                
+                double gradient;
+                
+                if(sampleInput.vtrain >=0){
+                    
+                    //std::cout << "sample = " << targetValue << "; training = " << sampleInput.vtrain << std::endl;
+                    
+                    
+                    for(int nf=0; nf<sampleInput.fids.size();nf ++){
+                        
+                        crid = sampleInput.crids[nf];
+                        fid = sampleInput.fids[nf];
+                        aux = sampleInput.auxs[nf];
+                        mb = sampleInput.mbs[nf];
+                        vpos = sampleInput.pos_of_sample_variable[nf];
+                        funcid = sampleInput.funcids[nf];
+                        weights = sampleInput.weights[nf];
+                        
+                        gradient = funcs_gradient[funcid](mb, aux, vpos, sampleInput.vvalue, sampleInput.vtrain, weights, sampleInput.stepSize);
+                        
+                    }
+
+                }
                 
                 //mia::elly::utils::log() << "  | V" << sampleInput.vid << " <~~ " << targetValue << " from " << sampleInput.vvalue << std::endl;
                                
