@@ -135,14 +135,14 @@ and the following lines should prompt asking for more command line options:
 
 You can type in 
 
-  > $ ./bin/elementary --config=examples/elly/config_test.cfg  
+    $ ./bin/elementary --config=examples/elly/config_test.cfg  
 
 to execute LDA. Because it only uses 1 thread, wait 2 minutes for it to finish.
 
 The result file will be in examples/elly/RS/lda-sample.txt. To see the human understandable
 version, type in
 
-  > $ python examples/elly/LDA/view.py examples/elly/RS/lda-sample.txt examples/elly/LDA/int_word.tsv  
+    $ python examples/elly/LDA/view.py examples/elly/RS/lda-sample.txt examples/elly/LDA/int_word.tsv  
 
 to see the result of each topic
 
