@@ -15,7 +15,7 @@ message(STATUS "Use build optimizations: " ${CMAKE_BUILD_TYPE})
 
 #### Project Mia! ####
 
-projec (Mia)
+project (Mia)
 
 #### Find dependencies ####
 
