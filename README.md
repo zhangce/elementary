@@ -67,7 +67,9 @@ To install Mia::Elementary, go to the folder mia, and type in
 
     $ cmake .  
 
-You may need to set environment variable BOOST_ROOT.
+You may need to set environment variable BOOST_ROOT. If there are multiple installtions of boost
+on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to select the correct
+boost to use.
 
 The following lines should prompt:
 
