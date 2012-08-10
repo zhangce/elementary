@@ -31,6 +31,9 @@ public:
     std::vector<PAGE<TYPE> > pages;
         
     Buffer_mm(){
+        
+        std::cout << "";
+        
         cpage = 0;
         
         miss_read = 0;

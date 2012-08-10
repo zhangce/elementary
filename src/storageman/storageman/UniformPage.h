@@ -31,7 +31,7 @@ public:
         
         PageNOBJ = (PageSIZE - 8)/SIZEOF(TYPE);
         cobj = 0;
-        
+                
     }
         
     // return

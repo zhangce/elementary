@@ -141,7 +141,7 @@ namespace elly{
             int nchange = 0;
             int naccept = 0;
             
-            int nthreads = config.sys_nthreads;
+            int nthreads = config->sys_nthreads;
             int nvariables = mat->getNVariable();
             
             if(temparature == -1){
@@ -199,9 +199,9 @@ namespace elly{
             
         }
        
-        mia::elly::utils::Config config;
+        mia::elly::utils::Config * config;
         
-        Elly(mia::elly::utils::Config &_config){
+        Elly(mia::elly::utils::Config * _config){
             config = _config;
         }
         
@@ -211,28 +211,29 @@ namespace elly{
         
         double sa_temparature(int _nepoch){
                 // todo: this is so ad hoc
-            return 1.0 - 1.0*_nepoch/config.rt_nepoch;
+            return 1.0 - 1.0*_nepoch/config->rt_nepoch;
         }
         
         void run(){
             
-            mia::elly::utils::FactorFileParser fp(config.rt_input, config);
+            
+            mia::elly::utils::FactorFileParser fp(config->rt_input, config);
             fp.parse();
             
             mia::elly::mat::Materialization_lazy mat(&fp);
             mat.materialize();
             
             
-            if(config.rt_mode.compare("map") == 0){
+            if(config->rt_mode.compare("map") == 0){
                 
                 mia::elly::utils::log() << ">> Running MAP inference..." << std::endl;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     generate_tasks_and_map(&mat, sa_temparature(nepoch));
                 }
                 
                 char outputfile[1000];
-                sprintf(outputfile, "%s-map.txt", config.rt_output.c_str());
+                sprintf(outputfile, "%s-map.txt", config->rt_output.c_str());
                 
                 mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
                 
@@ -242,24 +243,24 @@ namespace elly{
                 }
                 fout.close();
                 
-                if(config.io_ismln == true){
-                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-map.txt" + " " + config.rt_output;
+                if(config->io_ismln == true){
+                    std::string cmd = "python " + config->io_mln + " " + config->rt_output + "-map.txt" + " " + config->rt_output;
                     mia::elly::utils::log() << ">> Run " << cmd << std::endl;
                     system(cmd.c_str());
                 }
                 
             }
             
-            if(config.rt_mode.compare("sample") == 0){
+            if(config->rt_mode.compare("sample") == 0){
                 
                 mia::elly::utils::log() << ">> Running Gibbs sampling to get one sample..." << std::endl;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     generate_tasks_and_map(&mat);
                 }
                 
                 char outputfile[1000];
-                sprintf(outputfile, "%s-sample.txt", config.rt_output.c_str());
+                sprintf(outputfile, "%s-sample.txt", config->rt_output.c_str());
                 
                 mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
                 
@@ -269,19 +270,19 @@ namespace elly{
                 }
                 fout.close();
                 
-                if(config.io_ismln == true){
-                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-sample.txt" + " " + config.rt_output;
+                if(config->io_ismln == true){
+                    std::string cmd = "python " + config->io_mln + " " + config->rt_output + "-sample.txt" + " " + config->rt_output;
                     mia::elly::utils::log() << ">> Run " << cmd << std::endl;
                     system(cmd.c_str());
                 }
                 
             }
 
-            if(config.rt_mode.compare("marginal") == 0){
+            if(config->rt_mode.compare("marginal") == 0){
                 
                 mia::elly::utils::log() << ">> Running marginal inference..." << std::endl;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     
                     generate_tasks_and_map(&mat, -1, true);
                 
@@ -289,7 +290,7 @@ namespace elly{
                 
                 
                 char outputfile[1000];
-                sprintf(outputfile, "%s-marginal.txt", config.rt_output.c_str());
+                sprintf(outputfile, "%s-marginal.txt", config->rt_output.c_str());
                 
                 mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
                 
@@ -315,8 +316,8 @@ namespace elly{
                 }
                 fout.close();
                 
-                if(config.io_ismln == true){
-                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-marginal.txt" + " " + config.rt_output;
+                if(config->io_ismln == true){
+                    std::string cmd = "python " + config->io_mln + " " + config->rt_output + "-marginal.txt" + " " + config->rt_output;
                     mia::elly::utils::log() << ">> Run " << cmd << std::endl;
                     system(cmd.c_str());
                 }
@@ -324,16 +325,16 @@ namespace elly{
                         
             }
 
-            if(config.rt_mode.compare("learn") == 0){
+            if(config->rt_mode.compare("learn") == 0){
                                 
                 mia::elly::utils::log() << ">> Learning weight..." << std::endl;
                 
-                double initstep = config.rt_learn_initstep;
-                double decay = config.rt_learn_decay;
+                double initstep = config->rt_learn_initstep;
+                double decay = config->rt_learn_decay;
                 
                 double step = initstep;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     
                     generate_tasks_and_map(&mat, -1, false, true, step);
                     
@@ -352,29 +353,29 @@ namespace elly{
                     }
                 }
                 
-                if(config.io_ismln == true){
-                    std::string cmd = "python " + config.io_mln + " " + "~~" + " " + config.rt_output;
+                if(config->io_ismln == true){
+                    std::string cmd = "python " + config->io_mln + " " + "~~" + " " + config->rt_output;
                     mia::elly::utils::log() << ">> Run " << cmd << std::endl;
                     system(cmd.c_str());
                 }
             }
             
-            if(config.rt_mode.compare("ds") == 0){
+            if(config->rt_mode.compare("ds") == 0){
                 
                 
                 
                 mia::elly::utils::log() << ">> Distant Supervision..." << std::endl;
                 
-                config.rt_mode = "learn";
+                config->rt_mode = "learn";
                 
                 mia::elly::utils::log() << ">> Learning weight..." << std::endl;
                 
-                double initstep = config.rt_learn_initstep;
-                double decay = config.rt_learn_decay;
+                double initstep = config->rt_learn_initstep;
+                double decay = config->rt_learn_decay;
                 
                 double step = initstep;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     
                     generate_tasks_and_map(&mat, -1, false, true, step);
                     
@@ -393,11 +394,11 @@ namespace elly{
                     }
                 }
                 
-                config.rt_mode = "marginal";
+                config->rt_mode = "marginal";
                 
                 mia::elly::utils::log() << ">> Running marginal inference..." << std::endl;
                 
-                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
                     
                     generate_tasks_and_map(&mat, -1, true);
                     
@@ -405,7 +406,7 @@ namespace elly{
                 
                 
                 char outputfile[1000];
-                sprintf(outputfile, "%s-marginal.txt", config.rt_output.c_str());
+                sprintf(outputfile, "%s-marginal.txt", config->rt_output.c_str());
                 
                 mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
                 
@@ -431,10 +432,10 @@ namespace elly{
                 }
                 fout.close();
 
-                config.rt_mode = "ds";
+                config->rt_mode = "ds";
                 
-                if(config.io_ismln == true){
-                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-marginal.txt" + " " + config.rt_output;
+                if(config->io_ismln == true){
+                    std::string cmd = "python " + config->io_mln + " " + config->rt_output + "-marginal.txt" + " " + config->rt_output;
                     mia::elly::utils::log() << ">> Run " << cmd << std::endl;
                     system(cmd.c_str());
                 }
@@ -485,7 +486,7 @@ int main(int argc, const char * argv[])
     mia::elly::utils::Config config;
     
     mia::elly::utils::log() << "##### Elly " << 
-            config.version_number << 
+            config.version_number <<
             " #####" << std::endl;
     
     int rs_parse_options = mia::elly::utils::parse_options(config, argc, argv);
@@ -496,8 +497,8 @@ int main(int argc, const char * argv[])
     
     mia::elly::factors::register_potentials();
     mia::elly::factors::register_updates();
-    
-    mia::elly::Elly elly_instance(config);
+        
+    mia::elly::Elly elly_instance(&config);
     elly_instance.run();
     
     mia::elly::utils::log() << ">> Elly exited. [" << timer.elapsed() << " seconds]" << std::endl;

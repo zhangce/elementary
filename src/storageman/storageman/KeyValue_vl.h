@@ -31,7 +31,8 @@ public:
     
     KeyValue_vl() : ckey(-1), PageNKEY(
         (int)((PageSIZE - 8)/sizeof(IntPair))
-    ) {}
+    ) {
+    }
     
     IntsBlock get(int key){
         

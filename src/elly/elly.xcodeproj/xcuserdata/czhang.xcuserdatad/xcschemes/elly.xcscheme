@@ -59,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/elly/data/config_test.cfg&quot;"
+            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test.cfg&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

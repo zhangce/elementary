@@ -19,7 +19,7 @@
 #include "../dstruct/AbstractCorrelationRelation.h"
 #include "../dstruct/VariableTrainingRelation.h"
 
-#include "../../../storageman/storageman/Buffer_mmap.h"
+//#include "../../../storageman/storageman/Buffer_mmap.h"
 
 #include <fstream>
 
@@ -44,7 +44,7 @@ namespace elly{
             std::string folder_name;
             std::string catelog;
             
-            elly::utils::Config& config;
+            elly::utils::Config* config;
         
             std::vector<mia::elly::dstruct::AbstractCorrelationRelation* > crs;
             mia::elly::dstruct::VariableFactorRelation vf;
@@ -54,10 +54,11 @@ namespace elly{
             mia::elly::dstruct::VariableTrainingRelation vtrain;
             
             
-            FactorFileParser(std::string _folder_name, elly::utils::Config& _config) : config(_config){
+            FactorFileParser(std::string _folder_name, elly::utils::Config* _config){
+                
                 folder_name = _folder_name;
                 catelog = folder_name + "/catelog.cfg"; 
-               // config = _config;
+                config = _config;
             }
             
             void parse(){
@@ -142,7 +143,7 @@ namespace elly{
                             
                             if(it->first.compare("option") == 0 &&
                                v.first.compare("iomln") == 0){
-                                config.io_mln = v.second.data();
+                                config->io_mln = v.second.data();
                             }
                             
                             if(it->first.compare("option") == 0 &&
@@ -163,7 +164,7 @@ namespace elly{
                        path_to_tuffy.compare("") == 0 ||
                        mln.compare("") == 0 ||
                        evid.compare("") == 0 ||
-                       config.io_mln.compare("") == 0){
+                       config->io_mln.compare("") == 0){
                         elly::utils::logerr() << "ERROR: empty java/path_to_tuffy/mln/iomln" << std::endl;
                         throw std::exception();
                     }
@@ -194,13 +195,13 @@ namespace elly{
                         cmd += other_config;
                     }
                     
-                    system((std::string("mkdir ") + config.rt_output).c_str());
+                    system((std::string("mkdir ") + config->rt_output).c_str());
                     
-                    cmd += " -o " + config.rt_output;
+                    cmd += " -o " + config->rt_output;
                     cmd += " -verbose 3";
                     
-                    std::string tuffy_log = config.rt_output + "/log_tuffy.txt";
-                    std::string tuffy_error = config.rt_output + "/error_tuffy.txt";
+                    std::string tuffy_log = config->rt_output + "/log_tuffy.txt";
+                    std::string tuffy_error = config->rt_output + "/error_tuffy.txt";
                     
                     elly::utils::log() << ">> Executing Tuffy using command: " << cmd << std::endl;
                     elly::utils::log() << ">> Tuffy is logged at: " << tuffy_log << std::endl;
@@ -209,7 +210,7 @@ namespace elly{
                     //system(((std::string)(cmd + " > " + tuffy_log + " 2> " + tuffy_error)).c_str());
 
                     
-                    config.io_ismln = true;
+                    config->io_ismln = true;
                     
                     system(cmd.c_str());
                     
@@ -217,7 +218,7 @@ namespace elly{
                     //itype = "file";
                     //config.rt_input = config.rt_output;
                     
-                    folder_name = config.rt_output;
+                    folder_name = config->rt_output;
                     catelog = folder_name + "/catelog.cfg";
                     
                     this->parse();
@@ -364,12 +365,12 @@ namespace elly{
                     elly::utils::log() << ">> Preparing variable-factor relation..." << std::endl;
                     vf.prepare();
 
-                    if(config.rt_mode.compare("marginal") == 0 || config.rt_mode.compare("ds") == 0){
+                    if(config->rt_mode.compare("marginal") == 0 || config->rt_mode.compare("ds") == 0){
                         elly::utils::log() << ">> Preparing variable tally relation..." << std::endl;
                         vt.prepare();
                     }
                     
-                    if(config.rt_mode.compare("learn") == 0 || config.rt_mode.compare("ds") == 0){
+                    if(config->rt_mode.compare("learn") == 0 || config->rt_mode.compare("ds") == 0){
                         elly::utils::log() << ">> Preparing variable training relation..." << std::endl;
                         vtrain.prepare();
                     }
