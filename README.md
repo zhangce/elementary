@@ -20,6 +20,16 @@ from University of Wisconsin-Madison under Professor Christopher Ré
 
 2. Installation
 
+
+After downloading and uncompressing Mia::Elementary, the folder mia has the following structure:
+
+  mia
+   +- bin
+   +- dep
+   +- src
+   |- CMakeLists.txt
+   |- README.md
+
 2.1 Prerequisite
 
 2.1.1 Operating Systems
@@ -44,22 +54,20 @@ Mia::Elementary relies on the following C++ libraries:
 
   - Boost::program_options (http://www.boost.org/doc/libs/1_50_0/doc/html/program_options.html)
 
+We included a installation script for boost at mia/dep/boost. To install boost, type in under folder mia
+
+  $ cd dep/boost
+  $ sh install.sh
+
 Mia::Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
 
 2.2 Installation
-
-After downloading and uncompressing Mia::Elementary, the folder mia has the following structure:
-
-  mia
-   +- bin
-   +- dep
-   +- src
-   |- CMakeLists.txt
-   |- README.md
    
 To install Mia::Elementary, go to the folder mia, and type in
 
   $ cmake .
+
+You may need to set environment variable BOOST_ROOT.
 
 The following lines should prompt:
 
