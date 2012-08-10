@@ -121,8 +121,28 @@ Allowed options:
                           epoch. [DEFAULT=1.00]
   --sys.threads arg       Number of threads to use. [DEFAULT=1]
 
- 
+3. Examples
 
+3.1 LDA
+
+You can type in 
+
+  $ ./bin/elementary --config=examples/elly/config_test.cfg
+
+to execute LDA. Because it only uses 1 thread, wait 2 minutes for it to finish.
+
+The result file will be in examples/elly/RS/lda-sample.txt. To see the human understandable
+version, type in
+
+  # python examples/elly/LDA/view.py examples/elly/RS/lda-sample.txt examples/elly/LDA/int_word.tsv
+
+to see the information of each topic
+
+TOPIC #0   
+  new(327)    today(168)    san(168)    york(165)    texas(152)    city(142)    south(133)    news(123)    network(121)    california(118)    high(118)    summer(114)    national(112)    states(112)    southern(108)    ohio(107)    rain(105)    fair(101)    north(96)  
+
+TOPIC #1   
+  united(386)    states(267)    iraq(246)    war(231)    american(227)    israel(213)    military(189)    kuwait(182)    iraqi(181)    iran(157)    nations(155)    gulf(154)    troops(151)    saudi(150)    foreign(150)    officials(150)    two(147)    israeli(145)    official(136)  
 
 
 
