@@ -1,4 +1,3 @@
-
 cmake_minimum_required (VERSION 2.6)
 
 #### GCC OPTIMIZATION ####
@@ -33,4 +32,3 @@ configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/LDA/catelog.cfg.in"
 find_package (Boost REQUIRED COMPONENTS program_options)
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
-
