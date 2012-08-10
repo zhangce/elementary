@@ -9,13 +9,13 @@ Mia::Elementary is developed by the Hazy group (http://hazy.cs.wisc.edu/hazy/)
 from University of Wisconsin-Madison under Professor Christopher Ré 
 (http://pages.cs.wisc.edu/~chrisre/).
 
-====================
+
   Table of Content
 --------------------
   1. Introduction
   2. Installation
   3. Examples
-====================
+
    
 ### 1. Introduction
 
