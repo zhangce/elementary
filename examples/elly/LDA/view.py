@@ -1,10 +1,10 @@
 
+import sys
+
 vid2word = {}
-for l in open('int_word.tsv', 'r'):
+for l in open(sys.argv[2], 'r'):
     (vid, word) = l.rstrip().split('\t')
     vid2word[vid] = word
-
-import sys
 
 topic2word = {}
 for l in open(sys.argv[1], 'r'):
@@ -41,7 +41,7 @@ for ntopic in topics:
         
         sys.stdout.write('  ')
         sys.stdout.write(word)
-        sys.stdout.write(':')
-        sys.stdout.write('%d\n' % topic2word[topic][word])
+        sys.stdout.write('(')
+        sys.stdout.write('%d)  ' % topic2word[topic][word])
 
-    sys.stdout.write('\n')
+    sys.stdout.write('\n\n')
