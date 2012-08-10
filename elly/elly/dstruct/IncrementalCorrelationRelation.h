@@ -75,7 +75,7 @@ namespace mia{
                     
                     if(filetype.compare("tsv") == 0){
                         
-                        int fid, vid, aux, nvar;
+                        int fid, vid, aux, aux2, nvar;
                         std::ifstream fin( filename.c_str() );
                         
                         while(fin >> fid >> nvar){
@@ -84,6 +84,9 @@ namespace mia{
                             
                             fin >> aux;
                             fstate.init_aux(aux);
+                            
+                            fin >> aux2;
+                            fstate.init_aux2(aux2);
                             
                             for(int i=0;i<nvar;i++){
                                 fin >> vid;

@@ -24,6 +24,9 @@ class factor_ldacount50{
 public:
     int counts[50];
     
+    void init_aux2(int aux2){
+    }
+    
     void init_aux(int aux){
         for(int i=0;i<50;i++){
             counts[i] = 0;
@@ -42,8 +45,14 @@ class factor_vidblock_unigram{
 public:
     mia::sm::IntsBlock state;
 
+    
+    
     void init_aux(int aux){
         state.append<int>(aux);
+    }
+    
+    void init_aux2(int aux2){
+        state.append<int>(aux2);
     }
     
     void init(int vid){
@@ -52,13 +61,113 @@ public:
         
 };
 
-double potential_ldacount50(void * state, int aux, int vpos, int value, std::vector<double>* weights){
+
+double potential_mlnclause(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
+    
+    std::vector<int>* pmb = (std::vector<int>*)mb;
+    
+    //bool isNegative = ( (aux2 & (1 << vpos)) != 0);
+    //std::cout << aux2 << " pos " << vpos << "; is negative = " << isNegative << std::endl;
+    
+    //std::cout << "vpos = " << vpos << "; weight = " << weights->at(aux) << "; sign = " << aux2 << "; #var = " << pmb->size() << std::endl;
+    
+    bool isTrue = false;
+    bool isNegative;
+    int cvalue = 0;
+    for(int i=0;i<pmb->size();i++){
+        
+        cvalue = pmb->at(i);
+        if(i == vpos){
+            cvalue = value;
+        }
+        
+        isNegative = ( (aux2 & (1 << i)) != 0);
+        if( (cvalue==1 && isNegative==false) || (cvalue==0 && isNegative==true) ){
+            isTrue = true;
+            break;
+        }
+           
+    }
+    
+    if(isTrue){
+        return weights->at(aux);
+    }else{
+        return 0;
+    }
+    
+    return 0;
+}
+
+
+
+double gradient_mlnclause(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
+    
+    std::vector<int>* pmb = (std::vector<int>*)mb;
+    
+    //bool isNegative = ( (aux2 & (1 << vpos)) != 0);
+    //std::cout << aux2 << " pos " << vpos << "; is negative = " << isNegative << std::endl;
+    
+    //std::cout << "vpos = " << vpos << "; weight = " << weights->at(aux) << "; sign = " << aux2 << "; #var = " << pmb->size() << std::endl;
+    
+    bool isTrue = false;
+    bool isTrue_train = false;
+    bool isNegative;
+    int cvalue = 0;
+    for(int i=0;i<pmb->size();i++){
+        
+        cvalue = pmb->at(i);
+        if(i == vpos){
+            cvalue = value;
+        }
+        
+        isNegative = ( (aux2 & (1 << i)) != 0);
+        if( (cvalue==1 && isNegative==false) || (cvalue==0 && isNegative==true) ){
+            isTrue = true;
+            break;
+        }
+        
+    }
+    
+    for(int i=0;i<pmb->size();i++){
+        
+        cvalue = pmb->at(i);
+        if(i == vpos){
+            cvalue = vtrain;
+        }
+        
+        isNegative = ( (aux2 & (1 << i)) != 0);
+        if( (cvalue==1 && isNegative==false) || (cvalue==0 && isNegative==true) ){
+            isTrue_train = true;
+            break;
+        }
+        
+    }
+    
+    double gradient = isTrue_train - isTrue;    //TODO: double check
+    
+    
+    
+    //if(isTrue_train != isTrue){
+    //    std::cout << isTrue << ", train " << isTrue_train << ", gradient = " << gradient << std::endl;
+    //}
+        
+    weights->at(aux) = weights->at(aux) + step * gradient;
+    
+    return vtrain - value;
+}
+
+
+
+
+
+
+double potential_ldacount50(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     return log(pstate->counts[value]+1);
 }
 
 
-double potential_ldacount50_samedoc(void * state, int aux, int vpos, int value, std::vector<double>* weights){
+double potential_ldacount50_samedoc(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     //return 1.0 + pstate->counts[value];
     
@@ -67,7 +176,7 @@ double potential_ldacount50_samedoc(void * state, int aux, int vpos, int value, 
     return +log(1.0 + pstate->counts[value]);
 }
 
-double potential_ldacount50_sametopic(void * state, int aux, int vpos, int value, std::vector<double>* weights){
+double potential_ldacount50_sametopic(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     //return 1.0/(1.0 + pstate->counts[value]);
     
@@ -76,7 +185,7 @@ double potential_ldacount50_sametopic(void * state, int aux, int vpos, int value
     return -log(1.0 + pstate->counts[value]);
 }
 
-double potential_ldacount50_sameword(void * state, int aux, int vpos, int value, std::vector<double>* weights){
+double potential_ldacount50_sameword(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     
     //std::cout << pstate->counts[value] << std::endl;
@@ -98,7 +207,7 @@ void update_ldacount50(void * state, int vpos, int from, int to){
 }
 
 
-double potential_unigram(void * mb, int aux, int vpos, int value, std::vector<double>* weights){
+double potential_unigram(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     
     std::vector<int>* pmb = (std::vector<int>*)mb;
     
@@ -106,11 +215,11 @@ double potential_unigram(void * mb, int aux, int vpos, int value, std::vector<do
     
 }
 
-double gradient_zero(void * mb, int aux, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
+double gradient_zero(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
     return 0;
 }
 
-double gradient_unigram(void * mb, int aux, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
+double gradient_unigram(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
     
     double gradient = vtrain - value;
     
@@ -121,7 +230,7 @@ double gradient_unigram(void * mb, int aux, int vpos, int value, int vtrain, std
     return vtrain - value;
 }
 
-double potential_bigram(void * mb, int aux, int vpos, int value, std::vector<double>* weights){
+double potential_bigram(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     
     /*
     std::vector<int>* pmb = (std::vector<int>*)mb;

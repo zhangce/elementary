@@ -39,6 +39,8 @@ namespace elly{
             
             int sys_nthreads;
             
+            bool io_ismln;
+            std::string io_mln;
             
             Config(){
                 
@@ -62,6 +64,10 @@ namespace elly{
                 rt_learn_decay = 1.0;
                 
                 sys_nthreads = 1;
+                
+                io_ismln = false;
+                
+                io_mln = "";
                 
             }
             

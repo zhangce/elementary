@@ -33,7 +33,7 @@ namespace mia {
                 //mia::elly::utils::log() << ">>> Sample variable ID=" << sampleInput.vid << std::endl;
                 
                 // for each factor
-                int crid, fid, aux, vpos, funcid;
+                int crid, fid, aux, vpos, funcid, aux2;
                 double potential;
                 void* mb;
                 std::vector<double>* weights;
@@ -49,6 +49,7 @@ namespace mia {
                     crid = sampleInput.crids[nf];
                     fid = sampleInput.fids[nf];
                     aux = sampleInput.auxs[nf];
+                    aux2 = sampleInput.aux2s[nf];
                     mb = sampleInput.mbs[nf];
                     vpos = sampleInput.pos_of_sample_variable[nf];
                     funcid = sampleInput.funcids[nf];
@@ -56,7 +57,7 @@ namespace mia {
                     
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
-                        potential = funcs_potential[funcid](mb, aux, vpos, value, weights);
+                        potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
 
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
                         
@@ -118,12 +119,13 @@ namespace mia {
                         crid = sampleInput.crids[nf];
                         fid = sampleInput.fids[nf];
                         aux = sampleInput.auxs[nf];
+                        aux2 = sampleInput.aux2s[nf];
                         mb = sampleInput.mbs[nf];
                         vpos = sampleInput.pos_of_sample_variable[nf];
                         funcid = sampleInput.funcids[nf];
                         weights = sampleInput.weights[nf];
                         
-                        gradient = funcs_gradient[funcid](mb, aux, vpos, sampleInput.vvalue, sampleInput.vtrain, weights, sampleInput.stepSize);
+                        gradient = funcs_gradient[funcid](mb, aux, aux2, vpos, sampleInput.vvalue, sampleInput.vtrain, weights, sampleInput.stepSize);
                         
                     }
 

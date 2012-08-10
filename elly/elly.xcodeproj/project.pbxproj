@@ -154,6 +154,8 @@
 		E18799A215A93AAB0026F196 /* FactorFileParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactorFileParser.h; sourceTree = "<group>"; };
 		E189273A15A6F4FE00CFFD0B /* Factor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Factor.h; sourceTree = "<group>"; };
 		E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractCorrelationRelation.h; sourceTree = "<group>"; };
+		E1A118F115D16CE900879AB1 /* VariableTallyRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTallyRelation.h; sourceTree = "<group>"; };
+		E1A118F315D2AB8500879AB1 /* VariableTrainingRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTrainingRelation.h; sourceTree = "<group>"; };
 		E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalCorrelationRelation.h; sourceTree = "<group>"; };
 		E1CBA0FF15D0543400A81577 /* factor_register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_register.h; sourceTree = "<group>"; };
 		E1CBA10015D0D76E00A81577 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -406,8 +408,10 @@
 			isa = PBXGroup;
 			children = (
 				E1866D5A15AC1FCE003AB862 /* StandardCorrelationRelation.h */,
-				E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */,
 				E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */,
+				E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */,
+				E1A118F115D16CE900879AB1 /* VariableTallyRelation.h */,
+				E1A118F315D2AB8500879AB1 /* VariableTrainingRelation.h */,
 				E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */,
 				E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */,
 			);

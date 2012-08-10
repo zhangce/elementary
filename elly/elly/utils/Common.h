@@ -43,6 +43,7 @@ namespace elly{
         
         std::vector<int> pos_of_sample_variable;
         std::vector<int> auxs;
+        std::vector<int> aux2s;
         
         std::vector<std::vector<double>* > weights;
         

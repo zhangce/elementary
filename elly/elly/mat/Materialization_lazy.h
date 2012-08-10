@@ -48,7 +48,7 @@ namespace mia{
                     }
                     
                     
-                    int crid, fid, aux, vpos, funcid;
+                    int crid, fid, aux, vpos, funcid, aux2;
                     void * mb;
                     
                     for(int nf=0; nf<sampleInput.fids.size();nf ++){
@@ -104,7 +104,7 @@ namespace mia{
                     int mbvid;
                     int mbvvalue;
                     int aux;
-                    
+                    int aux2;
                     
                     int currentNFactor = 0;
                     int currentNVariable = 0;
@@ -113,8 +113,12 @@ namespace mia{
                     for(int factor=1;factor<factors.size;factor+=2){
                         crid = factors.get<int>(factor);
                         fid = factors.get<int>(factor+1);
-                        parserrs->crs[crid]->lock(fid);
+                        //std::cout << "lock " << fid << std::endl;
+                        parserrs->crs[crid]->lock(fid); // add warning for dead lock --- add a checker
                     }
+                    
+                    //std::cout << "###" << std::endl;
+                    
                                         
                     rs.vid = vid;
                     rs.vvalue = parserrs->va.lookup(vid);
@@ -132,6 +136,8 @@ namespace mia{
                         rs.funcids.push_back(parserrs->crs[crid]->function_id);
                         rs.weights.push_back(&parserrs->crs[crid]->weights);
                         
+                        
+                        
                         // if not incremental factor
                         if(funcs_incremental[parserrs->crs[crid]->function_id] == false){
                         
@@ -143,14 +149,23 @@ namespace mia{
                         
                             aux = mb->get<int>(0);
                             
+                            //std::cout << aux << std::endl;
+                            
+                            aux2 = mb->get<int>(1);
+                            
+                            //std::cout << aux2 << " @ " << mb->size << std::endl;
+                            
                             rs.auxs.push_back(aux);
+                            rs.aux2s.push_back(aux2);
+                            
+                            
                         
                             // for each variables in that factor, fetch current values
                             currentNVariable = 0;
                         
                             //std::cout << "mb->size = " << mb->size << std::endl;
                         
-                            for(int nmbv=1; nmbv < mb->size; nmbv ++){
+                            for(int nmbv=2; nmbv < mb->size; nmbv ++){
                             
                                 mbvid = mb->get<int>(nmbv);
                                 mbvvalue = parserrs->va.lookup(mbvid);
@@ -180,6 +195,8 @@ namespace mia{
                         }else{
                             
                             rs.auxs.push_back(-1);
+                            rs.aux2s.push_back(-1);
+                            
                             rs.pos_of_sample_variable.push_back(-1);
                             void * mb = (void*) parserrs->crs[crid]->lookup(fid);
                             

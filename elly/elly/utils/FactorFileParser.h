@@ -44,7 +44,7 @@ namespace elly{
             std::string folder_name;
             std::string catelog;
             
-            elly::utils::Config config;
+            elly::utils::Config& config;
         
             std::vector<mia::elly::dstruct::AbstractCorrelationRelation* > crs;
             mia::elly::dstruct::VariableFactorRelation vf;
@@ -54,10 +54,10 @@ namespace elly{
             mia::elly::dstruct::VariableTrainingRelation vtrain;
             
             
-            FactorFileParser(std::string _folder_name, elly::utils::Config& _config){
+            FactorFileParser(std::string _folder_name, elly::utils::Config& _config) : config(_config){
                 folder_name = _folder_name;
                 catelog = folder_name + "/catelog.cfg"; 
-                config = _config;
+               // config = _config;
             }
             
             void parse(){
@@ -94,10 +94,6 @@ namespace elly{
                     }
                     
                 }
-                
-                
-                
-                
                 
                 if(itype.compare("mln") == 0){
                     
@@ -145,6 +141,11 @@ namespace elly{
                             }
                             
                             if(it->first.compare("option") == 0 &&
+                               v.first.compare("iomln") == 0){
+                                config.io_mln = v.second.data();
+                            }
+                            
+                            if(it->first.compare("option") == 0 &&
                                v.first.compare("config") == 0){
                                 tuffy_config = v.second.data();
                             }
@@ -161,8 +162,9 @@ namespace elly{
                     if(java.compare("") == 0 ||
                        path_to_tuffy.compare("") == 0 ||
                        mln.compare("") == 0 ||
-                       evid.compare("") == 0){
-                        elly::utils::logerr() << "ERROR: empty java/path_to_tuffy/mln" << std::endl;
+                       evid.compare("") == 0 ||
+                       config.io_mln.compare("") == 0){
+                        elly::utils::logerr() << "ERROR: empty java/path_to_tuffy/mln/iomln" << std::endl;
                         throw std::exception();
                     }
                                         
@@ -177,7 +179,7 @@ namespace elly{
                     
                     std::string cmd = "";
                     
-                    cmd = java + " -jar " + path_to_tuffy + " -i " + mln + " -e " + evid;
+                    cmd = java + " -jar " + path_to_tuffy + " -mia -i " + mln + " -e " + evid;
                     
                     if(query.compare("")!=0){
                         cmd += " -q " + query;
@@ -192,18 +194,38 @@ namespace elly{
                         cmd += other_config;
                     }
                     
-                    cmd += " -o " + config.rt_workdir + "/tmp_tuffy_dummy_output";
-                    cmd += " -keepData -marginal -mcsatSamples 0 -verbose 3";
+                    system((std::string("mkdir ") + config.rt_output).c_str());
                     
-                    std::string tuffy_log = config.rt_workdir + "/log_tuffy.txt";
-                    std::string tuffy_error = config.rt_workdir + "/error_tuffy.txt";
+                    cmd += " -o " + config.rt_output;
+                    cmd += " -verbose 3";
+                    
+                    std::string tuffy_log = config.rt_output + "/log_tuffy.txt";
+                    std::string tuffy_error = config.rt_output + "/error_tuffy.txt";
                     
                     elly::utils::log() << ">> Executing Tuffy using command: " << cmd << std::endl;
                     elly::utils::log() << ">> Tuffy is logged at: " << tuffy_log << std::endl;
                     elly::utils::log() << ">> Tuffy error is logged at: " << tuffy_error << std::endl;
                     
-                    system(((std::string)(cmd + " > " + tuffy_log + " 2> " + tuffy_error)).c_str());
+                    //system(((std::string)(cmd + " > " + tuffy_log + " 2> " + tuffy_error)).c_str());
+
                     
+                    config.io_ismln = true;
+                    
+                    system(cmd.c_str());
+                    
+                   
+                    //itype = "file";
+                    //config.rt_input = config.rt_output;
+                    
+                    folder_name = config.rt_output;
+                    catelog = folder_name + "/catelog.cfg";
+                    
+                    this->parse();
+                    
+                    
+                    //itype = "mln";
+                    
+                    return;
                 }
                 
                 if(itype.compare("file") == 0){
@@ -342,12 +364,12 @@ namespace elly{
                     elly::utils::log() << ">> Preparing variable-factor relation..." << std::endl;
                     vf.prepare();
 
-                    if(config.rt_mode.compare("marginal") == 0){
+                    if(config.rt_mode.compare("marginal") == 0 || config.rt_mode.compare("ds") == 0){
                         elly::utils::log() << ">> Preparing variable tally relation..." << std::endl;
                         vt.prepare();
                     }
                     
-                    if(config.rt_mode.compare("learn") == 0){
+                    if(config.rt_mode.compare("learn") == 0 || config.rt_mode.compare("ds") == 0){
                         elly::utils::log() << ">> Preparing variable training relation..." << std::endl;
                         vtrain.prepare();
                     }

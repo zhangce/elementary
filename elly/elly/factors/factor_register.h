@@ -15,10 +15,10 @@
 #include "../dstruct/IncrementalCorrelationRelation.h"
 #include "../dstruct/AbstractCorrelationRelation.h"
 
-typedef double (*FUNC_POTENTIAL)(void * , int, int, int, std::vector<double>* );
+typedef double (*FUNC_POTENTIAL)(void * , int, int, int, int, std::vector<double>* );
 typedef void (*FUNC_UPDATE)(void * , int , int , int );
 
-typedef double (*FUNC_GRADIENT)(void * , int , int , int , int, std::vector<double>*, double);
+typedef double (*FUNC_GRADIENT)(void * , int , int , int, int , int, std::vector<double>*, double);
 
 FUNC_POTENTIAL funcs_potential[10];
 FUNC_UPDATE    funcs_update[10];
@@ -40,6 +40,8 @@ namespace mia{
                 funcs_potential[4] = potential_ldacount50_sameword;
                 funcs_potential[5] = potential_ldacount50_sametopic;
                 
+                funcs_potential[6] = potential_mlnclause;
+                
                 
                 funcs_gradient[0] = gradient_unigram;
                 funcs_gradient[1] = gradient_zero;
@@ -48,6 +50,8 @@ namespace mia{
                 funcs_gradient[3] = gradient_zero;
                 funcs_gradient[4] = gradient_zero;
                 funcs_gradient[5] = gradient_zero;
+                
+                funcs_gradient[6] = gradient_mlnclause;
                 
             }
             
@@ -60,6 +64,8 @@ namespace mia{
                 funcs_update[4] = update_ldacount50;
                 funcs_update[5] = update_ldacount50;
                 
+                funcs_update[6] = NULL;
+                
                 funcs_incremental[0] = false;
                 funcs_incremental[1] = false;
                 funcs_incremental[2] = true;
@@ -67,6 +73,8 @@ namespace mia{
                 funcs_incremental[3] = true;
                 funcs_incremental[4] = true;
                 funcs_incremental[5] = true;
+                
+                funcs_incremental[6] = false;
             }
 
             template<template<template<class C> class A, class B> class BUFFER>
@@ -79,6 +87,12 @@ namespace mia{
                 }
     
                 if(function_id == 1){
+                    mia::elly::dstruct::StandardCorrelationRelation<BUFFER> * cr =
+                    new mia::elly::dstruct::StandardCorrelationRelation<BUFFER>;
+                    return cr;
+                }
+                
+                if(function_id == 6){
                     mia::elly::dstruct::StandardCorrelationRelation<BUFFER> * cr =
                     new mia::elly::dstruct::StandardCorrelationRelation<BUFFER>;
                     return cr;

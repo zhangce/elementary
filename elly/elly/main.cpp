@@ -242,6 +242,12 @@ namespace elly{
                 }
                 fout.close();
                 
+                if(config.io_ismln == true){
+                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-map.txt" + " " + config.rt_output;
+                    mia::elly::utils::log() << ">> Run " << cmd << std::endl;
+                    system(cmd.c_str());
+                }
+                
             }
             
             if(config.rt_mode.compare("sample") == 0){
@@ -262,6 +268,12 @@ namespace elly{
                     fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
                 }
                 fout.close();
+                
+                if(config.io_ismln == true){
+                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-sample.txt" + " " + config.rt_output;
+                    mia::elly::utils::log() << ">> Run " << cmd << std::endl;
+                    system(cmd.c_str());
+                }
                 
             }
 
@@ -302,12 +314,18 @@ namespace elly{
                     
                 }
                 fout.close();
+                
+                if(config.io_ismln == true){
+                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-marginal.txt" + " " + config.rt_output;
+                    mia::elly::utils::log() << ">> Run " << cmd << std::endl;
+                    system(cmd.c_str());
+                }
                  
                         
             }
 
             if(config.rt_mode.compare("learn") == 0){
-                
+                                
                 mia::elly::utils::log() << ">> Learning weight..." << std::endl;
                 
                 double initstep = config.rt_learn_initstep;
@@ -333,6 +351,97 @@ namespace elly{
                         mat.parserrs->crs[i]->dump_weights();
                     }
                 }
+                
+                if(config.io_ismln == true){
+                    std::string cmd = "python " + config.io_mln + " " + "~~" + " " + config.rt_output;
+                    mia::elly::utils::log() << ">> Run " << cmd << std::endl;
+                    system(cmd.c_str());
+                }
+            }
+            
+            if(config.rt_mode.compare("ds") == 0){
+                
+                
+                
+                mia::elly::utils::log() << ">> Distant Supervision..." << std::endl;
+                
+                config.rt_mode = "learn";
+                
+                mia::elly::utils::log() << ">> Learning weight..." << std::endl;
+                
+                double initstep = config.rt_learn_initstep;
+                double decay = config.rt_learn_decay;
+                
+                double step = initstep;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                    
+                    generate_tasks_and_map(&mat, -1, false, true, step);
+                    
+                    step = step * decay;
+                    
+                }
+                
+                mia::elly::utils::log() << ">> Dumping new weights..." << std::endl;
+                for(int i=0;i<mat.parserrs->crs.size();i++){
+                    
+                    if(mat.parserrs->crs[i]->mapfilename.compare("") != 0){
+                        elly::utils::log() << "  | Factor [" << mat.parserrs->crs[i]->factor_name << "]: " <<
+                        mat.parserrs->crs[i]->mapfilename
+                        << std::endl;
+                        mat.parserrs->crs[i]->dump_weights();
+                    }
+                }
+                
+                config.rt_mode = "marginal";
+                
+                mia::elly::utils::log() << ">> Running marginal inference..." << std::endl;
+                
+                for(nepoch = 0; nepoch < config.rt_nepoch; nepoch ++){
+                    
+                    generate_tasks_and_map(&mat, -1, true);
+                    
+                }
+                
+                
+                char outputfile[1000];
+                sprintf(outputfile, "%s-marginal.txt", config.rt_output.c_str());
+                
+                mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
+                
+                std::ofstream fout(outputfile);
+                for(int v=0;v<mat.parserrs->va.nvariable;v++){
+                    int sum = 0;
+                    
+                    mia::sm::IntsBlock block = mat.parserrs->vt.lookup(v);
+                    for(int i=0;i<block.size;i++){
+                        sum += block.content[i];
+                    }
+                    
+                    for(int i=0;i<block.size;i++){
+                        
+                        if(block.content[i] == 0){
+                            continue;
+                        }
+                        
+                        fout << v << "\t" << i << "\t" << (1.0*block.content[i]/sum) << std::endl;
+                        
+                    }
+                    
+                }
+                fout.close();
+
+                config.rt_mode = "ds";
+                
+                if(config.io_ismln == true){
+                    std::string cmd = "python " + config.io_mln + " " + config.rt_output + "-marginal.txt" + " " + config.rt_output;
+                    mia::elly::utils::log() << ">> Run " << cmd << std::endl;
+                    system(cmd.c_str());
+                }
+                
+                
+                
+                
             }
 
             
@@ -380,7 +489,7 @@ int main(int argc, const char * argv[])
             " #####" << std::endl;
     
     int rs_parse_options = mia::elly::utils::parse_options(config, argc, argv);
-
+    
     if (rs_parse_options != 0){
         return 0;
     }
