@@ -63,13 +63,13 @@ namespace mia{
                         if(vpos == -1){
                             
                             if(lock == false){
-                                parserrs->crs[crid]->lock(fid);
+                            //    parserrs->crs[crid]->lock(fid);
                             }
                             
                             parserrs->crs[crid]->update(fid, funcs_update[funcid], sampleInput.vid, sampleInput.vvalue, newvalue);
                             
                             if(lock == false){
-                                parserrs->crs[crid]->release(fid);
+                            //    parserrs->crs[crid]->release(fid);
                             }
                             
                         }
