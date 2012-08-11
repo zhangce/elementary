@@ -96,6 +96,19 @@ namespace mia{
                 // get mia::elly:SampleInput object as input to sampler
                 void retrieve(int vid, mia::elly::SampleInput & rs, bool train = false, bool lock = true){
                     
+                    for(int i=0;i<rs.mbs.size();i++){
+                        delete rs.mbs[i];
+                    }
+                    
+                    rs.aux2s.clear();
+                    rs.auxs.clear();
+                    rs.pos_of_sample_variable.clear();
+                    rs.weights.clear();
+                    rs.mbs.clear();
+                    rs.crids.clear();
+                    rs.fids.clear();
+                    rs.funcids.clear();
+                    
                     if(train == true){
                         rs.vtrain = parserrs->vtrain.lookup(vid);
                     }else{

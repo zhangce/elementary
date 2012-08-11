@@ -66,9 +66,10 @@ namespace elly{
         
         SampleTask* task = (SampleTask*) sampleTask;
         
+        mia::elly::SampleInput sampleInput;
+        
         for(int vid=task->lower;vid<task->upper;vid+=task->step){
-            
-            mia::elly::SampleInput sampleInput;
+
             task->mat->retrieve(vid, sampleInput, task->train, lock);
             
             sampleInput.stepSize = task->stepSize;
