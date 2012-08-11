@@ -34,8 +34,8 @@ namespace mia{
                 
             public:
                 
-                mia::sm::KeyValue_fl<BUFFER, TYPE> kv;
-                //mia::sm::KeyValue_fl_fastmm<TYPE> kv;
+                //mia::sm::KeyValue_fl<BUFFER, TYPE> kv;
+                mia::sm::KeyValue_fl_fastmm<TYPE> kv;
                 
                 void * lookup(int fid){
                     //todo: remember to delete
@@ -57,13 +57,13 @@ namespace mia{
                     }
                     
                     //lock(fid);
-                    //kv.adhoc_update(fid, from, to);
+                    kv.adhoc_update(fid, from, to);
                     //release(fid);
                     
                     //lock(fid);
-                    TYPE rr = kv.get(fid);
-                    func_update(&rr, vid, from, to);
-                    kv.set(fid, rr);
+                    //TYPE rr = kv.get(fid);
+                    //func_update(&rr, vid, from, to);
+                    //kv.set(fid, rr);
                     //release(fid);
                 
                 }

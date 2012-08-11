@@ -85,7 +85,6 @@ namespace mia {
                     #pragma omp parallel for
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
-                        
                         double potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
                         
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
