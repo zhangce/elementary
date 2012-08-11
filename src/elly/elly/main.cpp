@@ -62,7 +62,7 @@ namespace elly{
         
         bool lock = false;
         bool is_log_system = false;
-        bool has_linear_upper_bound = true;
+        //bool has_linear_upper_bound = true;
         
         SampleTask* task = (SampleTask*) sampleTask;
         
@@ -80,7 +80,7 @@ namespace elly{
             if(task->isShuffle == true){
                 rs = mia::elly::alg::Shuffle(sampleInput);
             }else{
-                rs = mia::elly::alg::GibbsSampling(sampleInput, task->thread_id, task->vector_pool, is_log_system, has_linear_upper_bound);
+                rs = mia::elly::alg::GibbsSampling(sampleInput, task->thread_id, task->vector_pool, is_log_system);
             }
             
             if(rs != sampleInput.vvalue){

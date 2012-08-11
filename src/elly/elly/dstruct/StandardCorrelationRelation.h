@@ -46,7 +46,7 @@ namespace mia{
                     return ret;
                 }
                 
-                void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to){
+                void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool lock){
                     assert(false);  // it is so weird that a StandardCorrelationRelation needs any update because nothing will change
                 }
                                 

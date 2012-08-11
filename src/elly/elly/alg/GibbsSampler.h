@@ -29,7 +29,7 @@ namespace mia {
                   
             }
             
-            int GibbsSampling(mia::elly::SampleInput & sampleInput, int thread_id, std::vector<double>* vector_pool, bool is_log_system = true, bool has_linear_upper_bound = false){
+            int GibbsSampling(mia::elly::SampleInput & sampleInput, int thread_id, std::vector<double>* vector_pool, bool is_log_system = true){
                 
                 //mia::elly::utils::log() << ">>> Sample variable ID=" << sampleInput.vid << std::endl;
                 
@@ -40,33 +40,34 @@ namespace mia {
                 std::vector<double>* weights;
 
                 std::vector<double>* potentials = &vector_pool[thread_id*3];
-                std::vector<double>* upper_ratios = &vector_pool[thread_id*3+1];
-                std::vector<double>* lower_ratios = &vector_pool[thread_id*3+2];
+                //std::vector<double>* upper_ratios = &vector_pool[thread_id*3+1];
+                //std::vector<double>* lower_ratios = &vector_pool[thread_id*3+2];
                 
                 //std::vector<double> potentials;
                 if(sampleInput.vdomain > potentials->size()){
                     for(int i=potentials->size()-1; i<sampleInput.vdomain; i++ ){
                         potentials->push_back(0);
                     
-                        if(has_linear_upper_bound){
-                            upper_ratios->push_back(0);
-                            lower_ratios->push_back(0);
-                        }
+                        //if(has_linear_upper_bound){
+                        //    upper_ratios->push_back(0);
+                        //    lower_ratios->push_back(0);
+                        //}
 
                     }                    
                 }
                 
                 for(int i=0;i<sampleInput.vdomain;i++){
+                   
                     if(is_log_system){
                         potentials->at(i) = 0;
                     }else{
                         potentials->at(i) = 1;
                     }
                     
-                    if(has_linear_upper_bound){
-                        upper_ratios->at(i) = 1;
-                        lower_ratios->at(i) = 1;
-                    }
+                    //if(has_linear_upper_bound){
+                    //    upper_ratios->at(i) = 1;
+                    //    lower_ratios->at(i) = 1;
+                    //}
                 }
                 
 
@@ -82,7 +83,7 @@ namespace mia {
                     funcid = sampleInput.funcids[nf];
                     weights = sampleInput.weights[nf];
                     
-                    #pragma omp parallel for
+                    //#pragma omp parallel for
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
                         double potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
@@ -93,11 +94,31 @@ namespace mia {
                             potentials->at(value) += potential;
                         }else{
                             potentials->at(value) *= potential;
+                            
+                            //if(nf == 2){
+                                // todo: add in#threads
+                            //if(funcs_upper[funcid] != NULL){
+                            //    upper_ratios->at(value) *= funcs_upper[funcid](mb, aux, aux2, vpos, value, weights);
+                            //
+                            //    lower_ratios->at(value) *= potential;
+                            //}else{
+                            //    upper_ratios->at(value) *= funcs_upper[funcid](mb, aux, aux2, vpos, value, weights);
+                            //
+                            //    lower_ratios->at(value) *= potential;
+                            //}
+                            
+                            //}
+                            //std::cout << "~~~" << potential << std::endl;
+                            
                         }
                     }
                     
                     
                 }
+                
+                //for(int value=0; value < sampleInput.vdomain; value ++){
+                //    std::cout << lower_ratios->at(value) << ", " << potentials->at(value) << ", " << upper_ratios->at(value) << std::endl;
+                //}
                 
                 double pfunc;
                 

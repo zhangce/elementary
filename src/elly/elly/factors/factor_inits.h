@@ -176,6 +176,24 @@ double potential_ldacount50_samedoc(void * state, int aux, int aux2, int vpos, i
     //return +log(1.0 + pstate->counts[value]);
 }
 
+double potential_ldacount50_sametopic_upper(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
+    factor_ldacount50 * pstate = (factor_ldacount50*) state;
+    if(1.0 + pstate->counts[value] - 20.0 <1.0){
+        return 1.0;
+    }
+    return 1.0/(1.0 + pstate->counts[value] - 20.0);
+    
+    //std::cout << pstate->counts[value] << std::endl;
+    
+    //return -log(1.0 + pstate->counts[value]);
+}
+
+double potential_ldacount50_sametopic_lower(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
+    factor_ldacount50 * pstate = (factor_ldacount50*) state;
+    return 1.0/(1.0 + pstate->counts[value] + 20.0);
+}
+
+
 double potential_ldacount50_sametopic(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     return 1.0/(1.0 + pstate->counts[value]);

@@ -50,7 +50,7 @@ namespace mia{
                     return ret;
                 }
                 
-                void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to){
+                void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool _lock){
                     
                     if(func_update == NULL){
                         return;
@@ -58,13 +58,19 @@ namespace mia{
                     
                     //lock(fid);
                     kv.adhoc_update(fid, from, to);
+                    return;
                     //release(fid);
                     
-                    //lock(fid);
+                    if(_lock){
+                        lock(fid);
+                    }
                     //TYPE rr = kv.get(fid);
                     //func_update(&rr, vid, from, to);
                     //kv.set(fid, rr);
-                    //release(fid);
+                    
+                    if(_lock){
+                        release(fid);
+                    }
                 
                 }
                 

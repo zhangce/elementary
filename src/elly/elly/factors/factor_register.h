@@ -16,12 +16,23 @@
 #include "../dstruct/AbstractCorrelationRelation.h"
 
 typedef double (*FUNC_POTENTIAL)(void * , int, int, int, int, std::vector<double>* );
+
+typedef double (*FUNC_UPPER)(void * , int, int, int, int, std::vector<double>* );
+
+typedef double (*FUNC_LOWER)(void * , int, int, int, int, std::vector<double>* );
+
 typedef void (*FUNC_UPDATE)(void * , int , int , int );
 
 typedef double (*FUNC_GRADIENT)(void * , int , int , int, int , int, std::vector<double>*, double);
 
 FUNC_POTENTIAL funcs_potential[10];
+
+FUNC_UPPER funcs_upper[10];
+
+FUNC_LOWER funcs_lower[10];
+
 FUNC_UPDATE    funcs_update[10];
+
 FUNC_GRADIENT  funcs_gradient[10];
 
 bool           funcs_incremental[10];
@@ -41,6 +52,24 @@ namespace mia{
                 funcs_potential[5] = potential_ldacount50_sametopic;
                 
                 funcs_potential[6] = potential_mlnclause;
+                
+                funcs_upper[0] = NULL;
+                funcs_upper[1] = NULL;
+                funcs_upper[2] = NULL;
+                
+                funcs_upper[3] = NULL;
+                funcs_upper[4] = NULL;
+                funcs_upper[5] = potential_ldacount50_sametopic_upper;
+                funcs_upper[6] = NULL;
+                
+                funcs_lower[0] = NULL;
+                funcs_lower[1] = NULL;
+                funcs_lower[2] = NULL;
+                
+                funcs_lower[3] = NULL;
+                funcs_lower[4] = NULL;
+                funcs_lower[5] = potential_ldacount50_sametopic_lower;
+                funcs_lower[6] = NULL;
                 
                 
                 funcs_gradient[0] = gradient_unigram;

@@ -62,15 +62,15 @@ namespace mia{
                         
                         if(vpos == -1){
                             
-                            if(lock == false){
+                            //if(lock == false){
                             //    parserrs->crs[crid]->lock(fid);
-                            }
+                            //}
                             
-                            parserrs->crs[crid]->update(fid, funcs_update[funcid], sampleInput.vid, sampleInput.vvalue, newvalue);
+                            parserrs->crs[crid]->update(fid, funcs_update[funcid], sampleInput.vid, sampleInput.vvalue, newvalue, !lock);
                             
-                            if(lock == false){
+                            //if(lock == false){
                             //    parserrs->crs[crid]->release(fid);
-                            }
+                            //}
                             
                         }
                         
@@ -78,11 +78,13 @@ namespace mia{
                 
                     if(lock == true){
                     
+                        
                         for(int nf=0; nf<sampleInput.fids.size();nf ++){
                     
                             crid = sampleInput.crids[nf];
                             fid = sampleInput.fids[nf];
-                    
+                            
+                        
                         //todo: should we lock variables?
                             parserrs->crs[crid]->release(fid);
                     
@@ -134,6 +136,7 @@ namespace mia{
                             crid = factors.get<int>(factor);
                             fid = factors.get<int>(factor+1);
                             //std::cout << "lock " << fid << std::endl;
+                            
                             parserrs->crs[crid]->lock(fid); // add warning for dead lock --- add a checker
                         }
                     }
@@ -156,9 +159,7 @@ namespace mia{
                         
                         rs.funcids.push_back(parserrs->crs[crid]->function_id);
                         rs.weights.push_back(&parserrs->crs[crid]->weights);
-                        
-                        
-                        
+                                                
                         // if not incremental factor
                         if(funcs_incremental[parserrs->crs[crid]->function_id] == false){
                         

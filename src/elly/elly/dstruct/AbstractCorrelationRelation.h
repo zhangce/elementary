@@ -99,7 +99,7 @@ namespace mia{
                 
                 virtual void prepare() = 0;
                 
-                virtual void update(int key, void (*func_update)(void * , int , int , int ), int vid, int from, int to) = 0;
+                virtual void update(int key, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool lock) = 0;
                 
             };
             
