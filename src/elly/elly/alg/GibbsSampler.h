@@ -35,7 +35,6 @@ namespace mia {
                 
                 // for each factor
                 int crid, fid, aux, vpos, funcid, aux2;
-                double potential;
                 void* mb;
                 
                 std::vector<double>* weights;
@@ -83,12 +82,12 @@ namespace mia {
                     funcid = sampleInput.funcids[nf];
                     weights = sampleInput.weights[nf];
                     
+                    #pragma omp parallel for
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
                         
-                        potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
+                        double potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
                         
-
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
                         
                         if(is_log_system){
