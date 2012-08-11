@@ -51,18 +51,25 @@ namespace elly{
         double stepSize;
         
         double temparature;
+        
+        int thread_id;
+        std::vector<double> * vector_pool;
     };
     
     void* mapper_sample(void* sampleTask){
         
         //return NULL;
         
+        bool lock = false;
+        bool is_log_system = false;
+        bool has_linear_upper_bound = true;
+        
         SampleTask* task = (SampleTask*) sampleTask;
         
         for(int vid=task->lower;vid<task->upper;vid+=task->step){
             
             mia::elly::SampleInput sampleInput;
-            task->mat->retrieve(vid, sampleInput, task->train);
+            task->mat->retrieve(vid, sampleInput, task->train, lock);
             
             sampleInput.stepSize = task->stepSize;
             
@@ -72,7 +79,7 @@ namespace elly{
             if(task->isShuffle == true){
                 rs = mia::elly::alg::Shuffle(sampleInput);
             }else{
-                rs = mia::elly::alg::GibbsSampling(sampleInput);
+                rs = mia::elly::alg::GibbsSampling(sampleInput, task->thread_id, task->vector_pool, is_log_system, has_linear_upper_bound);
             }
             
             if(rs != sampleInput.vvalue){
@@ -85,24 +92,31 @@ namespace elly{
                     (*task->naccept) ++;
                 }
                 
-                task->mat->update(sampleInput, rs);
+                task->mat->update(sampleInput, rs, false, lock);
             }else{
                 
                 if(task->temparature == -1){
                     
-                    task->mat->update(sampleInput, rs, task->tally);
+                    task->mat->update(sampleInput, rs, task->tally, lock);
                     
                 }else{
                     
-                    if(sampleInput.log_improve_ratio > 0){
+                    double log_ratio = 0;
+                    if(is_log_system){
+                        log_ratio = sampleInput.log_improve_ratio;
+                    }else{
+                        log_ratio = log(sampleInput.log_improve_ratio);
+                    }
+                    
+                    if(log_ratio > 0){
                         if(rs != sampleInput.vvalue){
                             (*task->naccept) ++;
                         }
-                        task->mat->update(sampleInput, rs);
+                        task->mat->update(sampleInput, rs, false, lock);
                     }else{
                     
                         double p_accept = exp(
-                            sampleInput.log_improve_ratio/task->temparature
+                            log_ratio/task->temparature
                                               );
                         
                         double random = drand48();
@@ -110,9 +124,9 @@ namespace elly{
                             if(rs != sampleInput.vvalue){
                                 (*task->naccept) ++;
                             }
-                            task->mat->update(sampleInput, rs);
+                            task->mat->update(sampleInput, rs, false, lock);
                         }else{
-                            task->mat->update(sampleInput, sampleInput.vvalue);
+                            task->mat->update(sampleInput, sampleInput.vvalue, false, lock);
                         }
                     
                     }
@@ -131,8 +145,9 @@ namespace elly{
     class Elly{
     public:
         
-        
         int nepoch;
+        
+        std::vector<double> * vector_pool;
         
         void generate_tasks_and_map(mia::elly::mat::Materialization_lazy * mat, double temparature = -1, bool tally = false, bool train = false, double stepSize = -1){
             
@@ -179,6 +194,9 @@ namespace elly{
                 task->stepSize = stepSize;
                 
                 task->temparature = temparature;
+                
+                task->thread_id = nv;
+                task->vector_pool = vector_pool;
                     
                 pthread_create(&threads[nv], 0, mapper_sample, task);
 
@@ -203,6 +221,7 @@ namespace elly{
         
         Elly(mia::elly::utils::Config * _config){
             config = _config;
+            vector_pool = new std::vector<double>[config->sys_nthreads*3];
         }
         
         void map(){

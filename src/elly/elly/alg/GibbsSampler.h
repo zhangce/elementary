@@ -16,6 +16,7 @@ namespace mia {
     namespace elly{
         namespace alg{
             
+                        
             int Shuffle(mia::elly::SampleInput & sampleInput){
                 
                 //mia::elly::utils::log() << ">>> Suffle variable ID=" << sampleInput.vid << std::endl;
@@ -28,7 +29,7 @@ namespace mia {
                   
             }
             
-            int GibbsSampling(mia::elly::SampleInput & sampleInput){
+            int GibbsSampling(mia::elly::SampleInput & sampleInput, int thread_id, std::vector<double>* vector_pool, bool is_log_system = true, bool has_linear_upper_bound = false){
                 
                 //mia::elly::utils::log() << ">>> Sample variable ID=" << sampleInput.vid << std::endl;
                 
@@ -36,13 +37,40 @@ namespace mia {
                 int crid, fid, aux, vpos, funcid, aux2;
                 double potential;
                 void* mb;
-                std::vector<double>* weights;
                 
-                std::vector<double> potentials;
-                for(int i=0;i<sampleInput.vdomain;i++){
-                    potentials.push_back(0);
-                    //potentials.push_back(1);
+                std::vector<double>* weights;
+
+                std::vector<double>* potentials = &vector_pool[thread_id*3];
+                std::vector<double>* upper_ratios = &vector_pool[thread_id*3+1];
+                std::vector<double>* lower_ratios = &vector_pool[thread_id*3+2];
+                
+                //std::vector<double> potentials;
+                if(sampleInput.vdomain > potentials->size()){
+                    for(int i=potentials->size()-1; i<sampleInput.vdomain; i++ ){
+                        potentials->push_back(0);
+                    
+                        if(has_linear_upper_bound){
+                            upper_ratios->push_back(0);
+                            lower_ratios->push_back(0);
+                        }
+
+                    }                    
                 }
+                
+                for(int i=0;i<sampleInput.vdomain;i++){
+                    if(is_log_system){
+                        potentials->at(i) = 0;
+                    }else{
+                        potentials->at(i) = 1;
+                    }
+                    
+                    if(has_linear_upper_bound){
+                        upper_ratios->at(i) = 1;
+                        lower_ratios->at(i) = 1;
+                    }
+                }
+                
+
                                 
                 for(int nf=0; nf<sampleInput.fids.size();nf ++){
                     
@@ -57,22 +85,37 @@ namespace mia {
                     
                     for(int value=0; value < sampleInput.vdomain; value ++){
 
+                        
                         potential = funcs_potential[funcid](mb, aux, aux2, vpos, value, weights);
+                        
 
                         //std::cout << "funcid = " << funcid << ", vpos = " << vpos << "; value = " << value << ": " << potential << std::endl;
                         
-                        potentials[value] += potential;
-                        //potentials[value] *= potential;
+                        if(is_log_system){
+                            potentials->at(value) += potential;
+                        }else{
+                            potentials->at(value) *= potential;
+                        }
                     }
+                    
                     
                 }
                 
-                double pfunc = -10000000;;
-                //double pfunc = 0;
+                double pfunc;
+                
+                if(is_log_system){
+                    pfunc = -10000000;
+                }else{
+                    pfunc = 0;
+                }
+                
                 for(int value=0; value < sampleInput.vdomain; value ++){
                     
-                    pfunc = mia::elly::utils::logadd(potentials[value], pfunc);
-                    //pfunc += potentials[value];
+                    if(is_log_system){
+                        pfunc = mia::elly::utils::logadd(potentials->at(value), pfunc);
+                    }else{
+                        pfunc += potentials->at(value);
+                    }
                 }
                 
                 //mia::elly::utils::log() << "  | log potential func = " << pfunc << std::endl;
@@ -86,8 +129,11 @@ namespace mia {
                 int targetValue = -1;
                 for(int value=0; value < sampleInput.vdomain; value ++){
                     
-                    pmeta = exp( potentials[value] - pfunc );
-                    //pmeta = potentials[value]/pfunc;
+                    if(is_log_system){
+                        pmeta = exp( potentials->at(value) - pfunc );
+                    }else{
+                        pmeta = potentials->at(value)/pfunc;
+                    }
                     
                     //mia::elly::utils::log() << "    + Pr[V" << sampleInput.vid << " = " << value << "] = " << pmeta << std::endl;
                     
@@ -105,7 +151,11 @@ namespace mia {
                 //}
                 assert(targetValue != -1);
                 
-                sampleInput.log_improve_ratio = potentials[targetValue] - potentials[sampleInput.vvalue];
+                if(is_log_system){
+                    sampleInput.log_improve_ratio = potentials->at(targetValue) - potentials->at(sampleInput.vvalue);
+                }else{
+                    sampleInput.log_improve_ratio = potentials->at(targetValue) /potentials->at(sampleInput.vvalue);
+                }
                 
                 double gradient;
                 

@@ -39,7 +39,7 @@ namespace mia{
                     return parserrs->va.nvariable;
                 }
                 
-                void update(mia::elly::SampleInput & sampleInput, int newvalue, bool tally = false){
+                void update(mia::elly::SampleInput & sampleInput, int newvalue, bool tally = false, bool lock = true){
                  
                     parserrs->va.set(sampleInput.vid, newvalue);
                     
@@ -62,25 +62,31 @@ namespace mia{
                         
                         if(vpos == -1){
                             
-                            //parserrs->crs[crid]->lock(fid);
+                            if(lock == false){
+                                parserrs->crs[crid]->lock(fid);
+                            }
                             
                             parserrs->crs[crid]->update(fid, funcs_update[funcid], sampleInput.vid, sampleInput.vvalue, newvalue);
                             
-                            //parserrs->crs[crid]->release(fid);
+                            if(lock == false){
+                                parserrs->crs[crid]->release(fid);
+                            }
                             
                         }
                         
                     }
                 
+                    if(lock == true){
                     
-                    for(int nf=0; nf<sampleInput.fids.size();nf ++){
+                        for(int nf=0; nf<sampleInput.fids.size();nf ++){
                     
-                        crid = sampleInput.crids[nf];
-                        fid = sampleInput.fids[nf];
+                            crid = sampleInput.crids[nf];
+                            fid = sampleInput.fids[nf];
                     
                         //todo: should we lock variables?
-                        parserrs->crs[crid]->release(fid);
+                            parserrs->crs[crid]->release(fid);
                     
+                        }
                     }
                     
                     
@@ -88,7 +94,7 @@ namespace mia{
 
                 
                 // get mia::elly:SampleInput object as input to sampler
-                void retrieve(int vid, mia::elly::SampleInput & rs, bool train = false){
+                void retrieve(int vid, mia::elly::SampleInput & rs, bool train = false, bool lock = true){
                     
                     if(train == true){
                         rs.vtrain = parserrs->vtrain.lookup(vid);
@@ -110,11 +116,13 @@ namespace mia{
                     int currentNVariable = 0;
                     
                     
-                    for(int factor=1;factor<factors.size;factor+=2){
-                        crid = factors.get<int>(factor);
-                        fid = factors.get<int>(factor+1);
-                        //std::cout << "lock " << fid << std::endl;
-                        parserrs->crs[crid]->lock(fid); // add warning for dead lock --- add a checker
+                    if(lock == true){
+                        for(int factor=1;factor<factors.size;factor+=2){
+                            crid = factors.get<int>(factor);
+                            fid = factors.get<int>(factor+1);
+                            //std::cout << "lock " << fid << std::endl;
+                            parserrs->crs[crid]->lock(fid); // add warning for dead lock --- add a checker
+                        }
                     }
                     
                     //std::cout << "###" << std::endl;

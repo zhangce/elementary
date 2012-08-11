@@ -39,8 +39,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "380"
          endingLineNumber = "380"
-         landmarkName = "class FactorFileParser"
-         landmarkType = "3">
+         landmarkName = "parse()"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
