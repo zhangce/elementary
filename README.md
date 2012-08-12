@@ -33,7 +33,6 @@ Mia::Elementary is tested in the following operating systems:
 
   - MacOSX (>10.6);
   - Redhat Linux Enterprise 5.0;
-  - Windows 7 Professional.
 
 ##### 1.1.2 Dependencies
 
@@ -41,7 +40,6 @@ Mia::Elementary is written in C++ and has been tested using the following compil
 
   - GCC 4.4.6 under Linux
   - GCC 4.2.1 under MacOSX
-  - Visual Studio Express under Windows
 
 To use the MLN component in Mia::Elementary, Java (>1.6) and Python (>2.6) is required.
 
