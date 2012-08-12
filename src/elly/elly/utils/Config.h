@@ -37,6 +37,9 @@ namespace elly{
             double rt_learn_initstep;
             double rt_learn_decay;
             
+            bool rt_lock;
+            bool rt_is_log_system;
+            
             int sys_nthreads;
             
             bool io_ismln;
@@ -68,6 +71,10 @@ namespace elly{
                 io_ismln = false;
                 
                 io_mln = "";
+                
+                rt_lock = true;
+                
+                rt_is_log_system = true;
                 
             }
             

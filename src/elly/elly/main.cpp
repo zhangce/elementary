@@ -54,17 +54,19 @@ namespace elly{
         
         int thread_id;
         std::vector<double> * vector_pool;
+        
+        bool lock;
+        bool is_log_system;
+        
     };
     
     void* mapper_sample(void* sampleTask){
-        
-        //return NULL;
-        
-        bool lock = false;
-        bool is_log_system = false;
-        //bool has_linear_upper_bound = true;
-        
+                
         SampleTask* task = (SampleTask*) sampleTask;
+        
+        bool lock = task->lock;
+        
+        bool is_log_system = task->is_log_system;
         
         mia::elly::SampleInput sampleInput;
         

@@ -56,7 +56,11 @@ namespace elly {
             ("rt.learn_initstep", po::value<double>(), "Initial step size for SGD learning. [DEFAULT=0.01]")
             ("rt.learn_decay", po::value<double>(), "Decay factor for SGD learning step size after each epoch. [DEFAULT=1.00]")
             
-            // sys.*    (system)
+            ("rt.lock", po::value<bool>(), "Use lock for parallel Gibbs sampling. [DEFAULT=true]")
+            
+            ("rt.is_log_system", po::value<bool>(), "Factor function returns in log scale. [DEFAULT=true]")
+            
+                    // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
             
              
@@ -140,6 +144,16 @@ namespace elly {
             if(vm.count("rt.learn_decay")){
                 config.rt_learn_decay = vm["rt.learn_decay"].as<double>();
                 elly::utils::log() << "  | rt.learn_decay = " << config.rt_learn_decay << std::endl;
+            }
+            
+            if(vm.count("rt.lock")){
+                config.rt_lock = vm["rt.lock"].as<bool>();
+                elly::utils::log() << "  | rt.lock = " << config.rt_lock << std::endl;
+            }
+            
+            if(vm.count("rt.is_log_system")){
+                config.rt_is_log_system = vm["rt.is_log_system"].as<bool>();
+                elly::utils::log() << "  | rt.is_log_system = " << config.rt_is_log_system << std::endl;
             }
 
             
