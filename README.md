@@ -2,8 +2,7 @@
 Mia::Elementary
 ===============
 
-Mia::Elementary is an execution engine for scalable statistial 
-inference and learning.
+Mia::Elementary is scalable Gibbs sampler from factor graphs or Markov Logic Network.
 
 Mia::Elementary is developed by the Hazy group (http://hazy.cs.wisc.edu/hazy/)
 from University of Wisconsin-Madison under Professor Christopher Ré 
