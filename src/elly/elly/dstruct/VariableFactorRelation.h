@@ -26,23 +26,44 @@ namespace mia{
     namespace elly{
         namespace dstruct{
             
+            /**
+             * Variable factor relation which maps each variable to the set of factors.
+             */
             class VariableFactorRelation{
                 
             public:
                 
+                /**
+                 * __vf file's path.
+                 */
                 std::string filename;
+                
+                /**
+                 * type of input file. {tsv}
+                 */
                 std::string filetype;
                 
+                
+                /**
+                 * Key value store that maps VID to factor block.
+                 */
                 mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
                 
+                /**
+                 * Number of vairables being loaded.
+                 */
                 int nvariable;
                 
-                
+                /**
+                 * Given a VID, get factor block.
+                 */
                 mia::sm::IntsBlock lookup(int vid){
                     return kv.get(vid);
                 }
                 
-                
+                /**
+                 * Load from file filename;
+                 */
                 void prepare(){
                 
                     nvariable = 0;

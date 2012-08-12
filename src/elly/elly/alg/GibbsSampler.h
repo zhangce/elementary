@@ -6,6 +6,13 @@
 //  Copyright (c) 2012 University of Wisconsin-Madison. All rights reserved.
 //
 
+/**
+ *
+ * \file This file contains functions that sample assignments
+ * for a single variable.
+ *
+ **/
+
 #ifndef elly_GibbsSampler_h
 #define elly_GibbsSampler_h
 
@@ -14,9 +21,22 @@
 
 namespace mia {
     namespace elly{
+        
+        /**
+         * Namespace for sampling algorithms.
+         */
         namespace alg{
             
                         
+            /**
+             * Randomly shuffle the assignment of a mia::elly::SampleInput object.
+             *
+             * \param sampleInput reference to a sample task
+             *
+             * \return assigned value to mia::elly::SampleInput.
+             *
+             * \sa mia::elly::SampleInput
+             **/
             int Shuffle(mia::elly::SampleInput & sampleInput){
                 
                 //mia::elly::utils::log() << ">>> Suffle variable ID=" << sampleInput.vid << std::endl;
@@ -29,6 +49,23 @@ namespace mia {
                   
             }
             
+            /**
+             * Sample new assignment of a mia::elly::SampleInput object.
+             * Also, mia::elly::SampleInput::log_improve_ratio will be filled
+             * in by the improvement of probability of new assignment
+             * compared with original assignment. If mia::elly::SampleInput
+             * contains training data (mia::elly::sampleInput::vtrain>0), also
+             * update weights by calling gradient function for each factor.
+             *
+             * \param sampleInput reference to a sample task
+             * \param thread_id a number in 0~#threads
+             * \param vector_pool object pool to avoid re-allocate of vectors, vector_pool[thread_id] is a vector.
+             * \param is_log_system true if all factors return in log scale, otherwise linear scale (weight vs. exp(weight) ).
+             *
+             * \return assigned value to mia::elly::SampleInput. Also the 
+             *
+             * \sa mia::elly::SampleInput
+             **/
             int GibbsSampling(mia::elly::SampleInput & sampleInput, int thread_id, std::vector<double>* vector_pool, bool is_log_system = true){
                 
                 //mia::elly::utils::log() << ">>> Sample variable ID=" << sampleInput.vid << std::endl;

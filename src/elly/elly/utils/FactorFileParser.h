@@ -38,7 +38,9 @@ namespace mia{
 namespace elly{
     namespace utils{
     
-        
+        /**
+         * Class that contains a set of relations and load them.
+         */
         class FactorFileParser{
         public:
             std::string folder_name;

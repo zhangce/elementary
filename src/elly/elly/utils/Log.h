@@ -15,11 +15,12 @@ namespace mia {
 namespace elly{
     namespace utils{
     
-        // TODO:
+        // return an output stream for logging.
         std::ostream& log(){
             return std::cout;
         }
-        
+
+        // return an output stream for logging errors.
         std::ostream& logerr(){
             return std::cerr;
         }

@@ -15,30 +15,70 @@
 namespace mia{
     namespace elly{
         
+        /**
+         * Namespace for materialization strategies.
+         */
         namespace mat{
                        
+            /**
+             * Class for lazy materialization. See TR for details.
+             **/
             class Materialization_lazy{
                 
             public:
                 
+                /**
+                 * mia::elly::utils::FactorFileParser object which provides
+                 *   - correlation relations (mia::elly::dstruct::StandardCorrelationRelation or mia::elly::dstruct::IncrementalCorrelationRelation);
+                 *   - variable->factor relation (mia::elly::dstruct::VariableFactorRelation)
+                 *   - variable->assignment relation (mia::elly::dstruct::VariableAssignmentRelation)
+                 *   - variable->tally relation for marginal inference (mia::elly::dstruct::VariableTallyRelation)
+                 **/
                 mia::elly::utils::FactorFileParser * parserrs;
                 
+                /**
+                 * Constructor.
+                 *
+                 * \param mia::elly::utils::FactorFileParser pointer to mia::elly::utils::FactorFileParser object.
+                 *
+                 * \sa mia::elly::mat::Materialization_lazy::parserrs
+                 *
+                 *
+                 */
                 Materialization_lazy(mia::elly::utils::FactorFileParser * _parserrs){
                     
                     parserrs = _parserrs;
                     
                 }
                                 
+                /**
+                 * Materialze -- for lazy materialization, it is an empty function.
+                 *
+                 */
                 void materialize(){
                     
                     mia::elly::utils::log() << ">> Materializing for Lazy...." << std::endl;
                     
                 }
                 
+                /**
+                 * Get number of variables to be sampled. This function is implemented by sending queries to variable-assignment relation. 
+                 *
+                 * \return int number of variables to be sampled
+                 */
                 int getNVariable(){
                     return parserrs->va.nvariable;
                 }
                 
+                /**
+                 * Given a sampled result, update the content all relations.
+                 *
+                 * \param sampleInput reference to mia::elly::SampleInput object encoding a sample task of one variable
+                 * \param newvalue new assignment of the target variable
+                 * \param tally true if running marginal inference, which needs tally the value
+                 * \param lock true if using lock
+                 *
+                 */
                 void update(mia::elly::SampleInput & sampleInput, int newvalue, bool tally = false, bool lock = true){
                  
                     parserrs->va.set(sampleInput.vid, newvalue);

@@ -15,33 +15,90 @@
 #include "../dstruct/IncrementalCorrelationRelation.h"
 #include "../dstruct/AbstractCorrelationRelation.h"
 
+/**
+ * Function pointer of potential function.
+ *
+ * \param pointer to state info
+ * \param weight index
+ * \param aux integer info
+ * \param variable position to flip
+ * \param tentative assignment of variable
+ * \param pointer to weight vector.
+ *
+ */
 typedef double (*FUNC_POTENTIAL)(void * , int, int, int, int, std::vector<double>* );
 
 typedef double (*FUNC_UPPER)(void * , int, int, int, int, std::vector<double>* );
 
 typedef double (*FUNC_LOWER)(void * , int, int, int, int, std::vector<double>* );
 
+/**
+ * Function pointer of update function.
+ *
+ * \param pointer to state info
+ * \param variable position to flip
+ * \param old assignment of variable
+ * \param new assignment of variable to be updated
+ *
+ */
 typedef void (*FUNC_UPDATE)(void * , int , int , int );
 
+/**
+ * Function pointer of potential function.
+ *
+ * \param pointer to state info
+ * \param weight index
+ * \param aux integer info
+ * \param variable position to flip
+ * \param new assignment of variable
+ * \param training assignment of variable
+ * \param pointer to weight vector.
+ * \param step size
+ *
+ */
 typedef double (*FUNC_GRADIENT)(void * , int , int , int, int , int, std::vector<double>*, double);
 
+/**
+ * Array of potential functions.
+ *
+ * \sa FUNC_POTENTIAL;
+ */
 FUNC_POTENTIAL funcs_potential[10];
 
 FUNC_UPPER funcs_upper[10];
 
 FUNC_LOWER funcs_lower[10];
 
+/**
+ * Array of update functions.
+ *
+ * \sa FUNC_UPDATE;
+ */
 FUNC_UPDATE    funcs_update[10];
 
+/**
+ * Array of gradient functions.
+ *
+ * \sa FUNC_GRADIENT;
+ */
 FUNC_GRADIENT  funcs_gradient[10];
 
 bool           funcs_incremental[10];
 
 namespace mia{
     namespace elly{
+        
+        /**
+         * Namespace for factors.
+         */
         namespace factors{
             
-    
+            /**
+             * Build the mapping from factorID to potential/gradient functions.
+             *
+             * \sa FUNC_POTENTIAL
+             * \sa FUNC_UPDATE
+             */
             void register_potentials(){
                 funcs_potential[0] = potential_unigram;
                 funcs_potential[1] = potential_bigram;
@@ -84,6 +141,11 @@ namespace mia{
                 
             }
             
+            /**
+             * Build the mapping from factorID to update functions.
+             *
+             * \sa FUNC_UPDATE
+             */
             void register_updates(){
                 funcs_update[0] = NULL;
                 funcs_update[1] = NULL;
@@ -106,6 +168,15 @@ namespace mia{
                 funcs_incremental[6] = false;
             }
 
+            /**
+             * Given a factorID, return a correlation relation, either mia::elly::dstruct::StandardCorrelationRelation or mia::elly::dstruct::IncrementalCorrelationRelation.
+             *
+             * \tparam BUFFER Buffer to use for this correlation relation.
+             *
+             * \param function_id Factor ID.
+             * 
+             * \return pointer to the new correlation relation (sub class of mia::elly::dstruct::AbstractCorrelationRelation)
+             */
             template<template<template<class C> class A, class B> class BUFFER>
             mia::elly::dstruct::AbstractCorrelationRelation * get_correlation_relation(int function_id){
 

@@ -25,15 +25,37 @@
 
 namespace mia{
     namespace elly{
+        
+        /**
+         * Namespace for relations.
+         */
         namespace dstruct{
             
+            /**
+             * Correlation relation in which each factor contains a list of variable IDs
+             *
+             * \tparam BUFFER Buffer to use for this correlation relation.
+             *
+             */
             template<template<template<class C> class A, class B> class BUFFER>
             class StandardCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
-                                
+                         
+                /**
+                 * Key value store that maps factorID to block of VIDs. 
+                 *
+                 * \sa  mia::sm::KeyValue_vl
+                 */
                 mia::sm::KeyValue_vl<BUFFER> kv;
                 
+                /**
+                 * Given a factor state ID, returns the pointer to VID block.
+                 *
+                 * \param fid factor state ID.
+                 *
+                 * \return pointer to VID block.
+                 */
                 void * lookup(int fid){
                         //todo: remember to delete
                         //todo: check whether it is slow
@@ -46,10 +68,18 @@ namespace mia{
                     return ret;
                 }
                 
+                /**
+                 * Update factor state -- empty for mia::elly::dstruct::StandardCorrelationRelation. 
+                 *
+                 * \sa mia::elly::dstruct::IncrementalCorrelationRelation.
+                 */
                 void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool lock){
                     assert(false);  // it is so weird that a StandardCorrelationRelation needs any update because nothing will change
                 }
-                                
+                 
+                /**
+                 * Load factor from file mia::elly::dstruct::AbstractCorrelationRelation::filename. This function will fill in mia::elly::dstruct::StandardCorrelationRelation::kv.
+                 */
                 void prepare(){
                     
                     nfactor = 0;

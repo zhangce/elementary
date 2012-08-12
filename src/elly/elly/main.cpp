@@ -10,8 +10,6 @@
 
 #include "utils/OptionParser.h"
 
-#include "inf/Inf_marginal.h"
-
 #include "utils/FactorFileParser.h"
 
 #include "utils/Timer.h"
@@ -26,8 +24,6 @@
 #include "factors/factor_register.h"
 
 #include "alg/GibbsSampler.h"
-
-
 
 #include <pthread.h>
 

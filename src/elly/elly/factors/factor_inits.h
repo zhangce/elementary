@@ -1,3 +1,4 @@
+
 //
 //  factor_inits.h
 //  elly
@@ -18,7 +19,9 @@
 #include "../utils/Common.h"
 
 
-
+/**
+ * factor class for LDA (<50 topics)
+ */
 class factor_ldacount50{
 
 public:
@@ -39,7 +42,9 @@ public:
     
 };
 
-
+/**
+ * factor class for general factor relies on VIDs.
+ */
 class factor_vidblock_unigram{
   
 public:
@@ -62,6 +67,9 @@ public:
 };
 
 
+/**
+ * potential function for MLN.
+ */
 double potential_mlnclause(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     
     std::vector<int>* pmb = (std::vector<int>*)mb;
@@ -99,7 +107,9 @@ double potential_mlnclause(void * mb, int aux, int aux2, int vpos, int value, st
 }
 
 
-
+/**
+ * gradient function for MLN.
+ */
 double gradient_mlnclause(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
     
     std::vector<int>* pmb = (std::vector<int>*)mb;
@@ -160,13 +170,18 @@ double gradient_mlnclause(void * mb, int aux, int aux2, int vpos, int value, int
 
 
 
-
+/**
+ * potential function for LDA.
+ */
 double potential_ldacount50(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     return log(pstate->counts[value]+1);
 }
 
 
+/**
+ * potential function for LDA (same doc factor).
+ */
 double potential_ldacount50_samedoc(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     return 1.0 + pstate->counts[value];
@@ -175,6 +190,7 @@ double potential_ldacount50_samedoc(void * state, int aux, int aux2, int vpos, i
     
     //return +log(1.0 + pstate->counts[value]);
 }
+
 
 double potential_ldacount50_sametopic_upper(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
@@ -194,6 +210,9 @@ double potential_ldacount50_sametopic_lower(void * state, int aux, int aux2, int
 }
 
 
+/**
+ * potential function for LDA (same topic factor).
+ */
 double potential_ldacount50_sametopic(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     return 1.0/(1.0 + pstate->counts[value]);
@@ -203,6 +222,9 @@ double potential_ldacount50_sametopic(void * state, int aux, int aux2, int vpos,
     //return -log(1.0 + pstate->counts[value]);
 }
 
+/**
+ * potential function for LDA (same word factor).
+ */
 double potential_ldacount50_sameword(void * state, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     
@@ -211,7 +233,9 @@ double potential_ldacount50_sameword(void * state, int aux, int aux2, int vpos, 
     //return +log(0.1 + pstate->counts[value]);
 }
 
-
+/**
+ * update function for LDA.
+ */
 void update_ldacount50(void * state, int vpos, int from, int to){
     factor_ldacount50 * pstate = (factor_ldacount50*) state;
     
@@ -224,7 +248,9 @@ void update_ldacount50(void * state, int vpos, int from, int to){
     
 }
 
-
+/**
+ * potential function for LR.
+ */
 double potential_unigram(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
     
     std::vector<int>* pmb = (std::vector<int>*)mb;
@@ -233,10 +259,16 @@ double potential_unigram(void * mb, int aux, int aux2, int vpos, int value, std:
     
 }
 
+/**
+ * gradient function that chages nothing.
+ */
 double gradient_zero(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
     return 0;
 }
 
+/**
+ * potential function for LR.
+ */
 double gradient_unigram(void * mb, int aux, int aux2, int vpos, int value, int vtrain, std::vector<double>* weights, double step){
     
     double gradient = vtrain - value;

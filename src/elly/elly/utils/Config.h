@@ -15,11 +15,15 @@ namespace mia{
 namespace elly{
     namespace utils{
         
+        /**
+         * Configurations to run elly. \sa mia::elly::utils::OptionParser.
+         */
         class Config{
         public:
-            
+           
             std::string version_number;
          
+
             std::string ui_verbose;
             std::string ui_logfile;
             std::string ui_logverbose;

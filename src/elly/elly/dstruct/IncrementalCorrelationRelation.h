@@ -29,14 +29,27 @@ namespace mia{
     namespace elly{
         namespace dstruct{
             
+            /**
+             * Correlation relation in which each factor contains a fixed-size state.
+             *
+             * \tparam BUFFER Buffer to use for this correlation relation.
+             *
+             */
             template<template<template<class C> class A, class B> class BUFFER, class TYPE>
             class IncrementalCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
                 
                 //mia::sm::KeyValue_fl<BUFFER, TYPE> kv;
+                
+                /**
+                 * In-memory key value store that maps factor ID to its state.
+                 */
                 mia::sm::KeyValue_fl_fastmm<TYPE> kv;
                 
+                /**
+                 * given a factor ID, return the pointer to its state.
+                 */
                 void * lookup(int fid){
                     //todo: remember to delete
                     //todo: check whether it is slow
@@ -50,6 +63,15 @@ namespace mia{
                     return ret;
                 }
                 
+                /**
+                 * Update the state given new assignment of variables.
+                 *
+                 * \param fid factor ID
+                 * \param func_update function pointer to update function
+                 * \param vid variable ID to be updated
+                 * \param 
+                 *
+                 */
                 void update(int fid, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool _lock){
                     
                     if(func_update == NULL){
@@ -57,7 +79,7 @@ namespace mia{
                     }
                     
                     //lock(fid);
-                    kv.adhoc_update(fid, from, to);
+                    kv.adhoc_update(fid, from, to); //TODO ad hoc.
                     return;
                     //release(fid);
                     

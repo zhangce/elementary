@@ -31,38 +31,92 @@
 namespace mia {
 namespace elly{
     
+    /**
+     * The class for a sample task of one variable.
+     */
     class SampleInput{
         
     public:
         
         ~SampleInput(){
-            for(int i=0;i<mbs.size();i++){
-                delete mbs[i];
-            }
+        //    for(int i=0;i<mbs.size();i++){
+        //        delete mbs[i];
+        //    }
         }
         
+        /**
+         * Each entry corresponds to a factor. Each entry is the position of target variable in that factor.
+         */
         std::vector<int> pos_of_sample_variable;
+
+        /**
+         * Each entry corresponds to a factor. Each entry is weight index of that factor.
+         */
         std::vector<int> auxs;
+        
+        /**
+         * Each entry corresponds to a factor. Each entry is aux info. of that factor.
+         */
         std::vector<int> aux2s;
         
+        /**
+         * Each entry corresponds to a factor. Each entry is pointer to weights vector of that factor.
+         */
         std::vector<std::vector<double>* > weights;
         
+        /**
+         * Each entry corresponds to a factor. Each entry is pointer to factor state
+         */
         std::vector<void*> mbs;
         
+        /**
+         * Each entry corresponds to a factor. Each entry is correlation relation ID.
+         */
         std::vector<int> crids;
+        
+        /**
+         * Each entry corresponds to a factor. Each entry is factor state ID.
+         */
         std::vector<int> fids;
         
+        /**
+         * Each entry corresponds to a factor. Each entry is factor function ID.
+         */
         std::vector<int> funcids;
         
+        /**
+         * Target variable ID.
+         */
         int vid;
+        
+        /**
+         * Current assignment of target variable.
+         */
         int vvalue;
+        
+        /**
+         * Training assignment of target variable. -1 if not unknown.
+         */
         int vtrain;
+        
+        /**
+         * Domain of target variable. a variable can take value from 0,...,vdomain-1
+         */
         int vdomain;
         
+        /**
+         * Step size for learning.
+         */
         double stepSize;
         
+        /**
+         * Filled by mia::elly:alg::GibbsSampling for the improvement of new sample assignment compared with orginal assignment.
+         */
         double log_improve_ratio;
         
+        /**
+         * Pring the content.
+         */
         void print(){
             
             mia::elly::utils::log() << "######### Sample Input for VID=" << vid << 
@@ -144,6 +198,26 @@ namespace elly{
     }
 }
 }
+
+
+
+
+
+/**
+ * Namespace of Mia.
+ */
+namespace mia{
+    
+    /**
+     * Namespace of Elly -- the inference engine.
+     */
+    namespace elly{
+        
+    }
+    
+}
+
+
 
 
 #endif

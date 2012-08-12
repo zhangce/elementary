@@ -14,6 +14,9 @@ namespace mia{
     namespace elly{
         namespace dstruct{
             
+            /**
+             * Variable training relation which maps a variable to its value in training data.
+             */
             class VariableTrainingRelation{
                 
             public:

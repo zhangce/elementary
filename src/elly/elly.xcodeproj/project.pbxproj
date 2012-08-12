@@ -131,7 +131,6 @@
 		E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableAssignmentRelation.h; sourceTree = "<group>"; };
 		E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_lazy.h; sourceTree = "<group>"; };
 		E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GibbsSampler.h; sourceTree = "<group>"; };
-		E183316815A533CF00A988D6 /* Inf_marginal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inf_marginal.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		E1866D4D15AC1788003AB862 /* Buffer_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_file.h; sourceTree = "<group>"; };
 		E1866D4E15AC1788003AB862 /* Buffer_mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_mm.h; sourceTree = "<group>"; };
@@ -152,7 +151,6 @@
 		E186EBCE15A50F89001DC23D /* config_test.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config_test.cfg; sourceTree = "<group>"; };
 		E186EBCF15A5134F001DC23D /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		E18799A215A93AAB0026F196 /* FactorFileParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactorFileParser.h; sourceTree = "<group>"; };
-		E189273A15A6F4FE00CFFD0B /* Factor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Factor.h; sourceTree = "<group>"; };
 		E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractCorrelationRelation.h; sourceTree = "<group>"; };
 		E1A118F115D16CE900879AB1 /* VariableTallyRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTallyRelation.h; sourceTree = "<group>"; };
 		E1A118F315D2AB8500879AB1 /* VariableTrainingRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTrainingRelation.h; sourceTree = "<group>"; };
@@ -307,10 +305,7 @@
 				E17E98E315C3EDC30048AAB2 /* alg */,
 				E17E98E115C3DC0D0048AAB2 /* mat */,
 				E14CAAF115C186DB00288FFB /* factors */,
-				E14CAAF215C186DB00288FFB /* relations */,
 				E1866D5915AC1FB9003AB862 /* dstruct */,
-				E189273915A6F4EF00CFFD0B /* adhoc */,
-				E183316515A5333000A988D6 /* inf */,
 				E1866D4C15AC1788003AB862 /* storageman */,
 				E16E324315A4F17A008C69B6 /* utils */,
 				E16E324215A4F17A008C69B6 /* main.cpp */,
@@ -326,13 +321,6 @@
 				E1CBA0FF15D0543400A81577 /* factor_register.h */,
 			);
 			path = factors;
-			sourceTree = "<group>";
-		};
-		E14CAAF215C186DB00288FFB /* relations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = relations;
 			sourceTree = "<group>";
 		};
 		E16E324315A4F17A008C69B6 /* utils */ = {
@@ -362,14 +350,6 @@
 				E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */,
 			);
 			path = alg;
-			sourceTree = "<group>";
-		};
-		E183316515A5333000A988D6 /* inf */ = {
-			isa = PBXGroup;
-			children = (
-				E183316815A533CF00A988D6 /* Inf_marginal.h */,
-			);
-			path = inf;
 			sourceTree = "<group>";
 		};
 		E183316915A534D200A988D6 /* LR */ = {
@@ -446,14 +426,6 @@
 				E186EBCE15A50F89001DC23D /* config_test.cfg */,
 			);
 			path = data;
-			sourceTree = "<group>";
-		};
-		E189273915A6F4EF00CFFD0B /* adhoc */ = {
-			isa = PBXGroup;
-			children = (
-				E189273A15A6F4FE00CFFD0B /* Factor.h */,
-			);
-			path = adhoc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
