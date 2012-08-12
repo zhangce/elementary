@@ -200,6 +200,9 @@ namespace elly{
                 
                 task->thread_id = nv;
                 task->vector_pool = vector_pool;
+                
+                task->lock = config->rt_lock;
+                task->is_log_system = config->rt_is_log_system;
                     
                 pthread_create(&threads[nv], 0, mapper_sample, task);
 
