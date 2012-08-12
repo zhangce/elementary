@@ -137,7 +137,7 @@ and the following lines should prompt asking for more command line options:
 
 You can type in 
 
-    $ ./bin/elementary --config=examples/elly/config_test.cfg  
+    $ ./bin/elementary --config=examples/elly/config_test_lda.cfg  
 
 to execute LDA. Because it only uses 1 thread, wait 2 minutes for it to finish.
 
@@ -157,6 +157,50 @@ to see the result of each topic
   > united(386)    states(267)    iraq(246)    war(231)    american(227)    israel(213)    
   > military(189)    kuwait(182)    iraqi(181)    iran(157)    nations(155)    gulf(154)    
   > troops(151)    saudi(150)    foreign(150)    officials(150)    two(147)    israeli(145)    official(136)  
+
+#### 3.2 MLN
+
+You can type in 
+
+    $ ./bin/elementary --config=examples/elly/config_test_mln.cfg  
+
+to execute an example of MLN. You need to first install PostgreSQL as 
+mentioned in Tuffy's documentation page (http://hazy.cs.wisc.edu/hazy/tuffy/) and configurate
+
+    examples/elly/MLN/tuffy.conf
+    
+The result will be in examples/elly/RS/mln.pred.txt and examples/elly/RS/mln.prog.txt
+
+    mln.prog.txt // the learned weight
+    8.15       !refers(v0, v1)  v  category(v1, v2)  v !category(v0, v2)
+    -0.3        category(v0, "Networking")
+    0.12        category(v0, "InformationRetrieval")
+    0.16        category(v0, "HumanComputerInteraction")
+    3.44        category(v0, "ArtificialIntelligence")
+    2.76        category(v0, "Networking")
+    0.35        category(v0, "Databases")
+    2.69        category(v0, "Programming")
+    0.94        category(v0, "OperatingSystems")
+    2.06        category(v0, "DataStructuresAlgorithmsandTheory")
+    0.14        category(v0, "HardwareandArchitecture")
+    0.14        category(v0, "EncryptionandCompression")
+    -1.9       !wrote(v0, v1)  v !wrote(v0, v2)  v  category(v1, v3)  v !category(v2, v3)
+    9.8       !refers(v0, v1)  v  category(v0, v2)  v !category(v1, v2)
+
+
+    mln.pred.txt // the inference result
+    0.965517 category("Paper868", "HardwareandArchitecture")
+    1 category("Paper611", "ArtificialIntelligence")
+    1 category("Paper899", "ArtificialIntelligence")
+    1 category("Paper658", "InformationRetrieval")
+    0.965517 category("Paper642", "OperatingSystems")
+    0.758621 category("Paper145", "HardwareandArchitecture")
+    0.931034 category("Paper610", "EncryptionandCompression")
+    1 category("Paper611", "HardwareandArchitecture")
+    1 category("Paper100", "OperatingSystems")
+    1 category("Paper404", "DataStructuresAlgorithmsandTheory")
+    1 category("Paper95", "Databases")
+    0.965517 category("Paper60", "Programming")
 
 
 
