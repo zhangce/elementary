@@ -12,14 +12,10 @@ from University of Wisconsin-Madison under Professor Christopher Ré
 
   Table of Content
 --------------------
-  1. Introduction
-  2. Installation
-  3. Examples
+  1. Installation
+  2. Examples
 
-   
-### 1. Introduction
-
-### 2. Installation
+### 1. Installation
 
 After downloading and uncompressing Mia::Elementary, the folder mia has the following structure:
 
@@ -30,9 +26,9 @@ After downloading and uncompressing Mia::Elementary, the folder mia has the foll
      |-- CMakeLists.txt  
      |-- README.md  
 
-#### 2.1 Prerequisite
+#### 1.1 Prerequisite
 
-##### 2.1.1 Operating Systems
+##### 1.1.1 Operating Systems
 
 Mia::Elementary is tested in the following operating systems:
 
@@ -40,7 +36,7 @@ Mia::Elementary is tested in the following operating systems:
   - Redhat Linux Enterprise 5.0;
   - Windows 7 Professional.
 
-##### 2.1.2 Dependencies
+##### 1.1.2 Dependencies
 
 Mia::Elementary is written in C++ and has been tested using the following compilers:
 
@@ -61,7 +57,7 @@ We included a installation script for boost at mia/dep/boost. To install boost, 
 
 Mia::Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
 
-2.2 Installation
+1.2 Installation
    
 To install Mia::Elementary, go to the folder mia, and type in
 
@@ -131,9 +127,9 @@ and the following lines should prompt asking for more command line options:
                             epoch. [DEFAULT=1.00]  
     --sys.threads arg       Number of threads to use. [DEFAULT=1]  
 
-### 3. Examples
+### 2. Examples
 
-#### 3.1 LDA
+#### 2.1 LDA
 
 You can type in 
 
@@ -158,7 +154,7 @@ to see the result of each topic
   > military(189)    kuwait(182)    iraqi(181)    iran(157)    nations(155)    gulf(154)    
   > troops(151)    saudi(150)    foreign(150)    officials(150)    two(147)    israeli(145)    official(136)  
 
-#### 3.2 MLN
+#### 2.2 MLN
 
 You can type in 
 
