@@ -23,6 +23,9 @@ thin=1
 burnin=1
 nepoch=30
 
+lock = false
+is_log_system = false
+
 learn_initstep = 0.05
 learn_decay    = 1.00
 
