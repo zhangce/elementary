@@ -1,0 +1,65 @@
+\hypertarget{namespacemia_1_1elly_1_1alg}{\section{mia\-:\-:elly\-:\-:alg Namespace Reference}
+\label{namespacemia_1_1elly_1_1alg}\index{mia\-::elly\-::alg@{mia\-::elly\-::alg}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespacemia_1_1elly_1_1alg_ab8c9dff4bb66e3a9615525662a8f4af0}{Shuffle} (\hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} \&sample\-Input)
+\item 
+int \hyperlink{namespacemia_1_1elly_1_1alg_a19a80aed51e58ec0661bd869af34c7d6}{Gibbs\-Sampling} (\hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} \&sample\-Input, int thread\-\_\-id, std\-::vector$<$ double $>$ $\ast$vector\-\_\-pool, bool is\-\_\-log\-\_\-system=true)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for sampling algorithms. 
+
+\subsection{Function Documentation}
+\hypertarget{namespacemia_1_1elly_1_1alg_a19a80aed51e58ec0661bd869af34c7d6}{\index{mia\-::elly\-::alg@{mia\-::elly\-::alg}!Gibbs\-Sampling@{Gibbs\-Sampling}}
+\index{Gibbs\-Sampling@{Gibbs\-Sampling}!mia::elly::alg@{mia\-::elly\-::alg}}
+\subsubsection[{Gibbs\-Sampling}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::alg\-::\-Gibbs\-Sampling (
+\begin{DoxyParamCaption}
+\item[{{\bf mia\-::elly\-::\-Sample\-Input} \&}]{sample\-Input, }
+\item[{int}]{thread\-\_\-id, }
+\item[{std\-::vector$<$ double $>$ $\ast$}]{vector\-\_\-pool, }
+\item[{bool}]{is\-\_\-log\-\_\-system = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1alg_a19a80aed51e58ec0661bd869af34c7d6}
+Sample new assignment of a \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} object. Also, \hyperlink{classmia_1_1elly_1_1_sample_input_a0016cf98d8b1a50f42a5b85e091e61f9}{mia\-::elly\-::\-Sample\-Input\-::log\-\_\-improve\-\_\-ratio} will be filled in by the improvement of probability of new assignment compared with original assignment. If \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} contains training data (mia\-::elly\-::sample\-Input\-::vtrain$>$0), also update weights by calling gradient function for each factor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\-Input} & reference to a sample task \\
+\hline
+{\em thread\-\_\-id} & a number in 0$\sim$\#threads \\
+\hline
+{\em vector\-\_\-pool} & object pool to avoid re-\/allocate of vectors, vector\-\_\-pool\mbox{[}thread\-\_\-id\mbox{]} is a vector. \\
+\hline
+{\em is\-\_\-log\-\_\-system} & true if all factors return in log scale, otherwise linear scale (weight vs. exp(weight) ).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+assigned value to \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input}. Also the
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} 
+\end{DoxySeeAlso}
+\hypertarget{namespacemia_1_1elly_1_1alg_ab8c9dff4bb66e3a9615525662a8f4af0}{\index{mia\-::elly\-::alg@{mia\-::elly\-::alg}!Shuffle@{Shuffle}}
+\index{Shuffle@{Shuffle}!mia::elly::alg@{mia\-::elly\-::alg}}
+\subsubsection[{Shuffle}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::alg\-::\-Shuffle (
+\begin{DoxyParamCaption}
+\item[{{\bf mia\-::elly\-::\-Sample\-Input} \&}]{sample\-Input}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1alg_ab8c9dff4bb66e3a9615525662a8f4af0}
+Randomly shuffle the assignment of a \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\-Input} & reference to a sample task\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+assigned value to \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} 
+\end{DoxySeeAlso}

@@ -1,0 +1,133 @@
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}{\section{mia\-:\-:elly\-:\-:dstruct\-:\-:Abstract\-Correlation\-Relation Class Reference}
+\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+}
+
+
+{\ttfamily \#include $<$Abstract\-Correlation\-Relation.\-h$>$}
+
+Inheritance diagram for mia\-:\-:elly\-:\-:dstruct\-:\-:Abstract\-Correlation\-Relation\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.396509cm]{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a86990596212576f10e6a589fb1eb46b7}{prepare\-\_\-weights} ()
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a9d6015d4805d9612d922a1311c2604c3}{dump\-\_\-weights} ()
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3291f1afe2252b5bc97414a96c035505}{lock} (int fid)
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a1f81a8c581593c2c5a471687d6369214}{release} (int fid)
+\item 
+\hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_af6f78017f5af971958660bb946d64171}{$\sim$\-Abstract\-Correlation\-Relation} ()
+\item 
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a6fb8ddb076966b2b63be7fbc7b020452}{virtual void $\ast$ {\bfseries lookup} (int fid)=0}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a6fb8ddb076966b2b63be7fbc7b020452}
+
+\item 
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a5a783db4f6a78f73a477a80fc51d1c6c}{virtual void {\bfseries prepare} ()=0}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a5a783db4f6a78f73a477a80fc51d1c6c}
+
+\item 
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_af923ccef57327a22857ade9059863e89}{virtual void {\bfseries update} (int key, void($\ast$func\-\_\-update)(void $\ast$, int, int, int), int vid, int from, int to, bool \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3291f1afe2252b5bc97414a96c035505}{lock})=0}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_af923ccef57327a22857ade9059863e89}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a800bb55573026e2826af0a1326ceb401}{std\-::string {\bfseries factor\-\_\-name}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a800bb55573026e2826af0a1326ceb401}
+
+\item 
+int \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3747a084efa5095d4808819bb012ae65}{factor\-\_\-id}
+\item 
+int \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ac7216c599394d0b1026bb4f7a161f6a4}{function\-\_\-id}
+\item 
+std\-::string \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a21e302ad723c9e0c99eb81c5bc420779}{filename}
+\item 
+std\-::string \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ae96b4f7de4d2e53b3a3ea38b14e90838}{filetype}
+\item 
+std\-::string \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a528970ab644de5fa8958bc8b26917664}{mapfilename}
+\item 
+std\-::vector$<$ double $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a8a094d32441aca190c2ab019407de95a}{weights}
+\item 
+std\-::vector$<$ pthread\-\_\-mutex\-\_\-t $\ast$ $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a10a0c3ac052768f044f4c0a7da5f2a80}{sems}
+\item 
+int \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a65756a92a296e0e9041b043cee64d8b0}{nfactor}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for unifying \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation} and \hyperlink{classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation}{mia\-::elly\-::dstruct\-::\-Incremental\-Correlation\-Relation}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_af6f78017f5af971958660bb946d64171}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!$\sim$\-Abstract\-Correlation\-Relation@{$\sim$\-Abstract\-Correlation\-Relation}}
+\index{$\sim$\-Abstract\-Correlation\-Relation@{$\sim$\-Abstract\-Correlation\-Relation}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{$\sim$\-Abstract\-Correlation\-Relation}]{\setlength{\rightskip}{0pt plus 5cm}mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::$\sim$\-Abstract\-Correlation\-Relation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_af6f78017f5af971958660bb946d64171}
+Deconstructor. Release and destroy all locks. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a9d6015d4805d9612d922a1311c2604c3}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!dump\-\_\-weights@{dump\-\_\-weights}}
+\index{dump\-\_\-weights@{dump\-\_\-weights}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{dump\-\_\-weights}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::dump\-\_\-weights (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a9d6015d4805d9612d922a1311c2604c3}
+Refresh weight file by current weights. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3291f1afe2252b5bc97414a96c035505}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!lock@{lock}}
+\index{lock@{lock}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::lock (
+\begin{DoxyParamCaption}
+\item[{int}]{fid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3291f1afe2252b5bc97414a96c035505}
+Lock a factor. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a86990596212576f10e6a589fb1eb46b7}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!prepare\-\_\-weights@{prepare\-\_\-weights}}
+\index{prepare\-\_\-weights@{prepare\-\_\-weights}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{prepare\-\_\-weights}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::prepare\-\_\-weights (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a86990596212576f10e6a589fb1eb46b7}
+load weight file. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a1f81a8c581593c2c5a471687d6369214}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!release@{release}}
+\index{release@{release}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{release}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::release (
+\begin{DoxyParamCaption}
+\item[{int}]{fid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a1f81a8c581593c2c5a471687d6369214}
+Release lock of a factor. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3747a084efa5095d4808819bb012ae65}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!factor\-\_\-id@{factor\-\_\-id}}
+\index{factor\-\_\-id@{factor\-\_\-id}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{factor\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::factor\-\_\-id}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3747a084efa5095d4808819bb012ae65}
+I\-D of this correlation relation. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a21e302ad723c9e0c99eb81c5bc420779}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!filename@{filename}}
+\index{filename@{filename}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{filename}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::filename}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a21e302ad723c9e0c99eb81c5bc420779}
+File that contains this correlation relation. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ae96b4f7de4d2e53b3a3ea38b14e90838}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!filetype@{filetype}}
+\index{filetype@{filetype}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{filetype}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::filetype}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ae96b4f7de4d2e53b3a3ea38b14e90838}
+Type of correlation relation file. \{tsv\} \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ac7216c599394d0b1026bb4f7a161f6a4}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!function\-\_\-id@{function\-\_\-id}}
+\index{function\-\_\-id@{function\-\_\-id}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{function\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::function\-\_\-id}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_ac7216c599394d0b1026bb4f7a161f6a4}
+Factor I\-D -- for potential/update/gradient functions. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a528970ab644de5fa8958bc8b26917664}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!mapfilename@{mapfilename}}
+\index{mapfilename@{mapfilename}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{mapfilename}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::mapfilename}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a528970ab644de5fa8958bc8b26917664}
+File that contains weights. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a65756a92a296e0e9041b043cee64d8b0}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!nfactor@{nfactor}}
+\index{nfactor@{nfactor}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{nfactor}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::nfactor}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a65756a92a296e0e9041b043cee64d8b0}
+Number of factors being loaded. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a10a0c3ac052768f044f4c0a7da5f2a80}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!sems@{sems}}
+\index{sems@{sems}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{sems}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$pthread\-\_\-mutex\-\_\-t$\ast$ $>$ mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::sems}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a10a0c3ac052768f044f4c0a7da5f2a80}
+In-\/memory locks for factors in this correlation relation. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a8a094d32441aca190c2ab019407de95a}{\index{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}!weights@{weights}}
+\index{weights@{weights}!mia::elly::dstruct::AbstractCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}}
+\subsubsection[{weights}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$double$>$ mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::weights}}\label{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a8a094d32441aca190c2ab019407de95a}
+In-\/memory vector that stores weights. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+elly/elly/dstruct/Abstract\-Correlation\-Relation.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,117 @@
+\hypertarget{namespacemia_1_1elly_1_1utils}{\section{mia\-:\-:elly\-:\-:utils Namespace Reference}
+\label{namespacemia_1_1elly_1_1utils}\index{mia\-::elly\-::utils@{mia\-::elly\-::utils}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmia_1_1elly_1_1utils_1_1_factor_tuple}{Factor\-Tuple}
+\item 
+class \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{Config}
+\item 
+class \hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{Factor\-File\-Parser}
+\item 
+class \hyperlink{classmia_1_1elly_1_1utils_1_1_timer}{Timer}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacemia_1_1elly_1_1utils_a7ee3c4db368fdd650eefde6d084bfbbb}{bool {\bfseries fast\-\_\-exact\-\_\-is\-\_\-equal} (double a, double b)}\label{namespacemia_1_1elly_1_1utils_a7ee3c4db368fdd650eefde6d084bfbbb}
+
+\item 
+\hypertarget{namespacemia_1_1elly_1_1utils_a5d82b4bd55ead7b3c8a7bf0ece890734}{double {\bfseries logadd} (double log\-\_\-a, double log\-\_\-b)}\label{namespacemia_1_1elly_1_1utils_a5d82b4bd55ead7b3c8a7bf0ece890734}
+
+\item 
+\hypertarget{namespacemia_1_1elly_1_1utils_a374ba5eaba5d4098168c76c5ae7b4190}{std\-::ostream \& {\bfseries log} ()}\label{namespacemia_1_1elly_1_1utils_a374ba5eaba5d4098168c76c5ae7b4190}
+
+\item 
+\hypertarget{namespacemia_1_1elly_1_1utils_a23141eae8cac2f0c0899f767a24c8c93}{std\-::ostream \& {\bfseries logerr} ()}\label{namespacemia_1_1elly_1_1utils_a23141eae8cac2f0c0899f767a24c8c93}
+
+\item 
+po\-::options\-\_\-description \hyperlink{namespacemia_1_1elly_1_1utils_aeeeb102180327b7894318204b9e09204}{parse\-\_\-options\-\_\-prepare} ()
+\item 
+int \hyperlink{namespacemia_1_1elly_1_1utils_a36bd3ac5a27733eb19d84be42bb069ed}{parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config} (\hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} \&config, po\-::variables\-\_\-map \&vm, po\-::options\-\_\-description \&desc)
+\item 
+void \hyperlink{namespacemia_1_1elly_1_1utils_a0e4ef9404cd6d6ffcd1804c5fbbd2eb0}{parse\-\_\-option\-\_\-post} (\hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} \&config)
+\item 
+int \hyperlink{namespacemia_1_1elly_1_1utils_a920b8e899ab5533ddfe8feac3eacf439}{parse\-\_\-options} (\hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} \&config, int ac, const char $\ast$av\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+utils used by elly. 
+
+\subsection{Function Documentation}
+\hypertarget{namespacemia_1_1elly_1_1utils_a36bd3ac5a27733eb19d84be42bb069ed}{\index{mia\-::elly\-::utils@{mia\-::elly\-::utils}!parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config@{parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config}}
+\index{parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config@{parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config}!mia::elly::utils@{mia\-::elly\-::utils}}
+\subsubsection[{parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::utils\-::parse\-\_\-option\-\_\-fill\-\_\-in\-\_\-config (
+\begin{DoxyParamCaption}
+\item[{elly\-::utils\-::\-Config \&}]{config, }
+\item[{po\-::variables\-\_\-map \&}]{vm, }
+\item[{po\-::options\-\_\-description \&}]{desc}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1utils_a36bd3ac5a27733eb19d84be42bb069ed}
+fill in configuration into \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} object, which will be used by an \hyperlink{classmia_1_1elly_1_1_elly}{elly\-::\-Elly} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} object to fill in \\
+\hline
+{\em po\-::variables\-\_\-map} & see details in \href{http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html}{\tt http\-://www.\-boost.\-org/doc/libs/1\-\_\-50\-\_\-0/doc/html/program\-\_\-options/tutorial.\-html} \\
+\hline
+{\em po\-::options\-\_\-description} & see details in \href{http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html}{\tt http\-://www.\-boost.\-org/doc/libs/1\-\_\-50\-\_\-0/doc/html/program\-\_\-options/tutorial.\-html} \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespacemia_1_1elly_1_1utils_a0e4ef9404cd6d6ffcd1804c5fbbd2eb0}{\index{mia\-::elly\-::utils@{mia\-::elly\-::utils}!parse\-\_\-option\-\_\-post@{parse\-\_\-option\-\_\-post}}
+\index{parse\-\_\-option\-\_\-post@{parse\-\_\-option\-\_\-post}!mia::elly::utils@{mia\-::elly\-::utils}}
+\subsubsection[{parse\-\_\-option\-\_\-post}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::utils\-::parse\-\_\-option\-\_\-post (
+\begin{DoxyParamCaption}
+\item[{elly\-::utils\-::\-Config \&}]{config}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1utils_a0e4ef9404cd6d6ffcd1804c5fbbd2eb0}
+Given an object of \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config}, check whether it is good to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} object to check \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::exception} & if it is not a good \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config}. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{namespacemia_1_1elly_1_1utils_a920b8e899ab5533ddfe8feac3eacf439}{\index{mia\-::elly\-::utils@{mia\-::elly\-::utils}!parse\-\_\-options@{parse\-\_\-options}}
+\index{parse\-\_\-options@{parse\-\_\-options}!mia::elly::utils@{mia\-::elly\-::utils}}
+\subsubsection[{parse\-\_\-options}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::utils\-::parse\-\_\-options (
+\begin{DoxyParamCaption}
+\item[{elly\-::utils\-::\-Config \&}]{config, }
+\item[{int}]{ac, }
+\item[{const char $\ast$}]{av\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1utils_a920b8e899ab5533ddfe8feac3eacf439}
+use the input of an main() function, fill in the an object of \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & an object of \hyperlink{classmia_1_1elly_1_1utils_1_1_config}{elly\-::utils\-::\-Config} to fill in \\
+\hline
+{\em ac} & argc in main() \\
+\hline
+{\em av} & argv in main() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if there is \char`\"{}-\/-\/help\char`\"{} in options; 0 otherwise. 
+\end{DoxyReturn}
+\hypertarget{namespacemia_1_1elly_1_1utils_aeeeb102180327b7894318204b9e09204}{\index{mia\-::elly\-::utils@{mia\-::elly\-::utils}!parse\-\_\-options\-\_\-prepare@{parse\-\_\-options\-\_\-prepare}}
+\index{parse\-\_\-options\-\_\-prepare@{parse\-\_\-options\-\_\-prepare}!mia::elly::utils@{mia\-::elly\-::utils}}
+\subsubsection[{parse\-\_\-options\-\_\-prepare}]{\setlength{\rightskip}{0pt plus 5cm}po\-::options\-\_\-description mia\-::elly\-::utils\-::parse\-\_\-options\-\_\-prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemia_1_1elly_1_1utils_aeeeb102180327b7894318204b9e09204}
+prepare an object of boost\-::program\-\_\-options\-::options\-\_\-description used by boost\-::program\-\_\-options.
+
+\begin{DoxyReturn}{Returns}
+object of boost\-::program\-\_\-options\-::options\-\_\-description 
+\end{DoxyReturn}

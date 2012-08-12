@@ -1,0 +1,111 @@
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}{\section{mia\-:\-:elly\-:\-:dstruct\-:\-:Standard\-Correlation\-Relation$<$ B\-U\-F\-F\-E\-R $>$ Class Template Reference}
+\label{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}\index{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation$<$ B\-U\-F\-F\-E\-R $>$@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation$<$ B\-U\-F\-F\-E\-R $>$}}
+}
+
+
+{\ttfamily \#include $<$Standard\-Correlation\-Relation.\-h$>$}
+
+Inheritance diagram for mia\-:\-:elly\-:\-:dstruct\-:\-:Standard\-Correlation\-Relation$<$ B\-U\-F\-F\-E\-R $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a0dfecae5ae55c35f407fc9fb44c216b0}{lookup} (int fid)
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a8f71e78c27dabff352a2ec8bb532b82e}{update} (int fid, void($\ast$func\-\_\-update)(void $\ast$, int, int, int), int vid, int from, int to, bool \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a3291f1afe2252b5bc97414a96c035505}{lock})
+\item 
+void \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_ab6c7a97c05bca478980248a7dc466a02}{prepare} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmia_1_1sm_1_1_key_value__vl}{mia\-::sm\-::\-Key\-Value\-\_\-vl}$<$ B\-U\-F\-F\-E\-R $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a2648351b09b9c655802691f8e1c61cfb}{kv}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$template$<$ template$<$ class C $>$ class A, class B $>$ class B\-U\-F\-F\-E\-R$>$class mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation$<$ B\-U\-F\-F\-E\-R $>$}
+
+Correlation relation in which each factor contains a list of variable I\-Ds
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em B\-U\-F\-F\-E\-R} & Buffer to use for this correlation relation. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a0dfecae5ae55c35f407fc9fb44c216b0}{\index{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}!lookup@{lookup}}
+\index{lookup@{lookup}!mia::elly::dstruct::StandardCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}}
+\subsubsection[{lookup}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ template$<$ class C $>$ class A, class B $>$ class B\-U\-F\-F\-E\-R$>$ void$\ast$ {\bf mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}$<$ B\-U\-F\-F\-E\-R $>$\-::lookup (
+\begin{DoxyParamCaption}
+\item[{int}]{fid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a0dfecae5ae55c35f407fc9fb44c216b0}
+Given a factor state I\-D, returns the pointer to V\-I\-D block.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fid} & factor state I\-D.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to V\-I\-D block. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}.
+
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_ab6c7a97c05bca478980248a7dc466a02}{\index{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}!prepare@{prepare}}
+\index{prepare@{prepare}!mia::elly::dstruct::StandardCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ template$<$ class C $>$ class A, class B $>$ class B\-U\-F\-F\-E\-R$>$ void {\bf mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}$<$ B\-U\-F\-F\-E\-R $>$\-::prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_ab6c7a97c05bca478980248a7dc466a02}
+Load factor from file \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation_a21e302ad723c9e0c99eb81c5bc420779}{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation\-::filename}. This function will fill in \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a2648351b09b9c655802691f8e1c61cfb}{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation\-::kv}. 
+
+Implements \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}.
+
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a8f71e78c27dabff352a2ec8bb532b82e}{\index{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}!update@{update}}
+\index{update@{update}!mia::elly::dstruct::StandardCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ template$<$ class C $>$ class A, class B $>$ class B\-U\-F\-F\-E\-R$>$ void {\bf mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}$<$ B\-U\-F\-F\-E\-R $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{int}]{fid, }
+\item[{void($\ast$)(void $\ast$, int, int, int)}]{func\-\_\-update, }
+\item[{int}]{vid, }
+\item[{int}]{from, }
+\item[{int}]{to, }
+\item[{bool}]{lock}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a8f71e78c27dabff352a2ec8bb532b82e}
+Update factor state -- empty for \hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation}{mia\-::elly\-::dstruct\-::\-Incremental\-Correlation\-Relation}. 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation}{mia\-::elly\-::dstruct\-::\-Abstract\-Correlation\-Relation}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a2648351b09b9c655802691f8e1c61cfb}{\index{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}!kv@{kv}}
+\index{kv@{kv}!mia::elly::dstruct::StandardCorrelationRelation@{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}}
+\subsubsection[{kv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ template$<$ class C $>$ class A, class B $>$ class B\-U\-F\-F\-E\-R$>$ {\bf mia\-::sm\-::\-Key\-Value\-\_\-vl}$<$B\-U\-F\-F\-E\-R$>$ {\bf mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation}$<$ B\-U\-F\-F\-E\-R $>$\-::kv}}\label{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation_a2648351b09b9c655802691f8e1c61cfb}
+Key value store that maps factor\-I\-D to block of V\-I\-Ds.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classmia_1_1sm_1_1_key_value__vl}{mia\-::sm\-::\-Key\-Value\-\_\-vl} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+elly/elly/dstruct/Standard\-Correlation\-Relation.\-h\end{DoxyCompactItemize}

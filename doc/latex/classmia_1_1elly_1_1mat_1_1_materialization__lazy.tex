@@ -1,0 +1,111 @@
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy}{\section{mia\-:\-:elly\-:\-:mat\-:\-:Materialization\-\_\-lazy Class Reference}
+\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy}\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+}
+
+
+{\ttfamily \#include $<$Materialization\-\_\-lazy.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_ab3a242c373540574d1344de869014d3c}{Materialization\-\_\-lazy} (\hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{mia\-::elly\-::utils\-::\-Factor\-File\-Parser} $\ast$\-\_\-parserrs)
+\item 
+void \hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_abc0e82ad824af5cef8708180fc3bf901}{materialize} ()
+\item 
+int \hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a4666c03c8a226bba1a199a9012c48ff6}{get\-N\-Variable} ()
+\item 
+void \hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a13de851c8bbb02bc4b56317eb5861eb0}{update} (\hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} \&sample\-Input, int newvalue, bool tally=false, bool lock=true)
+\item 
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_aa9ad91dc3357563461402a65d92d643a}{void {\bfseries retrieve} (int vid, \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} \&rs, bool train=false, bool lock=true)}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_aa9ad91dc3357563461402a65d92d643a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{mia\-::elly\-::utils\-::\-Factor\-File\-Parser} $\ast$ \hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a3425cb0aefa4c9423085c2b164aaacd4}{parserrs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for lazy materialization. See T\-R for details. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_ab3a242c373540574d1344de869014d3c}{\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}!Materialization\-\_\-lazy@{Materialization\-\_\-lazy}}
+\index{Materialization\-\_\-lazy@{Materialization\-\_\-lazy}!mia::elly::mat::Materialization_lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+\subsubsection[{Materialization\-\_\-lazy}]{\setlength{\rightskip}{0pt plus 5cm}mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::\-Materialization\-\_\-lazy (
+\begin{DoxyParamCaption}
+\item[{{\bf mia\-::elly\-::utils\-::\-Factor\-File\-Parser} $\ast$}]{\-\_\-parserrs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_ab3a242c373540574d1344de869014d3c}
+Constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{mia\-::elly\-::utils\-::\-Factor\-File\-Parser}} & pointer to \hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{mia\-::elly\-::utils\-::\-Factor\-File\-Parser} object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a3425cb0aefa4c9423085c2b164aaacd4}{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::parserrs} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a4666c03c8a226bba1a199a9012c48ff6}{\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}!get\-N\-Variable@{get\-N\-Variable}}
+\index{get\-N\-Variable@{get\-N\-Variable}!mia::elly::mat::Materialization_lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+\subsubsection[{get\-N\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::get\-N\-Variable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a4666c03c8a226bba1a199a9012c48ff6}
+Get number of variables to be sampled. This function is implemented by sending queries to variable-\/assignment relation.
+
+\begin{DoxyReturn}{Returns}
+int number of variables to be sampled 
+\end{DoxyReturn}
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_abc0e82ad824af5cef8708180fc3bf901}{\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}!materialize@{materialize}}
+\index{materialize@{materialize}!mia::elly::mat::Materialization_lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+\subsubsection[{materialize}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::materialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_abc0e82ad824af5cef8708180fc3bf901}
+Materialze -- for lazy materialization, it is an empty function. \hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a13de851c8bbb02bc4b56317eb5861eb0}{\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}!update@{update}}
+\index{update@{update}!mia::elly::mat::Materialization_lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf mia\-::elly\-::\-Sample\-Input} \&}]{sample\-Input, }
+\item[{int}]{newvalue, }
+\item[{bool}]{tally = {\ttfamily false}, }
+\item[{bool}]{lock = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a13de851c8bbb02bc4b56317eb5861eb0}
+Given a sampled result, update the content all relations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\-Input} & reference to \hyperlink{classmia_1_1elly_1_1_sample_input}{mia\-::elly\-::\-Sample\-Input} object encoding a sample task of one variable \\
+\hline
+{\em newvalue} & new assignment of the target variable \\
+\hline
+{\em tally} & true if running marginal inference, which needs tally the value \\
+\hline
+{\em lock} & true if using lock \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a3425cb0aefa4c9423085c2b164aaacd4}{\index{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}!parserrs@{parserrs}}
+\index{parserrs@{parserrs}!mia::elly::mat::Materialization_lazy@{mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy}}
+\subsubsection[{parserrs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mia\-::elly\-::utils\-::\-Factor\-File\-Parser}$\ast$ mia\-::elly\-::mat\-::\-Materialization\-\_\-lazy\-::parserrs}}\label{classmia_1_1elly_1_1mat_1_1_materialization__lazy_a3425cb0aefa4c9423085c2b164aaacd4}
+\hyperlink{classmia_1_1elly_1_1utils_1_1_factor_file_parser}{mia\-::elly\-::utils\-::\-Factor\-File\-Parser} object which provides
+\begin{DoxyItemize}
+\item correlation relations (\hyperlink{classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation}{mia\-::elly\-::dstruct\-::\-Standard\-Correlation\-Relation} or \hyperlink{classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation}{mia\-::elly\-::dstruct\-::\-Incremental\-Correlation\-Relation});
+\item variable-\/$>$factor relation (\hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_factor_relation}{mia\-::elly\-::dstruct\-::\-Variable\-Factor\-Relation})
+\item variable-\/$>$assignment relation (\hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation}{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation})
+\item variable-\/$>$tally relation for marginal inference (\hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_tally_relation}{mia\-::elly\-::dstruct\-::\-Variable\-Tally\-Relation}) 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+elly/elly/mat/Materialization\-\_\-lazy.\-h\end{DoxyCompactItemize}
