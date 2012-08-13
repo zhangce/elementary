@@ -19,9 +19,13 @@ project (Mia)
 add_executable( bin/elementary src/elly/elly/main.cpp )
 
 message(STATUS "Build example for Mia::Elementary")
-configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test.cfg.in" "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test.cfg")
+configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test_lda.cfg.in" "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test_lda.cfg")
 configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/LDA/catelog.cfg.in"
 "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/LDA/catelog.cfg")
+
+configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test_mln.cfg.in" "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/config_test_mln.cfg")
+configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/MLN/catelog.cfg.in"
+"${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/MLN/catelog.cfg")
 
 
 #### Find dependencies ####
@@ -61,4 +65,4 @@ message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
 
-
+target_link_libraries (bin/elementary -lrt)
