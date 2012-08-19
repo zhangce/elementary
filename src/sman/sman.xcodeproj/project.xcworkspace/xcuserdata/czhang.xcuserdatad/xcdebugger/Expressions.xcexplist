@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "hazy::sman::KV&lt;int, hazy::sman::IntsBlock, (hazy::sman::KV_Storage)0, (hazy::sman::KV_Buffer)0, (hazy::sman::KV_Replacement)0, (hazy::sman::KV_Hint)1&gt;::load(int const&amp;, hazy::sman::IntsBlock const&amp;):KV_int_IntsBlock_-_-_-_DENSEKEY.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentPage">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
