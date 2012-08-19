@@ -52,12 +52,32 @@ configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/MLN/catelog.cfg.in"
 
 #endif()
 
+#find_package (Java)
+#find_package (Java_JVM)
+
 find_package (JNI)
+
 if(JNI_FOUND)
 message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
 message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
+
 else()
-message(STATUS "JNI not found!")
+
+#message(FATAL_ERROR "Need to set environment variavble JAVA_HOME")
+
+message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
+
+#if(NOT JNI_LIBRARIES OR NOT JNI_INCLUDE_DIRS)
+#	message(FATAL_ERROR "JNI not found! Set JNI_LIBRARIES and
+#JNI_INCLUDE_DIRS")	
+#else()
+#	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+#	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+#endif()
+
 endif()
 
 set(Boost_NO_SYSTEM_PATHS "ON") 
@@ -80,8 +100,10 @@ include_directories(${JNI_INCLUDE_DIRS})
 message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
-target_link_libraries (bin/elementary ${JNI_LIBRARIES})
 
 if(NOT APPLE)
 target_link_libraries (bin/elementary -lrt)
+target_link_libraries (bin/elementary ${JAVA_JVM_LIBRARY})
+else()
+target_link_libraries (bin/elementary ${JNI_LIBRARIES})
 endif()

@@ -19,7 +19,7 @@ rc1000=@CMAKE_CURRENT_SOURCE_DIR@/examples/elly/MLN/rc1000_query.db
 
 java=java -Xmx2g
 
-tuffy=@CMAKE_CURRENT_SOURCE_DIR@/dep/tuffy.jar
+tuffy=@CMAKE_CURRENT_SOURCE_DIR@/dep/
 
 iomln=@CMAKE_CURRENT_SOURCE_DIR@/dep/iomln.py 
 
