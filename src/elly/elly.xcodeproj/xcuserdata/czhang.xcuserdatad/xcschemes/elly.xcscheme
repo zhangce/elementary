@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -59,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test.cfg&quot;"
+            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lda.cfg&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

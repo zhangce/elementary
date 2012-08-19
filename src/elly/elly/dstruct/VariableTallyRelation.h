@@ -24,19 +24,25 @@ namespace mia{
                 std::string filename;
                 std::string filetype;
                 
-                mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
+                
+                mia::sm::KV<int, mia::sm::IntsBlock, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                
+                //mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
                 
                 int nvariable;
                 
                 mia::sm::IntsBlock lookup(int vid){
-                    return kv.get(vid);
+                    mia::sm::IntsBlock rs;
+                    kv.get(vid, rs);
+                    return rs;
                 }
                 
                 void tally(int vid, int value){
                     
                     //std::cout << "tally " << vid << " <~" << value << std::endl;
                     
-                    mia::sm::IntsBlock block = kv.get(vid);
+                    mia::sm::IntsBlock block;
+                    kv.get(vid, block);
                     block.content[value] ++;
                     kv.set(vid, block);
                 }
@@ -56,7 +62,7 @@ namespace mia{
                             for(int i=0;i<vdomain;i++){
                                 tallies.append<int>(0);
                             }
-                            kv.set(vid, tallies);
+                            kv.load(vid, tallies);
                             
                             
                             for(int i=0;i<nfactor;i++){

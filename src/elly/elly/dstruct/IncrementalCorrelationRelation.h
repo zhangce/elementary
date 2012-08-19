@@ -14,11 +14,7 @@
 
 #include <vector>
 
-#include "../../../storageman/storageman/Buffer_mm.h"
-#include "../../../storageman/storageman/KeyValue_fl.h"
-#include "../../../storageman/storageman/KeyValue_vl.h"
-
-#include "../../../storageman/storageman/KeyValue_fl_fastmm.h"
+#include "../../../sman/sman/Include.h"
 
 #include "../factors/factor_inits.h"
 
@@ -35,7 +31,7 @@ namespace mia{
              * \tparam BUFFER Buffer to use for this correlation relation.
              *
              */
-            template<template<template<class C> class A, class B> class BUFFER, class TYPE>
+            template<mia::sm::KV_Storage STORAGE, class TYPE>
             class IncrementalCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
@@ -45,7 +41,7 @@ namespace mia{
                 /**
                  * In-memory key value store that maps factor ID to its state.
                  */
-                mia::sm::KeyValue_fl_fastmm<TYPE> kv;
+                mia::sm::KV<int, TYPE, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
                 
                 /**
                  * given a factor ID, return the pointer to its state.
@@ -56,7 +52,8 @@ namespace mia{
                     
                     //std::cout << "lookup" << fid << std::endl;
                     
-                    TYPE rr = kv.get(fid);
+                    TYPE rr;
+                    kv.get(fid, rr);
                     TYPE * ret = new TYPE;
                     *ret = rr;
                     
@@ -79,20 +76,22 @@ namespace mia{
                     }
                     
                     //lock(fid);
-                    kv.adhoc_update(fid, from, to); //TODO ad hoc.
+                    //kv.adhoc_update(fid, from, to); //TODO ad hoc.
                     return;
                     //release(fid);
                     
-                    if(_lock){
-                        lock(fid);
-                    }
-                    //TYPE rr = kv.get(fid);
-                    //func_update(&rr, vid, from, to);
-                    //kv.set(fid, rr);
+                    //if(_lock){
+                    //    lock(fid);
+                    //}
                     
-                    if(_lock){
-                        release(fid);
-                    }
+                    TYPE rr;
+                    kv.get(fid, rr);
+                    func_update(&rr, vid, from, to);
+                    kv.set(fid, rr);
+                    
+                    //if(_lock){
+                    //    release(fid);
+                    //}
                 
                 }
                 
@@ -121,7 +120,7 @@ namespace mia{
                                 fstate.init(vid);
                             }
                             
-                            kv.set(fid, fstate);
+                            kv.load(fid, fstate);
                             nfactor ++;
                             
                             pthread_mutex_t * sem = new pthread_mutex_t;

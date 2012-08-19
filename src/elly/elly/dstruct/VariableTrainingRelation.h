@@ -24,12 +24,16 @@ namespace mia{
                 std::string filename;
                 std::string filetype;
                 
-                mia::sm::KeyValue_fl<mia::sm::Buffer_mm, int> kv;
+                mia::sm::KV<int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                
+                //mia::sm::KeyValue_fl<mia::sm::Buffer_mm, int> kv;
                 
                 int nvariable;
                 
                 int lookup(int vid){
-                    return kv.get(vid);
+                    int rs;
+                    kv.get(vid, rs);
+                    return rs;
                 }
                                 
                 void prepare(){
@@ -43,7 +47,7 @@ namespace mia{
                         
                         while(fin >> vid >> vtrain){
                             
-                            kv.set(vid, vtrain);
+                            kv.load(vid, vtrain);
                             
                             nvariable ++;
                             

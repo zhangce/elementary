@@ -11,8 +11,7 @@
 #define elly_factor_inits_h
 
 
-#include "../../../storageman/storageman/KeyValue_fl.h"
-#include "../../../storageman/storageman/KeyValue_vl.h"
+#include "../../../sman/sman/Include.h"
 
 #include "../dstruct/VariableAssignmentRelation.h"
 

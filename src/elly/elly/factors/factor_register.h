@@ -177,48 +177,48 @@ namespace mia{
              * 
              * \return pointer to the new correlation relation (sub class of mia::elly::dstruct::AbstractCorrelationRelation)
              */
-            template<template<template<class C> class A, class B> class BUFFER>
+            template<mia::sm::KV_Storage STORAGE>
             mia::elly::dstruct::AbstractCorrelationRelation * get_correlation_relation(int function_id){
 
                 if(function_id == 0){
-                    mia::elly::dstruct::StandardCorrelationRelation<BUFFER> * cr =
-                    new mia::elly::dstruct::StandardCorrelationRelation<BUFFER>;
+                    mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
+                    new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
                     return cr;
                 }
     
                 if(function_id == 1){
-                    mia::elly::dstruct::StandardCorrelationRelation<BUFFER> * cr =
-                    new mia::elly::dstruct::StandardCorrelationRelation<BUFFER>;
+                    mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
+                    new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
                     return cr;
                 }
                 
                 if(function_id == 6){
-                    mia::elly::dstruct::StandardCorrelationRelation<BUFFER> * cr =
-                    new mia::elly::dstruct::StandardCorrelationRelation<BUFFER>;
+                    mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
+                    new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
                     return cr;
                 }
     
                 if(function_id == 2){
-                    mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50> * cr =
-                    new mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50>;
+                    mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50> * cr =
+                    new mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50>;
                     return cr;
                 }
                 
                 if(function_id == 3){
-                    mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50> * cr =
-                    new mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50>;
+                    mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50> * cr =
+                    new mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50>;
                     return cr;
                 }
                 
                 if(function_id == 4){
-                    mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50> * cr =
-                    new mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50>;
+                    mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50> * cr =
+                    new mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50>;
                     return cr;
                 }
                 
                 if(function_id == 5){
-                    mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50> * cr =
-                    new mia::elly::dstruct::IncrementalCorrelationRelation<BUFFER, factor_ldacount50>;
+                    mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50> * cr =
+                    new mia::elly::dstruct::IncrementalCorrelationRelation<STORAGE, factor_ldacount50>;
                     return cr;
                 }
         

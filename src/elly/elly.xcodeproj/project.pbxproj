@@ -132,15 +132,6 @@
 		E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_lazy.h; sourceTree = "<group>"; };
 		E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GibbsSampler.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		E1866D4D15AC1788003AB862 /* Buffer_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_file.h; sourceTree = "<group>"; };
-		E1866D4E15AC1788003AB862 /* Buffer_mm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_mm.h; sourceTree = "<group>"; };
-		E1866D4F15AC1788003AB862 /* Buffer_mmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer_mmap.h; sourceTree = "<group>"; };
-		E1866D5015AC1788003AB862 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		E1866D5115AC1788003AB862 /* IntsBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntsBlock.h; sourceTree = "<group>"; };
-		E1866D5215AC1788003AB862 /* KeyValue_fl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValue_fl.h; sourceTree = "<group>"; };
-		E1866D5315AC1788003AB862 /* KeyValue_vl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValue_vl.h; sourceTree = "<group>"; };
-		E1866D5515AC1788003AB862 /* SlottedPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlottedPage.h; sourceTree = "<group>"; };
-		E1866D5715AC1788003AB862 /* UniformPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniformPage.h; sourceTree = "<group>"; };
 		E1866D5A15AC1FCE003AB862 /* StandardCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardCorrelationRelation.h; sourceTree = "<group>"; };
 		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E186EBB815A50EAB001DC23D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -157,7 +148,17 @@
 		E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalCorrelationRelation.h; sourceTree = "<group>"; };
 		E1CBA0FF15D0543400A81577 /* factor_register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_register.h; sourceTree = "<group>"; };
 		E1CBA10015D0D76E00A81577 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		E1CBA10115D0FC8F00A81577 /* KeyValue_fl_fastmm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyValue_fl_fastmm.h; sourceTree = "<group>"; };
+		E1F910F715E14E9F00BC8498 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		E1F910F915E14E9F00BC8498 /* KV_int_IntsBlock_-_-_-_DENSEKEY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_int_IntsBlock_-_-_-_DENSEKEY.h"; sourceTree = "<group>"; };
+		E1F910FB15E14E9F00BC8498 /* KV_-_-_MM_DIRECT_-_-.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_-_-_MM_DIRECT_-_-.h"; sourceTree = "<group>"; };
+		E1F910FC15E14E9F00BC8498 /* KV_-_-_MMAP_DIRECT_-_-.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_-_-_MMAP_DIRECT_-_-.h"; sourceTree = "<group>"; };
+		E1F910FD15E14E9F00BC8498 /* KV_int_-_MM_DIRECT_-_DENSEKEY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_int_-_MM_DIRECT_-_DENSEKEY.h"; sourceTree = "<group>"; };
+		E1F910FE15E14E9F00BC8498 /* KV_int_-_MMAP_DIRECT_-_DENSEKEY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_int_-_MMAP_DIRECT_-_DENSEKEY.h"; sourceTree = "<group>"; };
+		E1F9110015E14E9F00BC8498 /* IntsBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntsBlock.h; sourceTree = "<group>"; };
+		E1F9110115E14E9F00BC8498 /* SlottedPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlottedPage.h; sourceTree = "<group>"; };
+		E1F9110215E14E9F00BC8498 /* KV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KV.h; sourceTree = "<group>"; };
+		E1F9110415E14E9F00BC8498 /* sman.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = sman.1; sourceTree = "<group>"; };
+		E1F9110C15E14F2E00BC8498 /* Include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Include.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,11 +303,11 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
+				E1F910F415E14E9F00BC8498 /* sman */,
 				E17E98E315C3EDC30048AAB2 /* alg */,
 				E17E98E115C3DC0D0048AAB2 /* mat */,
 				E14CAAF115C186DB00288FFB /* factors */,
 				E1866D5915AC1FB9003AB862 /* dstruct */,
-				E1866D4C15AC1788003AB862 /* storageman */,
 				E16E324315A4F17A008C69B6 /* utils */,
 				E16E324215A4F17A008C69B6 /* main.cpp */,
 				E16E324115A4F17A008C69B6 /* elly.1 */,
@@ -366,24 +367,6 @@
 			path = tmp;
 			sourceTree = "<group>";
 		};
-		E1866D4C15AC1788003AB862 /* storageman */ = {
-			isa = PBXGroup;
-			children = (
-				E1866D4D15AC1788003AB862 /* Buffer_file.h */,
-				E1866D4E15AC1788003AB862 /* Buffer_mm.h */,
-				E1866D4F15AC1788003AB862 /* Buffer_mmap.h */,
-				E1866D5015AC1788003AB862 /* Common.h */,
-				E1866D5115AC1788003AB862 /* IntsBlock.h */,
-				E1866D5215AC1788003AB862 /* KeyValue_fl.h */,
-				E1CBA10115D0FC8F00A81577 /* KeyValue_fl_fastmm.h */,
-				E1866D5315AC1788003AB862 /* KeyValue_vl.h */,
-				E1866D5515AC1788003AB862 /* SlottedPage.h */,
-				E1866D5715AC1788003AB862 /* UniformPage.h */,
-			);
-			name = storageman;
-			path = ../../storageman/storageman;
-			sourceTree = "<group>";
-		};
 		E1866D5915AC1FB9003AB862 /* dstruct */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +409,65 @@
 				E186EBCE15A50F89001DC23D /* config_test.cfg */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		E1F910F415E14E9F00BC8498 /* sman */ = {
+			isa = PBXGroup;
+			children = (
+				E1F910F515E14E9F00BC8498 /* buffer */,
+				E1F910F615E14E9F00BC8498 /* common */,
+				E1F910F815E14E9F00BC8498 /* complex */,
+				E1F910FA15E14E9F00BC8498 /* direct */,
+				E1F910FF15E14E9F00BC8498 /* dstruct */,
+				E1F9110215E14E9F00BC8498 /* KV.h */,
+				E1F9110C15E14F2E00BC8498 /* Include.h */,
+				E1F9110415E14E9F00BC8498 /* sman.1 */,
+			);
+			name = sman;
+			path = ../../sman/sman;
+			sourceTree = "<group>";
+		};
+		E1F910F515E14E9F00BC8498 /* buffer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = buffer;
+			sourceTree = "<group>";
+		};
+		E1F910F615E14E9F00BC8498 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				E1F910F715E14E9F00BC8498 /* Common.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		E1F910F815E14E9F00BC8498 /* complex */ = {
+			isa = PBXGroup;
+			children = (
+				E1F910F915E14E9F00BC8498 /* KV_int_IntsBlock_-_-_-_DENSEKEY.h */,
+			);
+			path = complex;
+			sourceTree = "<group>";
+		};
+		E1F910FA15E14E9F00BC8498 /* direct */ = {
+			isa = PBXGroup;
+			children = (
+				E1F910FB15E14E9F00BC8498 /* KV_-_-_MM_DIRECT_-_-.h */,
+				E1F910FC15E14E9F00BC8498 /* KV_-_-_MMAP_DIRECT_-_-.h */,
+				E1F910FD15E14E9F00BC8498 /* KV_int_-_MM_DIRECT_-_DENSEKEY.h */,
+				E1F910FE15E14E9F00BC8498 /* KV_int_-_MMAP_DIRECT_-_DENSEKEY.h */,
+			);
+			path = direct;
+			sourceTree = "<group>";
+		};
+		E1F910FF15E14E9F00BC8498 /* dstruct */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9110015E14E9F00BC8498 /* IntsBlock.h */,
+				E1F9110115E14E9F00BC8498 /* SlottedPage.h */,
+			);
+			path = dstruct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

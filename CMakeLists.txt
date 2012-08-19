@@ -1,5 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 
+
 #### GCC OPTIMIZATION ####
 IF(DEFINED CMAKE_BUILD_TYPE)
    SET(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING "Choose the type of
@@ -13,6 +14,13 @@ ELSE()
    message(STATUS "Use build optimizations: " ${CMAKE_BUILD_TYPE})
 
 #### Project Mia! ####
+
+#IF(APPLE)
+#message(STATUS "APPLE:" ${APPLE})
+#ENDIF()
+#
+#message(STATUS "Platform: " ${CMAKE_SYSTEM})
+#message(STATUS "Platform: " ${CMAKE_SYSTEM_NAME})
 
 project (Mia)
 
@@ -65,4 +73,6 @@ message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
 
+if(NOT APPLE)
 target_link_libraries (bin/elementary -lrt)
+endif()

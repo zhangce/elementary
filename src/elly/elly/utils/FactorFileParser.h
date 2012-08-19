@@ -214,7 +214,17 @@ namespace elly{
                     
                     config->io_ismln = true;
                     
+                    // remove content of files in output folder
+                    int rs = system(("rm " + config->rt_output + "/*").c_str());
+                    
+                    //if(rs == 0){
+                    //    std::cout << "Cannot run " << "[rm " + config->rt_output + "/*" + "]... Exiting..." << std::endl;
+                    //    assert(rs != 0);
+                    //}
+                    
                     system(cmd.c_str());
+                    
+                    
                     
                    
                     //itype = "file";
@@ -298,7 +308,7 @@ namespace elly{
                         }
                         assert(func_id != -1);
 
-                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<mia::sm::Buffer_mm>(func_id);
+                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<mia::sm::MM>(func_id);
 
                         
                         

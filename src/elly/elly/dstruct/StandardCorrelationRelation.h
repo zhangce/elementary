@@ -13,9 +13,7 @@
 
 #include <vector>
 
-#include "../../../storageman/storageman/Buffer_mm.h"
-#include "../../../storageman/storageman/KeyValue_fl.h"
-#include "../../../storageman/storageman/KeyValue_vl.h"
+#include "../../../sman/sman/Include.h"
 
 #include "../factors/factor_inits.h"
 
@@ -37,7 +35,7 @@ namespace mia{
              * \tparam BUFFER Buffer to use for this correlation relation.
              *
              */
-            template<template<template<class C> class A, class B> class BUFFER>
+            template<mia::sm::KV_Storage STORAGE>
             class StandardCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
@@ -47,7 +45,8 @@ namespace mia{
                  *
                  * \sa  mia::sm::KeyValue_vl
                  */
-                mia::sm::KeyValue_vl<BUFFER> kv;
+                mia::sm::KV<int, mia::sm::IntsBlock, STORAGE, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                
                 
                 /**
                  * Given a factor state ID, returns the pointer to VID block.
@@ -60,9 +59,11 @@ namespace mia{
                         //todo: remember to delete
                         //todo: check whether it is slow
                     
-                    mia::sm::IntsBlock rr = kv.get(fid);
+                    mia::sm::IntsBlock rr;
+                    kv.get(fid, rr);
                     
                     mia::sm::IntsBlock * ret = new mia::sm::IntsBlock;
+                    //kv.get(fid, *ret);
                     *ret = rr;
                     
                     return ret;
@@ -105,7 +106,7 @@ namespace mia{
                                 fstate.init(vid);
                             }
                             
-                            kv.set(fid, fstate.state);
+                            kv.load(fid, fstate.state);
                             nfactor ++;
                             
                             pthread_mutex_t * sem = new pthread_mutex_t;

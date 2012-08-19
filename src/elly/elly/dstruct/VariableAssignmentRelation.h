@@ -14,10 +14,7 @@
 
 #include <vector>
 
-#include "../../../storageman/storageman/Buffer_mmap.h"
-#include "../../../storageman/storageman/Buffer_mm.h"
-#include "../../../storageman/storageman/KeyValue_fl.h"
-#include "../../../storageman/storageman/KeyValue_vl.h"
+#include "../../../sman/sman/Include.h"
 
 #include "../factors/factor_inits.h"
 
@@ -43,18 +40,18 @@ namespace mia{
                  * Type of input file. {tsv}
                  */
                 std::string filetype;
-                
+                                
                 /**
-                 * Key value store which maps VID to assignment.
+                 * Key value store which maps VID to its assignment.
                  */
-                mia::sm::KeyValue_fl<mia::sm::Buffer_mmap, int> kf;
+                mia::sm::KV<int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kf;
                 
                 /**
                  * Key value store which maps VID to its domain.
                  */
-                mia::sm::KeyValue_fl<mia::sm::Buffer_mmap, int> kf_domain;
+                mia::sm::KV<int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kf_domain;
                 
-                /**
+                 /**
                  * Number of variables being loaded.
                  */
                 int nvariable;
@@ -63,14 +60,18 @@ namespace mia{
                  * Given a variable ID, get its current assignment.
                  */
                 int lookup(int vid){
-                    return kf.get(vid);
+                    int rs;
+                    kf.get(vid, rs);
+                    return rs;
                 }
                 
                 /**
                  * Given a variable ID, get its domain.
                  */
                 int lookup_domain(int vid){
-                    return kf_domain.get(vid);
+                    int rs;
+                    kf_domain.get(vid, rs);
+                    return rs;
                 }
                 
                 /**
@@ -98,8 +99,8 @@ namespace mia{
                                 fin >> crid >> fid;
                             }
                             
-                            kf.set(vid, 0);
-                            kf_domain.set(vid, vdomain);
+                            kf.load(vid, 0);
+                            kf_domain.load(vid, vdomain);
                             
                             nvariable ++;
                             

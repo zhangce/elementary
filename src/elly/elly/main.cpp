@@ -14,9 +14,7 @@
 
 #include "utils/Timer.h"
 
-#include "../../storageman/storageman/Buffer_mm.h"
-#include "../../storageman/storageman/KeyValue_fl.h"
-#include "../../storageman/storageman/KeyValue_vl.h"
+#include "../../sman/sman/Include.h"
 
 #include "mat/Materialization_lazy.h"
 #include "factors/factor_inits.h"

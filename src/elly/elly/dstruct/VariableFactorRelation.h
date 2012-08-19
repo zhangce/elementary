@@ -14,13 +14,9 @@
 
 #include <vector>
 
-#include "../../../storageman/storageman/Buffer_mm.h"
-#include "../../../storageman/storageman/KeyValue_fl.h"
-#include "../../../storageman/storageman/KeyValue_vl.h"
+#include "../../../sman/sman/Include.h"
 
 #include "../factors/factor_inits.h"
-
-
 
 namespace mia{
     namespace elly{
@@ -47,8 +43,8 @@ namespace mia{
                 /**
                  * Key value store that maps VID to factor block.
                  */
-                mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
-                
+                mia::sm::KV<int, mia::sm::IntsBlock, mia::sm::MMAP, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+
                 /**
                  * Number of vairables being loaded.
                  */
@@ -58,7 +54,9 @@ namespace mia{
                  * Given a VID, get factor block.
                  */
                 mia::sm::IntsBlock lookup(int vid){
-                    return kv.get(vid);
+                    mia::sm::IntsBlock block;
+                    kv.get(vid, block);
+                    return block;
                 }
                 
                 /**
@@ -88,7 +86,7 @@ namespace mia{
                                 
                             }
                             
-                            kv.set(vid, factors);
+                            kv.load(vid, factors);
                             nvariable ++;
                             
                         }
