@@ -52,6 +52,13 @@ configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/MLN/catelog.cfg.in"
 
 #endif()
 
+find_package (JNI)
+if(JNI_FOUND)
+message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+else()
+message(STATUS "JNI not found!")
+endif()
 
 set(Boost_NO_SYSTEM_PATHS "ON") 
 set(Boost_NO_BOOST_CMAKE "ON")
@@ -68,10 +75,12 @@ find_package (Boost COMPONENTS program_options REQUIRED)
 message(STATUS "Boost Headers Path: " ${Boost_INCLUDE_DIRS})
 
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${JNI_INCLUDE_DIRS})
 
 message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
+target_link_libraries (bin/elementary ${JNI_LIBRARIES})
 
 if(NOT APPLE)
 target_link_libraries (bin/elementary -lrt)
