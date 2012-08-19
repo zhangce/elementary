@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/tuffy/!svn/ver/2084/tuffy/trunk/src/tuffy/util
+END
+Settings.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/Settings.java
+END
+myInt.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/tuffy/!svn/ver/1833/tuffy/trunk/src/tuffy/util/myInt.java
+END
+BitSetDoublePair.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/tuffy/!svn/ver/1833/tuffy/trunk/src/tuffy/util/BitSetDoublePair.java
+END
+BatMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/BatMan.java
+END
+StringMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tuffy/!svn/ver/1599/tuffy/trunk/src/tuffy/util/StringMan.java
+END
+IronMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/IronMan.java
+END
+Config.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuffy/!svn/ver/2084/tuffy/trunk/src/tuffy/util/Config.java
+END
+BoundHashList.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/BoundHashList.java
+END
+TuffyThrownError.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/TuffyThrownError.java
+END
+UIMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/tuffy/!svn/ver/2084/tuffy/trunk/src/tuffy/util/UIMan.java
+END
+PlotMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/PlotMan.java
+END
+FileMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/FileMan.java
+END
+runAllTestCases.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/runAllTestCases.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/package.html
+END
+Timer.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/tuffy/!svn/ver/2031/tuffy/trunk/src/tuffy/util/Timer.java
+END
+myDouble.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tuffy/!svn/ver/1920/tuffy/trunk/src/tuffy/util/myDouble.java
+END
+Enumerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/tuffy/!svn/ver/1920/tuffy/trunk/src/tuffy/util/Enumerator.java
+END
+BitSetIntPair.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/tuffy/!svn/ver/1833/tuffy/trunk/src/tuffy/util/BitSetIntPair.java
+END
+SpiderMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/SpiderMan.java
+END
+HashArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/HashArray.java
+END
+DebugMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/DebugMan.java
+END
+MathMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/MathMan.java
+END
+UnionFind.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tuffy/!svn/ver/1952/tuffy/trunk/src/tuffy/util/UnionFind.java
+END
+ExceptionMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/ExceptionMan.java
+END
+SuperMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/SuperMan.java
+END
+ProbMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/util/ProbMan.java
+END

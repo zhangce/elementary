@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/tuffy/!svn/ver/2094/tuffy/trunk/src/tuffy/mln
+END
+Atom.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tuffy/!svn/ver/1592/tuffy/trunk/src/tuffy/mln/Atom.java
+END
+Predicate.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tuffy/!svn/ver/1947/tuffy/trunk/src/tuffy/mln/Predicate.java
+END
+Type.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tuffy/!svn/ver/1874/tuffy/trunk/src/tuffy/mln/Type.java
+END
+package_mln.jpeg
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/mln/package_mln.jpeg
+END
+MarkovLogicNetwork.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tuffy/!svn/ver/2094/tuffy/trunk/src/tuffy/mln/MarkovLogicNetwork.java
+END
+Term.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tuffy/!svn/ver/1600/tuffy/trunk/src/tuffy/mln/Term.java
+END
+Tuple.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/tuffy/!svn/ver/1842/tuffy/trunk/src/tuffy/mln/Tuple.java
+END
+Clause.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/tuffy/!svn/ver/2053/tuffy/trunk/src/tuffy/mln/Clause.java
+END
+Literal.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuffy/!svn/ver/2006/tuffy/trunk/src/tuffy/mln/Literal.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuffy/!svn/ver/1567/tuffy/trunk/src/tuffy/mln/package.html
+END

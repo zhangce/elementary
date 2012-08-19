@@ -33,11 +33,13 @@
 #include "../factors/factor_inits.h"
 #include "../factors/factor_register.h"
 
+#include <jni.h>
+
 
 namespace mia{
 namespace elly{
     namespace utils{
-    
+            
         /**
          * Class that contains a set of relations and load them.
          */
@@ -180,52 +182,114 @@ namespace elly{
                     elly::utils::log() << "  | TuffyConfig = " << tuffy_config << std::endl;
                     elly::utils::log() << "  | OtherConfig = " << other_config << std::endl;
                     
-                    std::string cmd = "";
+                    std::vector<std::string> cmds;
+                    //std::string cmd = "";
                     
-                    cmd = java + " -jar " + path_to_tuffy + " -mia -i " + mln + " -e " + evid;
+                    //cmd = java + " -jar " + path_to_tuffy + " -mia -i " + mln + " -e " + evid;
+                    
+                    cmds.push_back("-mia");
+                    cmds.push_back("-i");
+                    cmds.push_back(mln);
+                    cmds.push_back("-e");
+                    cmds.push_back(evid);
                     
                     if(query.compare("")!=0){
-                        cmd += " -q " + query;
+                        //cmd += " -q " + query;
+                        cmds.push_back("-q");
+                        cmds.push_back(query);
                     }
+                    
                     if(queryfile.compare("")!=0){
-                        cmd += " -queryFile " + queryfile;
+                        //cmd += " -queryFile " + queryfile;
+                        cmds.push_back("-queryFile");
+                        cmds.push_back(queryfile);
                     }
                     if(tuffy_config.compare("")!=0){
-                        cmd += " -conf " + tuffy_config;
+                        //cmd += " -conf " + tuffy_config;
+                        cmds.push_back("-conf");
+                        cmds.push_back(tuffy_config);
                     }
-                    if(other_config.compare("")!=0){
-                        cmd += other_config;
-                    }
+                    //if(other_config.compare("")!=0){
+                    //    cmd += other_config;
+                    //}
                     
-                    system((std::string("mkdir ") + config->rt_output).c_str());
+                    cmds.push_back("-o");
+                    cmds.push_back(config->rt_output);
+                    cmds.push_back("-verbose");
+                    cmds.push_back("3");
                     
-                    cmd += " -o " + config->rt_output;
-                    cmd += " -verbose 3";
+                    system((std::string("mkdir -p ") + config->rt_output).c_str());
                     
                     std::string tuffy_log = config->rt_output + "/log_tuffy.txt";
                     std::string tuffy_error = config->rt_output + "/error_tuffy.txt";
                     
-                    elly::utils::log() << ">> Executing Tuffy using command: " << cmd << std::endl;
-                    elly::utils::log() << ">> Tuffy is logged at: " << tuffy_log << std::endl;
-                    elly::utils::log() << ">> Tuffy error is logged at: " << tuffy_error << std::endl;
+                    JavaVM *jvm;       /* denotes a Java VM */
+                    JNIEnv *env;       /* pointer to native method interface */
+                    JavaVMInitArgs vm_args; /* JDK/JRE 6 VM initialization arguments */
+                    JavaVMOption* options = new JavaVMOption[1];
                     
-                    //system(((std::string)(cmd + " > " + tuffy_log + " 2> " + tuffy_error)).c_str());
-
+                    std::string classpath = "-Djava.class.path=";
+                    classpath += path_to_tuffy + "/:";
+                    classpath += path_to_tuffy + "/" + "commons-lang3-3.0-beta-javadoc.jar:";
+                    classpath += path_to_tuffy + "/" + "JavaEWAH-0.3.2.jar:";
+                    classpath += path_to_tuffy + "/" + "commons-lang3-3.0-beta.jar:";
+                    classpath += path_to_tuffy + "/" + "antlr-3.2.jar:";
+                    classpath += path_to_tuffy + "/" + "commons-math-2.2.jar:";
+                    classpath += path_to_tuffy + "/" + "args4j-2.0.12.jar:";
+                    classpath += path_to_tuffy + "/" + "jgrapht-jdk1.6.jar:";
+                    classpath += path_to_tuffy + "/" + "commons-codec-1.6.jar:";
+                    classpath += path_to_tuffy + "/" + "postgresql-8.4-701.jdbc4.jar";
+                    
+                    
+                    char sstr[1000];
+                    sprintf(sstr, "%s", classpath.c_str());
+                    std::cout << sstr << std::endl;
+                    
+                    options[0].optionString = sstr;
+                    
+                    vm_args.version = JNI_VERSION_1_6;
+                    vm_args.nOptions = 1;
+                    vm_args.options = options;
+                    vm_args.ignoreUnrecognized = false;
+                    /* load and initialize a Java VM, return a JNI interface
+                     * pointer in env */
+                    JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
+                    delete options;
+                    
+                    
+                    jobjectArray ret;
+                    ret= (jobjectArray)env->NewObjectArray(cmds.size(),
+                                                           env->FindClass("java/lang/String"),
+                                                           env->NewStringUTF(""));
+                    
+                    for(int i=0;i<cmds.size();i++) {
+                        env->SetObjectArrayElement(
+                                                   ret,i,env->NewStringUTF(cmds[i].c_str()));
+                    }
+                    
+                    jclass cls = env->FindClass("tuffy/main/Main");
+                    
+                    jmethodID mid = env->GetStaticMethodID(cls, "main_return", "([Ljava/lang/String;)I");
+                    jint rs = env->CallStaticIntMethod(cls, mid, ret);
+                    
+                    //std::cout << "JAVA RESULT = " << rs << std::endl;
+                    
+                    if(rs != 99999){
+                        std::cout << ">> Error in running Tuffy!" << std::endl;
+                        throw std::exception();
+                    }
                     
                     config->io_ismln = true;
                     
                     // remove content of files in output folder
-                    int rs = system(("rm " + config->rt_output + "/*").c_str());
+                    //int rs = system(("rm " + config->rt_output + "/*").c_str());
                     
                     //if(rs == 0){
                     //    std::cout << "Cannot run " << "[rm " + config->rt_output + "/*" + "]... Exiting..." << std::endl;
                     //    assert(rs != 0);
                     //}
                     
-                    system(cmd.c_str());
-                    
-                    
-                    
+                    //system(cmd.c_str());
                    
                     //itype = "file";
                     //config.rt_input = config.rt_output;
