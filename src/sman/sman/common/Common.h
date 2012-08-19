@@ -23,9 +23,10 @@
 #define MMAP_INIT_NELEMENT 1
 
 int shared_tmp_fid = 0;
+std::string config_tmp_folder = "/tmp/";
 static std::string getNextTmpFileName(){
     char tmp[1000];
-    sprintf(tmp, "/tmp/tmp-%d", shared_tmp_fid ++);
+    sprintf(tmp, "/%s/tmp-%d", config_tmp_folder.c_str(), shared_tmp_fid ++);
     return std::string(tmp);
 }
 

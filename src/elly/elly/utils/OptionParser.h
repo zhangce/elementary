@@ -11,6 +11,7 @@
 
 #include "Common.h"
 
+#include "../../../sman/sman/common/Common.h"
 #include "boost/program_options.hpp"
 namespace po = boost::program_options;
 
@@ -115,6 +116,7 @@ namespace elly {
                 config.rt_workdir = vm["rt.workdir"].as<std::string>();
                 elly::utils::log() << "  | rt.workdir = " << config.rt_workdir << std::endl;
             }
+            config_tmp_folder = config.rt_workdir;
             
             if(vm.count("rt.mode")){
                 config.rt_mode = vm["rt.mode"].as<std::string>();
