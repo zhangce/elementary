@@ -41,7 +41,8 @@ Mia::Elementary is written in C++ and has been tested using the following compil
   - GCC 4.4.6 under Linux
   - GCC 4.2.1 under MacOSX
 
-To use the MLN component in Mia::Elementary, Java (>1.6) and Python (>2.6) is required.
+To use the MLN component in Mia::Elementary, JDK (>1.6) and Python (>2.6) is required.
+JDK can be found at http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html.
 
 Mia::Elementary relies on the following C++ libraries:
 
