@@ -1,10 +1,11 @@
 ===============
-Mia::Elementary
+Elementary
 ===============
 
-Mia::Elementary is scalable Gibbs sampler from factor graphs or Markov Logic Network.
+Elementary is a scalable statistical inference and learning engine for 
+factor graphs and Markov Logic Network.
 
-Mia::Elementary is developed by the Hazy group (http://hazy.cs.wisc.edu/hazy/)
+Elementary is developed by the Hazy group (http://hazy.cs.wisc.edu/hazy/)
 from University of Wisconsin-Madison under Professor Christopher Ré 
 (http://pages.cs.wisc.edu/~chrisre/).
 
@@ -16,7 +17,7 @@ from University of Wisconsin-Madison under Professor Christopher Ré
 
 ### 1. Installation
 
-After downloading and uncompressing Mia::Elementary, the folder mia has the following structure:
+After downloading and uncompressing Elementary, the folder mia has the following structure:
 
     mia  
      |-- bin  
@@ -29,21 +30,22 @@ After downloading and uncompressing Mia::Elementary, the folder mia has the foll
 
 ##### 1.1.1 Operating Systems
 
-Mia::Elementary is tested in the following operating systems:
+Elementary is tested in the following operating systems:
 
   - MacOSX (>10.6);
   - Redhat Linux Enterprise 5.0;
 
 ##### 1.1.2 Dependencies
 
-Mia::Elementary is written in C++ and has been tested using the following compilers:
+Elementary is written in C++ and has been tested using the following compilers:
 
   - GCC 4.4.6 under Linux
   - GCC 4.2.1 under MacOSX
 
-To use the MLN component in Mia::Elementary, Java (>1.6) and Python (>2.6) is required.
+To use the MLN component in Elementary, JDK (>1.6) and Python (>2.6) is required.
+JDK can be found at http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html.
 
-Mia::Elementary relies on the following C++ libraries:
+Elementary relies on the following C++ libraries:
 
   - Boost::program_options (http://www.boost.org/doc/libs/1_50_0/doc/html/program_options.html)
 
@@ -52,17 +54,20 @@ We included a installation script for boost at mia/dep/boost. To install boost, 
     $ cd dep/boost  
     $ sh install.sh  
 
-Mia::Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
+Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
 
 1.2 Installation
    
-To install Mia::Elementary, go to the folder mia, and type in
+To install Elementary, first set environment variables. You may need to set 
+environment variable BOOST_ROOT. If there are multiple installtions of boost
+on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to 
+select the correct boost to use. You may also need to set environment variable
+JAVA_HOME as path to the JDK installation.
+
+Go to the folder mia, and type in
 
     $ cmake .  
 
-You may need to set environment variable BOOST_ROOT. If there are multiple installtions of boost
-on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to select the correct
-boost to use.
 
 The following lines should prompt:
 
@@ -85,7 +90,7 @@ The following lines should prompt:
     -- Build files have been written to: /raid/czhang/Codes/mia  
 
 A file named ``Makefile'' should appear in the folder mia now.
-To build Mia::Elementary, type in
+To build Elementary, type in
 
     $ make  
   
