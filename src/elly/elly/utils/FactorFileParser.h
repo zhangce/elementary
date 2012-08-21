@@ -41,7 +41,7 @@ namespace elly{
     namespace utils{
             
         /**
-         * Class that contains a set of relations and load them.
+         * \brief Class that contains a set of relations and load them.
          */
         class FactorFileParser{
         public:

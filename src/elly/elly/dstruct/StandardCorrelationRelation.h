@@ -25,12 +25,12 @@ namespace mia{
     namespace elly{
         
         /**
-         * Namespace for relations.
+         * \brief Namespace for relations.
          */
         namespace dstruct{
             
             /**
-             * Correlation relation in which each factor contains a list of variable IDs
+             * \brief Correlation relation in which each factor contains a list of variable IDs
              *
              * \tparam BUFFER Buffer to use for this correlation relation.
              *

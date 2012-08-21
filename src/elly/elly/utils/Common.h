@@ -32,7 +32,7 @@ namespace mia {
 namespace elly{
     
     /**
-     * The class for a sample task of one variable.
+     * \brief The class for a sample task of one variable.
      */
     class SampleInput{
         

@@ -15,7 +15,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Variable tally relation which maps a variable to the int block contains tally info.
+             * \brief Variable tally relation which maps a variable to the int block contains tally info.
              */
             class VariableTallyRelation{
                 

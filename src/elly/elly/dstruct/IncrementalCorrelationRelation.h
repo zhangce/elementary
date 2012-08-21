@@ -26,7 +26,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Correlation relation in which each factor contains a fixed-size state.
+             * \brief Correlation relation in which each factor contains a fixed-size state.
              *
              * \tparam BUFFER Buffer to use for this correlation relation.
              *

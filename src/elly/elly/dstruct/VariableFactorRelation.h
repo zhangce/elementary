@@ -23,7 +23,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Variable factor relation which maps each variable to the set of factors.
+             * \brief Variable factor relation which maps each variable to the set of factors.
              */
             class VariableFactorRelation{
                 

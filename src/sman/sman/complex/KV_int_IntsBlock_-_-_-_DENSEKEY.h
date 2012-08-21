@@ -19,8 +19,15 @@
 #include "../direct/KV_int_-_MMAP_DIRECT_-_DENSEKEY.h"
 
 namespace mia{
+    
+    /**
+     * \brief Namespace for storage manager.
+     **/
     namespace sm{
     
+        /**
+         * \brief Key-value store for dense int key, variable length value, in MMAP.
+         **/
         template<KV_Replacement REPLACEMENT>
         class KV<int, IntsBlock, MMAP, DIRECT, REPLACEMENT, DENSE_KEY>{
             

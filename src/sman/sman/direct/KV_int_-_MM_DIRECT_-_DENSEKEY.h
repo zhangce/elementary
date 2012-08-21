@@ -17,6 +17,9 @@
 namespace mia{
     namespace sm{
         
+        /**
+         * \brief Key value store for dense int key and arbitrary value type in main memory.
+         **/
         template<class VALUE, KV_Replacement REPLACEMENT>
         class KV<int, VALUE, MM, DIRECT, REPLACEMENT, DENSE_KEY>{
             

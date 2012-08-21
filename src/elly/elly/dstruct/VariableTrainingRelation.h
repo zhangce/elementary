@@ -15,7 +15,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Variable training relation which maps a variable to its value in training data.
+             * \brief Variable training relation which maps a variable to its value in training data.
              */
             class VariableTrainingRelation{
                 

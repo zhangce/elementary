@@ -19,7 +19,7 @@ namespace mia {
 namespace elly {
     
     /*!
-     *  utils used by elly.
+     *  \brief utils used by elly.
      */
     namespace utils{
         

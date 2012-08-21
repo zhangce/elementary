@@ -24,7 +24,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Variable assignment relation, which maps VID to its current assignment.
+             * \brief Variable assignment relation, which maps VID to its current assignment.
              *
              */
             class VariableAssignmentRelation{

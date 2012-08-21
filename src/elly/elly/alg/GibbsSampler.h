@@ -19,11 +19,18 @@
 #include "../utils/Common.h"
 #include "../factors/factor_inits.h"
 
+/**
+ * \brief Just an umbralla namespace for elementary/storage manager etc.
+ **/
 namespace mia {
+    
+    /**
+     * \brief Namespace for Elementary.
+     **/
     namespace elly{
         
         /**
-         * Namespace for sampling algorithms.
+         * \brief Namespace for sampling algorithms.
          */
         namespace alg{
             

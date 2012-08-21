@@ -19,7 +19,7 @@
 
 
 /**
- * factor class for LDA (<50 topics)
+ * \brief factor class for LDA (<50 topics)
  */
 class factor_ldacount50{
 
@@ -42,7 +42,7 @@ public:
 };
 
 /**
- * factor class for general factor relies on VIDs.
+ * \brief factor class for general factor relies on VIDs.
  */
 class factor_vidblock_unigram{
   

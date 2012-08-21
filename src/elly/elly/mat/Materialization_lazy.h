@@ -16,12 +16,12 @@ namespace mia{
     namespace elly{
         
         /**
-         * Namespace for materialization strategies.
+         * \brief Namespace for materialization strategies.
          */
         namespace mat{
                        
             /**
-             * Class for lazy materialization. See TR for details.
+             * \brief Class for lazy materialization. See TR for details.
              **/
             class Materialization_lazy{
                 

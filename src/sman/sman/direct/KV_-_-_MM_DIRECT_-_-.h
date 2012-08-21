@@ -16,6 +16,9 @@
 namespace mia{
     namespace sm{
         
+        /**
+         * \brief Key-value store for arbitary key and value type in main memory.
+         **/
         template<class KEY, class VALUE, KV_Replacement REPLACEMENT, KV_Hint HINT>
         class KV<KEY, VALUE, MM, DIRECT, REPLACEMENT, HINT>{
             

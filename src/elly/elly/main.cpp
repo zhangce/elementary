@@ -29,31 +29,37 @@
 namespace mia{
 namespace elly{
     
+    /**
+     * \brief A sample task for Elementary.
+     **/
     class SampleTask{
     public:
-        int lower;
-        int upper;
-        int step;
-        mia::elly::mat::Materialization_lazy * mat;
-        bool isShuffle;
-        int * nchange;
-        int * naccept;
+        int lower;  /** start VID **/
+        int upper;  /** end VID **/
+        int step;   /** step size for next VID **/
+        mia::elly::mat::Materialization_lazy * mat; /** materialization strategy to use **/
+        bool isShuffle; /** whether the only responsiblity of this epoch is to randomly set the variable value **/
+        int * nchange; /** number of variable changes in this epoch **/
+        int * naccept; /** number of accepted flips for SA **/
         
-        bool tally;
-        bool train;
+        bool tally; /** whether tally variable values for marginal inference **/
+        bool train; /** whether change weight by training **/
         
-        double stepSize;
+        double stepSize; /** step size if it is a learning epoch **/
         
-        double temparature;
+        double temparature; /** temparature for SA **/
         
-        int thread_id;
-        std::vector<double> * vector_pool;
+        int thread_id; /** thread id of this thread **/
+        std::vector<double> * vector_pool; /** object poll of vector for each thread **/
         
-        bool lock;
-        bool is_log_system;
+        bool lock; /** whether use lock for inference **/
+        bool is_log_system; /** \sa config.rt_is_log_system **/
         
     };
     
+    /**
+     * a mapper to run a sampleTask
+     **/
     void* mapper_sample(void* sampleTask){
                 
         SampleTask* task = (SampleTask*) sampleTask;

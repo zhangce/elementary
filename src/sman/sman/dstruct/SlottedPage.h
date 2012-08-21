@@ -14,6 +14,9 @@
 namespace mia{
     namespace sm{
     
+        /**
+         * \brief Slotted page, with each record a mia::sm::IntsBlock.
+         **/
         class SlottedPage{
             
         public:

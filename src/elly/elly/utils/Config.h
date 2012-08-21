@@ -16,7 +16,7 @@ namespace elly{
     namespace utils{
         
         /**
-         * Configurations to run elly. \sa mia::elly::utils::OptionParser.
+         * \brief Configurations to run elly. \sa mia::elly::utils::OptionParser.
          */
         class Config{
         public:

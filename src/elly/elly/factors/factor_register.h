@@ -89,7 +89,7 @@ namespace mia{
     namespace elly{
         
         /**
-         * Namespace for factors.
+         * \brief Namespace for registered factors.
          */
         namespace factors{
             

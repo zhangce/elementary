@@ -26,6 +26,9 @@
 namespace mia{
     namespace sm{
         
+        /**
+         * \brief Key value store for dense int key and arbitrary value in MMAP.
+         **/
         template<class VALUE, KV_Replacement REPLACEMENT>
         class KV<int, VALUE, MMAP, DIRECT, REPLACEMENT, DENSE_KEY>{
             

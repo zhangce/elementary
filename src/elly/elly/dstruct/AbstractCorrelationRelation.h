@@ -14,7 +14,7 @@ namespace mia{
         namespace dstruct{
             
             /**
-             * Abstract class for unifying mia::elly::dstruct::StandardCorrelationRelation and mia::elly::dstruct::IncrementalCorrelationRelation.
+             * \brief Abstract class for unifying mia::elly::dstruct::StandardCorrelationRelation and mia::elly::dstruct::IncrementalCorrelationRelation.
              */
             class AbstractCorrelationRelation {
                 

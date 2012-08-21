@@ -14,12 +14,18 @@
 namespace mia{
     namespace sm{
 
+        /**
+         * \brief Pair of integer.
+         **/
         class IntPair{
         public:
             int first;
             int second;
         };
 
+        /**
+         * \brief A block of integer. Used as a container for variance length object.
+         **/
         class IntsBlock{
         public:
             
