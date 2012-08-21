@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Mia::Elementary: mia::elly::mat::Materialization_lazy Class Reference</title>
+<title>Elementary: mia::elly::mat::Materialization_lazy Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Mia::Elementary
+   <div id="projectname">Elementary
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">mia::elly::mat::Materialization_lazy Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for lazy materialization. See TR for details.  
+ <a href="classmia_1_1elly_1_1mat_1_1_materialization__lazy.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_materialization__lazy_8h_source.html">Materialization_lazy.h</a>&gt;</code></p>
 
@@ -137,7 +140,7 @@ Public Attributes</h2></td></tr>
 <p>Constructor.</p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html">mia::elly::utils::FactorFileParser</a></td><td>pointer to <a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html">mia::elly::utils::FactorFileParser</a> object.</td></tr>
+    <tr><td class="paramname"><a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html" title="Class that contains a set of relations and load them.">mia::elly::utils::FactorFileParser</a></td><td>pointer to <a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html" title="Class that contains a set of relations and load them.">mia::elly::utils::FactorFileParser</a> object.</td></tr>
   </table>
   </dd>
 </dl>
@@ -241,7 +244,7 @@ Public Attributes</h2></td></tr>
 <p>Given a sampled result, update the content all relations.</p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sampleInput</td><td>reference to <a class="el" href="classmia_1_1elly_1_1_sample_input.html">mia::elly::SampleInput</a> object encoding a sample task of one variable </td></tr>
+    <tr><td class="paramname">sampleInput</td><td>reference to <a class="el" href="classmia_1_1elly_1_1_sample_input.html" title="The class for a sample task of one variable.">mia::elly::SampleInput</a> object encoding a sample task of one variable </td></tr>
     <tr><td class="paramname">newvalue</td><td>new assignment of the target variable </td></tr>
     <tr><td class="paramname">tally</td><td>true if running marginal inference, which needs tally the value </td></tr>
     <tr><td class="paramname">lock</td><td>true if using lock </td></tr>
@@ -261,23 +264,23 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html">mia::elly::utils::FactorFileParser</a> object which provides</p>
+<p><a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html" title="Class that contains a set of relations and load them.">mia::elly::utils::FactorFileParser</a> object which provides</p>
 <ul>
-<li>correlation relations (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html">mia::elly::dstruct::StandardCorrelationRelation</a> or <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html">mia::elly::dstruct::IncrementalCorrelationRelation</a>);</li>
-<li>variable-&gt;factor relation (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_factor_relation.html">mia::elly::dstruct::VariableFactorRelation</a>)</li>
-<li>variable-&gt;assignment relation (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation.html">mia::elly::dstruct::VariableAssignmentRelation</a>)</li>
-<li>variable-&gt;tally relation for marginal inference (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_tally_relation.html">mia::elly::dstruct::VariableTallyRelation</a>) </li>
+<li>correlation relations (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html" title="Correlation relation in which each factor contains a list of variable IDs.">mia::elly::dstruct::StandardCorrelationRelation</a> or <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html" title="Correlation relation in which each factor contains a fixed-size state.">mia::elly::dstruct::IncrementalCorrelationRelation</a>);</li>
+<li>variable-&gt;factor relation (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_factor_relation.html" title="Variable factor relation which maps each variable to the set of factors.">mia::elly::dstruct::VariableFactorRelation</a>)</li>
+<li>variable-&gt;assignment relation (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation.html" title="Variable assignment relation, which maps VID to its current assignment.">mia::elly::dstruct::VariableAssignmentRelation</a>)</li>
+<li>variable-&gt;tally relation for marginal inference (<a class="el" href="classmia_1_1elly_1_1dstruct_1_1_variable_tally_relation.html" title="Variable tally relation which maps a variable to the int block contains tally info.">mia::elly::dstruct::VariableTallyRelation</a>) </li>
 </ul>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>elly/elly/mat/<a class="el" href="_materialization__lazy_8h_source.html">Materialization_lazy.h</a></li>
+<li>/Users/czhang/Desktop/Codes/mia/src/elly/elly/mat/<a class="el" href="_materialization__lazy_8h_source.html">Materialization_lazy.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Aug 12 2012 13:18:34 for Mia::Elementary by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 20 2012 23:04:48 for Elementary by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

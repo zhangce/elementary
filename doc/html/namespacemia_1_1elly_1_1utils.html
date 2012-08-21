@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Mia::Elementary: mia::elly::utils Namespace Reference</title>
+<title>Elementary: mia::elly::utils Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Mia::Elementary
+   <div id="projectname">Elementary
    </div>
   </td>
  </tr>
@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,12 +90,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">mia::elly::utils Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>utils used by elly.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmia_1_1elly_1_1utils_1_1_factor_tuple.html">FactorTuple</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">Config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configurations to run elly.  <a href="classmia_1_1elly_1_1utils_1_1_config.html#details">More...</a><br/></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html">FactorFileParser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that contains a set of relations and load them.  <a href="classmia_1_1elly_1_1utils_1_1_factor_file_parser.html#details">More...</a><br/></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmia_1_1elly_1_1utils_1_1_timer.html">Timer</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
@@ -145,10 +150,10 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>logerr<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>fill in configuration into <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a> object, which will be used by an <a class="el" href="classmia_1_1elly_1_1_elly.html">elly::Elly</a> object.</p>
+<p>fill in configuration into <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a> object, which will be used by an <a class="el" href="classmia_1_1elly_1_1_elly.html">elly::Elly</a> object.</p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td><a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a> object to fill in </td></tr>
+    <tr><td class="paramname">config</td><td><a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a> object to fill in </td></tr>
     <tr><td class="paramname">po::variables_map</td><td>see details in <a href="http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html">http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html</a> </td></tr>
     <tr><td class="paramname">po::options_description</td><td>see details in <a href="http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html">http://www.boost.org/doc/libs/1_50_0/doc/html/program_options/tutorial.html</a> </td></tr>
   </table>
@@ -170,16 +175,16 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>logerr<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Given an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a>, check whether it is good to use.</p>
+<p>Given an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a>, check whether it is good to use.</p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td><a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a> object to check </td></tr>
+    <tr><td class="paramname">config</td><td><a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a> object to check </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions:</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::exception</td><td>if it is not a good <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a>. </td></tr>
+    <tr><td class="paramname">std::exception</td><td>if it is not a good <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -215,10 +220,10 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>logerr<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>use the input of an main() function, fill in the an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a>.</p>
+<p>use the input of an main() function, fill in the an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a>.</p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td>an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html">elly::utils::Config</a> to fill in </td></tr>
+    <tr><td class="paramname">config</td><td>an object of <a class="el" href="classmia_1_1elly_1_1utils_1_1_config.html" title="Configurations to run elly.">elly::utils::Config</a> to fill in </td></tr>
     <tr><td class="paramname">ac</td><td>argc in main() </td></tr>
     <tr><td class="paramname">av</td><td>argv in main() </td></tr>
   </table>
@@ -248,7 +253,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>logerr<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Aug 12 2012 13:18:34 for Mia::Elementary by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 20 2012 23:04:48 for Elementary by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

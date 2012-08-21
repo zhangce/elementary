@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Mia::Elementary: mia::elly::dstruct::AbstractCorrelationRelation Class Reference</title>
+<title>Elementary: mia::elly::dstruct::AbstractCorrelationRelation Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Mia::Elementary
+   <div id="projectname">Elementary
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,6 +93,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract class for unifying <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html" title="Correlation relation in which each factor contains a list of variable IDs.">mia::elly::dstruct::StandardCorrelationRelation</a> and <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html" title="Correlation relation in which each factor contains a fixed-size state.">mia::elly::dstruct::IncrementalCorrelationRelation</a>.  
+ <a href="classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_abstract_correlation_relation_8h_source.html">AbstractCorrelationRelation.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for mia::elly::dstruct::AbstractCorrelationRelation:</div>
@@ -100,8 +103,8 @@ Inheritance diagram for mia::elly::dstruct::AbstractCorrelationRelation:</div>
  <div class="center">
   <img src="classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation.png" usemap="#mia::elly::dstruct::AbstractCorrelationRelation_map" alt=""/>
   <map id="mia::elly::dstruct::AbstractCorrelationRelation_map" name="mia::elly::dstruct::AbstractCorrelationRelation_map">
-<area href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html" alt="mia::elly::dstruct::IncrementalCorrelationRelation&lt; BUFFER, TYPE &gt;" shape="rect" coords="0,56,393,80"/>
-<area href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html" alt="mia::elly::dstruct::StandardCorrelationRelation&lt; BUFFER &gt;" shape="rect" coords="403,56,796,80"/>
+<area href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html" title="Correlation relation in which each factor contains a fixed-size state." alt="mia::elly::dstruct::IncrementalCorrelationRelation&lt; STORAGE, TYPE &gt;" shape="rect" coords="0,56,404,80"/>
+<area href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html" title="Correlation relation in which each factor contains a list of variable IDs." alt="mia::elly::dstruct::StandardCorrelationRelation&lt; STORAGE &gt;" shape="rect" coords="414,56,818,80"/>
 </map>
  </div></div>
 
@@ -135,7 +138,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>factor_name</b
 <tr class="memitem:a65756a92a296e0e9041b043cee64d8b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmia_1_1elly_1_1dstruct_1_1_abstract_correlation_relation.html#a65756a92a296e0e9041b043cee64d8b0">nfactor</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Abstract class for unifying <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html">mia::elly::dstruct::StandardCorrelationRelation</a> and <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html">mia::elly::dstruct::IncrementalCorrelationRelation</a>. </p>
+<div class="textblock"><p>Abstract class for unifying <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_standard_correlation_relation.html" title="Correlation relation in which each factor contains a list of variable IDs.">mia::elly::dstruct::StandardCorrelationRelation</a> and <a class="el" href="classmia_1_1elly_1_1dstruct_1_1_incremental_correlation_relation.html" title="Correlation relation in which each factor contains a fixed-size state.">mia::elly::dstruct::IncrementalCorrelationRelation</a>. </p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af6f78017f5af971958660bb946d64171"></a>
 <div class="memitem">
@@ -366,12 +369,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>factor_name</b
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>elly/elly/dstruct/<a class="el" href="_abstract_correlation_relation_8h_source.html">AbstractCorrelationRelation.h</a></li>
+<li>/Users/czhang/Desktop/Codes/mia/src/elly/elly/dstruct/<a class="el" href="_abstract_correlation_relation_8h_source.html">AbstractCorrelationRelation.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Aug 12 2012 13:18:34 for Mia::Elementary by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 20 2012 23:04:48 for Elementary by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

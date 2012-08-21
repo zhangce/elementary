@@ -3,6 +3,11 @@
 }
 
 
+Variable assignment relation, which maps V\-I\-D to its current assignment.  
+
+
+
+
 {\ttfamily \#include $<$Variable\-Assignment\-Relation.\-h$>$}
 
 \subsection*{Public Member Functions}
@@ -23,11 +28,15 @@ std\-::string \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_rel
 \item 
 std\-::string \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a52e11bd663360277cfc7c7be61d79990}{filetype}
 \item 
-\hyperlink{classmia_1_1sm_1_1_key_value__fl}{mia\-::sm\-::\-Key\-Value\-\_\-fl}\\*
-$<$ \hyperlink{classmia_1_1sm_1_1_buffer__mmap}{mia\-::sm\-::\-Buffer\-\_\-mmap}, int $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a7e095b0ffcbf56d86e4fcc254a0039e8}{kf}
+\hyperlink{classmia_1_1sm_1_1_k_v}{mia\-::sm\-::\-K\-V}$<$ int, int, \\*
+mia\-::sm\-::\-M\-M, mia\-::sm\-::\-D\-I\-R\-E\-C\-T, \\*
+mia\-::sm\-::\-N\-I\-L, \\*
+mia\-::sm\-::\-D\-E\-N\-S\-E\-\_\-\-K\-E\-Y $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a1af337a9c0dcbd5fd8413c45df023017}{kf}
 \item 
-\hyperlink{classmia_1_1sm_1_1_key_value__fl}{mia\-::sm\-::\-Key\-Value\-\_\-fl}\\*
-$<$ \hyperlink{classmia_1_1sm_1_1_buffer__mmap}{mia\-::sm\-::\-Buffer\-\_\-mmap}, int $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_afe97d67e61ae540774ef75c980c6a213}{kf\-\_\-domain}
+\hyperlink{classmia_1_1sm_1_1_k_v}{mia\-::sm\-::\-K\-V}$<$ int, int, \\*
+mia\-::sm\-::\-M\-M, mia\-::sm\-::\-D\-I\-R\-E\-C\-T, \\*
+mia\-::sm\-::\-N\-I\-L, \\*
+mia\-::sm\-::\-D\-E\-N\-S\-E\-\_\-\-K\-E\-Y $>$ \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad26195bd52815d772770a07d65d755f5}{kf\-\_\-domain}
 \item 
 int \hyperlink{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad2dca4f9ea916afc044726130e6f8312}{nvariable}
 \end{DoxyCompactItemize}
@@ -75,12 +84,12 @@ Given a variable I\-D and a new value, update the key value store.
 \-\_\-\-\_\-vf.\-tsv file's path, which contains the domain of each variable. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a52e11bd663360277cfc7c7be61d79990}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!filetype@{filetype}}
 \index{filetype@{filetype}!mia::elly::dstruct::VariableAssignmentRelation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}}
 \subsubsection[{filetype}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::filetype}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a52e11bd663360277cfc7c7be61d79990}
-Type of input file. \{tsv\} \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a7e095b0ffcbf56d86e4fcc254a0039e8}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!kf@{kf}}
+Type of input file. \{tsv\} \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a1af337a9c0dcbd5fd8413c45df023017}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!kf@{kf}}
 \index{kf@{kf}!mia::elly::dstruct::VariableAssignmentRelation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}}
-\subsubsection[{kf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mia\-::sm\-::\-Key\-Value\-\_\-fl}$<${\bf mia\-::sm\-::\-Buffer\-\_\-mmap}, int$>$ mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::kf}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a7e095b0ffcbf56d86e4fcc254a0039e8}
-Key value store which maps V\-I\-D to assignment. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_afe97d67e61ae540774ef75c980c6a213}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!kf\-\_\-domain@{kf\-\_\-domain}}
+\subsubsection[{kf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mia\-::sm\-::\-K\-V}$<$int, int, mia\-::sm\-::\-M\-M, mia\-::sm\-::\-D\-I\-R\-E\-C\-T, mia\-::sm\-::\-N\-I\-L, mia\-::sm\-::\-D\-E\-N\-S\-E\-\_\-\-K\-E\-Y$>$ mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::kf}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_a1af337a9c0dcbd5fd8413c45df023017}
+Key value store which maps V\-I\-D to its assignment. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad26195bd52815d772770a07d65d755f5}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!kf\-\_\-domain@{kf\-\_\-domain}}
 \index{kf\-\_\-domain@{kf\-\_\-domain}!mia::elly::dstruct::VariableAssignmentRelation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}}
-\subsubsection[{kf\-\_\-domain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mia\-::sm\-::\-Key\-Value\-\_\-fl}$<${\bf mia\-::sm\-::\-Buffer\-\_\-mmap}, int$>$ mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::kf\-\_\-domain}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_afe97d67e61ae540774ef75c980c6a213}
+\subsubsection[{kf\-\_\-domain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mia\-::sm\-::\-K\-V}$<$int, int, mia\-::sm\-::\-M\-M, mia\-::sm\-::\-D\-I\-R\-E\-C\-T, mia\-::sm\-::\-N\-I\-L, mia\-::sm\-::\-D\-E\-N\-S\-E\-\_\-\-K\-E\-Y$>$ mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::kf\-\_\-domain}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad26195bd52815d772770a07d65d755f5}
 Key value store which maps V\-I\-D to its domain. \hypertarget{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad2dca4f9ea916afc044726130e6f8312}{\index{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}!nvariable@{nvariable}}
 \index{nvariable@{nvariable}!mia::elly::dstruct::VariableAssignmentRelation@{mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation}}
 \subsubsection[{nvariable}]{\setlength{\rightskip}{0pt plus 5cm}int mia\-::elly\-::dstruct\-::\-Variable\-Assignment\-Relation\-::nvariable}}\label{classmia_1_1elly_1_1dstruct_1_1_variable_assignment_relation_ad2dca4f9ea916afc044726130e6f8312}
@@ -88,4 +97,4 @@ Number of variables being loaded.
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-elly/elly/dstruct/Variable\-Assignment\-Relation.\-h\end{DoxyCompactItemize}
+/\-Users/czhang/\-Desktop/\-Codes/mia/src/elly/elly/dstruct/Variable\-Assignment\-Relation.\-h\end{DoxyCompactItemize}

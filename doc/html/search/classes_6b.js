@@ -1,10 +1,16 @@
 var searchData=
 [
-  ['keyvalue_5ffl',['KeyValue_fl',['../classmia_1_1sm_1_1_key_value__fl.html',1,'mia::sm']]],
-  ['keyvalue_5ffl_3c_20mia_3a_3asm_3a_3abuffer_5fmm_2c_20int_20_3e',['KeyValue_fl&lt; mia::sm::Buffer_mm, int &gt;',['../classmia_1_1sm_1_1_key_value__fl.html',1,'mia::sm']]],
-  ['keyvalue_5ffl_3c_20mia_3a_3asm_3a_3abuffer_5fmmap_2c_20int_20_3e',['KeyValue_fl&lt; mia::sm::Buffer_mmap, int &gt;',['../classmia_1_1sm_1_1_key_value__fl.html',1,'mia::sm']]],
-  ['keyvalue_5ffl_5ffastmm',['KeyValue_fl_fastmm',['../classmia_1_1sm_1_1_key_value__fl__fastmm.html',1,'mia::sm']]],
-  ['keyvalue_5fvl',['KeyValue_vl',['../classmia_1_1sm_1_1_key_value__vl.html',1,'mia::sm']]],
-  ['keyvalue_5fvl_3c_20buffer_20_3e',['KeyValue_vl&lt; BUFFER &gt;',['../classmia_1_1sm_1_1_key_value__vl.html',1,'mia::sm']]],
-  ['keyvalue_5fvl_3c_20mia_3a_3asm_3a_3abuffer_5fmm_20_3e',['KeyValue_vl&lt; mia::sm::Buffer_mm &gt;',['../classmia_1_1sm_1_1_key_value__vl.html',1,'mia::sm']]]
+  ['kv',['KV',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20int_2c_20mia_3a_3asm_3a_3amm_2c_20mia_3a_3asm_3a_3adirect_2c_20mia_3a_3asm_3a_3anil_2c_20mia_3a_3asm_3a_3adense_5fkey_20_3e',['KV&lt; int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20intsblock_2c_20mmap_2c_20direct_2c_20replacement_2c_20dense_5fkey_20_3e',['KV&lt; int, IntsBlock, MMAP, DIRECT, REPLACEMENT, DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v_3_01int_00_01_ints_block_00_01_m_m_a_p_00_01_d_i_r_e_c_t_00_01_r_e_p_l_a_e377a0951ed37be3b4316b2929369f72.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20mia_3a_3asm_3a_3aintpair_2c_20mmap_2c_20direct_2c_20replacement_2c_20dense_5fkey_20_3e',['KV&lt; int, mia::sm::IntPair, MMAP, DIRECT, REPLACEMENT, DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20mia_3a_3asm_3a_3aintsblock_2c_20mia_3a_3asm_3a_3amm_2c_20mia_3a_3asm_3a_3adirect_2c_20mia_3a_3asm_3a_3anil_2c_20mia_3a_3asm_3a_3adense_5fkey_20_3e',['KV&lt; int, mia::sm::IntsBlock, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20mia_3a_3asm_3a_3aintsblock_2c_20mia_3a_3asm_3a_3ammap_2c_20mia_3a_3asm_3a_3adirect_2c_20mia_3a_3asm_3a_3anil_2c_20mia_3a_3asm_3a_3adense_5fkey_20_3e',['KV&lt; int, mia::sm::IntsBlock, mia::sm::MMAP, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20mia_3a_3asm_3a_3aintsblock_2c_20storage_2c_20mia_3a_3asm_3a_3adirect_2c_20mia_3a_3asm_3a_3anil_2c_20mia_3a_3asm_3a_3adense_5fkey_20_3e',['KV&lt; int, mia::sm::IntsBlock, STORAGE, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20mia_3a_3asm_3a_3aslottedpage_2c_20mmap_2c_20direct_2c_20replacement_2c_20dense_5fkey_20_3e',['KV&lt; int, mia::sm::SlottedPage, MMAP, DIRECT, REPLACEMENT, DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20type_2c_20mia_3a_3asm_3a_3amm_2c_20mia_3a_3asm_3a_3adirect_2c_20mia_3a_3asm_3a_3anil_2c_20mia_3a_3asm_3a_3adense_5fkey_20_3e',['KV&lt; int, TYPE, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20value_2c_20mm_2c_20direct_2c_20replacement_2c_20dense_5fkey_20_3e',['KV&lt; int, VALUE, MM, DIRECT, REPLACEMENT, DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v_3_01int_00_01_v_a_l_u_e_00_01_m_m_00_01_d_i_r_e_c_t_00_01_r_e_p_l_a_c_e_mff62509bd7761c1266e42e615210b694.html',1,'mia::sm']]],
+  ['kv_3c_20int_2c_20value_2c_20mmap_2c_20direct_2c_20replacement_2c_20dense_5fkey_20_3e',['KV&lt; int, VALUE, MMAP, DIRECT, REPLACEMENT, DENSE_KEY &gt;',['../classmia_1_1sm_1_1_k_v_3_01int_00_01_v_a_l_u_e_00_01_m_m_a_p_00_01_d_i_r_e_c_t_00_01_r_e_p_l_a_c808626285fb72e917596de806785defa.html',1,'mia::sm']]],
+  ['kv_3c_20key_2c_20value_2c_20mm_2c_20direct_2c_20replacement_2c_20hint_20_3e',['KV&lt; KEY, VALUE, MM, DIRECT, REPLACEMENT, HINT &gt;',['../classmia_1_1sm_1_1_k_v_3_01_k_e_y_00_01_v_a_l_u_e_00_01_m_m_00_01_d_i_r_e_c_t_00_01_r_e_p_l_a_c_e_m_e_n_t_00_01_h_i_n_t_01_4.html',1,'mia::sm']]],
+  ['kv_3c_20key_2c_20value_2c_20mmap_2c_20direct_2c_20replacement_2c_20hint_20_3e',['KV&lt; KEY, VALUE, MMAP, DIRECT, REPLACEMENT, HINT &gt;',['../classmia_1_1sm_1_1_k_v_3_01_k_e_y_00_01_v_a_l_u_e_00_01_m_m_a_p_00_01_d_i_r_e_c_t_00_01_r_e_p_l_2c35447e93d2a07c32ca67010a09264b.html',1,'mia::sm']]]
 ];

@@ -6,5 +6,6 @@ var searchData=
   ['factors',['factors',['../namespacemia_1_1elly_1_1factors.html',1,'mia::elly']]],
   ['mat',['mat',['../namespacemia_1_1elly_1_1mat.html',1,'mia::elly']]],
   ['mia',['mia',['../namespacemia.html',1,'']]],
+  ['sm',['sm',['../namespacemia_1_1sm.html',1,'mia']]],
   ['utils',['utils',['../namespacemia_1_1elly_1_1utils.html',1,'mia::elly']]]
 ];
