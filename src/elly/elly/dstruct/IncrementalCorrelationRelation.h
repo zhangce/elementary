@@ -77,7 +77,7 @@ namespace mia{
                     
                     //lock(fid);
                     //kv.adhoc_update(fid, from, to); //TODO ad hoc.
-                    return;
+                    //return;
                     //release(fid);
                     
                     //if(_lock){
@@ -86,8 +86,10 @@ namespace mia{
                     
                     TYPE rr;
                     kv.get(fid, rr);
+                    //std::cout << "~" << rr.counts[from] << std::endl;
                     func_update(&rr, vid, from, to);
                     kv.set(fid, rr);
+                    //std::cout << "*" << rr.counts[from] << std::endl;
                     
                     //if(_lock){
                     //    release(fid);
