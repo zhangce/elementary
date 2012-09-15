@@ -177,7 +177,7 @@ namespace mia{
              * 
              * \return pointer to the new correlation relation (sub class of mia::elly::dstruct::AbstractCorrelationRelation)
              */
-            template<mia::sm::KV_Storage STORAGE>
+            template<hazy::sman::StorageType STORAGE>
             mia::elly::dstruct::AbstractCorrelationRelation * get_correlation_relation(int function_id){
 
                 if(function_id == 0){

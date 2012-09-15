@@ -14,7 +14,7 @@
 
 #include <vector>
 
-#include "../../../sman/sman/Include.h"
+#include "../../../SMan/common/Include.h"
 
 #include "../factors/factor_inits.h"
 
@@ -43,7 +43,7 @@ namespace mia{
                 /**
                  * Key value store that maps VID to factor block.
                  */
-                mia::sm::KV<int, mia::sm::IntsBlock, mia::sm::MMAP, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                hazy::sman::ObjStore<mia::sm::IntsBlock, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kv;
 
                 /**
                  * Number of vairables being loaded.

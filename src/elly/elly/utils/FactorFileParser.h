@@ -372,9 +372,10 @@ namespace elly{
                         }
                         assert(func_id != -1);
 
-                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<mia::sm::MM>(func_id);
+                        //mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<hazy::sman::STORAGE_MM>(func_id);
 
-                        
+                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<hazy::sman::STORAGE_HBASE>(func_id);
+
                         
                         cr->factor_name = it->first;
                         cr->mapfilename = "";

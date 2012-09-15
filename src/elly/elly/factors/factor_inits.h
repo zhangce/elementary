@@ -11,7 +11,7 @@
 #define elly_factor_inits_h
 
 
-#include "../../../sman/sman/Include.h"
+#include "../../../SMan/common/Common.h"
 
 #include "../dstruct/VariableAssignmentRelation.h"
 

@@ -14,7 +14,7 @@
 
 #include <vector>
 
-#include "../../../sman/sman/Include.h"
+#include "../../../SMan/common/Include.h"
 
 #include "../factors/factor_inits.h"
 
@@ -31,7 +31,7 @@ namespace mia{
              * \tparam BUFFER Buffer to use for this correlation relation.
              *
              */
-            template<mia::sm::KV_Storage STORAGE, class TYPE>
+            template<hazy::sman::StorageType STORAGE, class TYPE>
             class IncrementalCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
@@ -41,8 +41,26 @@ namespace mia{
                 /**
                  * In-memory key value store that maps factor ID to its state.
                  */
-                mia::sm::KV<int, TYPE, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                //hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU> kv;
+              hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU> kv;
+              
+              //hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL> kv;
+              
+              //IncrementalCorrelationRelation() : kv(hazy::sman::BufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(100000))
+              
+              ~IncrementalCorrelationRelation(){
                 
+              }
+              
+              void print_status(){
+                std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;
+              }
+              
+              IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(5000))
+              
+              //IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL>())
+              {}
+              
                 /**
                  * given a factor ID, return the pointer to its state.
                  */

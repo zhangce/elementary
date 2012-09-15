@@ -14,7 +14,7 @@
 
 #include <vector>
 
-#include "../../../sman/sman/Include.h"
+#include "../../../SMan/common/Common.h"
 
 #include "../factors/factor_inits.h"
 
@@ -44,12 +44,12 @@ namespace mia{
                 /**
                  * Key value store which maps VID to its assignment.
                  */
-                mia::sm::KV<int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kf;
+                hazy::sman::ObjStore<int, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kf;
                 
                 /**
                  * Key value store which maps VID to its domain.
                  */
-                mia::sm::KV<int, int, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kf_domain;
+                hazy::sman::ObjStore<int, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kf_domain;
                 
                  /**
                  * Number of variables being loaded.

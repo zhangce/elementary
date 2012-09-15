@@ -7,30 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1071D2D15A60F6C00999BDF /* dynsections.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071CEF15A60F6C00999BDF /* dynsections.js */; };
-		E1071D2E15A60F6C00999BDF /* jquery.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D0415A60F6C00999BDF /* jquery.js */; };
-		E1071D2F15A60F6C00999BDF /* all_63.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D0F15A60F6C00999BDF /* all_63.js */; };
-		E1071D3015A60F6C00999BDF /* all_65.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1115A60F6C00999BDF /* all_65.js */; };
-		E1071D3115A60F6C00999BDF /* all_69.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1315A60F6C00999BDF /* all_69.js */; };
-		E1071D3215A60F6C00999BDF /* all_70.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1515A60F6C00999BDF /* all_70.js */; };
-		E1071D3315A60F6C00999BDF /* classes_63.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1715A60F6C00999BDF /* classes_63.js */; };
-		E1071D3415A60F6C00999BDF /* classes_65.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1915A60F6C00999BDF /* classes_65.js */; };
-		E1071D3515A60F6C00999BDF /* classes_69.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1B15A60F6C00999BDF /* classes_69.js */; };
-		E1071D3615A60F6C00999BDF /* functions_70.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D1E15A60F6C00999BDF /* functions_70.js */; };
-		E1071D3715A60F6C00999BDF /* namespaces_65.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D2115A60F6C00999BDF /* namespaces_65.js */; };
-		E1071D3815A60F6C00999BDF /* search.js in Sources */ = {isa = PBXBuildFile; fileRef = E1071D2415A60F6C00999BDF /* search.js */; };
-		E16E324415A4F17A008C69B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E16E324215A4F17A008C69B6 /* main.cpp */; };
+		E17FF14016017AD600BC7B34 /* Hbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17FF13916017AD600BC7B34 /* Hbase.cpp */; };
+		E17FF14116017AD600BC7B34 /* hbase_constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17FF13B16017AD600BC7B34 /* hbase_constants.cpp */; };
+		E17FF14216017AD600BC7B34 /* Hbase_server.skeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17FF13D16017AD600BC7B34 /* Hbase_server.skeleton.cpp */; };
+		E17FF14316017AD600BC7B34 /* hbase_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17FF13E16017AD600BC7B34 /* hbase_types.cpp */; };
 		E186EBB915A50EAB001DC23D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBB815A50EAB001DC23D /* SenTestingKit.framework */; };
 		E186EBBB15A50EAB001DC23D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E186EBBA15A50EAB001DC23D /* Cocoa.framework */; };
+		E1CD8DDC1601784C006BF294 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1CD8DDB1601784C006BF294 /* main.cpp */; };
+		E1CD8DDE1601784C006BF294 /* elly.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1CD8DDD1601784C006BF294 /* elly.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E111977F15A4B9EE00562975 /* CopyFiles */ = {
+		E1CD8DD61601784C006BF294 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
+				E1CD8DDE1601784C006BF294 /* elly.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -121,7 +115,65 @@
 		E1071D2A15A60F6C00999BDF /* tab_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_h.png; sourceTree = "<group>"; };
 		E1071D2B15A60F6C00999BDF /* tab_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_s.png; sourceTree = "<group>"; };
 		E1071D2C15A60F6C00999BDF /* tabs.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tabs.css; sourceTree = "<group>"; };
-		E111978115A4B9EE00562975 /* elly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = elly; sourceTree = BUILT_PRODUCTS_DIR; };
+		E13D71971601748E00C56201 /* ObjectStore_HBASE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectStore_HBASE.h; sourceTree = "<group>"; };
+		E1427EF515FE84EB00F75C1E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		E1427EF615FE84EB00F75C1E /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		E1427EF815FE84EB00F75C1E /* .classpath */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .classpath; sourceTree = "<group>"; };
+		E1427EF915FE84EB00F75C1E /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
+		E1427EFB15FE84EB00F75C1E /* AccumuloConnector.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = AccumuloConnector.class; sourceTree = "<group>"; };
+		E1427EFC15FE84EB00F75C1E /* HashMapConnector.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = HashMapConnector.class; sourceTree = "<group>"; };
+		E1427EFD15FE84EB00F75C1E /* PostgreSQLConnector.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = PostgreSQLConnector.class; sourceTree = "<group>"; };
+		E1427EFF15FE84EB00F75C1E /* accumulo-core-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-core-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F0015FE84EB00F75C1E /* accumulo-core-1.4.1-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-core-1.4.1-sources.jar"; sourceTree = "<group>"; };
+		E1427F0115FE84EB00F75C1E /* accumulo-core-1.4.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-core-1.4.1.jar"; sourceTree = "<group>"; };
+		E1427F0215FE84EB00F75C1E /* accumulo-server-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-server-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F0315FE84EB00F75C1E /* accumulo-server-1.4.1-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-server-1.4.1-sources.jar"; sourceTree = "<group>"; };
+		E1427F0415FE84EB00F75C1E /* accumulo-server-1.4.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-server-1.4.1.jar"; sourceTree = "<group>"; };
+		E1427F0515FE84EB00F75C1E /* accumulo-start-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-start-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F0615FE84EB00F75C1E /* accumulo-start-1.4.1-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-start-1.4.1-sources.jar"; sourceTree = "<group>"; };
+		E1427F0715FE84EB00F75C1E /* accumulo-start-1.4.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "accumulo-start-1.4.1.jar"; sourceTree = "<group>"; };
+		E1427F0815FE84EB00F75C1E /* cloudtrace-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "cloudtrace-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F0915FE84EB00F75C1E /* cloudtrace-1.4.1-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "cloudtrace-1.4.1-sources.jar"; sourceTree = "<group>"; };
+		E1427F0A15FE84EB00F75C1E /* cloudtrace-1.4.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "cloudtrace-1.4.1.jar"; sourceTree = "<group>"; };
+		E1427F0B15FE84EB00F75C1E /* commons-collections-3.2.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-collections-3.2.jar"; sourceTree = "<group>"; };
+		E1427F0C15FE84EB00F75C1E /* commons-configuration-1.5.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-configuration-1.5.jar"; sourceTree = "<group>"; };
+		E1427F0D15FE84EB00F75C1E /* commons-io-1.4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-io-1.4.jar"; sourceTree = "<group>"; };
+		E1427F0E15FE84EB00F75C1E /* commons-jci-core-1.0.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-jci-core-1.0.jar"; sourceTree = "<group>"; };
+		E1427F0F15FE84EB00F75C1E /* commons-jci-fam-1.0.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-jci-fam-1.0.jar"; sourceTree = "<group>"; };
+		E1427F1015FE84EB00F75C1E /* commons-lang-2.4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-lang-2.4.jar"; sourceTree = "<group>"; };
+		E1427F1115FE84EB00F75C1E /* commons-logging-1.0.4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-logging-1.0.4.jar"; sourceTree = "<group>"; };
+		E1427F1215FE84EB00F75C1E /* commons-logging-api-1.0.4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "commons-logging-api-1.0.4.jar"; sourceTree = "<group>"; };
+		E1427F1315FE84EB00F75C1E /* examples-simple-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "examples-simple-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F1415FE84EB00F75C1E /* examples-simple-1.4.1-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "examples-simple-1.4.1-sources.jar"; sourceTree = "<group>"; };
+		E1427F1515FE84EB00F75C1E /* examples-simple-1.4.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "examples-simple-1.4.1.jar"; sourceTree = "<group>"; };
+		E1427F1615FE84EB00F75C1E /* hadoop-ant-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-ant-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1715FE84EB00F75C1E /* hadoop-client-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-client-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1815FE84EB00F75C1E /* hadoop-core-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-core-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1915FE84EB00F75C1E /* hadoop-examples-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-examples-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1A15FE84EB00F75C1E /* hadoop-minicluster-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-minicluster-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1B15FE84EB00F75C1E /* hadoop-test-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-test-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1C15FE84EB00F75C1E /* hadoop-tools-1.0.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "hadoop-tools-1.0.3.jar"; sourceTree = "<group>"; };
+		E1427F1D15FE84EB00F75C1E /* jline-0.9.94.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "jline-0.9.94.jar"; sourceTree = "<group>"; };
+		E1427F1E15FE84EB00F75C1E /* libthrift-0.6.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "libthrift-0.6.1.jar"; sourceTree = "<group>"; };
+		E1427F1F15FE84EB00F75C1E /* log4j-1.2.16.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "log4j-1.2.16.jar"; sourceTree = "<group>"; };
+		E1427F2015FE84EB00F75C1E /* postgresql-8.4-701.jdbc4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "postgresql-8.4-701.jdbc4.jar"; sourceTree = "<group>"; };
+		E1427F2115FE84EB00F75C1E /* slf4j-api-1.6.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "slf4j-api-1.6.1.jar"; sourceTree = "<group>"; };
+		E1427F2215FE84EB00F75C1E /* slf4j-log4j12-1.6.1.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "slf4j-log4j12-1.6.1.jar"; sourceTree = "<group>"; };
+		E1427F2315FE84EB00F75C1E /* wikisearch-ingest-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "wikisearch-ingest-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F2415FE84EB00F75C1E /* wikisearch-query-1.4.1-javadoc.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "wikisearch-query-1.4.1-javadoc.jar"; sourceTree = "<group>"; };
+		E1427F2515FE84EB00F75C1E /* zookeeper-3.4.3.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "zookeeper-3.4.3.jar"; sourceTree = "<group>"; };
+		E1427F2715FE84EB00F75C1E /* AccumuloConnector.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AccumuloConnector.java; sourceTree = "<group>"; };
+		E1427F2815FE84EB00F75C1E /* HashMapConnector.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = HashMapConnector.java; sourceTree = "<group>"; };
+		E1427F2915FE84EB00F75C1E /* PostgreSQLConnector.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PostgreSQLConnector.java; sourceTree = "<group>"; };
+		E1427F2C15FE84EB00F75C1E /* BufferedObjStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedObjStore.h; sourceTree = "<group>"; };
+		E1427F2D15FE84EB00F75C1E /* BufferedObjStore_perbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedObjStore_perbuffer.h; sourceTree = "<group>"; };
+		E1427F2E15FE84EB00F75C1E /* ObjectStore_FILE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectStore_FILE.h; sourceTree = "<group>"; };
+		E1427F2F15FE84EB00F75C1E /* ObjectStore_JHASH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectStore_JHASH.h; sourceTree = "<group>"; };
+		E1427F3015FE84EB00F75C1E /* ObjectStore_MM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectStore_MM.h; sourceTree = "<group>"; };
+		E1427F3115FE84EB00F75C1E /* ObjStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjStore.h; sourceTree = "<group>"; };
+		E1427F3215FE84EB00F75C1E /* SMan.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = SMan.1; sourceTree = "<group>"; };
+		E1427F3415FE84EB00F75C1E /* test_parallel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_parallel.h; sourceTree = "<group>"; };
+		E1427F6115FE894A00F75C1E /* Include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Include.h; sourceTree = "<group>"; };
 		E14CAAF415C1898100288FFB /* factor_inits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_inits.h; sourceTree = "<group>"; };
 		E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableFactorRelation.h; sourceTree = "<group>"; };
 		E16E324115A4F17A008C69B6 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
@@ -131,6 +183,13 @@
 		E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableAssignmentRelation.h; sourceTree = "<group>"; };
 		E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_lazy.h; sourceTree = "<group>"; };
 		E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GibbsSampler.h; sourceTree = "<group>"; };
+		E17FF13916017AD600BC7B34 /* Hbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hbase.cpp; sourceTree = "<group>"; };
+		E17FF13A16017AD600BC7B34 /* Hbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hbase.h; sourceTree = "<group>"; };
+		E17FF13B16017AD600BC7B34 /* hbase_constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hbase_constants.cpp; sourceTree = "<group>"; };
+		E17FF13C16017AD600BC7B34 /* hbase_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hbase_constants.h; sourceTree = "<group>"; };
+		E17FF13D16017AD600BC7B34 /* Hbase_server.skeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hbase_server.skeleton.cpp; sourceTree = "<group>"; };
+		E17FF13E16017AD600BC7B34 /* hbase_types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hbase_types.cpp; sourceTree = "<group>"; };
+		E17FF13F16017AD600BC7B34 /* hbase_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hbase_types.h; sourceTree = "<group>"; };
 		E185EE4A15A51728009C6FBA /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		E1866D5A15AC1FCE003AB862 /* StandardCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardCorrelationRelation.h; sourceTree = "<group>"; };
 		E186EBB615A50EAB001DC23D /* elly_test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elly_test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,11 +202,15 @@
 		E186EBCF15A5134F001DC23D /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		E18799A215A93AAB0026F196 /* FactorFileParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactorFileParser.h; sourceTree = "<group>"; };
 		E18EFFE815D040BB00E2B480 /* AbstractCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractCorrelationRelation.h; sourceTree = "<group>"; };
+		E19062661603D26D0093066A /* PagedBufferedObjectStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagedBufferedObjectStore.h; sourceTree = "<group>"; };
 		E1A118F115D16CE900879AB1 /* VariableTallyRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTallyRelation.h; sourceTree = "<group>"; };
 		E1A118F315D2AB8500879AB1 /* VariableTrainingRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableTrainingRelation.h; sourceTree = "<group>"; };
 		E1CBA0FE15D0533300A81577 /* IncrementalCorrelationRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalCorrelationRelation.h; sourceTree = "<group>"; };
 		E1CBA0FF15D0543400A81577 /* factor_register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_register.h; sourceTree = "<group>"; };
 		E1CBA10015D0D76E00A81577 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		E1CD8DD81601784C006BF294 /* elly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = elly; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1CD8DDB1601784C006BF294 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E1CD8DDD1601784C006BF294 /* elly.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
 		E1F910F715E14E9F00BC8498 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		E1F910F915E14E9F00BC8498 /* KV_int_IntsBlock_-_-_-_DENSEKEY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_int_IntsBlock_-_-_-_DENSEKEY.h"; sourceTree = "<group>"; };
 		E1F910FB15E14E9F00BC8498 /* KV_-_-_MM_DIRECT_-_-.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KV_-_-_MM_DIRECT_-_-.h"; sourceTree = "<group>"; };
@@ -162,19 +225,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E111977E15A4B9EE00562975 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E186EBB215A50EAB001DC23D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E186EBB915A50EAB001DC23D /* SenTestingKit.framework in Frameworks */,
 				E186EBBB15A50EAB001DC23D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1CD8DD51601784C006BF294 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,16 +349,18 @@
 				E1071CD715A60F6400999BDF /* Doxyfile */,
 				E186EBCD15A50F77001DC23D /* data */,
 				E111978415A4B9EE00562975 /* elly */,
+				E1CD8DDA1601784C006BF294 /* elly */,
 				E186EBB715A50EAB001DC23D /* Frameworks */,
 				E111978215A4B9EE00562975 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		E111978215A4B9EE00562975 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E111978115A4B9EE00562975 /* elly */,
 				E186EBB615A50EAB001DC23D /* elly_test.octest */,
+				E1CD8DD81601784C006BF294 /* elly */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,6 +368,7 @@
 		E111978415A4B9EE00562975 /* elly */ = {
 			isa = PBXGroup;
 			children = (
+				E1427EF215FE84EB00F75C1E /* SMan */,
 				E1F910F415E14E9F00BC8498 /* sman */,
 				E17E98E315C3EDC30048AAB2 /* alg */,
 				E17E98E115C3DC0D0048AAB2 /* mat */,
@@ -313,6 +379,139 @@
 				E16E324115A4F17A008C69B6 /* elly.1 */,
 			);
 			path = elly;
+			sourceTree = "<group>";
+		};
+		E1427EF215FE84EB00F75C1E /* SMan */ = {
+			isa = PBXGroup;
+			children = (
+				E19062641603D2530093066A /* kvstore */,
+				E17FF13816017AD600BC7B34 /* gen-cpp */,
+				E1427EF315FE84EB00F75C1E /* buffer */,
+				E1427EF415FE84EB00F75C1E /* common */,
+				E1427EF715FE84EB00F75C1E /* java */,
+				E1427F2B15FE84EB00F75C1E /* objstore */,
+				E1427F3215FE84EB00F75C1E /* SMan.1 */,
+				E1427F3315FE84EB00F75C1E /* test */,
+			);
+			name = SMan;
+			path = ../../SMan;
+			sourceTree = "<group>";
+		};
+		E1427EF315FE84EB00F75C1E /* buffer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = buffer;
+			sourceTree = "<group>";
+		};
+		E1427EF415FE84EB00F75C1E /* common */ = {
+			isa = PBXGroup;
+			children = (
+				E1427EF515FE84EB00F75C1E /* Common.h */,
+				E1427EF615FE84EB00F75C1E /* Timer.h */,
+				E1427F6115FE894A00F75C1E /* Include.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		E1427EF715FE84EB00F75C1E /* java */ = {
+			isa = PBXGroup;
+			children = (
+				E1427EF815FE84EB00F75C1E /* .classpath */,
+				E1427EF915FE84EB00F75C1E /* .project */,
+				E1427EFA15FE84EB00F75C1E /* bin */,
+				E1427EFE15FE84EB00F75C1E /* lib */,
+				E1427F2615FE84EB00F75C1E /* src */,
+			);
+			path = java;
+			sourceTree = "<group>";
+		};
+		E1427EFA15FE84EB00F75C1E /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				E1427EFB15FE84EB00F75C1E /* AccumuloConnector.class */,
+				E1427EFC15FE84EB00F75C1E /* HashMapConnector.class */,
+				E1427EFD15FE84EB00F75C1E /* PostgreSQLConnector.class */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		E1427EFE15FE84EB00F75C1E /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E1427EFF15FE84EB00F75C1E /* accumulo-core-1.4.1-javadoc.jar */,
+				E1427F0015FE84EB00F75C1E /* accumulo-core-1.4.1-sources.jar */,
+				E1427F0115FE84EB00F75C1E /* accumulo-core-1.4.1.jar */,
+				E1427F0215FE84EB00F75C1E /* accumulo-server-1.4.1-javadoc.jar */,
+				E1427F0315FE84EB00F75C1E /* accumulo-server-1.4.1-sources.jar */,
+				E1427F0415FE84EB00F75C1E /* accumulo-server-1.4.1.jar */,
+				E1427F0515FE84EB00F75C1E /* accumulo-start-1.4.1-javadoc.jar */,
+				E1427F0615FE84EB00F75C1E /* accumulo-start-1.4.1-sources.jar */,
+				E1427F0715FE84EB00F75C1E /* accumulo-start-1.4.1.jar */,
+				E1427F0815FE84EB00F75C1E /* cloudtrace-1.4.1-javadoc.jar */,
+				E1427F0915FE84EB00F75C1E /* cloudtrace-1.4.1-sources.jar */,
+				E1427F0A15FE84EB00F75C1E /* cloudtrace-1.4.1.jar */,
+				E1427F0B15FE84EB00F75C1E /* commons-collections-3.2.jar */,
+				E1427F0C15FE84EB00F75C1E /* commons-configuration-1.5.jar */,
+				E1427F0D15FE84EB00F75C1E /* commons-io-1.4.jar */,
+				E1427F0E15FE84EB00F75C1E /* commons-jci-core-1.0.jar */,
+				E1427F0F15FE84EB00F75C1E /* commons-jci-fam-1.0.jar */,
+				E1427F1015FE84EB00F75C1E /* commons-lang-2.4.jar */,
+				E1427F1115FE84EB00F75C1E /* commons-logging-1.0.4.jar */,
+				E1427F1215FE84EB00F75C1E /* commons-logging-api-1.0.4.jar */,
+				E1427F1315FE84EB00F75C1E /* examples-simple-1.4.1-javadoc.jar */,
+				E1427F1415FE84EB00F75C1E /* examples-simple-1.4.1-sources.jar */,
+				E1427F1515FE84EB00F75C1E /* examples-simple-1.4.1.jar */,
+				E1427F1615FE84EB00F75C1E /* hadoop-ant-1.0.3.jar */,
+				E1427F1715FE84EB00F75C1E /* hadoop-client-1.0.3.jar */,
+				E1427F1815FE84EB00F75C1E /* hadoop-core-1.0.3.jar */,
+				E1427F1915FE84EB00F75C1E /* hadoop-examples-1.0.3.jar */,
+				E1427F1A15FE84EB00F75C1E /* hadoop-minicluster-1.0.3.jar */,
+				E1427F1B15FE84EB00F75C1E /* hadoop-test-1.0.3.jar */,
+				E1427F1C15FE84EB00F75C1E /* hadoop-tools-1.0.3.jar */,
+				E1427F1D15FE84EB00F75C1E /* jline-0.9.94.jar */,
+				E1427F1E15FE84EB00F75C1E /* libthrift-0.6.1.jar */,
+				E1427F1F15FE84EB00F75C1E /* log4j-1.2.16.jar */,
+				E1427F2015FE84EB00F75C1E /* postgresql-8.4-701.jdbc4.jar */,
+				E1427F2115FE84EB00F75C1E /* slf4j-api-1.6.1.jar */,
+				E1427F2215FE84EB00F75C1E /* slf4j-log4j12-1.6.1.jar */,
+				E1427F2315FE84EB00F75C1E /* wikisearch-ingest-1.4.1-javadoc.jar */,
+				E1427F2415FE84EB00F75C1E /* wikisearch-query-1.4.1-javadoc.jar */,
+				E1427F2515FE84EB00F75C1E /* zookeeper-3.4.3.jar */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E1427F2615FE84EB00F75C1E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E1427F2715FE84EB00F75C1E /* AccumuloConnector.java */,
+				E1427F2815FE84EB00F75C1E /* HashMapConnector.java */,
+				E1427F2915FE84EB00F75C1E /* PostgreSQLConnector.java */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E1427F2B15FE84EB00F75C1E /* objstore */ = {
+			isa = PBXGroup;
+			children = (
+				E1427F2C15FE84EB00F75C1E /* BufferedObjStore.h */,
+				E1427F2D15FE84EB00F75C1E /* BufferedObjStore_perbuffer.h */,
+				E1427F2E15FE84EB00F75C1E /* ObjectStore_FILE.h */,
+				E1427F2F15FE84EB00F75C1E /* ObjectStore_JHASH.h */,
+				E13D71971601748E00C56201 /* ObjectStore_HBASE.h */,
+				E1427F3015FE84EB00F75C1E /* ObjectStore_MM.h */,
+				E1427F3115FE84EB00F75C1E /* ObjStore.h */,
+			);
+			path = objstore;
+			sourceTree = "<group>";
+		};
+		E1427F3315FE84EB00F75C1E /* test */ = {
+			isa = PBXGroup;
+			children = (
+				E1427F3415FE84EB00F75C1E /* test_parallel.h */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		E14CAAF115C186DB00288FFB /* factors */ = {
@@ -351,6 +550,20 @@
 				E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */,
 			);
 			path = alg;
+			sourceTree = "<group>";
+		};
+		E17FF13816017AD600BC7B34 /* gen-cpp */ = {
+			isa = PBXGroup;
+			children = (
+				E17FF13916017AD600BC7B34 /* Hbase.cpp */,
+				E17FF13A16017AD600BC7B34 /* Hbase.h */,
+				E17FF13B16017AD600BC7B34 /* hbase_constants.cpp */,
+				E17FF13C16017AD600BC7B34 /* hbase_constants.h */,
+				E17FF13D16017AD600BC7B34 /* Hbase_server.skeleton.cpp */,
+				E17FF13E16017AD600BC7B34 /* hbase_types.cpp */,
+				E17FF13F16017AD600BC7B34 /* hbase_types.h */,
+			);
+			path = "gen-cpp";
 			sourceTree = "<group>";
 		};
 		E183316915A534D200A988D6 /* LR */ = {
@@ -409,6 +622,23 @@
 				E186EBCE15A50F89001DC23D /* config_test.cfg */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		E19062641603D2530093066A /* kvstore */ = {
+			isa = PBXGroup;
+			children = (
+				E19062661603D26D0093066A /* PagedBufferedObjectStore.h */,
+			);
+			path = kvstore;
+			sourceTree = "<group>";
+		};
+		E1CD8DDA1601784C006BF294 /* elly */ = {
+			isa = PBXGroup;
+			children = (
+				E1CD8DDB1601784C006BF294 /* main.cpp */,
+				E1CD8DDD1601784C006BF294 /* elly.1 */,
+			);
+			path = elly;
 			sourceTree = "<group>";
 		};
 		E1F910F415E14E9F00BC8498 /* sman */ = {
@@ -473,23 +703,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E111978015A4B9EE00562975 /* elly */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E111978B15A4B9EE00562975 /* Build configuration list for PBXNativeTarget "elly" */;
-			buildPhases = (
-				E111977D15A4B9EE00562975 /* Sources */,
-				E111977E15A4B9EE00562975 /* Frameworks */,
-				E111977F15A4B9EE00562975 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = elly;
-			productName = elly;
-			productReference = E111978115A4B9EE00562975 /* elly */;
-			productType = "com.apple.product-type.tool";
-		};
 		E186EBB515A50EAB001DC23D /* elly_test */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E186EBCA15A50EAB001DC23D /* Build configuration list for PBXNativeTarget "elly_test" */;
@@ -507,6 +720,23 @@
 			productName = elly_test;
 			productReference = E186EBB615A50EAB001DC23D /* elly_test.octest */;
 			productType = "com.apple.product-type.bundle";
+		};
+		E1CD8DD71601784C006BF294 /* elly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1CD8DDF1601784C006BF294 /* Build configuration list for PBXNativeTarget "elly" */;
+			buildPhases = (
+				E1CD8DD41601784C006BF294 /* Sources */,
+				E1CD8DD51601784C006BF294 /* Frameworks */,
+				E1CD8DD61601784C006BF294 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = elly;
+			productName = elly;
+			productReference = E1CD8DD81601784C006BF294 /* elly */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -529,8 +759,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E111978015A4B9EE00562975 /* elly */,
 				E186EBB515A50EAB001DC23D /* elly_test */,
+				E1CD8DD71601784C006BF294 /* elly */,
 			);
 		};
 /* End PBXProject section */
@@ -562,30 +792,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E111977D15A4B9EE00562975 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E16E324415A4F17A008C69B6 /* main.cpp in Sources */,
-				E1071D2D15A60F6C00999BDF /* dynsections.js in Sources */,
-				E1071D2E15A60F6C00999BDF /* jquery.js in Sources */,
-				E1071D2F15A60F6C00999BDF /* all_63.js in Sources */,
-				E1071D3015A60F6C00999BDF /* all_65.js in Sources */,
-				E1071D3115A60F6C00999BDF /* all_69.js in Sources */,
-				E1071D3215A60F6C00999BDF /* all_70.js in Sources */,
-				E1071D3315A60F6C00999BDF /* classes_63.js in Sources */,
-				E1071D3415A60F6C00999BDF /* classes_65.js in Sources */,
-				E1071D3515A60F6C00999BDF /* classes_69.js in Sources */,
-				E1071D3615A60F6C00999BDF /* functions_70.js in Sources */,
-				E1071D3715A60F6C00999BDF /* namespaces_65.js in Sources */,
-				E1071D3815A60F6C00999BDF /* search.js in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E186EBB115A50EAB001DC23D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1CD8DD41601784C006BF294 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1CD8DDC1601784C006BF294 /* main.cpp in Sources */,
+				E17FF14016017AD600BC7B34 /* Hbase.cpp in Sources */,
+				E17FF14116017AD600BC7B34 /* hbase_constants.cpp in Sources */,
+				E17FF14216017AD600BC7B34 /* Hbase_server.skeleton.cpp in Sources */,
+				E17FF14316017AD600BC7B34 /* hbase_types.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +819,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -613,17 +837,25 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/**",
+					/Users/czhang/Desktop/Codes/mia/dep/boost,
+					"/Users/czhang/Desktop/Software/thrift/include/thrift/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					"/Users/czhang/Downloads/stxxl-1.3.1/lib/**",
+					"/Users/czhang/Desktop/Software/thrift3/lib/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/usr/local/include/";
-				OTHER_LDFLAGS = "-lboost_program_options-mt";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-lthrift",
+				);
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include/** /Users/czhang/Desktop/Software/thrift/include/thrift/**";
 			};
 			name = Debug;
 		};
@@ -632,6 +864,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -642,50 +876,24 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/**",
+					/Users/czhang/Desktop/Codes/mia/dep/boost,
+					"/Users/czhang/Desktop/Software/thrift/include/thrift/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"/usr/local/lib/**",
 					"/Users/czhang/Downloads/stxxl-1.3.1/lib/**",
+					"/Users/czhang/Desktop/Software/thrift3/lib/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-I/usr/local/include/";
-				OTHER_LDFLAGS = "-lboost_program_options-mt";
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-lthrift",
+				);
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "/usr/local/include/**";
-			};
-			name = Release;
-		};
-		E111978C15A4B9EE00562975 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = (
-					"-lboost_program_options-mt",
-					"-lpthread",
-					"-framework",
-					JavaVM,
-					"-framework",
-					JavaVM,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/System/Library/Frameworks/JavaVM.framework/Headers/** /System/Library/Frameworks/JavaVM.framework/Headers/** /System/Library/Frameworks/JavaVM.framework/Headers/**";
-			};
-			name = Debug;
-		};
-		E111978D15A4B9EE00562975 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = (
-					"-lboost_program_options-mt",
-					"-lpthread",
-					"-framework",
-					JavaVM,
-					"-framework",
-					JavaVM,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/System/Library/Frameworks/JavaVM.framework/Headers/** /System/Library/Frameworks/JavaVM.framework/Headers/** /System/Library/Frameworks/JavaVM.framework/Headers/**";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include/** /Users/czhang/Desktop/Software/thrift/include/thrift/**";
 			};
 			name = Release;
 		};
@@ -715,6 +923,56 @@
 			};
 			name = Release;
 		};
+		E1CD8DE01601784C006BF294 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/Users/czhang/Desktop/Codes/mia/dep/boost,
+					"/Users/czhang/Desktop/Software/thrift3/include/thrift/**",
+					/System/Library/Frameworks/JavaVM.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-framework",
+					JavaVM,
+					"-lthrift",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include /Users/czhang/Desktop/Software/thrift3/include/thrift/**";
+			};
+			name = Debug;
+		};
+		E1CD8DE11601784C006BF294 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/Users/czhang/Desktop/Codes/mia/dep/boost,
+					"/Users/czhang/Desktop/Software/thrift3/include/thrift/**",
+					/System/Library/Frameworks/JavaVM.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-lboost_program_options-mt",
+					"-framework",
+					JavaVM,
+					"-lthrift",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include /Users/czhang/Desktop/Software/thrift3/include/thrift/**";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -727,20 +985,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E111978B15A4B9EE00562975 /* Build configuration list for PBXNativeTarget "elly" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E111978C15A4B9EE00562975 /* Debug */,
-				E111978D15A4B9EE00562975 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E186EBCA15A50EAB001DC23D /* Build configuration list for PBXNativeTarget "elly_test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E186EBCB15A50EAB001DC23D /* Debug */,
 				E186EBCC15A50EAB001DC23D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1CD8DDF1601784C006BF294 /* Build configuration list for PBXNativeTarget "elly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1CD8DE01601784C006BF294 /* Debug */,
+				E1CD8DE11601784C006BF294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

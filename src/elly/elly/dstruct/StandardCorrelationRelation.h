@@ -13,7 +13,7 @@
 
 #include <vector>
 
-#include "../../../sman/sman/Include.h"
+#include "../../../SMan/common/Common.h"
 
 #include "../factors/factor_inits.h"
 
@@ -35,7 +35,7 @@ namespace mia{
              * \tparam BUFFER Buffer to use for this correlation relation.
              *
              */
-            template<mia::sm::KV_Storage STORAGE>
+            template<hazy::sman::StorageType STORAGE>
             class StandardCorrelationRelation : public mia::elly::dstruct::AbstractCorrelationRelation{
                 
             public:
@@ -45,8 +45,11 @@ namespace mia{
                  *
                  * \sa  mia::sm::KeyValue_vl
                  */
-                mia::sm::KV<int, mia::sm::IntsBlock, STORAGE, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
-                
+                hazy::sman::ObjStore<mia::sm::IntsBlock, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kv;
+              
+                void print_status(){
+                  //std::cout << "NFLUSH = " << kv.nflush << std::endl;
+                }
                 
                 /**
                  * Given a factor state ID, returns the pointer to VID block.

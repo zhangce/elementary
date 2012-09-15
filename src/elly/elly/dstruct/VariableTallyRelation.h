@@ -24,8 +24,7 @@ namespace mia{
                 std::string filename;
                 std::string filetype;
                 
-                
-                mia::sm::KV<int, mia::sm::IntsBlock, mia::sm::MM, mia::sm::DIRECT, mia::sm::NIL, mia::sm::DENSE_KEY> kv;
+                hazy::sman::ObjStore<mia::sm::IntsBlock, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kv;
                 
                 //mia::sm::KeyValue_vl<mia::sm::Buffer_mm> kv;
                 

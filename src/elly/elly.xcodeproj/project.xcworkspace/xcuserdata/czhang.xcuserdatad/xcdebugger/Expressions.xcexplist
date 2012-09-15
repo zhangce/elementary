@@ -3,6 +3,30 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "hazy::sman::ObjStore&lt;mia::sm::IntsBlock, (hazy::sman::StorageType)1, (hazy::sman::PropertyType)0&gt;::load(long long, mia::sm::IntsBlock const&amp;):ObjectStore_MM.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "hazy::sman::PagedBufferedObjStore&lt;factor_ldacount50, (hazy::sman::StorageType)1, (hazy::sman::PropertyType)16&gt;::load(long long, factor_ldacount50 const&amp;):PagedBufferedObjectStore.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "NVALUE_PER_PAGE">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "hazy::sman::PagedBufferedObjStore&lt;factor_ldacount50, (hazy::sman::StorageType)1, (hazy::sman::PropertyType)16&gt;::PagedBufferedObjStore(int):PagedBufferedObjectStore.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "NVALUE_PER_PAGE">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "mia::elly::utils::FactorFileParser::parse():FactorFileParser.h">
          <PersistentStrings>
             <PersistentString

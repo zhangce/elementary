@@ -145,6 +145,8 @@ namespace mia{
                 
                 virtual void update(int key, void (*func_update)(void * , int , int , int ), int vid, int from, int to, bool lock) = 0;
                 
+                virtual void print_status() = 0;
+              
             };
             
             
