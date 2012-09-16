@@ -1,0 +1,5 @@
+org.apache.thrift
+org.apache.thrift.meta_data
+org.apache.thrift.protocol
+org.apache.thrift.server
+org.apache.thrift.transport
