@@ -70,8 +70,8 @@ namespace hazy {
       STORAGE_HBASE= 0x00100000
     };
 
+    int hbaseid = 0;
 
-    
     enum StatusType {
       STATUS_SUCCESS         = 0x00000001,
       STATUS_GET_KEYNOTFOUND = 0x00000010,

@@ -50,8 +50,6 @@ namespace hazy{
       
     public:
       
-      static int hbaseid;
-      
       ~ObjStore(){
         
       }
@@ -59,6 +57,9 @@ namespace hazy{
       ObjStore() {
         
         hbaseid ++;
+        
+        std::cout << "~~~~~~~~" << hbaseid << std::endl;
+        
         char tablename[1000];
         sprintf(tablename, "elly_testtable_%d", hbaseid);
         
@@ -85,9 +86,18 @@ namespace hazy{
         columns.back().name = "key:";
         columns.back().maxVersions = 1;
         
-        std::cout << "creating table: " << t << std::endl;
+        std::cout << "droping table: " << t << std::endl;
         try {
+          client->disableTable(t);
+          client->deleteTable(t);
+        }catch (const apache::hadoop::hbase::thrift::IOError &ioe){
+          std::cerr << "WARN: " << ioe.message << std::endl;
+        }
+        
+        std::cout << "creating table: " << t << std::endl;
+        try{
           client->createTable(t, columns);
+          //client->enableTable(t);
         } catch (const apache::hadoop::hbase::thrift::AlreadyExists &ae) {
           std::cerr << "WARN: " << ae.message << std::endl;
         }
@@ -191,9 +201,6 @@ namespace hazy{
       }
       
     };
-    
-    template<class VALUE, PropertyType PROPERTY>
-    int ObjStore<VALUE, STORAGE_HBASE, PROPERTY>::hbaseid = 0;
     
     
   }

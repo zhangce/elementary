@@ -24,10 +24,10 @@ Boost_LIBRARY_DIRS:FILEPATH=/Users/czhang/Desktop/Codes/mia/dep/boost/stage/lib
 Boost_PROGRAM_OPTIONS_LIBRARY:FILEPATH=/Users/czhang/Desktop/Codes/mia/dep/boost/stage/lib/libboost_program_options.dylib
 
 //Boost program_options library (debug)
-Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG:FILEPATH=/Users/czhang/Desktop/Codes/mia/dep/boost/stage/lib/libboost_program_options.dylib
+Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG:FILEPATH=Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG-NOTFOUND
 
 //Boost program_options library (release)
-Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:FILEPATH=/Users/czhang/Desktop/Codes/mia/dep/boost/stage/lib/libboost_program_options.dylib
+Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:FILEPATH=Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE-NOTFOUND
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
@@ -220,7 +220,7 @@ Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_LIBRARY_DIRS
 Boost_LIBRARY_DIRS-ADVANCED:INTERNAL=1
 //The library version string for boost libraries
-Boost_LIB_VERSION:INTERNAL=1_51
+Boost_LIB_VERSION:INTERNAL=
 //Whether the Boost PROGRAM_OPTIONS library found
 Boost_PROGRAM_OPTIONS_FOUND:INTERNAL=ON
 //ADVANCED property for variable: Boost_PROGRAM_OPTIONS_LIBRARY
@@ -230,7 +230,7 @@ Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE
 Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //The version number for boost libraries
-Boost_VERSION:INTERNAL=105100
+Boost_VERSION:INTERNAL=
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_BUILD_TOOL
