@@ -174,12 +174,17 @@
 		E1427F3215FE84EB00F75C1E /* SMan.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = SMan.1; sourceTree = "<group>"; };
 		E1427F3415FE84EB00F75C1E /* test_parallel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_parallel.h; sourceTree = "<group>"; };
 		E1427F6115FE894A00F75C1E /* Include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Include.h; sourceTree = "<group>"; };
+		E14AC45C1604ECF600125181 /* Materialization_fcoc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_fcoc.h; sourceTree = "<group>"; };
 		E14CAAF415C1898100288FFB /* factor_inits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = factor_inits.h; sourceTree = "<group>"; };
 		E14CAB0115C1A82B00288FFB /* VariableFactorRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableFactorRelation.h; sourceTree = "<group>"; };
 		E16E324115A4F17A008C69B6 /* elly.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = elly.1; sourceTree = "<group>"; };
 		E16E324215A4F17A008C69B6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E16E324515A4F1A7008C69B6 /* OptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionParser.h; sourceTree = "<group>"; };
 		E16E324615A4F246008C69B6 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E1743CAC16059C1900AA0762 /* Materialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization.h; sourceTree = "<group>"; };
+		E1743CAD1605A8D000AA0762 /* Materialization_vcoc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_vcoc.h; sourceTree = "<group>"; };
+		E1743CAE1605B1E100AA0762 /* Materialization_full.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_full.h; sourceTree = "<group>"; };
+		E1743CB616061B6A00AA0762 /* ExpSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpSetting.h; sourceTree = "<group>"; };
 		E17E98DF15C3D5D70048AAB2 /* VariableAssignmentRelation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableAssignmentRelation.h; sourceTree = "<group>"; };
 		E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Materialization_lazy.h; sourceTree = "<group>"; };
 		E17E98E415C3EDCB0048AAB2 /* GibbsSampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GibbsSampler.h; sourceTree = "<group>"; };
@@ -526,6 +531,7 @@
 		E16E324315A4F17A008C69B6 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				E1743CB616061B6A00AA0762 /* ExpSetting.h */,
 				E16E324515A4F1A7008C69B6 /* OptionParser.h */,
 				E16E324615A4F246008C69B6 /* Config.h */,
 				E186EBCF15A5134F001DC23D /* Log.h */,
@@ -540,6 +546,10 @@
 			isa = PBXGroup;
 			children = (
 				E17E98E215C3DC240048AAB2 /* Materialization_lazy.h */,
+				E14AC45C1604ECF600125181 /* Materialization_fcoc.h */,
+				E1743CAD1605A8D000AA0762 /* Materialization_vcoc.h */,
+				E1743CAE1605B1E100AA0762 /* Materialization_full.h */,
+				E1743CAC16059C1900AA0762 /* Materialization.h */,
 			);
 			path = mat;
 			sourceTree = "<group>";

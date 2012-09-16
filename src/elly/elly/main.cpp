@@ -16,7 +16,14 @@
 
 #include "../../SMan/common/Include.h"
 
+#include "mat/Materialization.h"
+
+#include "mat/Materialization_full.h"
 #include "mat/Materialization_lazy.h"
+#include "mat/Materialization_fcoc.h"
+#include "mat/Materialization_vcoc.h"
+
+
 #include "factors/factor_inits.h"
 
 #include "factors/factor_register.h"
@@ -37,7 +44,7 @@ namespace mia{
       int lower;  /** start VID **/
       int upper;  /** end VID **/
       int step;   /** step size for next VID **/
-      mia::elly::mat::Materialization_lazy * mat; /** materialization strategy to use **/
+      mia::elly::mat::Materialization * mat; /** materialization strategy to use **/
       bool isShuffle; /** whether the only responsiblity of this epoch is to randomly set the variable value **/
       int * nchange; /** number of variable changes in this epoch **/
       int * naccept; /** number of accepted flips for SA **/
@@ -152,7 +159,7 @@ namespace mia{
       
       std::vector<double> * vector_pool;
       
-      void generate_tasks_and_map(mia::elly::mat::Materialization_lazy * mat, double temparature = -1, bool tally = false, bool train = false, double stepSize = -1){
+      void generate_tasks_and_map(mia::elly::mat::Materialization * mat, double temparature = -1, bool tally = false, bool train = false, double stepSize = -1){
         
         mia::elly::utils::Timer timer;
         
@@ -241,20 +248,95 @@ namespace mia{
       
       void run(){
         
+        if(config->exp_replacement.compare("LRU")==0){
+          hazy::sman::BUFFERTYPE = hazy::sman::BUFFER_LRU;
+        }else if(config->exp_replacement.compare("RANDOM")==0){
+          hazy::sman::BUFFERTYPE = hazy::sman::BUFFER_RANDOM;
+        }else{
+          std::cout << "ERROR: Invalid exp.replacement." << std::endl;
+          assert(false);
+        }
         
-        mia::elly::utils::FactorFileParser fp(config->rt_input, config);
-        fp.parse();
+        void * fp;
         
-        mia::elly::mat::Materialization_lazy mat(&fp);
-        mat.materialize();
-        
+        if(config->exp_storage.compare("STORAGE_MM") == 0){
+          fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>(config->rt_input, config);
+          ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>*) fp)->parse();
+        }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
+          fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>(config->rt_input, config);
+          ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*) fp)->parse();
+        }else{
+          std::cout << "ERROR: Invalid exp.storage." << std::endl;
+          assert(false);
+        }
+                        
+        mia::elly::mat::Materialization * mat;
+        if       (config->exp_materialization.compare("LAZY") == 0){
+          
+          if(config->exp_storage.compare("STORAGE_MM") == 0){
+            mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_MM>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
+            mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_HBASE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else{
+            std::cout << "ERROR: Invalid exp.storage." << std::endl;
+            assert(false);
+          }
+          
+          
+        }else if (config->exp_materialization.compare("VCOC") == 0){
+          
+          if(config->exp_storage.compare("STORAGE_MM") == 0){
+            mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_MM>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
+            mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_HBASE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else{
+            std::cout << "ERROR: Invalid exp.storage." << std::endl;
+            assert(false);
+          }
+          
+        }else if (config->exp_materialization.compare("FCOC") == 0){
+          
+          if(config->exp_storage.compare("STORAGE_MM") == 0){
+            mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_MM>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
+            mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_HBASE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else{
+            std::cout << "ERROR: Invalid exp.storage." << std::endl;
+            assert(false);
+          }
+          
+        }else if (config->exp_materialization.compare("EAGER") == 0){
+          
+          if(config->exp_storage.compare("STORAGE_MM") == 0){
+            mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_MM>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_MM>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
+            mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_HBASE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else{
+            std::cout << "ERROR: Invalid exp.storage." << std::endl;
+            assert(false);
+          }
+          
+        }else{
+          std::cout << "ERROR: Invalid exp.materialization." << std::endl;
+          assert(false);
+        }
+                
+        mat->materialize();
         
         if(config->rt_mode.compare("map") == 0){
           
           mia::elly::utils::log() << ">> Running MAP inference..." << std::endl;
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
-            generate_tasks_and_map(&mat, sa_temparature(nepoch));
+            generate_tasks_and_map(mat, sa_temparature(nepoch));
           }
           
           char outputfile[1000];
@@ -263,8 +345,8 @@ namespace mia{
           mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
           
           std::ofstream fout(outputfile);
-          for(int v=0;v<mat.parserrs->va.nvariable;v++){
-            fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+          for(int v=0;v<mat->getNVariable();v++){
+            fout << v << "\t" <<mat->va_lookup(v) << std::endl;
           }
           fout.close();
           
@@ -281,7 +363,7 @@ namespace mia{
           mia::elly::utils::log() << ">> Running Gibbs sampling to get one sample..." << std::endl;
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
-            generate_tasks_and_map(&mat);
+            generate_tasks_and_map(mat);
           }
           
           char outputfile[1000];
@@ -290,8 +372,8 @@ namespace mia{
           mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
           
           std::ofstream fout(outputfile);
-          for(int v=0;v<mat.parserrs->va.nvariable;v++){
-            fout << v << "\t" <<mat.parserrs->va.lookup(v) << std::endl;
+          for(int v=0;v<mat->getNVariable();v++){
+            fout << v << "\t" <<mat->va_lookup(v) << std::endl;
           }
           fout.close();
           
@@ -309,7 +391,7 @@ namespace mia{
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
             
-            generate_tasks_and_map(&mat, -1, true);
+            generate_tasks_and_map(mat, -1, true);
             
           }
           
@@ -320,10 +402,10 @@ namespace mia{
           mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
           
           std::ofstream fout(outputfile);
-          for(int v=0;v<mat.parserrs->va.nvariable;v++){
+          for(int v=0;v<mat->getNVariable();v++){
             int sum = 0;
             
-            mia::sm::IntsBlock block = mat.parserrs->vt.lookup(v);
+            mia::sm::IntsBlock block = mat->vt_lookup(v);
             for(int i=0;i<block.size;i++){
               sum += block.content[i];
             }
@@ -361,20 +443,20 @@ namespace mia{
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
             
-            generate_tasks_and_map(&mat, -1, false, true, step);
+            generate_tasks_and_map(mat, -1, false, true, step);
             
             step = step * decay;
             
           }
           
           mia::elly::utils::log() << ">> Dumping new weights..." << std::endl;
-          for(int i=0;i<mat.parserrs->crs.size();i++){
+          for(int i=0;i<mat->getNCRS();i++){
             
-            if(mat.parserrs->crs[i]->mapfilename.compare("") != 0){
-              elly::utils::log() << "  | Factor [" << mat.parserrs->crs[i]->factor_name << "]: " <<
-              mat.parserrs->crs[i]->mapfilename
+            if(mat->getCRS(i)->mapfilename.compare("") != 0){
+              elly::utils::log() << "  | Factor [" << mat->getCRS(i)->factor_name << "]: " <<
+              mat->getCRS(i)->mapfilename
               << std::endl;
-              mat.parserrs->crs[i]->dump_weights();
+              mat->getCRS(i)->dump_weights();
             }
           }
           
@@ -402,20 +484,20 @@ namespace mia{
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
             
-            generate_tasks_and_map(&mat, -1, false, true, step);
+            generate_tasks_and_map(mat, -1, false, true, step);
             
             step = step * decay;
             
           }
           
           mia::elly::utils::log() << ">> Dumping new weights..." << std::endl;
-          for(int i=0;i<mat.parserrs->crs.size();i++){
+          for(int i=0;i<mat->getNCRS();i++){
             
-            if(mat.parserrs->crs[i]->mapfilename.compare("") != 0){
-              elly::utils::log() << "  | Factor [" << mat.parserrs->crs[i]->factor_name << "]: " <<
-              mat.parserrs->crs[i]->mapfilename
+            if(mat->getCRS(i)->mapfilename.compare("") != 0){
+              elly::utils::log() << "  | Factor [" << mat->getCRS(i)->factor_name << "]: " <<
+              mat->getCRS(i)->mapfilename
               << std::endl;
-              mat.parserrs->crs[i]->dump_weights();
+              mat->getCRS(i)->dump_weights();
             }
           }
           
@@ -425,7 +507,7 @@ namespace mia{
           
           for(nepoch = 0; nepoch < config->rt_nepoch; nepoch ++){
             
-            generate_tasks_and_map(&mat, -1, true);
+            generate_tasks_and_map(mat, -1, true);
             
           }
           
@@ -436,10 +518,10 @@ namespace mia{
           mia::elly::utils::log() << ">> Dumping result to " << outputfile << std::endl;
           
           std::ofstream fout(outputfile);
-          for(int v=0;v<mat.parserrs->va.nvariable;v++){
+          for(int v=0;v<mat->getNVariable();v++){
             int sum = 0;
             
-            mia::sm::IntsBlock block = mat.parserrs->vt.lookup(v);
+            mia::sm::IntsBlock block = mat->vt_lookup(v);
             for(int i=0;i<block.size;i++){
               sum += block.content[i];
             }
@@ -464,17 +546,14 @@ namespace mia{
             mia::elly::utils::log() << ">> Run " << cmd << std::endl;
             system(cmd.c_str());
           }
-          
-          
-          
-          
         }
         
+        std::cout << "TOTAL: NFLUSH " << COMMON_NFLUSH << std::endl;
         // log
-        for(int i=0;i<mat.parserrs->crs.size();i++){
-          mat.parserrs->crs[i]->print_status();
+        for(int i=0;i<mat->getNCRS();i++){
+          std::cout << "FACTOR " << i << " ";
+          mat->getCRS(i)->print_status();
         }
-
         
       }
       
@@ -510,6 +589,8 @@ namespace mia{
 
 int main(int argc, const char * argv[])
 {
+  
+  loadlrmodel("/Users/czhang/Desktop/Codes/mia/examples/elly/LR/lrmodels");
   
   mia::elly::utils::Timer timer;
   

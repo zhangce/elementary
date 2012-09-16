@@ -12,6 +12,8 @@
 #include "../utils/Common.h"
 #include "../utils/FactorFileParser.h"
 
+#include "Materialization.h"
+
 namespace mia{
     namespace elly{
         
@@ -23,7 +25,8 @@ namespace mia{
             /**
              * \brief Class for lazy materialization. See TR for details.
              **/
-            class Materialization_lazy{
+            template<hazy::sman::StorageType STORAGE>
+            class Materialization_lazy : public mia::elly::mat::Materialization {
                 
             public:
                 
@@ -34,7 +37,11 @@ namespace mia{
                  *   - variable->assignment relation (mia::elly::dstruct::VariableAssignmentRelation)
                  *   - variable->tally relation for marginal inference (mia::elly::dstruct::VariableTallyRelation)
                  **/
-                mia::elly::utils::FactorFileParser * parserrs;
+                mia::elly::utils::FactorFileParser<STORAGE> * parserrs;
+              
+              void * get_parserrs(){
+                return parserrs;
+              }
                 
                 /**
                  * Constructor.
@@ -45,7 +52,7 @@ namespace mia{
                  *
                  *
                  */
-                Materialization_lazy(mia::elly::utils::FactorFileParser * _parserrs){
+                Materialization_lazy(mia::elly::utils::FactorFileParser<STORAGE> * _parserrs){
                     
                     parserrs = _parserrs;
                     
@@ -70,6 +77,22 @@ namespace mia{
                     return parserrs->va.nvariable;
                 }
                 
+                mia::sm::IntsBlock vt_lookup(int64_t vid){
+                  return parserrs->vt.lookup(vid);
+                }
+              
+                int va_lookup(int64_t vid){
+                  return parserrs->va.lookup(vid);
+                }
+              
+                int getNCRS(){
+                  return parserrs->crs.size();
+                }
+              
+                mia::elly::dstruct::AbstractCorrelationRelation * getCRS(int ncrs){
+                  return parserrs->crs[ncrs];
+                }
+              
                 /**
                  * Given a sampled result, update the content all relations.
                  *
@@ -87,8 +110,7 @@ namespace mia{
                         parserrs->vt.tally(sampleInput.vid, newvalue);
                     }
                     
-                    
-                    int crid, fid, aux, vpos, funcid, aux2;
+                    int crid, fid, aux, vpos, funcid;
                     void * mb;
                     
                     for(int nf=0; nf<sampleInput.fids.size();nf ++){
@@ -117,13 +139,11 @@ namespace mia{
                     }
                 
                     if(lock == true){
-                    
                         
                         for(int nf=0; nf<sampleInput.fids.size();nf ++){
                     
                             crid = sampleInput.crids[nf];
                             fid = sampleInput.fids[nf];
-                            
                         
                         //todo: should we lock variables?
                             parserrs->crs[crid]->release(fid);
@@ -183,7 +203,6 @@ namespace mia{
                     
                     //std::cout << "###" << std::endl;
                     
-                                        
                     rs.vid = vid;
                     rs.vvalue = parserrs->va.lookup(vid);
                     rs.vdomain = parserrs->va.lookup_domain(vid);
@@ -220,8 +239,6 @@ namespace mia{
                             rs.auxs.push_back(aux);
                             rs.aux2s.push_back(aux2);
                             
-                            
-                        
                             // for each variables in that factor, fetch current values
                             currentNVariable = 0;
                         

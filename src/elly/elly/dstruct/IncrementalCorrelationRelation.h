@@ -52,11 +52,13 @@ namespace mia{
                 
               }
               
+              void set(int fid, void * ptr){}
+              
               void print_status(){
                 std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;
               }
               
-              IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(5000))
+              IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(COMMON_NBUFFER))
               
               //IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL>())
               {}

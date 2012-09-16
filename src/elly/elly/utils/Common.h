@@ -26,16 +26,22 @@
 #include "../../../SMan/common/Include.h"
 
 
+int COMMON_PAGESIZE_BYTES = -1;
+int COMMON_BUFFERSIZE_BYTES = -1;
+int COMMON_NBUFFER = -1;
+
+
+
+
 #define LOG_2   0.693147180559945
 #define MINUS_LOG_THRESHOLD   -18.42
 
 namespace mia{
   namespace sm{
     
-#define MemBlockSIZE 128                   // in Byte
+#define MemBlockSIZE 128                    // in Byte
 #define MemBlockNINT (MemBlockSIZE/4)       // in #int
 #define SIZEOFINT (sizeof(int))
-    
     
     /**
      * \brief Pair of integer.
@@ -239,12 +245,6 @@ namespace elly{
             
         }
 
-        
-        
-        
-        
-        
-        
     }
 }
 }

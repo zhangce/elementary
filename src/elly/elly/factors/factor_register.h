@@ -109,6 +109,7 @@ namespace mia{
                 funcs_potential[5] = potential_ldacount50_sametopic;
                 
                 funcs_potential[6] = potential_mlnclause;
+                funcs_potential[7] = potential_lr_unigram;
                 
                 funcs_upper[0] = NULL;
                 funcs_upper[1] = NULL;
@@ -118,7 +119,8 @@ namespace mia{
                 funcs_upper[4] = NULL;
                 funcs_upper[5] = potential_ldacount50_sametopic_upper;
                 funcs_upper[6] = NULL;
-                
+                funcs_upper[7] = NULL;
+              
                 funcs_lower[0] = NULL;
                 funcs_lower[1] = NULL;
                 funcs_lower[2] = NULL;
@@ -127,7 +129,8 @@ namespace mia{
                 funcs_lower[4] = NULL;
                 funcs_lower[5] = potential_ldacount50_sametopic_lower;
                 funcs_lower[6] = NULL;
-                
+                funcs_lower[7] = NULL;
+              
                 
                 funcs_gradient[0] = gradient_unigram;
                 funcs_gradient[1] = gradient_zero;
@@ -138,7 +141,7 @@ namespace mia{
                 funcs_gradient[5] = gradient_zero;
                 
                 funcs_gradient[6] = gradient_mlnclause;
-                
+                funcs_gradient[6] = gradient_zero;
             }
             
             /**
@@ -154,8 +157,8 @@ namespace mia{
                 funcs_update[3] = update_ldacount50;
                 funcs_update[4] = update_ldacount50;
                 funcs_update[5] = update_ldacount50;
-                
                 funcs_update[6] = NULL;
+                funcs_update[7] = NULL;
                 
                 funcs_incremental[0] = false;
                 funcs_incremental[1] = false;
@@ -166,6 +169,8 @@ namespace mia{
                 funcs_incremental[5] = true;
                 
                 funcs_incremental[6] = false;
+              
+                funcs_incremental[7] = false;
             }
 
             /**
@@ -196,6 +201,12 @@ namespace mia{
                     mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
                     new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
                     return cr;
+                }
+              
+                if(function_id == 7){
+                  mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
+                  new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
+                  return cr;
                 }
     
                 if(function_id == 2){

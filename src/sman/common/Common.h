@@ -9,10 +9,11 @@
 #ifndef SMan_Common_h
 #define SMan_Common_h
 
+#define COMMON_PAGESIZE 4096
+
+int COMMON_NFLUSH = 0;
 
 #define OBJECTSTORE_INIT_CONTAINER_SIZE 100
-
-
 
 #include <iostream>
 #include <inttypes.h>
@@ -47,6 +48,14 @@ namespace hazy {
     jmethodID id_reg;
       */
     
+    enum BufferType {
+      BUFFER_NIL   = 0x00000001,
+      BUFFER_LRU   = 0x00000010,
+      BUFFER_RANDOM= 0x00000100
+    };
+    
+    BufferType BUFFERTYPE;
+    
     enum PropertyType {
       PROPERTY_NIL = 0x00000000,
       JAVAHASH_MM  = 0x00000001,
@@ -61,11 +70,7 @@ namespace hazy {
       STORAGE_HBASE= 0x00100000
     };
 
-    enum BufferType {
-      BUFFER_NIL   = 0x00000001,
-      BUFFER_LRU   = 0x00000010,
-      BUFFER_RANDOM= 0x00000100
-    };
+
     
     enum StatusType {
       STATUS_SUCCESS         = 0x00000001,

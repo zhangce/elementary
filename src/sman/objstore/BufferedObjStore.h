@@ -68,7 +68,17 @@ namespace hazy{
         hitget = 0; hitset = 0; hitload = 0;
         nflush = 0;
         
-        std::cout << "INFO: " << "Use BufferedObjStore." << std::endl;
+        std::cout << "INFO: " << "Use BufferedObjStore.";
+        
+        if(hazy::sman::BUFFERTYPE == hazy::sman::BUFFER_LRU){
+          std::cout << " @ LRU." << std::endl;
+        }
+        
+        if(hazy::sman::BUFFERTYPE == hazy::sman::BUFFER_RANDOM){
+          std::cout << " @ RANDOM." << std::endl;
+        }
+        
+        
         bufferSize = _bufferSize;
         buffers = new VALUE[bufferSize];
         buffer2obj = new int64_t[bufferSize];
@@ -94,13 +104,21 @@ namespace hazy{
       }
       
       void update_priority_of_hold(size_t buf){
-        priority_of_hold[buf] = (++timestamp);
-        //timestamp = RAND_MAX;
-        //priority_of_hold[buf] = rand();
+        
+        if(hazy::sman::BUFFERTYPE == hazy::sman::BUFFER_LRU){
+          priority_of_hold[buf] = (++timestamp);
+        }
+        
+        if(hazy::sman::BUFFERTYPE == hazy::sman::BUFFER_RANDOM){
+          timestamp = RAND_MAX;
+          priority_of_hold[buf] = rand();
+        }
+        
       }
       
       void flush(size_t buf){
         
+        COMMON_NFLUSH ++;
         nflush ++;
         os.set(buffer2obj[buf], buffers[buf]);
       }

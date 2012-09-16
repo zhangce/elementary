@@ -59,8 +59,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lda.cfg&quot;"
+            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lr.cfg&quot;"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lda.cfg&quot;"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

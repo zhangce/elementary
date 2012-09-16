@@ -25,6 +25,7 @@ namespace mia{
             /**
              * \brief Variable factor relation which maps each variable to the set of factors.
              */
+            template<hazy::sman::StorageType STORAGE>
             class VariableFactorRelation{
                 
             public:
@@ -43,8 +44,14 @@ namespace mia{
                 /**
                  * Key value store that maps VID to factor block.
                  */
-                hazy::sman::ObjStore<mia::sm::IntsBlock, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kv;
+                hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
 
+                VariableFactorRelation() :
+                  kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER))
+                {
+                
+                }
+              
                 /**
                  * Number of vairables being loaded.
                  */

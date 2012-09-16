@@ -21,22 +21,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "369004867.144135"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "461"
-         endingLineNumber = "461">
+         startingLineNumber = "465"
+         endingLineNumber = "465">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "369004867.144135"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "462"
-         endingLineNumber = "462">
+         startingLineNumber = "466"
+         endingLineNumber = "466">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -54,22 +54,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/main.cpp"
-         timestampString = "369419295.481914"
+         timestampString = "369505317.518934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "605"
-         endingLineNumber = "605">
+         startingLineNumber = "686"
+         endingLineNumber = "686">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "367103524.803153"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "226"
-         endingLineNumber = "226"
+         startingLineNumber = "228"
+         endingLineNumber = "228"
          landmarkName = "parse()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -78,11 +78,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "367103824.235607"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "265"
-         endingLineNumber = "265"
+         startingLineNumber = "267"
+         endingLineNumber = "267"
          landmarkName = "parse()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -91,11 +91,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "367104162.493884"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
          landmarkName = "parse()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -104,11 +104,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/utils/FactorFileParser.h"
-         timestampString = "367104162.493884"
+         timestampString = "369502758.271142"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "287"
-         endingLineNumber = "287"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
          landmarkName = "parse()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -117,11 +117,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/dstruct/VariableAssignmentRelation.h"
-         timestampString = "369002887.146337"
+         timestampString = "369504508.661979"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
          landmarkName = "class VariableAssignmentRelation"
          landmarkType = "3">
       </FileBreakpoint>
@@ -130,11 +130,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/dstruct/VariableFactorRelation.h"
-         timestampString = "369004208.329065"
+         timestampString = "369504616.481486"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "prepare()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -143,11 +143,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/dstruct/VariableFactorRelation.h"
-         timestampString = "369004272.244155"
+         timestampString = "369504616.481486"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "prepare()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -156,11 +156,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/dstruct/VariableFactorRelation.h"
-         timestampString = "369004278.416679"
+         timestampString = "369504616.481486"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
          landmarkName = "prepare()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -169,11 +169,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "elly/dstruct/VariableFactorRelation.h"
-         timestampString = "369004292.07047"
+         timestampString = "369504616.481486"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "prepare()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -182,7 +182,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../SMan/objstore/ObjectStore_MM.h"
-         timestampString = "369004452.696704"
+         timestampString = "369503320.743689"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "61"
@@ -195,7 +195,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../SMan/objstore/ObjectStore_MM.h"
-         timestampString = "369004452.696704"
+         timestampString = "369503320.743689"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "62"
@@ -208,11 +208,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../SMan/objstore/BufferedObjStore.h"
-         timestampString = "369418362.874116"
+         timestampString = "369505317.518934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "getfree2()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -221,12 +221,103 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../SMan/objstore/BufferedObjStore.h"
-         timestampString = "369418420.546191"
+         timestampString = "369505317.518934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
          landmarkName = "getfree2()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/utils/FactorFileParser.h"
+         timestampString = "369502758.271142"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "447"
+         endingLineNumber = "447"
+         landmarkName = "parse()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/mat/Materialization_vcoc.h"
+         timestampString = "369502758.271142"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
+         landmarkName = "retrieve(int vid, mia::elly::SampleInput &amp; rs, bool train = false, bool lock = true)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/mat/Materialization_vcoc.h"
+         timestampString = "369502758.271142"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "216"
+         endingLineNumber = "216"
+         landmarkName = "retrieve(int vid, mia::elly::SampleInput &amp; rs, bool train = false, bool lock = true)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/mat/Materialization_vcoc.h"
+         timestampString = "369502758.271142"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
+         landmarkName = "materialize()"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/mat/Materialization_lazy.h"
+         timestampString = "369502866.824673"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
+         landmarkName = "retrieve(int vid, mia::elly::SampleInput &amp; rs, bool train = false, bool lock = true)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/dstruct/VariableAssignmentRelation.h"
+         timestampString = "369504508.661979"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
+         landmarkName = "lookup(int vid)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "elly/dstruct/VariableAssignmentRelation.h"
+         timestampString = "369504508.661979"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "lookup_domain(int vid)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

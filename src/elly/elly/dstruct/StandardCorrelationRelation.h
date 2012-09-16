@@ -45,10 +45,12 @@ namespace mia{
                  *
                  * \sa  mia::sm::KeyValue_vl
                  */
-                hazy::sman::ObjStore<mia::sm::IntsBlock, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kv;
+                hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
+              
+                StandardCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER)){}
               
                 void print_status(){
-                  //std::cout << "NFLUSH = " << kv.nflush << std::endl;
+                  std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;
                 }
                 
                 /**
@@ -72,6 +74,10 @@ namespace mia{
                     return ret;
                 }
                 
+                void set(int fid, void * ptr){
+                  kv.set(fid, *((mia::sm::IntsBlock*) ptr));
+                }
+              
                 /**
                  * Update factor state -- empty for mia::elly::dstruct::StandardCorrelationRelation. 
                  *
@@ -96,7 +102,6 @@ namespace mia{
                         while(fin >> fid >> nvar){
                             
                             factor_vidblock_unigram fstate; //todo: change to a better name -- this is more general a class
-                            
                             
                             fin >> aux;
                             fstate.init_aux(aux);

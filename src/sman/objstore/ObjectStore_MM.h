@@ -34,12 +34,12 @@ namespace hazy{
       
       StatusType get(int64_t key, VALUE & value){
       
-        
         value = mm[key];
         return STATUS_SUCCESS;
       }
       
       StatusType set(int64_t key, const VALUE & value){
+        
         
         mm[key] = value;
         return STATUS_SUCCESS;

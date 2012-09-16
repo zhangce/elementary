@@ -138,6 +138,8 @@ namespace mia{
                         pthread_mutex_destroy(sems[i]);
                     }
                 }
+              
+                virtual void set(int fid, void * ptr) = 0;
                 
                 virtual void * lookup(int fid) = 0;
                 

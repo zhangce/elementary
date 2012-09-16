@@ -27,6 +27,7 @@ namespace mia{
              * \brief Variable assignment relation, which maps VID to its current assignment.
              *
              */
+            template<hazy::sman::StorageType STORAGE>
             class VariableAssignmentRelation{
                 
             public:
@@ -44,7 +45,14 @@ namespace mia{
                 /**
                  * Key value store which maps VID to its assignment.
                  */
-                hazy::sman::ObjStore<int, hazy::sman::STORAGE_MM, hazy::sman::PROPERTY_NIL> kf;
+                hazy::sman::PagedBufferedObjStore<int, STORAGE, hazy::sman::PROPERTY_NIL> kf;
+              
+                VariableAssignmentRelation() :
+                  kf(hazy::sman::PagedBufferedObjStore<int, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER))
+                {
+                
+                
+                }
                 
                 /**
                  * Key value store which maps VID to its domain.

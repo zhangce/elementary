@@ -30,10 +30,10 @@ namespace hazy{
       const int NVALUE_PER_PAGE;
       int cpid;
       
-      BufferedObjStore< page<VALUE, 496/sizeof(VALUE)>, STORAGE, PROPERTY > pagestore;
+      BufferedObjStore< page<VALUE, COMMON_PAGESIZE/sizeof(VALUE)>, STORAGE, PROPERTY > pagestore;
       
-      PagedBufferedObjStore(int nbuffer) : NVALUE_PER_PAGE(496/sizeof(VALUE)),
-      pagestore(BufferedObjStore< page<VALUE, 496/sizeof(VALUE)>, STORAGE, PROPERTY >(nbuffer))
+      PagedBufferedObjStore(int nbuffer) : NVALUE_PER_PAGE(COMMON_PAGESIZE/sizeof(VALUE)),
+      pagestore(BufferedObjStore< page<VALUE, COMMON_PAGESIZE/sizeof(VALUE)>, STORAGE, PROPERTY >(nbuffer))
       {
         cpid = -1;
         std::cout << "INFO: Use PagedBufferedObjStore..." << std::endl;
@@ -82,7 +82,7 @@ namespace hazy{
         int64_t poffset = key % NVALUE_PER_PAGE;
         
         if(cpid < pid){
-          pagestore.load(pid, page<VALUE, 496/sizeof(VALUE)>());
+          pagestore.load(pid, page<VALUE, COMMON_PAGESIZE/sizeof(VALUE)>());
           cpid = pid;
         }
         this->set(key, value);

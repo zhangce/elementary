@@ -22,7 +22,6 @@ namespace elly{
         public:
            
             std::string version_number;
-         
 
             std::string ui_verbose;
             std::string ui_logfile;
@@ -48,6 +47,13 @@ namespace elly{
             
             bool io_ismln;
             std::string io_mln;
+          
+          
+            std::string exp_materialization;
+            std::string exp_storage;
+            std::string exp_replacement;
+            int exp_pagesize_bytes;
+            int exp_buffersize_bytes;
             
             Config(){
                 
@@ -79,6 +85,12 @@ namespace elly{
                 rt_lock = true;
                 
                 rt_is_log_system = true;
+              
+                exp_materialization = "";
+                exp_storage = "";
+                exp_replacement = "";
+                exp_pagesize_bytes = -1;
+                exp_buffersize_bytes = -1;
                 
             }
             

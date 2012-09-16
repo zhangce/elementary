@@ -43,6 +43,7 @@ namespace elly{
         /**
          * \brief Class that contains a set of relations and load them.
          */
+        template<hazy::sman::StorageType STORAGE>
         class FactorFileParser{
         public:
             std::string folder_name;
@@ -51,8 +52,9 @@ namespace elly{
             elly::utils::Config* config;
         
             std::vector<mia::elly::dstruct::AbstractCorrelationRelation* > crs;
-            mia::elly::dstruct::VariableFactorRelation vf;
-            mia::elly::dstruct::VariableAssignmentRelation va;
+          
+            mia::elly::dstruct::VariableFactorRelation<STORAGE> vf;
+            mia::elly::dstruct::VariableAssignmentRelation<STORAGE> va;
             
             mia::elly::dstruct::VariableTallyRelation vt;
             mia::elly::dstruct::VariableTrainingRelation vtrain;
@@ -374,8 +376,10 @@ namespace elly{
 
                         //mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<hazy::sman::STORAGE_MM>(func_id);
 
-                        mia::elly::dstruct::AbstractCorrelationRelation * cr = mia::elly::factors::get_correlation_relation<hazy::sman::STORAGE_HBASE>(func_id);
-
+                      
+                        mia::elly::dstruct::AbstractCorrelationRelation * cr =
+                            mia::elly::factors::get_correlation_relation<STORAGE>(func_id);
+                      
                         
                         cr->factor_name = it->first;
                         cr->mapfilename = "";

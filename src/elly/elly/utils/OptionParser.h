@@ -63,8 +63,14 @@ namespace elly {
             
                     // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
-            
-             
+          
+                    // exp.*    (experiment)
+            ("exp.materialization", po::value<std::string>(), "Materialization strategy to use. {LAZY, VCOC, FCOC, EAGER}.")
+            ("exp.storage", po::value<std::string>(), "Storage to use. {STORAGE_MM, STORAGE_HBASE}.")
+            ("exp.replacement", po::value<std::string>(), "Replacement strategy to use. {RANDOM, LRU}.")
+            ("exp.pagesize_bytes", po::value<int>(), "Pagesize in bytes.")
+            ("exp.buffersize_bytes", po::value<int>(), "Buffersize in bytes.")
+                      
             ;
             
             return desc;
@@ -164,7 +170,42 @@ namespace elly {
                 elly::utils::log() << "  | sys.threads = " << config.sys_nthreads << std::endl;
             }
             
-            
+          if(vm.count("exp.materialization")){
+            config.exp_materialization = vm["exp.materialization"].as<std::string>();
+            elly::utils::log() << "  | exp.materialization = " << config.exp_materialization << std::endl;
+          }
+          
+          if(vm.count("exp.storage")){
+            config.exp_storage = vm["exp.storage"].as<std::string>();
+            elly::utils::log() << "  | exp.storage = " << config.exp_storage << std::endl;
+          }
+          
+          if(vm.count("exp.replacement")){
+            config.exp_replacement = vm["exp.replacement"].as<std::string>();
+            elly::utils::log() << "  | exp.replacement = " << config.exp_replacement << std::endl;
+          }
+          
+          
+          config.exp_pagesize_bytes = COMMON_PAGESIZE;
+          std::cout << "  | exp.exp_pagesize_bytes = " << COMMON_PAGESIZE << " bytes." << std::endl;
+          
+          if(vm.count("exp.buffersize_bytes")){
+            config.exp_buffersize_bytes = vm["exp.buffersize_bytes"].as<int>();
+            elly::utils::log() << "  | exp.buffersize_bytes = " << config.exp_buffersize_bytes << std::endl;
+          }
+          
+          COMMON_PAGESIZE_BYTES = config.exp_pagesize_bytes;
+          COMMON_BUFFERSIZE_BYTES = config.exp_buffersize_bytes;
+          COMMON_NBUFFER = COMMON_BUFFERSIZE_BYTES/COMMON_PAGESIZE_BYTES;
+          
+          if(!(COMMON_NBUFFER>0)){
+            std::cout << "config.exp_buffersize_bytes should be at least larger than config.exp_pagesize_bytes" << std::endl;
+            assert(false);
+          }else{
+            std::cout << "  | NBUFFER = " << COMMON_NBUFFER << "" << std::endl;
+          }
+          
+          
             return 0;
             
         }
@@ -188,7 +229,28 @@ namespace elly {
             if(config.rt_workdir.compare("") == 0){
                 throw std::exception(); //TODO
             }
-
+          
+          if(config.exp_materialization.compare("") == 0){
+            throw std::exception(); //TODO
+          }
+          
+          if(config.exp_storage.compare("") == 0){
+            throw std::exception(); //TODO
+          }
+          
+          if(config.exp_replacement.compare("") == 0){
+            throw std::exception(); //TODO
+          }
+          
+          if(config.exp_pagesize_bytes == -1){
+            throw std::exception(); //TODO
+          }
+          
+          if(config.exp_buffersize_bytes == -1){
+            throw std::exception(); //TODO
+          }
+          
+          
         }
 
         /*!
@@ -241,7 +303,8 @@ namespace elly {
             
             }catch( const std::exception& e){
                 
-                elly::utils::logerr() << "ERROR: " << e.what() << std::endl;
+                elly::utils::logerr() << "ERROR: " << e.what() <<
+              std::endl;
                 elly::utils::log() << desc << std::endl;
                 return 1;
             }

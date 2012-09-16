@@ -18,6 +18,29 @@
 #include "../utils/Common.h"
 
 
+double lr_model[8162][23];
+
+void loadlrmodel(std::string file){
+  std::ifstream finf;
+  finf.open(file.c_str());
+  
+  int a, b;
+  double c;
+  
+  int ct = 0;
+  while(!finf.eof()){
+    finf >> a >> b >> c;
+    lr_model[a][b] = c;
+    ct ++;
+  }
+  
+  std::cout << ">>> " << ct << " lines loaded for lrmodel" << std::endl;
+  
+  finf.close();
+}
+
+
+
 /**
  * \brief factor class for LDA (<50 topics)
  */
@@ -49,8 +72,6 @@ class factor_vidblock_unigram{
 public:
     mia::sm::IntsBlock state;
 
-    
-    
     void init_aux(int aux){
         state.append<int>(aux);
     }
@@ -64,6 +85,19 @@ public:
     }
         
 };
+
+/**
+ * potential function for LR.
+ */
+double potential_lr_unigram(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
+  
+  std::vector<int>* pmb = (std::vector<int>*) mb;
+  
+  //std::cout << aux2 << ", " << value << std::endl;
+  
+  return lr_model[aux2][value];
+  
+}
 
 
 /**
