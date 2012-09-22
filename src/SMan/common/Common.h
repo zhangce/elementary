@@ -9,7 +9,7 @@
 #ifndef SMan_Common_h
 #define SMan_Common_h
 
-#define COMMON_PAGESIZE 409600
+//#define COMMON_PAGESIZE 409600
 
 int COMMON_NFLUSH = 0;
 

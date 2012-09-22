@@ -608,7 +608,7 @@ int main(int argc, const char * argv[])
 {
   
   std::cout << "MACRO: COMMON_PAGESIZE: " << (COMMON_PAGESIZE) << std::endl;
-  std::cout << "MACRO: COMMON_PAGESIZE2: " << (COMMON_PAGESIZE2) << std::endl;
+  //std::cout << "MACRO: COMMON_PAGESIZE2: " << (COMMON_PAGESIZE2) << std::endl;
   
 #ifdef  BUFFER_DIRECT
   std::cout << "MACRO: BUFFER_DIRECT: " << ("TRUE") << std::endl;
