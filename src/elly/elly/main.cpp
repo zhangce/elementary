@@ -6,6 +6,12 @@
 //  Copyright (c) 2012 University of Wisconsin-Madison. All rights reserved.
 //
 
+
+#ifdef COMMON_PAGESIZE
+#else
+#define COMMON_PAGESIZE 40960
+#endif
+
 #include "../../SMan/common/../gen-cpp/Hbase.h"
 
 #include "utils/Common.h"
@@ -607,6 +613,8 @@ namespace mia{
 int main(int argc, const char * argv[])
 {
 
+
+  std::cout << "MACRO: COMMON_PAGESIZE: " << (COMMON_PAGESIZE) << std::endl;
   
 #ifdef  BUFFER_DIRECT
   std::cout << "MACRO: BUFFER_DIRECT: " << ("TRUE") << std::endl;

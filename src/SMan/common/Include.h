@@ -21,13 +21,7 @@
 
 #include "../kvstore/PagedBufferedObjectStore.h"
 
+#include <iostream>
 
-#ifndef COMMON_PAGESIZE
-std::cout << "MACRO: COMMON_PAGESIZE: " << (COMMON_PAGESIZE) << std::endl;
-//std::cout << "MACRO: COMMON_PAGESIZE2: " << (COMMON_PAGESIZE2) << std::endl;
-#else
-#define COMMON_PAGESIZE 40960
-std::cout << "MACRO: COMMON_PAGESIZE: " << (COMMON_PAGESIZE) << std::endl;
-#endif
 
 #endif
