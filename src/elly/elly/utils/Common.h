@@ -39,7 +39,7 @@ int COMMON_NBUFFER = -1;
 namespace mia{
   namespace sm{
     
-#define MemBlockSIZE 128                    // in Byte
+#define MemBlockSIZE 256                    // in Byte
 #define MemBlockNINT (MemBlockSIZE/4)       // in #int
 #define SIZEOFINT (sizeof(int))
     
