@@ -9,7 +9,7 @@
 #ifndef SMan_ObjectStore_HBASE_h
 #define SMan_ObjectStore_HBASE_h
 
-
+#include <time.h>
 
 #include <stdio.h>
 #include <unistd.h>
@@ -61,7 +61,7 @@ namespace hazy{
         std::cout << "~~~~~~~~" << hbaseid << std::endl;
         
         char tablename[1000];
-        sprintf(tablename, "elly_testtable_%d", hbaseid);
+        sprintf(tablename, "elly_testtable_%d_%d", hbaseid, time(NULL) );
         
         std::cout << "INFO: " << "Use specification STORAGE_HBASE." << std::endl;
         

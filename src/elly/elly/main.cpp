@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 University of Wisconsin-Madison. All rights reserved.
 //
 
+#include "../../SMan/common/../gen-cpp/Hbase.h"
+
 #include "utils/Common.h"
 
 #include "utils/OptionParser.h"
@@ -590,7 +592,7 @@ namespace mia{
 int main(int argc, const char * argv[])
 {
   
-  loadlrmodel("/Users/czhang/Desktop/Codes/mia/examples/elly/LR/lrmodels");
+  loadlrmodel("/progs/czhang/elementary/examples/elly/LR/lrmodels");
   
   mia::elly::utils::Timer timer;
   

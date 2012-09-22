@@ -117,7 +117,9 @@ namespace hazy{
       }
       
       void flush(size_t buf){
-        
+
+	//usleep(3);        
+
         COMMON_NFLUSH ++;
         nflush ++;
         os.set(buffer2obj[buf], buffers[buf]);
@@ -221,6 +223,7 @@ namespace hazy{
           
           if(buf != -1){
             
+	    //usleep(3);
             os.get(key, buffers[buf]);
             obj2buffer[key] = buf;
             buffer2obj[buf] = key;
@@ -270,6 +273,7 @@ namespace hazy{
           
           if(buf != -1){
             
+	    //usleep(3);
             os.get(key, buffers[buf]);
             obj2buffer[key] = buf;
             buffer2obj[buf] = key;
