@@ -68,15 +68,11 @@ namespace mia{
               }
               
 #ifdef BUFFER_DIRECT
-              IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>())
+              IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>()){}
 #else
-              IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(COMMON_NBUFFER))
+              IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(COMMON_NBUFFER)){}
 #endif
-              
-              
-              //IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL>())
-              {}
-              
+                            
                 /**
                  * given a factor ID, return the pointer to its state.
                  */

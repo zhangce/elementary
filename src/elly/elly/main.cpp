@@ -607,7 +607,18 @@ namespace mia{
 int main(int argc, const char * argv[])
 {
   
+  std::cout << "MACRO: COMMON_PAGESIZE: " << (COMMON_PAGESIZE) << std::endl;
+  
+#ifdef  BUFFER_DIRECT
+  std::cout << "MACRO: BUFFER_DIRECT: " << ("TRUE") << std::endl;
+#else
+  std::cout << "MACRO: BUFFER_DIRECT: " << ("FALSE") << std::endl;  
+#endif
+  
+  std::cout << std::endl;
+  
   loadlrmodel("/progs/czhang/elementary/examples/elly/LR/lrmodels");
+  loadcrfmodel("/progs/czhang/elementary/examples/elly/LR/crfmodels");
   
   mia::elly::utils::Timer timer;
   

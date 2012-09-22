@@ -98,24 +98,24 @@ namespace hazy{
 	free(init);
 #endif
 	
-	//std::cout << "~~~~~~~~3" << std::endl;
+        //std::cout << "~~~~~~~~3" << std::endl;
 
         return STATUS_SUCCESS;
       }
       
       StatusType set(int64_t key, const VALUE & value){
         
-	//std::cout << "~~~~~~~~~~1" << std::endl;
+        //std::cout << "~~~~~~~~~~1" << std::endl;
 
 #ifdef __MACH__
         pwrite(fd, &value, objsize, objsize*key);
 #else
-	VALUE * init;
-	//std::cout << "###" << 
-	posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//;<< std::endl; 
-	*init = value;
+        VALUE * init;
+        //std::cout << "###" << 
+        posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//;<< std::endl;
+        *init = value;
         pwrite64(fd, init, objsize, objsize*key);
-	free(init);
+        free(init);
 #endif
 	
 

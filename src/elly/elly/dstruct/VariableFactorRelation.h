@@ -49,20 +49,15 @@ namespace mia{
               hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
               
               VariableFactorRelation() :
-              kv(hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>())
+              kv(hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>()){}
 #else
               hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
               
               VariableFactorRelation() :
-              kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER))
+              kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER)){}
 #endif
             
                 
-            
-              
-                {
-                
-                }
               
                 /**
                  * Number of vairables being loaded.

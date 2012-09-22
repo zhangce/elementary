@@ -39,6 +39,28 @@ void loadlrmodel(std::string file){
   finf.close();
 }
 
+double crf_model[23][23];
+
+void loadcrfmodel(std::string file){
+  std::ifstream finf;
+  finf.open(file.c_str());
+  
+  int a, b;
+  double c;
+  
+  int ct = 0;
+  while(!finf.eof()){
+    finf >> a >> b >> c;
+    crf_model[a][b] = c;
+    ct ++;
+  }
+  
+  std::cout << ">>> " << ct << " lines loaded for crf_model" << std::endl;
+  
+  finf.close();
+}
+
+
 
 
 /**
@@ -96,6 +118,29 @@ double potential_lr_unigram(void * mb, int aux, int aux2, int vpos, int value, s
   //std::cout << aux2 << ", " << value << std::endl;
   
   return lr_model[aux2][value];
+  
+}
+
+/**
+ * potential function for crf.
+ */
+double potential_crf_bigram(void * mb, int aux, int aux2, int vpos, int value, std::vector<double>* weights){
+  
+  std::vector<int>* pmb = (std::vector<int>*) mb;
+  
+  if(vpos == 0){
+    return crf_model[value][pmb->at(0)];
+  }
+  
+  if(vpos == 1){
+    return crf_model[pmb->at(0)][value];
+  }
+  
+  assert(false);
+  
+  //std::cout << aux2 << ", " << value << std::endl;
+  
+  return -1;
   
 }
 

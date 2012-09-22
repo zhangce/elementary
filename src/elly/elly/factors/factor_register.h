@@ -110,6 +110,7 @@ namespace mia{
                 
                 funcs_potential[6] = potential_mlnclause;
                 funcs_potential[7] = potential_lr_unigram;
+                funcs_potential[8] = potential_crf_bigram;
                 
                 funcs_upper[0] = NULL;
                 funcs_upper[1] = NULL;
@@ -120,6 +121,7 @@ namespace mia{
                 funcs_upper[5] = potential_ldacount50_sametopic_upper;
                 funcs_upper[6] = NULL;
                 funcs_upper[7] = NULL;
+                funcs_upper[8] = NULL;
               
                 funcs_lower[0] = NULL;
                 funcs_lower[1] = NULL;
@@ -130,6 +132,7 @@ namespace mia{
                 funcs_lower[5] = potential_ldacount50_sametopic_lower;
                 funcs_lower[6] = NULL;
                 funcs_lower[7] = NULL;
+                funcs_lower[8] = NULL;
               
                 
                 funcs_gradient[0] = gradient_unigram;
@@ -142,6 +145,8 @@ namespace mia{
                 
                 funcs_gradient[6] = gradient_mlnclause;
                 funcs_gradient[6] = gradient_zero;
+                funcs_gradient[7] = gradient_zero;
+                funcs_gradient[8] = gradient_zero;
             }
             
             /**
@@ -159,6 +164,7 @@ namespace mia{
                 funcs_update[5] = update_ldacount50;
                 funcs_update[6] = NULL;
                 funcs_update[7] = NULL;
+                funcs_update[8] = NULL;
                 
                 funcs_incremental[0] = false;
                 funcs_incremental[1] = false;
@@ -171,6 +177,7 @@ namespace mia{
                 funcs_incremental[6] = false;
               
                 funcs_incremental[7] = false;
+                funcs_incremental[8] = false;
             }
 
             /**
@@ -204,6 +211,12 @@ namespace mia{
                 }
               
                 if(function_id == 7){
+                  mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
+                  new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
+                  return cr;
+                }
+              
+                if(function_id == 8){
                   mia::elly::dstruct::StandardCorrelationRelation<STORAGE> * cr =
                   new mia::elly::dstruct::StandardCorrelationRelation<STORAGE>;
                   return cr;
