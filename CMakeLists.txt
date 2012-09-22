@@ -1,5 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 
+add_library (SMan1 src/SMan/gen-cpp/Hbase.cpp
+src/SMan/gen-cpp/hbase_constants.cpp src/SMan/gen-cpp/hbase_types.cpp)
 
 #### GCC OPTIMIZATION ####
 IF(DEFINED CMAKE_BUILD_TYPE)
@@ -44,9 +46,8 @@ configure_file( "${CMAKE_CURRENT_SOURCE_DIR}/examples/elly/MLN/catelog.cfg.in"
 
 # message(STATUS "Find OpenMP")
 
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -p")
-
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -p")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -fpermissive")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fpermissive")
 
 # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -p")
 
@@ -101,9 +102,26 @@ message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
 
+#target_link_libraries (bin/elementary "/progs/czhang/elementary/dep/thrift/lib/libthrift.so")
+
+#target_link_libraries (SMan1 SMan2)
+#target_link_libraries (SMan2 SMan1)
+
+target_link_libraries (bin/elementary SMan1)
+#target_link_libraries (bin/elementary SMan2)
+
+target_link_libraries (SMan1 "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+#target_link_libraries (SMan2 "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+target_link_libraries (bin/elementary "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+
 if(NOT APPLE)
 target_link_libraries (bin/elementary -lrt)
 target_link_libraries (bin/elementary ${JAVA_JVM_LIBRARY})
 else()
 target_link_libraries (bin/elementary ${JNI_LIBRARIES})
 endif()
+
+include_directories("/progs/czhang/elementary/dep/thrift/include/thrift/")
+#target_link_libraries (bin/elementary "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+
+
