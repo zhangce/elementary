@@ -267,6 +267,9 @@ namespace mia{
         }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
           fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>(config->rt_input, config);
           ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*) fp)->parse();
+        }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
+          fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>(config->rt_input, config);
+          ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*) fp)->parse();
         }else{
           std::cout << "ERROR: Invalid exp.storage." << std::endl;
           assert(false);
@@ -281,6 +284,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
             mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_HBASE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
+            mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_FILE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -295,6 +301,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
             mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_HBASE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
+            mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_FILE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -308,6 +317,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
             mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_HBASE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
+            mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_FILE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -321,6 +333,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_HBASE") == 0){
             mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_HBASE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_HBASE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
+            mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_FILE>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);

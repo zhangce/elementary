@@ -1,0 +1,43 @@
+Telly_test
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest/Contents/Info.plist elly_test/elly_test-Info.plist
+
+N/Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest
+t2
+s0
+
+N/Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest/Contents/Info.plist
+t2
+s0
+
+N/Users/czhang/Desktop/Codes/mia/src/elly/build/elly.build/Release/elly_test.build/Script-E186EBB415A50EAB001DC23D.sh
+c00000000505669410000000000000062
+t1347840321
+s98
+
+Nelly_test/elly_test-Info.plist
+c00000000000000000000000000000000
+t2
+s0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies3b52e1c1a006b641^af60e7c1a006b641^---0#1#0#--18"Check dependencies36"950EE508-E241-450A-802A-590F5A48799F-
+
+CPhaseScriptExecution "Run Script" /Users/czhang/Desktop/Codes/mia/src/elly/build/elly.build/Release/elly_test.build/Script-E186EBB415A50EAB001DC23D.sh
+r0
+
+CProcessInfoPlistFile /Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest/Contents/Info.plist elly_test/elly_test-Info.plist
+s369533121.912378
+e369533121.937378
+r0
+xProcessInfoPlistFile
+x/Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest/Contents/Info.plist
+xelly_test/elly_test-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Process elly_test/elly_test-Info.plist9068eac1a006b641^05fbefc1a006b641^--1(21%IDEActivityLogMessage2@187"could not read data from '/Users/czhang/Desktop/Codes/mia/src/elly/elly_test/elly_test-Info.plist': The file “elly_test-Info.plist” couldn’t be opened because there is no such file.-369533121#18446744073709551615#0#-2#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#---0#0#0#-19%DVTDocumentLocation4@87"file://localhost/Users/czhang/Desktop/Codes/mia/src/elly/elly_test/elly_test-Info.plist0000803fc9041042^344"ProcessInfoPlistFile build/Release/elly_test.octest/Contents/Info.plist elly_test/elly_test-Info.plist    cd /Users/czhang/Desktop/Codes/mia/src/elly    builtin-infoPlistUtility elly_test/elly_test-Info.plist -expandbuildsettings -platform macosx -o /Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest/Contents/Info.plist36"FA0E06CF-8841-455B-A5F9-8108EAAC9F0A-
+
+CTouch /Users/czhang/Desktop/Codes/mia/src/elly/build/Release/elly_test.octest
+r0
+

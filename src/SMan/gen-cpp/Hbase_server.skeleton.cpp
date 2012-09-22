@@ -239,6 +239,7 @@ class HbaseHandler : virtual public HbaseIf {
 
 };
 
+/*
 int main(int argc, char **argv) {
   int port = 9090;
   shared_ptr<HbaseHandler> handler(new HbaseHandler());
@@ -251,4 +252,5 @@ int main(int argc, char **argv) {
   server.serve();
   return 0;
 }
+*/
 
