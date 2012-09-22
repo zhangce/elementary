@@ -62,7 +62,9 @@ namespace mia{
               void set(int fid, void * ptr){}
               
               void print_status(){
+#ifndef BUFFER_DIRECT
                 std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;
+#endif
               }
               
 #ifdef BUFFER_DIRECT
