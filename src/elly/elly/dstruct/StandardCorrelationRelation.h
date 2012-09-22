@@ -45,9 +45,16 @@ namespace mia{
                  *
                  * \sa  mia::sm::KeyValue_vl
                  */
+              
+#ifdef BUFFER_DIRECT
+                hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
+              
+                StandardCorrelationRelation() : kv(hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>()){}
+#else
                 hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
               
                 StandardCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER)){}
+#endif
               
                 void print_status(){
                   std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;

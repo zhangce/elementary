@@ -41,8 +41,15 @@ namespace mia{
                 /**
                  * In-memory key value store that maps factor ID to its state.
                  */
+              
+
                 //hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU> kv;
+
+#ifdef BUFFER_DIRECT
+              hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU> kv;
+#else
               hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU> kv;
+#endif
               
               //hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL> kv;
               
@@ -58,7 +65,12 @@ namespace mia{
                 std::cout << "NFLUSH = " << kv.pagestore.nflush << std::endl;
               }
               
+#ifdef BUFFER_DIRECT
+              IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>())
+#else
               IncrementalCorrelationRelation() : kv(hazy::sman::PagedBufferedObjStore<TYPE, STORAGE, hazy::sman::JAVAHASH_ACCU>(COMMON_NBUFFER))
+#endif
+              
               
               //IncrementalCorrelationRelation() : kv(hazy::sman::ObjStore<TYPE, STORAGE, hazy::sman::PROPERTY_NIL>())
               {}

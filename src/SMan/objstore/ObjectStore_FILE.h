@@ -9,6 +9,9 @@
 #ifndef SMan_ObjectStore_FILE_h
 #define SMan_ObjectStore_FILE_h
 
+//#ifndef __MACH__
+//#define __MACH__ 1
+//#endif
 
 #include "../common/Common.h"
 
@@ -41,14 +44,17 @@ namespace hazy{
         fd = open(filename.c_str(), O_RDWR | O_CREAT ,
                   (mode_t) 0600);
 #else
-        fd = open64(filename.c_str(), O_RDWR | O_CREAT | O_DIRECT | O_LARGEFILE ,
+	//fd = open64(filename.c_str(), O_RDWR | O_CREAT | O_DIRECT ,
+	fd = open64(filename.c_str(), O_RDWR | O_CREAT | O_DIRECT,
                     (mode_t) 0600);
 #endif
         
         assert(fd != -1);
         
-        VALUE init;
-        objsize = sizeof(VALUE);
+        
+	//std::cout << "***" << sizeof(VALUE) << std::endl;
+        
+	objsize = sizeof(VALUE);
         
         size = OBJECTSTORE_INIT_CONTAINER_SIZE;
         
@@ -56,9 +62,20 @@ namespace hazy{
           
           //pwrite64(fd, &init, objsize, objsize*i);
 #ifdef __MACH__
+	  VALUE init;
           pwrite(fd, &init, objsize, objsize*i);
 #else
-          pwrite64(fd, &init, objsize, objsize*i);
+	  VALUE * init;
+	  std::cout << "~~~" << getpagesize() << std::endl;
+	  //std::cout << "###" << 
+	  int rr = posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//<< std::endl; 
+	  std::cout << "###" << rr << std::endl;
+	  assert(rr == 0);
+	  //std::cout << 
+	  rr = pwrite64(fd, init, objsize, objsize*i) ;//<< std::endl;
+	  std::cout << "~~~" << rr << std::endl;
+	  assert(rr > 0);
+	  free(init);
 #endif
           
         }
@@ -68,28 +85,47 @@ namespace hazy{
       
       StatusType get(int64_t key, VALUE & value){
         
+	//std::cout << "~~~~~~~~2" << std::endl;
+
 #ifdef __MACH__
         pread(fd, &value, objsize, objsize*key);
 #else
-        pread64(fd, &value, objsize, objsize*key);
+	VALUE * init;
+	//std::cout << "###" << 
+	posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;// << std::endl; 
+        pread64(fd, init, objsize, objsize*key);
+	value = *init;
+	free(init);
 #endif
-        
+	
+	//std::cout << "~~~~~~~~3" << std::endl;
+
         return STATUS_SUCCESS;
       }
       
       StatusType set(int64_t key, const VALUE & value){
         
+	//std::cout << "~~~~~~~~~~1" << std::endl;
+
 #ifdef __MACH__
         pwrite(fd, &value, objsize, objsize*key);
 #else
-        pwrite64(fd, &value, objsize, objsize*key);
+	VALUE * init;
+	//std::cout << "###" << 
+	posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//;<< std::endl; 
+	*init = value;
+        pwrite64(fd, init, objsize, objsize*key);
+	free(init);
 #endif
+	
+
+	//std::cout << "~~~~~~~~~~1.5" << std::endl;
         
         return STATUS_SUCCESS;
       }
       
       StatusType load(int64_t key, const VALUE & value){
-        
+	//std::cout << "~~~~~~~~~~5" << std::endl;
         if (key < 0) {
           return STATUS_SET_INVALIDKEY;
         }
@@ -101,12 +137,16 @@ namespace hazy{
             newsize *= 2;
           }
           
-          VALUE init;
+          
           for(size_t i=size; i<newsize; i++){
 #ifdef __MACH__
+	    VALUE init;
             pwrite(fd, &init, objsize, objsize*i);
 #else
-            pwrite64(fd, &init, objsize, objsize*i);
+	    VALUE * init;
+	    //std::cout << "###" << 
+	    posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//<< std::endl; 
+	    free(init);
 #endif
           }
           
@@ -116,13 +156,23 @@ namespace hazy{
 #ifdef __MACH__
         pwrite(fd, &value, objsize, objsize*key);
 #else
-        pwrite64(fd, &value, objsize, objsize*key);
+	
+	VALUE * init;
+	//std::cout << "###" << 
+	posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//<< std::endl; 
+	*init = value;
+        pwrite64(fd, init, objsize, objsize*key);
+	free(init);
 #endif
+
+	//std::cout << "~~~~~~~~~~5.1" << std::endl;
         return STATUS_SUCCESS;
       }
       
       StatusType apply(int64_t key, void (*func)(VALUE &)){
         
+
+	//std::cout << "~~~~~~~~~~6" << std::endl;
         VALUE v;
         
         this->get(key, v);
@@ -130,6 +180,8 @@ namespace hazy{
         func(v);
         
         this->set(key, v);
+
+	//std::cout << "~~~~~~~~~~6.1" << std::endl;
         
         return STATUS_SUCCESS;
       }

@@ -44,10 +44,22 @@ namespace mia{
                 /**
                  * Key value store that maps VID to factor block.
                  */
-                hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
-
-                VariableFactorRelation() :
-                  kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER))
+              
+#ifdef BUFFER_DIRECT
+              hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
+              
+              VariableFactorRelation() :
+              kv(hazy::sman::ObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>())
+#else
+              hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL> kv;
+              
+              VariableFactorRelation() :
+              kv(hazy::sman::PagedBufferedObjStore<mia::sm::IntsBlock, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER))
+#endif
+            
+                
+            
+              
                 {
                 
                 }
