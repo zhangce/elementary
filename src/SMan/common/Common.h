@@ -16,6 +16,10 @@ int COMMON_NFLUSH = 0;
 std::string rt_libpath;
 std::string rt_accumulo_instance;
 
+std::string rt_accumulo_zookeeper;
+std::string rt_accumulo_user;
+std::string rt_accumulo_password;
+
 #define OBJECTSTORE_INIT_CONTAINER_SIZE 100
 
 #include <iostream>

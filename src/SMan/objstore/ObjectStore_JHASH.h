@@ -51,7 +51,7 @@ namespace hazy{
           std::cout << "INFO: " << "Use specification STORAGE_JHASH @ AccumuloConnector." << std::endl;
         //}
         
-        if(rt_libpath.compare("") == 0 || rt_accumulo_instance.compare("") == 0){
+        if(rt_libpath.compare("") == 0 || rt_accumulo_instance.compare("") == 0 || rt_accumulo_zookeeper.compare("")){
           std::cout << "Need to provide rt.libpath and rt.accumulo_instance for Accumulo." << std::endl;
           assert(false);
         }
@@ -113,9 +113,9 @@ namespace hazy{
         std::cout << "table -- " << aa << std::endl;
         
         env->CallStaticVoidMethod(cls, id_init, connectorid,
-                                  env->NewStringUTF("localhost:2181"),
-                                  env->NewStringUTF("root"),
-                                  env->NewStringUTF("bB19871121"),
+                                  env->NewStringUTF(rt_accumulo_zookeeper.c_str()),
+                                  env->NewStringUTF(rt_accumulo_user.c_str()),
+                                  env->NewStringUTF(rt_accumulo_password.c_str()),
                                   env->NewStringUTF(aa));
       }
       

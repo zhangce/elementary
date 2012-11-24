@@ -64,7 +64,10 @@ namespace elly {
             ("rt.libpath", po::value<std::string>(), "Library path for Accumulo and HBase [DEFAULT=EMPTY]")
           
             ("rt.accumulo_instance", po::value<std::string>(), "Accumulo Zookeeper instance used by Elementary. [DEFAULT=EMPTY]")
-          
+            
+            ("rt.accumulo_zookeeper", po::value<std::string>(), "Accumulo Zookeeper server address. [DEFAULT=EMPTY]")
+            ("rt.accumulo_user", po::value<std::string>(), "Accumulo user name. [DEFAULT=EMPTY]")
+            ("rt.accumulo_password", po::value<std::string>(), "Accumulo password. [DEFAULT=EMPTY]")
           
                     // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
@@ -179,7 +182,22 @@ namespace elly {
               elly::utils::log() << "  | rt.accumulo_instance = " << rt_accumulo_instance << std::endl;
             }
           
-            
+          if(vm.count("rt.accumulo_zookeeper")){
+            rt_accumulo_zookeeper = vm["rt.accumulo_zookeeper"].as<std::string>();
+            elly::utils::log() << "  | rt.accumulo_zookeeper = " << rt_accumulo_zookeeper << std::endl;
+          }
+          
+          if(vm.count("rt.accumulo_user")){
+            rt_accumulo_user = vm["rt.accumulo_user"].as<std::string>();
+            elly::utils::log() << "  | rt.accumulo_user = " << rt_accumulo_user << std::endl;
+          }
+          
+          if(vm.count("rt.accumulo_password")){
+            rt_accumulo_password = vm["rt.accumulo_password"].as<std::string>();
+            elly::utils::log() << "  | rt.accumulo_password = " << rt_accumulo_password << std::endl;
+          }
+          
+          
             if(vm.count("sys.threads")){
                 config.sys_nthreads = vm["sys.threads"].as<int>();
                 elly::utils::log() << "  | sys.threads = " << config.sys_nthreads << std::endl;
