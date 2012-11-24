@@ -56,8 +56,6 @@ namespace mia{
               VariableAssignmentRelation() :
               kf(hazy::sman::PagedBufferedObjStore<int, STORAGE, hazy::sman::PROPERTY_NIL>(COMMON_NBUFFER)){}
 #endif
-              
-              
                 
                 /**
                  * Key value store which maps VID to its domain.

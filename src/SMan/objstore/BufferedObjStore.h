@@ -39,10 +39,12 @@ namespace hazy{
       int64_t* buffer2obj;  // buffer-id -> current object it helds
       
       int64_t* priority_of_hold;
+      bool* buffer_dirties;
       
       std::vector<size_t> obj2buffer;  // object -> current buffer
       std::vector<size_t> pagecounts;
       std::vector<pthread_mutex_t*> pagelocks;
+      
       
       pthread_mutex_t** mutexes;
       
@@ -85,6 +87,7 @@ namespace hazy{
         mutexes = new pthread_mutex_t*[bufferSize];
         buffercounts = new int[bufferSize];
         priority_of_hold = new int64_t[bufferSize];
+        buffer_dirties = new bool[bufferSize];
         
         for(int i=0;i<bufferSize;i++){
           buffer2obj[i] = -1;
@@ -92,6 +95,7 @@ namespace hazy{
           mutexes[i] = new pthread_mutex_t;
           pthread_mutex_init(mutexes[i], NULL);
           priority_of_hold[i] = -1;
+          buffer_dirties[i] = false;
         }
         
         mutex = new pthread_mutex_t;
@@ -117,12 +121,12 @@ namespace hazy{
       }
       
       void flush(size_t buf){
-
-	//usleep(3);        
-
-        COMMON_NFLUSH ++;
-        nflush ++;
-        os.set(buffer2obj[buf], buffers[buf]);
+ 
+        if(buffer_dirties[buf] == true){
+          COMMON_NFLUSH ++;
+          nflush ++;
+          os.set(buffer2obj[buf], buffers[buf]);
+        }
       }
       
       size_t getfree2(){
@@ -163,6 +167,7 @@ namespace hazy{
           flush(not_hold);
           obj2buffer[page] = -1;
           buffer2obj[not_hold] = -1;
+          buffer_dirties[not_hold] = false;
             
           pthread_mutex_unlock(pagelocks[page]);
             
@@ -211,6 +216,7 @@ namespace hazy{
           
           hitget ++;
           buffers[buf].contents[offset] = content;
+          buffer_dirties[buf] = true;
           
           update_priority_of_hold(buf);
         }else{
@@ -228,6 +234,7 @@ namespace hazy{
             obj2buffer[key] = buf;
             buffer2obj[buf] = key;
             buffers[buf].contents[offset] = content;
+            buffer_dirties[buf] = true;
             
             update_priority_of_hold(buf);
             
@@ -349,6 +356,7 @@ namespace hazy{
         if (buf != -1) {
           hitset ++;
           buffers[buf] = value;
+          buffer_dirties[buf] = true;
           update_priority_of_hold(buf);
         }else{
           
@@ -359,6 +367,7 @@ namespace hazy{
             obj2buffer[key] = buf;
             buffer2obj[buf] = key;
             buffers[buf] = value;
+            buffer_dirties[buf] = true;
             update_priority_of_hold(buf);
           }else{
             os.set(key, value);

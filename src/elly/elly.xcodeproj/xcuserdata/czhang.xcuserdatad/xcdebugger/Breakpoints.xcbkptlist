@@ -122,8 +122,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "56"
          endingLineNumber = "56"
-         landmarkName = "VariableAssignmentRelation()"
-         landmarkType = "5">
+         landmarkName = "class VariableAssignmentRelation"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

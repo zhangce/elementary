@@ -9,7 +9,7 @@
 #ifndef SMan_ObjectStore_PG_h
 #define SMan_ObjectStore_PG_h
 
-/*
+
 #include "../common/Common.h"
 
 namespace hazy{
@@ -177,6 +177,5 @@ namespace hazy{
     
   }
 }
-*/
 
 #endif
