@@ -1,5 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+
 add_library (SMan1 src/SMan/gen-cpp/Hbase.cpp
 src/SMan/gen-cpp/hbase_constants.cpp src/SMan/gen-cpp/hbase_types.cpp)
 
@@ -59,27 +61,40 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fpermissive")
 find_package (JNI)
 
 if(JNI_FOUND)
-message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
-message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
-message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
-
+	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+	message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
 else()
+	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+	message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
 
-#message(FATAL_ERROR "Need to set environment variavble JAVA_HOME")
-
-message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
-message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
-message (STATUS "JAVA_JVM_LIBRARY=${JAVA_JVM_LIBRARY}")
-
-#if(NOT JNI_LIBRARIES OR NOT JNI_INCLUDE_DIRS)
-#	message(FATAL_ERROR "JNI not found! Set JNI_LIBRARIES and
-#JNI_INCLUDE_DIRS")	
-#else()
-#	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
-#	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
-#endif()
-
+	if(NOT JNI_LIBRARIES OR NOT JNI_INCLUDE_DIRS)
+		message(FATAL_ERROR "JNI not found! Set JNI_LIBRARIES and JNI_INCLUDE_DIRS")	
+	else()
+		message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+		message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+	endif()
 endif()
+
+find_package(Thrift REQUIRED)
+
+if(Thrift_FOUND)
+	message (STATUS "Thrift_INCLUDE_DIR=${Thrift_INCLUDE_DIR}")
+	message (STATUS "Thrift_LIB=${Thrift_LIB}")
+else()
+	if(NOT Thrift_INCLUDE_DIR OR NOT Thrift_LIB)
+		message(FATAL_ERROR "Thrift not found! Set Thrift_INCLUDE_DIR and Thrift_LIB")	
+	else()
+		message (STATUS "Thrift_INCLUDE_DIR=${Thrift_INCLUDE_DIR}")
+		message (STATUS "Thrift_LIB=${Thrift_LIB}")
+	endif()
+endif()
+
+target_link_libraries (SMan1 "-L${Thrift_LIB} -lthrift")
+target_link_libraries (bin/elementary "-L${Thrift_LIB} -lthrift")
+include_directories("${Thrift_INCLUDE_DIR}/thrift")
+
 
 set(Boost_NO_SYSTEM_PATHS "ON") 
 set(Boost_NO_BOOST_CMAKE "ON")
@@ -90,6 +105,8 @@ if(NOT Boost_FOUND)
 message(STATUS "Set BOOST_ROOT to ${CMAKE_CURRENT_SOURCE_DIR}/dep/boost")
 set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/dep/boost")
 endif()
+
+
 
 find_package (Boost COMPONENTS program_options REQUIRED)
 
@@ -102,17 +119,9 @@ message(STATUS "Boost Library Path:"${Boost_PROGRAM_OPTIONS_LIBRARY})
 
 target_link_libraries (bin/elementary ${Boost_PROGRAM_OPTIONS_LIBRARY})
 
-#target_link_libraries (bin/elementary "/progs/czhang/elementary/dep/thrift/lib/libthrift.so")
-
-#target_link_libraries (SMan1 SMan2)
-#target_link_libraries (SMan2 SMan1)
-
 target_link_libraries (bin/elementary SMan1)
-#target_link_libraries (bin/elementary SMan2)
 
-target_link_libraries (SMan1 "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
-#target_link_libraries (SMan2 "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
-target_link_libraries (bin/elementary "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+
 
 if(NOT APPLE)
 target_link_libraries (bin/elementary -lrt)
@@ -121,7 +130,7 @@ else()
 target_link_libraries (bin/elementary ${JNI_LIBRARIES})
 endif()
 
-include_directories("/progs/czhang/elementary/dep/thrift/include/thrift/")
-#target_link_libraries (bin/elementary "-L/progs/czhang/elementary/dep/thrift/lib -lthrift")
+
+
 
 

@@ -60,11 +60,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lr.cfg&quot;"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lda.cfg&quot;"
-            isEnabled = "NO">
+            argument = "--config=&quot;/Users/czhang/Desktop/Codes/mia/examples/elly/config_test_lda.cfg&quot; --exp.buffersize_bytes=409600000"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

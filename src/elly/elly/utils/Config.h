@@ -54,6 +54,8 @@ namespace elly{
             std::string exp_replacement;
             int exp_pagesize_bytes;
             int exp_buffersize_bytes;
+          
+            
             
             Config(){
                 
@@ -91,6 +93,7 @@ namespace elly{
                 exp_replacement = "";
                 exp_pagesize_bytes = -1;
                 exp_buffersize_bytes = -1;
+              
                 
             }
             

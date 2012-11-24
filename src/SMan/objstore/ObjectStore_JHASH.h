@@ -12,6 +12,8 @@
 
 #include "../common/Common.h"
 
+#include <jni.h>
+
 namespace hazy{
   namespace sman{
         
@@ -43,10 +45,15 @@ namespace hazy{
       
       ObjStore(){
         
-        if(PROPERTY == JAVAHASH_MM){
-          std::cout << "INFO: " << "Use specification STORAGE_JHASH @ HashMapConnector." << std::endl;
-        }else if(PROPERTY == JAVAHASH_ACCU){
+        //if(PROPERTY == JAVAHASH_MM){
+        //  std::cout << "INFO: " << "Use specification STORAGE_JHASH @ HashMapConnector." << std::endl;
+        //}else if(PROPERTY == JAVAHASH_ACCU){
           std::cout << "INFO: " << "Use specification STORAGE_JHASH @ AccumuloConnector." << std::endl;
+        //}
+        
+        if(rt_libpath.compare("") == 0 || rt_accumulo_instance.compare("") == 0){
+          std::cout << "Need to provide rt.libpath and rt.accumulo_instance for Accumulo." << std::endl;
+          assert(false);
         }
         
         if(jvm == NULL){
@@ -55,8 +62,15 @@ namespace hazy{
           
           options = new JavaVMOption[1];
         
-          options[0].optionString =
-              "-Djava.class.path=/Users/czhang/Desktop/StorageManager/SMan/java/bin:/Users/czhang/Desktop/Codes/AccumuloConnector/lib/postgresql-8.4-701.jdbc4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-core-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-core-1.4.1-sources.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-core-1.4.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-server-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-server-1.4.1-sources.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-server-1.4.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-start-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-start-1.4.1-sources.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/accumulo-start-1.4.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/cloudtrace-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/cloudtrace-1.4.1-sources.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/cloudtrace-1.4.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-collections-3.2.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-configuration-1.5.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-io-1.4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-jci-core-1.0.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-jci-fam-1.0.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-lang-2.4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-logging-1.0.4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/commons-logging-api-1.0.4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/examples-simple-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/examples-simple-1.4.1-sources.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/examples-simple-1.4.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-ant-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-client-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-core-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-examples-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-minicluster-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-test-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/hadoop-tools-1.0.3.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/jline-0.9.94.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/libthrift-0.6.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/log4j-1.2.16.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/postgresql-8.4-701.jdbc4.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/slf4j-api-1.6.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/slf4j-log4j12-1.6.1.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/wikisearch-ingest-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/wikisearch-query-1.4.1-javadoc.jar:/Users/czhang/Desktop/StorageManager/SMan/java/lib/zookeeper-3.4.3.jar";
+          
+          std::string classpath =
+              "-Djava.class.path=" + rt_libpath + "/bin/:" + rt_libpath + "/lib/accumulo-core-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-javadoc.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-sources.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1.jar:" + rt_libpath + "/lib/commons-collections-3.2.jar:" + rt_libpath + "/lib/commons-configuration-1.5.jar:" + rt_libpath + "/lib/commons-io-1.4.jar:" + rt_libpath + "/lib/commons-jci-core-1.0.jar:" + rt_libpath + "/lib/commons-jci-fam-1.0.jar:" + rt_libpath + "/lib/commons-lang-2.4.jar:" + rt_libpath + "/lib/commons-logging-1.0.4.jar:" + rt_libpath + "/lib/commons-logging-api-1.0.4.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-javadoc.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-sources.jar:" + rt_libpath + "/lib/examples-simple-1.4.1.jar:" + rt_libpath + "/lib/hadoop-ant-1.0.3.jar:" + rt_libpath + "/lib/hadoop-client-1.0.3.jar:" + rt_libpath + "/lib/hadoop-core-1.0.3.jar:" + rt_libpath + "/lib/hadoop-examples-1.0.3.jar:" + rt_libpath + "/lib/hadoop-minicluster-1.0.3.jar:" + rt_libpath + "/lib/hadoop-test-1.0.3.jar:" + rt_libpath + "/lib/hadoop-tools-1.0.3.jar:" + rt_libpath + "/lib/jline-0.9.94.jar:" + rt_libpath + "/lib/libthrift-0.6.1.jar:" + rt_libpath + "/lib/log4j-1.2.16.jar:" + rt_libpath + "/lib/postgresql-8.4-701.jdbc4.jar:" + rt_libpath + "/lib/slf4j-api-1.6.1.jar:" + rt_libpath + "/lib/slf4j-log4j12-1.6.1.jar:" + rt_libpath + "/lib/wikisearch-ingest-1.4.1-javadoc.jar:" + rt_libpath + "/lib/wikisearch-query-1.4.1-javadoc.jar:" + rt_libpath + "/lib/zookeeper-3.4.3.jar";
+          
+          options[0].optionString = new char[classpath.length()];
+          strcpy(options[0].optionString, classpath.c_str());
+          
+          
+          
           vm_args.version = JNI_VERSION_1_6;
           vm_args.nOptions = 1;
           vm_args.options = options;
@@ -81,13 +95,13 @@ namespace hazy{
         }
         
         jvm->AttachCurrentThread((void**)&env, NULL);
-        if(PROPERTY == JAVAHASH_MM){
-          connectorid = env->CallStaticIntMethod(cls, id_reg, env->NewStringUTF("HashMapConnector"));
-        }else if(PROPERTY == JAVAHASH_ACCU){
+        //if(PROPERTY == JAVAHASH_MM){
+        //  connectorid = env->CallStaticIntMethod(cls, id_reg, env->NewStringUTF("HashMapConnector"));
+        //}else if(PROPERTY == JAVAHASH_ACCU){
           connectorid = env->CallStaticIntMethod(cls, id_reg, env->NewStringUTF("AccumuloConnector"));
-        }
+        //}
         
-        std::cout << "## registered id = " << connectorid << std::endl;
+        std::cout << "## registered connector id = " << connectorid << std::endl;
         
         jobjectArray ret;
         ret = (jobjectArray)env->NewObjectArray(4,
@@ -95,7 +109,7 @@ namespace hazy{
                                                 env->NewStringUTF(""));
         
         char aa[1000];
-        sprintf(aa, "i2/testtable%d", connectorid);
+        sprintf(aa, (rt_accumulo_instance + "/testtable%d").c_str() , connectorid);
         std::cout << "table -- " << aa << std::endl;
         
         env->CallStaticVoidMethod(cls, id_init, connectorid,

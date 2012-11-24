@@ -13,6 +13,9 @@
 
 int COMMON_NFLUSH = 0;
 
+std::string rt_libpath;
+std::string rt_accumulo_instance;
+
 #define OBJECTSTORE_INIT_CONTAINER_SIZE 100
 
 #include <iostream>
@@ -31,12 +34,12 @@ int COMMON_NFLUSH = 0;
 
 #include "Timer.h"
 
-//#include <jni.h>
+#include <jni.h>
 
 namespace hazy {
   namespace sman{
     
-    /*
+    
     JavaVM *jvm = NULL;
 
     jclass cls;
@@ -46,7 +49,7 @@ namespace hazy {
     jmethodID id_load;
     jmethodID id_init;
     jmethodID id_reg;
-      */
+      
     
     enum BufferType {
       BUFFER_NIL   = 0x00000001,

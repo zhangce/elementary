@@ -1,79 +1,137 @@
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 import org.apache.accumulo.core.Constants;
 import org.apache.accumulo.core.client.AccumuloException;
 import org.apache.accumulo.core.client.AccumuloSecurityException;
+import org.apache.accumulo.core.client.BatchWriter;
 import org.apache.accumulo.core.client.Connector;
+import org.apache.accumulo.core.client.MultiTableBatchWriter;
 import org.apache.accumulo.core.client.Scanner;
 import org.apache.accumulo.core.client.TableNotFoundException;
 import org.apache.accumulo.core.client.ZooKeeperInstance;
 import org.apache.accumulo.core.data.Key;
+import org.apache.accumulo.core.data.Mutation;
 import org.apache.accumulo.core.data.Range;
 import org.apache.accumulo.core.data.Value;
+import org.apache.accumulo.core.security.ColumnVisibility;
 import org.apache.hadoop.io.Text;
 
 
-public class AccumuloConnector {
+public class AccumuloConnector extends AnyConnector{
 	
-	public static void init(String db_url, String username, String password, String table_name)
-			throws SQLException{
+	Connector connector;
+	Scanner scan;
+	BatchWriter writer;
+	MultiTableBatchWriter mtbw;
+	
+	String table;
+	
+	public void init(String db_url, String username, String password, String table_name){
 		
+		String[] arr_it = table_name.split("/");
+		String sinstance = arr_it[0];
+		table = arr_it[1];
+		
+		byte[] pass = password.getBytes();
+		
+		ZooKeeperInstance instance = new ZooKeeperInstance(sinstance, db_url);
+		
+	    try {
+	    	
+	    	long memBuf = 1L; // bytes to store before sending a batch
+			long timeout = 1000L; // milliseconds to wait before sending
+			int numThreads = 10;
+	    	
+	    	connector = instance.getConnector(username, pass);
+	    	
+	    	if (!connector.tableOperations().exists(table)){
+	    		connector.tableOperations().create(table);
+	    	}
+	    	
+	    	scan = connector.createScanner(table, Constants.NO_AUTHS);
+	    	mtbw = connector.createMultiTableBatchWriter(200000l, 300, 4);
+	    	writer = mtbw.getBatchWriter(table);
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    
 	}
 	
-	
-	public static Object get(int key){
+	public Object get(int key){
 		
-		return map.get(key);
+		Iterator<Entry<Key,Value>> iter;
 		
+		synchronized(this){
+			
+			Text t = new Text(""+key);
+			scan.setRange(new Range(t, t));
+			iter = scan.iterator();
+		}
+		    
+	    while (iter.hasNext()) {
+	    	
+	      Entry<Key,Value> e = iter.next();
+	      Text colf = e.getKey().getColumnFamily();
+	      Text colq = e.getKey().getColumnQualifier();
+	      return e.getValue().get();
+	    }
+		
+	    return null;
 	}
 	
-	public static void set(int key, byte[] value) {
-	
-		map.put(key, value);
+	public void set(int key, byte[] value) {
 		
+		try{
+			Mutation m = new Mutation(new Text(""+ key));
+			
+			Text colf = new Text("" + key);
+			m.put(colf, new Text("" + key), 
+					new Value(value));
+			
+			writer.addMutation(m);
+			mtbw.flush();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
-	public static void load(int key, byte[] value) {
+	public void load(int key, byte[] value) {
 		
-		map.put(key, value.clone());
-		
+	    //System.out.println("~~~" + key + ", " + value);
+
+		try{
+			Mutation m = new Mutation(new Text(""+ key));
+			
+			Text colf = new Text("" + key);
+			m.put(colf, new Text("" + key), 
+					new Value(value));
+			
+			writer.addMutation(m);
+			mtbw.flush();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) throws AccumuloException, AccumuloSecurityException, TableNotFoundException {
+		
 		if (args.length < 5 || args.length > 7) {
 			System.out.println("bin/accumulo accumulo.examples.helloworld.ReadData <instance name> <zoo keepers> <username> <password> <tablename> [startkey [endkey]]");
 		    System.exit(1);
 		}
-		    
-	    String instanceName = args[0];
-	    String zooKeepers = args[1];
-	    String user = args[2];
-	    byte[] pass = args[3].getBytes();
-	    String tableName = args[4];
+		
+		AccumuloConnector ac = new AccumuloConnector();
+		ac.init("localhost:2181" , "root", "bB19871121", "i2/testtable");
+		
+		//ac.set(10, "1".getBytes());
+		//ac.set(10, "2".getBytes());
+		
+		ac.mtbw.close();
 	    
-	    ZooKeeperInstance instance = new ZooKeeperInstance(instanceName, zooKeepers);
-	    Connector connector = instance.getConnector(user, pass);
-	    
-	    Scanner scan = connector.createScanner(tableName, Constants.NO_AUTHS);
-	    Key start = null;
-	    if (args.length > 5)
-	      start = new Key(new Text(args[5]));
-	    Key end = null;
-	    if (args.length > 6)
-	      end = new Key(new Text(args[6]));
-	    scan.setRange(new Range(start, end));
-	    Iterator<Entry<Key,Value>> iter = scan.iterator();
-		    
-	    while (iter.hasNext()) {
-	      Entry<Key,Value> e = iter.next();
-	      Text colf = e.getKey().getColumnFamily();
-	      Text colq = e.getKey().getColumnQualifier();
-	      System.out.print("row: " + e.getKey().getRow() + ", colf: " + colf + ", colq: " + colq);
-	      System.out.println(", value: " + e.getValue().toString());
-	      e.getValue().get();
-	    }
 	}
 
 }

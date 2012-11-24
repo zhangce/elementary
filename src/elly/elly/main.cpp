@@ -276,6 +276,9 @@ namespace mia{
         }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
           fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>(config->rt_input, config);
           ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*) fp)->parse();
+        }else if(config->exp_storage.compare("STORAGE_ACCUM") == 0){
+          fp = new mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>(config->rt_input, config);
+          ((mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>*) fp)->parse();
         }else{
           std::cout << "ERROR: Invalid exp.storage." << std::endl;
           assert(false);
@@ -293,6 +296,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
             mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_FILE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_ACCUM") == 0){
+            mat = new mia::elly::mat::Materialization_lazy<hazy::sman::STORAGE_JHASH>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -310,6 +316,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
             mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_FILE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_ACCUM") == 0){
+            mat = new mia::elly::mat::Materialization_vcoc<hazy::sman::STORAGE_JHASH>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -326,6 +335,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
             mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_FILE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_ACCUM") == 0){
+            mat = new mia::elly::mat::Materialization_fcoc<hazy::sman::STORAGE_JHASH>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -342,6 +354,9 @@ namespace mia{
           }else if(config->exp_storage.compare("STORAGE_FILE") == 0){
             mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_FILE>(
                                   (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_FILE>*)fp);
+          }else if(config->exp_storage.compare("STORAGE_ACCUM") == 0){
+            mat = new mia::elly::mat::Materialization_full<hazy::sman::STORAGE_JHASH>(
+                                  (mia::elly::utils::FactorFileParser<hazy::sman::STORAGE_JHASH>*)fp);
           }else{
             std::cout << "ERROR: Invalid exp.storage." << std::endl;
             assert(false);
@@ -624,8 +639,8 @@ int main(int argc, const char * argv[])
   
   std::cout << std::endl;
   
-  loadlrmodel("/progs/czhang/elementary/examples/elly/LR/lrmodels");
-  loadcrfmodel("/progs/czhang/elementary/examples/elly/LR/crfmodels");
+  //loadlrmodel("/progs/czhang/elementary/examples/elly/LR/lrmodels");
+  //loadcrfmodel("/progs/czhang/elementary/examples/elly/LR/crfmodels");
   
   mia::elly::utils::Timer timer;
   

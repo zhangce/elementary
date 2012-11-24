@@ -61,12 +61,17 @@ namespace elly {
             
             ("rt.is_log_system", po::value<bool>(), "Factor function returns in log scale. [DEFAULT=true]")
             
+            ("rt.libpath", po::value<std::string>(), "Library path for Accumulo and HBase [DEFAULT=EMPTY]")
+          
+            ("rt.accumulo_instance", po::value<std::string>(), "Accumulo Zookeeper instance used by Elementary. [DEFAULT=EMPTY]")
+          
+          
                     // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
           
                     // exp.*    (experiment)
             ("exp.materialization", po::value<std::string>(), "Materialization strategy to use. {LAZY, VCOC, FCOC, EAGER}.")
-            ("exp.storage", po::value<std::string>(), "Storage to use. {STORAGE_MM, STORAGE_HBASE}.")
+            ("exp.storage", po::value<std::string>(), "Storage to use. {STORAGE_MM, STORAGE_HBASE, STORAGE_MM, STORAGE_ACCUM}.")
             ("exp.replacement", po::value<std::string>(), "Replacement strategy to use. {RANDOM, LRU}.")
             ("exp.pagesize_bytes", po::value<int>(), "Pagesize in bytes.")
             ("exp.buffersize_bytes", po::value<int>(), "Buffersize in bytes.")
@@ -164,6 +169,16 @@ namespace elly {
                 elly::utils::log() << "  | rt.is_log_system = " << config.rt_is_log_system << std::endl;
             }
 
+            if(vm.count("rt.libpath")){
+              rt_libpath = vm["rt.libpath"].as<std::string>();
+              elly::utils::log() << "  | rt.libpath = " << rt_libpath << std::endl;
+            }
+          
+            if(vm.count("rt.accumulo_instance")){
+              rt_accumulo_instance = vm["rt.accumulo_instance"].as<std::string>();
+              elly::utils::log() << "  | rt.accumulo_instance = " << rt_accumulo_instance << std::endl;
+            }
+          
             
             if(vm.count("sys.threads")){
                 config.sys_nthreads = vm["sys.threads"].as<int>();
@@ -187,7 +202,7 @@ namespace elly {
           
           
           config.exp_pagesize_bytes = COMMON_PAGESIZE;
-          std::cout << "  | exp.exp_pagesize_bytes = " << COMMON_PAGESIZE << " bytes." << std::endl;
+          std::cout << "  | exp.pagesize_bytes = " << COMMON_PAGESIZE << " bytes." << std::endl;
           
           if(vm.count("exp.buffersize_bytes")){
             config.exp_buffersize_bytes = vm["exp.buffersize_bytes"].as<int>();
@@ -199,7 +214,7 @@ namespace elly {
           COMMON_NBUFFER = COMMON_BUFFERSIZE_BYTES/COMMON_PAGESIZE_BYTES;
           
           if(!(COMMON_NBUFFER>0)){
-            std::cout << "config.exp_buffersize_bytes should be at least larger than config.exp_pagesize_bytes" << std::endl;
+            std::cout << "config.exp_buffersize_bytes (" << COMMON_BUFFERSIZE_BYTES << ") should be at least larger than config.exp_pagesize_bytes" << "(" << COMMON_PAGESIZE_BYTES << ")" << std::endl;
             assert(false);
           }else{
             std::cout << "  | NBUFFER = " << COMMON_NBUFFER << "" << std::endl;
@@ -219,34 +234,42 @@ namespace elly {
         void parse_option_post(elly::utils::Config &config){
             
             if(config.rt_input.compare("") == 0){
+              std::cout << "1" << std::endl;
                 throw std::exception(); //TODO
             }
 
             if(config.rt_output.compare("") == 0){
+              std::cout << "2" << std::endl;
                 throw std::exception(); //TODO
             }
 
             if(config.rt_workdir.compare("") == 0){
+              std::cout << "3" << std::endl;
                 throw std::exception(); //TODO
             }
           
           if(config.exp_materialization.compare("") == 0){
+            std::cout << "4" << std::endl;
             throw std::exception(); //TODO
           }
           
           if(config.exp_storage.compare("") == 0){
+            std::cout << "5" << std::endl;
             throw std::exception(); //TODO
           }
           
           if(config.exp_replacement.compare("") == 0){
+            std::cout << "6" << std::endl;
             throw std::exception(); //TODO
           }
           
           if(config.exp_pagesize_bytes == -1){
+            std::cout << "7" << std::endl;
             throw std::exception(); //TODO
           }
           
           if(config.exp_buffersize_bytes == -1){
+            std::cout << "8" << std::endl;
             throw std::exception(); //TODO
           }
           

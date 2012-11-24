@@ -6,48 +6,51 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class PostgreSQLConnector {
+public class PostgreSQLConnector extends AnyConnector{
 
 	
-	static Connection db;
+	Connection db;
 	
-	static String table_name;
+	String table_name;
 	
-	static PreparedStatement st_load;
-	static PreparedStatement st_get;
-	static PreparedStatement st_set;
+	PreparedStatement st_load;
+	PreparedStatement st_get;
+	PreparedStatement st_set;
 	
-	public static void init(String db_url, String username, String password, String table_name)
-				throws SQLException{
+	public void init(String db_url, String username, String password, String table_name){
 		
-		System.out.println(db_url);
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(table_name);
-		
-		PostgreSQLConnector.table_name = table_name;
-		
-		db = DriverManager.getConnection
-				("jdbc:postgresql://localhost:5432/postgres", 
-						"postgres", "bB19871121");
-		
-		Statement st = PostgreSQLConnector.db.createStatement();
-		
-		System.out.println("DROP TABLE IF EXISTS " + table_name + " CASCADE;");
-		boolean rs = st.execute("DROP TABLE IF EXISTS " + table_name + " CASCADE;");
-
-		System.out.println("CREATE TABLE " + table_name + " (key integer, value text);");
-		rs = st.execute("CREATE TABLE " + table_name + " (key integer, value text);");
-		
-		System.out.println("CREATE INDEX " + table_name + "_key ON " + table_name + "(key);");
-		rs = st.execute("CREATE INDEX " + table_name + "_key ON " + table_name + "(key);");	
+		try{
+			System.out.println(db_url);
+			System.out.println(username);
+			System.out.println(password);
+			System.out.println(table_name);
+			
+			this.table_name = table_name;
+			
+			db = DriverManager.getConnection
+					("jdbc:postgresql://localhost:5432/postgres", 
+							"postgres", "bB19871121");
+			
+			Statement st = this.db.createStatement();
+			
+			System.out.println("DROP TABLE IF EXISTS " + table_name + " CASCADE;");
+			boolean rs = st.execute("DROP TABLE IF EXISTS " + table_name + " CASCADE;");
 	
-		st_load = db.prepareStatement("INSERT INTO " + table_name + " VALUES (?,?);");
-		st_get = db.prepareStatement("SELECT value FROM " + table_name + " WHERE key = ?;");
-		st_set = db.prepareStatement("UPDATE " + table_name + " SET value = ? WHERE key = ?;");
+			System.out.println("CREATE TABLE " + table_name + " (key integer, value text);");
+			rs = st.execute("CREATE TABLE " + table_name + " (key integer, value text);");
+			
+			System.out.println("CREATE INDEX " + table_name + "_key ON " + table_name + "(key);");
+			rs = st.execute("CREATE INDEX " + table_name + "_key ON " + table_name + "(key);");	
+		
+			st_load = db.prepareStatement("INSERT INTO " + table_name + " VALUES (?,?);");
+			st_get = db.prepareStatement("SELECT value FROM " + table_name + " WHERE key = ?;");
+			st_set = db.prepareStatement("UPDATE " + table_name + " SET value = ? WHERE key = ?;");
+		}catch(Exception e){
+			
+		}
 	}
 	
-	public static Object get(int key){
+	public Object get(int key){
 
 		System.out.println(" get key=" + key);
 		
@@ -78,49 +81,56 @@ public class PostgreSQLConnector {
 		
 	}
 	
-	public static void set(int key, byte[] value) throws SQLException{
+	public void set(int key, byte[] value){
 
-		System.out.println(" =====" + value);
+		//System.out.println(" =====" + value);
 		
-		st_set.setBytes(1, value);
-		st_set.setInt(2, key);
-		st_set.execute();
-		
+		try{
+			st_set.setBytes(1, value);
+			st_set.setInt(2, key);
+			st_set.execute();
+		}catch(Exception e){
+			
+		}
 		
 	}
 	
-	public static void load(int key, byte[] value) throws SQLException{
+	public void load(int key, byte[] value) {
 		
-		byte[] bbb = new byte[5];
-		bbb[0] = 0;
-		bbb[1] = 1;
-		bbb[2] = 2;
-		bbb[3] = 3;
-		bbb[4] = 4;
-		
-		value = bbb;
-		
-		st_load.setBytes(2, value);
-		st_load.setInt(1, key);
-		
-		System.out.print(" $$$$$" + value.length + "$$$$$  ");
-		for(byte b : value){
-			System.out.print(b + " ");
-		}
-		System.out.println("\n");
-		
-		st_load.execute();
-		
-		Statement st = db.createStatement();
-		ResultSet r = st.executeQuery("SELECT value FROM tmp_kv_2 WHERE key = " + key);
-		while (r.next()) {
-			byte[] vv =  r.getBytes(1);
+		try{
+			byte[] bbb = new byte[5];
+			bbb[0] = 0;
+			bbb[1] = 1;
+			bbb[2] = 2;
+			bbb[3] = 3;
+			bbb[4] = 4;
 			
-			System.out.print(" ^^^^^" + vv.length + "^^^^^  ");
-			for(byte b : vv){
+			value = bbb;
+			
+			st_load.setBytes(2, value);
+			st_load.setInt(1, key);
+			
+			System.out.print(" $$$$$" + value.length + "$$$$$  ");
+			for(byte b : value){
 				System.out.print(b + " ");
 			}
 			System.out.println("\n");
+			
+			st_load.execute();
+			
+			Statement st = db.createStatement();
+			ResultSet r = st.executeQuery("SELECT value FROM tmp_kv_2 WHERE key = " + key);
+			while (r.next()) {
+				byte[] vv =  r.getBytes(1);
+				
+				System.out.print(" ^^^^^" + vv.length + "^^^^^  ");
+				for(byte b : vv){
+					System.out.print(b + " ");
+				}
+				System.out.println("\n");
+			}
+		}catch(Exception e){
+			
 		}
 		
 	}
@@ -129,6 +139,7 @@ public class PostgreSQLConnector {
 	 * @param args
 	 * @throws SQLException 
 	 */
+	/*
 	public static void main(String[] args) throws SQLException {
 		
 		if(args.length != 4){
@@ -170,5 +181,6 @@ public class PostgreSQLConnector {
 		System.out.println(PostgreSQLConnector.get(5));		
 		
 	}
+	*/
 
 }
