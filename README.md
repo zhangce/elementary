@@ -62,7 +62,8 @@ To install Elementary, first set environment variables. You may need to set
 environment variable BOOST_ROOT. If there are multiple installtions of boost
 on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to 
 select the correct boost to use. You may also need to set environment variable
-JAVA_HOME as path to the JDK installation.
+JAVA_HOME as path to the JDK installation. For Thrift, you need -DThrift_INCLUDE_DIR=<path_to_thrift>/include
+and -DThrift_LIB=<path_ot_thrift>/lib.
 
 Go to the folder mia, and type in
 
