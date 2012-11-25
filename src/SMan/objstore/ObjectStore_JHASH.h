@@ -51,7 +51,7 @@ namespace hazy{
           std::cout << "INFO: " << "Use specification STORAGE_JHASH @ AccumuloConnector." << std::endl;
         //}
         
-        if(rt_libpath.compare("") == 0 || rt_accumulo_instance.compare("") == 0 || rt_accumulo_zookeeper.compare("")){
+        if(rt_libpath.compare("") == 0 || rt_accumulo_instance.compare("") == 0 || rt_accumulo_zookeeper.compare("") == 0){
           std::cout << "Need to provide rt.libpath and rt.accumulo_instance for Accumulo." << std::endl;
           assert(false);
         }

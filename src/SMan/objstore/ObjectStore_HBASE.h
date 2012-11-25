@@ -58,7 +58,7 @@ namespace hazy{
         
         hbaseid ++;
         
-        std::cout << "~~~~~~~~" << hbaseid << std::endl;
+        //std::cout << "~~~~~~~~" << hbaseid << std::endl;
         
         char tablename[1000];
         sprintf(tablename, "elly_testtable_%d_%d", hbaseid, time(NULL) );
@@ -72,7 +72,7 @@ namespace hazy{
         mutex = new pthread_mutex_t;
         pthread_mutex_init(mutex, NULL);
         
-        socket = boost::shared_ptr<apache::thrift::transport::TTransport>(new apache::thrift::transport::TSocket("hazy-01.chtc.wisc.edu", 9090));
+        socket = boost::shared_ptr<apache::thrift::transport::TTransport>(new apache::thrift::transport::TSocket(rt_hbase_thrift_server.c_str(), rt_hbase_thrift_port));
         transport = boost::shared_ptr<apache::thrift::transport::TTransport>(new apache::thrift::transport::TBufferedTransport(socket));
         protocol = boost::shared_ptr<apache::thrift::protocol::TProtocol>(new apache::thrift::protocol::TBinaryProtocol(transport));
         

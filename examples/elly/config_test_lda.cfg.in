@@ -9,6 +9,17 @@ logverbose=trace
 
 [rt]    # runtime
 
+
+#hbase_thrift_server = localhost
+#hbase_thrift_port = 9090
+
+#libpath=@CMAKE_CURRENT_SOURCE_DIR@/dep/sman_java
+#accumulo_instance=testinstance
+#accumulo_user=root
+#accumulo_password=password
+#accumulo_zookeeper=localhost:2181
+
+
 #input=/Users/czhang/Desktop/Codes/mia/elly/data/MLN
 #output=/Users/czhang/Desktop/Codes/mia/elly/data/RS/rc1000mln
 
@@ -32,4 +43,12 @@ learn_decay    = 1.00
 [sys]   # system
 
 threads = 1
+
+[exp]
+
+replacement=LRU
+storage=STORAGE_HBASE
+materialization=LAZY
+buffersize_bytes=496000000
+
 

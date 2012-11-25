@@ -20,6 +20,9 @@ std::string rt_accumulo_zookeeper;
 std::string rt_accumulo_user;
 std::string rt_accumulo_password;
 
+std::string rt_hbase_thrift_server = "localhost";
+int rt_hbase_thrift_port = 9090;
+
 #define OBJECTSTORE_INIT_CONTAINER_SIZE 100
 
 #include <iostream>

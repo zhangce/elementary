@@ -69,6 +69,10 @@ namespace elly {
             ("rt.accumulo_user", po::value<std::string>(), "Accumulo user name. [DEFAULT=EMPTY]")
             ("rt.accumulo_password", po::value<std::string>(), "Accumulo password. [DEFAULT=EMPTY]")
           
+            ("rt.hbase_thrift_server", po::value<std::string>(), "Thrift server address for HBase. [DEFAULT=localhost]")
+            ("rt.hbase_thrift_port", po::value<int>(), "Thrift server port for HBase. [DEFAULT=9090]")
+          
+                    
                     // sys.*    (system)
             ("sys.threads", po::value<int>(), "Number of threads to use. [DEFAULT=1]")
           
@@ -197,7 +201,17 @@ namespace elly {
             elly::utils::log() << "  | rt.accumulo_password = " << rt_accumulo_password << std::endl;
           }
           
+          if(vm.count("rt.hbase_thrift_server")){
+            rt_hbase_thrift_server = vm["rt.hbase_thrift_server"].as<std::string>();
+            elly::utils::log() << "  | rt.hbase_thrift_server = " << rt_hbase_thrift_server << std::endl;
+          }
           
+          if(vm.count("rt.hbase_thrift_port")){
+            rt_hbase_thrift_port = vm["rt.hbase_thrift_port"].as<int>();
+            elly::utils::log() << "  | rt.hbase_thrift_port = " << rt_hbase_thrift_port << std::endl;
+          }
+          
+                    
             if(vm.count("sys.threads")){
                 config.sys_nthreads = vm["sys.threads"].as<int>();
                 elly::utils::log() << "  | sys.threads = " << config.sys_nthreads << std::endl;
