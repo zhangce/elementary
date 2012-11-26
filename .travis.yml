@@ -3,6 +3,10 @@ compiler:
   - gcc
 before_script:
   - sudo apt-get install subversion libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+  - cd dep/boost
+  - sh install.sh
+  - cd ..
+  - cd ..
   - cd dep/thrift-0.3.0/
   - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/usr/thrift
   - make
