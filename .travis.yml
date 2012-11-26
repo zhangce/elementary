@@ -8,6 +8,7 @@ before_script:
   - make
   - sudo make install
   - cd ..
+  - cd ..
   - cmake -DThrift_INCLUDE_DIR=/usr/thrift/include -DThrift_LIB=/usr/thrift/lib .
 script: make
 branches:
