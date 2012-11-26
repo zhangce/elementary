@@ -250,6 +250,20 @@ Assume the Thrift server is localhost:9090, use in the .cfg file the following o
 
 #### Accumulo
 
+We describe how to set up Elementary to use Accumulo. First install Accumulo following http://accumulo.apache.org/.
+
+Assume that the ZooKeeper server is localhost:2181, and Accumulo user/password is root/password. To run Elementary in an Accumulo instance testinstance, use in the .cfg file the following options:
+
+    [rt]
+
+    libpath=< PATH_TO_ELEMENTARY >/dep/sman_java
+    accumulo_instance=testinstance
+    accumulo_user=root
+    accumulo_password=password
+    accumulo_zookeeper=localhost:2181
+
+
+
 
 
 
