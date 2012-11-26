@@ -68,7 +68,7 @@ Elementary usese Thrift (http://thrift.apache.org/).
 We include a copy of Thrift's source code at elementary/dep/thrift-0.3.0. To install Thrift, type in under folder elementary
 
     $ cd dep/thrift-0.3.0
-    $ ./configure --prefix=<<PATH_TO_INSTALL_THRIFT>>
+    $ ./configure --prefix=< PATH_TO_INSTALL_THRIFT >
     $ make
     $ make install
 
@@ -80,8 +80,8 @@ To install Elementary, first set the following environment variables:
   - JAVA_HOME: Path to JDK. 
 
 Go to the folder elementary, and type in
-    $ cmake -DThrift_INCLUDE_DIR=<<PATH_TO_INSTALL_THRIFT>>/include
-            -DThrift_LIB=<<PATH_TO_INSTALL_THRIFT>>/lib
+    $ cmake -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include
+            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib
             .
 
 You may need to set 
