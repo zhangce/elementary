@@ -7,6 +7,7 @@ before_script:
   - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/usr/thrift
   - make
   - sudo make install
+  - cd ..
   - cmake -DThrift_INCLUDE_DIR=/usr/thrift/include -DThrift_LIB=/usr/thrift/lib .
 script: make
 branches:
