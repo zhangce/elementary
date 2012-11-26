@@ -14,7 +14,7 @@ from University of Wisconsin-Madison under Professor Christopher Ré
   Table of Content
 --------------------
   1. Installation
-  2. Examples in Main Memory
+  2. Examples using Unix File as Storage Backend
   3. Set up Accumulo and HBase
 
 ### 1. Installation
@@ -69,7 +69,7 @@ Elementary usese Thrift (http://thrift.apache.org/).
 We include a copy of Thrift's source code at elementary/dep/thrift-0.3.0. To install Thrift, type in under folder elementary
 
     $ cd dep/thrift-0.3.0
-    $ ./configure --prefix=< PATH_TO_INSTALL_THRIFT >
+    $ ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=< PATH_TO_INSTALL_THRIFT >  
     $ make
     $ make install
 
@@ -82,36 +82,44 @@ To install Elementary, first set the following environment variables:
 
 Go to the folder elementary, and type in
 
-    $ cmake -DBoost_PROGRAM_OPTIONS_LIBRARY=< PATH_TO_BOOST >          \
-            -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include    \ 
-            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib                \ 
+    $ cmake -DBoost_INCLUDE_DIRS=< PATH_TO_BOOST_HEADERS >                  \
+            -DBoost_PROGRAM_OPTIONS_LIBRARY=< PATH_TO_BOOST_LIBRARIES.so >  \
+            -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include         \ 
+            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib                     \ 
             .
 
 The following lines should prompt:
 
-    -- Use build optimizations: Release  
-    -- The C compiler identification is GNU  
-    -- The CXX compiler identification is GNU  
-    -- Check for working C compiler: /usr/bin/gcc  
-    -- Check for working C compiler: /usr/bin/gcc -- works  
-    -- Detecting C compiler ABI info  
-    -- Detecting C compiler ABI info - done  
-    -- Check for working CXX compiler: /usr/bin/c++  
-    -- Check for working CXX compiler: /usr/bin/c++ -- works  
-    -- Detecting CXX compiler ABI info  
-    -- Detecting CXX compiler ABI info - done  
-    -- Boost version: 1.49.0  
-    -- Found the following Boost libraries:  
-    --   program_options  
-    -- Configuring done  
-    -- Generating done  
-    -- Build files have been written to: /raid/czhang/Codes/mia  
+    -- Use build optimizations: Release
+    -- Build example for Mia::Elementary
+    -- Found JNI: /scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/libjawt.so
+    -- JNI_INCLUDE_DIRS=/usr/lib/jvm/java/include;/usr/lib/jvm/java/include/linux;/usr/lib/jvm/java/include
+    -- JNI_LIBRARIES=/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/libjawt.so;/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/server/libjvm.so
+    -- JAVA_JVM_LIBRARY=/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/server/libjvm.so
+    -- libevent is required for thrift broker support
+    -- Thrift compiler/libraries NOT found. Thrift support will be disabled (127, /scratch.1/play/elementary/dep/thrift/include, /scratch.1/play/elementary/dep/thrift/lib, Thrift_NB_LIB-NOTFOUND)
+    -- Thrift_INCLUDE_DIR=/scratch.1/play/elementary/dep/thrift/include
+    -- Thrift_LIB=/scratch.1/play/elementary/dep/thrift/lib
+    -- Boost version: 1.41.0
+    -- Found the following Boost libraries:
+    --   program_options
+    -- Boost Headers Path: /usr/include
+    -- Boost Library Path:optimized/usr/lib64/libboost_program_options-mt.sodebug/usr/lib64/libboost_program_options-mt.so
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /scratch.1/play/elementary
+
 
 A file named ``Makefile'' should appear in the folder elementary now. To build Elementary, type in
 
     $ make  
   
 A binary file named ``elementary'' should appear in the folder mia/bin.
+
+Make sure to set up LD_LIBRARY_PATH correctly, e.g.,
+
+    $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:< PATH_TO_INSTALL_THRIFT >/lib
+
 To test this binary, type in
 
     $ ./bin/elementary  
@@ -146,7 +154,7 @@ and the following lines should prompt asking for more command line options:
                             epoch. [DEFAULT=1.00]  
     --sys.threads arg       Number of threads to use. [DEFAULT=1]  
 
-### 2. Examples
+### 2. Examples using Unix File as Storage Backend
 
 #### 2.1 LDA
 
