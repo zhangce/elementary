@@ -1,5 +1,4 @@
 
-
 [ui]    # user interface
 
 verbose=debug
@@ -47,7 +46,7 @@ threads = 1
 [exp]
 
 replacement=LRU
-storage=STORAGE_HBASE
+storage=STORAGE_MM
 materialization=LAZY
 buffersize_bytes=496000000
 
