@@ -1,5 +1,5 @@
 ===============
-Elementary <img src="https://secure.travis-ci.org/zhangce/elementary.png?branch=master"/>
+Elementary [![Build Status](https://travis-ci.org/zhangce/elementary.png)](https://travis-ci.org/zhangce/elementary)
 ===============
 
 Elementary is a scalable statistical inference and learning engine for 
