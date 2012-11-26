@@ -3,12 +3,13 @@ Elementary
 ===============
 
 Elementary is a scalable statistical inference and learning engine for 
-factor graphs and Markov Logic Network.
+factor graphs and Markov Logic Network. Elementary achieves scalability by
+using different storage backends, e.g., main memory, unix file, Accumulo, 
+HBase, etc.
 
 Elementary is developed by the Hazy group (http://hazy.cs.wisc.edu/hazy/)
 from University of Wisconsin-Madison under Professor Christopher Ré 
 (http://pages.cs.wisc.edu/~chrisre/).
-
 
   Table of Content
 --------------------
@@ -19,7 +20,7 @@ from University of Wisconsin-Madison under Professor Christopher Ré
 
 After downloading and uncompressing Elementary, the folder mia has the following structure:
 
-    mia  
+    elementary  
      |-- bin  
      |-- dep  
      |-- src  
@@ -28,12 +29,14 @@ After downloading and uncompressing Elementary, the folder mia has the following
 
 #### 1.1 Prerequisite
 
+To compile and install Elementary, the following prerequisites need to be satified.
+
 ##### 1.1.1 Operating Systems
 
 Elementary is tested in the following operating systems:
 
-  - MacOSX (>10.6);
-  - Redhat Linux Enterprise 5.0;
+  - MacOSX (>10.6).
+  - Redhat Linux Enterprise (>5.0).
 
 ##### 1.1.2 Dependencies
 
@@ -45,20 +48,43 @@ Elementary is written in C++ and has been tested using the following compilers:
 To use the MLN component in Elementary, JDK (>1.6) and Python (>2.6) is required.
 JDK can be found at http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html.
 
+Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
+
 Elementary relies on the following C++ libraries:
 
-  - Boost::program_options (http://www.boost.org/doc/libs/1_50_0/doc/html/program_options.html)
+###### Boost::program_options
 
-We included a installation script for boost at mia/dep/boost. To install boost, type in under folder mia
+Elementary uses Boost::program_options (http://www.boost.org/doc/libs/1_50_0/doc/html/program_options.html).
+
+We included an installation script for boost at elementary/dep/boost. To install boost, type in under folder elementary
 
     $ cd dep/boost  
     $ sh install.sh  
 
-Elementary needs CMake (>2.6) to build. (http://www.cmake.org/)
+###### Thrift
 
-1.2 Installation
+Elementary usese Thrift (http://thrift.apache.org/).
+
+We include a copy of Thrift's source code at elementary/dep/thrift-0.3.0. To install Thrift, type in under folder elementary
+
+    $ cd dep/thrift-0.3.0
+    $ ./configure --prefix=<<PATH_TO_INSTALL_THRIFT>>
+    $ make
+    $ make install
+
+#### 1.2 Installation
    
-To install Elementary, first set environment variables. You may need to set 
+To install Elementary, first set the following environment variables:
+
+  - BOOST_ROOT: Path to Boost. (not necessary if you use install.sh provided by Elementary)
+  - JAVA_HOME: Path to JDK. 
+
+Go to the folder elementary, and type in
+    $ cmake -DThrift_INCLUDE_DIR=<<PATH_TO_INSTALL_THRIFT>>/include
+            -DThrift_LIB=<<PATH_TO_INSTALL_THRIFT>>/lib
+            .
+
+You may need to set 
 environment variable BOOST_ROOT. If there are multiple installtions of boost
 on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to 
 select the correct boost to use. You may also need to set environment variable
