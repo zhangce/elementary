@@ -227,6 +227,41 @@ The result will be in examples/elly/RS/mln.pred.txt and examples/elly/RS/mln.pro
 
 ### Set up Accumulo and HBase
 
+Apart from unix file, Elementary can use distributed key-value stores, e.g., Accumulo and HBase.
+
+#### HBase
+
+We describe how to set up Elementary to use HBase. First install HBase following http://hbase.apache.org/.
+
+Then start thrift server:
+
+    $ [hbase-root]/bin/hbase thrift start -threadpool
+
+Assume the Thrift server is localhost:9090, use in the .cfg file the following options:
+
+    [rt]
+
+    hbase_thrift_server = localhost
+    hbase_thrift_port = 9090
+
+    [exp]
+
+    storage=STORAGE_HBASE
+
+#### Accumulo
+
+We describe how to set up Elementary to use Accumulo. First install Accumulo following http://accumulo.apache.org/.
+
+Assume that the ZooKeeper server is localhost:2181, and Accumulo user/password is root/password. To run Elementary in an Accumulo instance testinstance, use in the .cfg file the following options:
+
+    [rt]
+
+    libpath=< PATH_TO_ELEMENTARY >/dep/sman_java
+    accumulo_instance=testinstance
+    accumulo_user=root
+    accumulo_password=password
+    accumulo_zookeeper=localhost:2181
+
 
 
 
