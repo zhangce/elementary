@@ -114,6 +114,11 @@ A file named ``Makefile'' should appear in the folder elementary now. To build E
     $ make  
   
 A binary file named ``elementary'' should appear in the folder mia/bin.
+
+Make sure to set up LD_LIBRARY_PATH correctly, e.g.,
+
+    $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:< PATH_TO_INSTALL_THRIFT >/lib
+
 To test this binary, type in
 
     $ ./bin/elementary  
