@@ -66,14 +66,14 @@ namespace hazy{
           pwrite(fd, &init, objsize, objsize*i);
 #else
 	  VALUE * init;
-	  std::cout << "~~~" << getpagesize() << std::endl;
+	  //std::cout << "~~~" << getpagesize() << std::endl;
 	  //std::cout << "###" << 
 	  int rr = posix_memalign(&init, getpagesize(), sizeof(VALUE)) ;//<< std::endl; 
-	  std::cout << "###" << rr << std::endl;
+	  //std::cout << "###" << rr << std::endl;
 	  assert(rr == 0);
 	  //std::cout << 
 	  rr = pwrite64(fd, init, objsize, objsize*i) ;//<< std::endl;
-	  std::cout << "~~~" << rr << std::endl;
+	  //std::cout << "~~~" << rr << std::endl;
 	  assert(rr > 0);
 	  free(init);
 #endif
