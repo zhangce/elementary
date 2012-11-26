@@ -1,5 +1,4 @@
 
-
 [ui]    # user interface
 
 verbose=debug
@@ -32,4 +31,11 @@ learn_decay    = 1.00
 [sys]   # system
 
 threads = 1
+
+[exp]
+
+replacement=LRU
+storage=STORAGE_MM
+materialization=LAZY
+buffersize_bytes=496000000
 
