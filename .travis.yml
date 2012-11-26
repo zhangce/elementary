@@ -1,0 +1,18 @@
+language: cpp
+compiler:
+  - gcc
+before_script:
+  - cmake .
+script: make
+branches:
+  only:
+    - master
+notifications:
+  recipients:
+    - czhang@cs.wisc.edu
+  email:
+    on_success: change
+    on_failure: always
+rvm:
+  - 1.8.7
+  - 1.9.3
