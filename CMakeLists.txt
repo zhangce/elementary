@@ -108,7 +108,12 @@ endif()
 
 
 
+if(NOT Boost_PROGRAM_OPTIONS_LIBRARY)
+if(NOT Boost_INCLUDE_DIRS)
 find_package (Boost COMPONENTS program_options REQUIRED)
+endif()
+endif()
+
 
 message(STATUS "Boost Headers Path: " ${Boost_INCLUDE_DIRS})
 
