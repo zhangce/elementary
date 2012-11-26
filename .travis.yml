@@ -15,6 +15,10 @@ before_script:
   - cd ..
   - cmake -DThrift_INCLUDE_DIR=/home/travis/builds/zhangce/thrift/include -DThrift_LIB=/home/travis/builds/zhangce/thrift/lib .
 script: make
+after_script:
+  - export LD_LIBRARY_PATH=/home/travis/builds/zhangce/thrift/lib
+  - ./bin/elementary --config=examples/elly/config_test_lda.cfg  
+  - python examples/elly/LDA/view.py examples/elly/RS/lda-sample.txt examples/elly/LDA/int_word.tsv  
 branches:
   only:
     - master
