@@ -14,7 +14,7 @@ from University of Wisconsin-Madison under Professor Christopher Ré
   Table of Content
 --------------------
   1. Installation
-  2. Examples in Main Memory
+  2. Examples using Unix File as Storage Backend
   3. Set up Accumulo and HBase
 
 ### 1. Installation
@@ -153,7 +153,7 @@ and the following lines should prompt asking for more command line options:
                             epoch. [DEFAULT=1.00]  
     --sys.threads arg       Number of threads to use. [DEFAULT=1]  
 
-### 2. Examples
+### 2. Examples using Unix File as Storage Backend
 
 #### 2.1 LDA
 
