@@ -14,7 +14,8 @@ from University of Wisconsin-Madison under Professor Christopher Ré
   Table of Content
 --------------------
   1. Installation
-  2. Examples
+  2. Examples in Main Memory
+  3. Set up Accumulo and HBase
 
 ### 1. Installation
 
@@ -81,21 +82,10 @@ To install Elementary, first set the following environment variables:
 
 Go to the folder elementary, and type in
 
-    $ cmake -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include
-            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib
+    $ cmake -DBoost_PROGRAM_OPTIONS_LIBRARY=< PATH_TO_BOOST >          \
+            -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include    \ 
+            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib                \ 
             .
-
-You may need to set 
-environment variable BOOST_ROOT. If there are multiple installtions of boost
-on your machine, you may want to pass -D Boost_PROGRAM_OPTIONS_LIBRARY=<path> to 
-select the correct boost to use. You may also need to set environment variable
-JAVA_HOME as path to the JDK installation. For Thrift, you need -DThrift_INCLUDE_DIR=<path_to_thrift>/include
-and -DThrift_LIB=<path_ot_thrift>/lib. To start a thrift server, use the -threadpool option.
-
-Go to the folder mia, and type in
-
-    $ cmake .  
-
 
 The following lines should prompt:
 
@@ -117,8 +107,7 @@ The following lines should prompt:
     -- Generating done  
     -- Build files have been written to: /raid/czhang/Codes/mia  
 
-A file named ``Makefile'' should appear in the folder mia now.
-To build Elementary, type in
+A file named ``Makefile'' should appear in the folder elementary now. To build Elementary, type in
 
     $ make  
   
@@ -228,7 +217,7 @@ The result will be in examples/elly/RS/mln.pred.txt and examples/elly/RS/mln.pro
     1 category("Paper95", "Databases")
     0.965517 category("Paper60", "Programming")
 
-
+### Set up Accumulo and HBase
 
 
 
