@@ -80,6 +80,7 @@ To install Elementary, first set the following environment variables:
   - JAVA_HOME: Path to JDK. 
 
 Go to the folder elementary, and type in
+
     $ cmake -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include
             -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib
             .
