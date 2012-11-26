@@ -227,7 +227,28 @@ The result will be in examples/elly/RS/mln.pred.txt and examples/elly/RS/mln.pro
 
 ### Set up Accumulo and HBase
 
+Apart from unix file, Elementary can use distributed key-value stores, e.g., Accumulo and HBase.
 
+#### HBase
+
+We describe how to set up Elementary to use HBase. First install HBase following http://hbase.apache.org/.
+
+Then start thrift server:
+
+    $ [hbase-root]/bin/hbase thrift start -threadpool
+
+Assume the Thrift server is localhost:9090, use in the .cfg file the following options:
+
+    [rt]
+
+    hbase_thrift_server = localhost
+    hbase_thrift_port = 9090
+
+    [exp]
+
+    storage=STORAGE_HBASE
+
+#### Accumulo
 
 
 
