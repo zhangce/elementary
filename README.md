@@ -82,9 +82,10 @@ To install Elementary, first set the following environment variables:
 
 Go to the folder elementary, and type in
 
-    $ cmake -DBoost_PROGRAM_OPTIONS_LIBRARY=< PATH_TO_BOOST >          \
-            -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include    \ 
-            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib                \ 
+    $ cmake -DBoost_INCLUDE_DIRS=< PATH_TO_BOOST_HEADERS >                  \
+            -DBoost_PROGRAM_OPTIONS_LIBRARY=< PATH_TO_BOOST_LIBRARIES.so >  \
+            -DThrift_INCLUDE_DIR=< PATH_TO_INSTALL_THRIFT >/include         \ 
+            -DThrift_LIB=< PATH_TO_INSTALL_THRIFT >/lib                     \ 
             .
 
 The following lines should prompt:
