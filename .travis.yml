@@ -8,12 +8,12 @@ before_script:
   - cd ..
   - cd ..
   - cd dep/thrift-0.3.0/
-  - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/usr/thrift
+  - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/home/travis/builds/zhangce/thrift
   - make
-  - sudo make install
+  - make install
   - cd ..
   - cd ..
-  - cmake -DThrift_INCLUDE_DIR=/usr/thrift/include -DThrift_LIB=/usr/thrift/lib .
+  - cmake -DThrift_INCLUDE_DIR=/home/travis/builds/zhangce/thrift/include -DThrift_LIB=/home/travis/builds/zhangce/thrift/lib .
 script: make
 branches:
   only:
