@@ -2,6 +2,10 @@ language: cpp
 compiler:
   - gcc
 before_script:
+  - cd dep/thrift-0.3.0/
+  - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no
+  - make
+  - sudo make install
   - cmake .
 script: make
 branches:
