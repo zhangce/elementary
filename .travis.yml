@@ -2,7 +2,7 @@ language: cpp
 compiler:
   - gcc
 before_script:
-  - sudo apt-get install subversion libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+  - sudo apt-get install subversion libboost-all-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
   - cd dep/boost
   - sh install.sh
   - cd ..
