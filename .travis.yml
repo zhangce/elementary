@@ -2,19 +2,19 @@ language: cpp
 compiler:
   - gcc
 before_script:
-  - sudo apt-get install subversion libboost-all-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+  - sudo apt-get install subversion libboost-all-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev >> out 2>> error
   - cd dep/boost/
-  - sh install.sh
+  - sh install.sh  >> out 2>> error
   - cd ..
   - cd ..
   - cd dep/thrift-0.3.0/
-  - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/home/travis/builds/zhangce/thrift
-  - make
-  - make install
+  - ./configure --with-py=no --with-ruby=no --with-perl=no --with-java=no --prefix=/home/travis/builds/zhangce/thrift  >> out 2>> error
+  - make  >> out 2>> error
+  - make install  >> out 2>> error
   - cd ..
   - cd ..
-  - cmake -DThrift_INCLUDE_DIR=/home/travis/builds/zhangce/thrift/include -DThrift_LIB=/home/travis/builds/zhangce/thrift/lib .
-script: make
+  - cmake -DThrift_INCLUDE_DIR=/home/travis/builds/zhangce/thrift/include -DThrift_LIB=/home/travis/builds/zhangce/thrift/lib .  >> out 2>> error
+script: make  >> out 2>> error
 after_script:
   - export LD_LIBRARY_PATH=/home/travis/builds/zhangce/thrift/lib
   - ./bin/elementary --config=examples/elly/config_test_lda.cfg  
