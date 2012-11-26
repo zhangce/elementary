@@ -69,7 +69,7 @@ Elementary usese Thrift (http://thrift.apache.org/).
 We include a copy of Thrift's source code at elementary/dep/thrift-0.3.0. To install Thrift, type in under folder elementary
 
     $ cd dep/thrift-0.3.0
-    $ ./configure --prefix=< PATH_TO_INSTALL_THRIFT >
+    $ ./configure --prefix=< PATH_TO_INSTALL_THRIFT >  --with-py=no
     $ make
     $ make install
 
