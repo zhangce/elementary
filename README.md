@@ -89,23 +89,25 @@ Go to the folder elementary, and type in
 
 The following lines should prompt:
 
-    -- Use build optimizations: Release  
-    -- The C compiler identification is GNU  
-    -- The CXX compiler identification is GNU  
-    -- Check for working C compiler: /usr/bin/gcc  
-    -- Check for working C compiler: /usr/bin/gcc -- works  
-    -- Detecting C compiler ABI info  
-    -- Detecting C compiler ABI info - done  
-    -- Check for working CXX compiler: /usr/bin/c++  
-    -- Check for working CXX compiler: /usr/bin/c++ -- works  
-    -- Detecting CXX compiler ABI info  
-    -- Detecting CXX compiler ABI info - done  
-    -- Boost version: 1.49.0  
-    -- Found the following Boost libraries:  
-    --   program_options  
-    -- Configuring done  
-    -- Generating done  
-    -- Build files have been written to: /raid/czhang/Codes/mia  
+    -- Use build optimizations: Release
+    -- Build example for Mia::Elementary
+    -- Found JNI: /scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/libjawt.so
+    -- JNI_INCLUDE_DIRS=/usr/lib/jvm/java/include;/usr/lib/jvm/java/include/linux;/usr/lib/jvm/java/include
+    -- JNI_LIBRARIES=/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/libjawt.so;/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/server/libjvm.so
+    -- JAVA_JVM_LIBRARY=/scratch.1/play/elementary/dep/jdk1.6.0_25/jre/lib/amd64/server/libjvm.so
+    -- libevent is required for thrift broker support
+    -- Thrift compiler/libraries NOT found. Thrift support will be disabled (127, /scratch.1/play/elementary/dep/thrift/include, /scratch.1/play/elementary/dep/thrift/lib, Thrift_NB_LIB-NOTFOUND)
+    -- Thrift_INCLUDE_DIR=/scratch.1/play/elementary/dep/thrift/include
+    -- Thrift_LIB=/scratch.1/play/elementary/dep/thrift/lib
+    -- Boost version: 1.41.0
+    -- Found the following Boost libraries:
+    --   program_options
+    -- Boost Headers Path: /usr/include
+    -- Boost Library Path:optimized/usr/lib64/libboost_program_options-mt.sodebug/usr/lib64/libboost_program_options-mt.so
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /scratch.1/play/elementary
+
 
 A file named ``Makefile'' should appear in the folder elementary now. To build Elementary, type in
 
