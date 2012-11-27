@@ -165,6 +165,12 @@ namespace elly{
                         }
                         
                     }
+                  
+                  std::cout << "java: " << java << std::endl;
+                  std::cout << "path_to_tuffy: " << path_to_tuffy << std::endl;
+                  std::cout << "mln: " << mln << std::endl;
+                  std::cout << "evid: " << evid << std::endl;
+                  std::cout << "config->io_mln: " << config->io_mln << std::endl;
                     
                     if(java.compare("") == 0 ||
                        path_to_tuffy.compare("") == 0 ||
@@ -172,6 +178,9 @@ namespace elly{
                        evid.compare("") == 0 ||
                        config->io_mln.compare("") == 0){
                         elly::utils::logerr() << "ERROR: empty java/path_to_tuffy/mln/iomln" << std::endl;
+                      
+                      std::cout << config->io_mln << std::endl;
+                      
                         throw std::exception();
                     }
                                         
