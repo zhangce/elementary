@@ -241,8 +241,11 @@ namespace elly{
                     classpath += path_to_tuffy + "/" + "jgrapht-jdk1.6.jar:";
                     classpath += path_to_tuffy + "/" + "commons-codec-1.6.jar:";
                     classpath += path_to_tuffy + "/" + "postgresql-8.4-701.jdbc4.jar";
-                    
-                    
+                  
+                    classpath +=
+                      ":" + rt_libpath + "/bin/:" + rt_libpath + "/lib/accumulo-core-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-javadoc.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-sources.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1.jar:" + rt_libpath + "/lib/commons-collections-3.2.jar:" + rt_libpath + "/lib/commons-configuration-1.5.jar:" + rt_libpath + "/lib/commons-io-1.4.jar:" + rt_libpath + "/lib/commons-jci-core-1.0.jar:" + rt_libpath + "/lib/commons-jci-fam-1.0.jar:" + rt_libpath + "/lib/commons-lang-2.4.jar:" + rt_libpath + "/lib/commons-logging-1.0.4.jar:" + rt_libpath + "/lib/commons-logging-api-1.0.4.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-javadoc.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-sources.jar:" + rt_libpath + "/lib/examples-simple-1.4.1.jar:" + rt_libpath + "/lib/hadoop-ant-1.0.3.jar:" + rt_libpath + "/lib/hadoop-client-1.0.3.jar:" + rt_libpath + "/lib/hadoop-core-1.0.3.jar:" + rt_libpath + "/lib/hadoop-examples-1.0.3.jar:" + rt_libpath + "/lib/hadoop-minicluster-1.0.3.jar:" + rt_libpath + "/lib/hadoop-test-1.0.3.jar:" + rt_libpath + "/lib/hadoop-tools-1.0.3.jar:" + rt_libpath + "/lib/jline-0.9.94.jar:" + rt_libpath + "/lib/libthrift-0.6.1.jar:" + rt_libpath + "/lib/log4j-1.2.16.jar:" + rt_libpath + "/lib/postgresql-8.4-701.jdbc4.jar:" + rt_libpath + "/lib/slf4j-api-1.6.1.jar:" + rt_libpath + "/lib/slf4j-log4j12-1.6.1.jar:" + rt_libpath + "/lib/wikisearch-ingest-1.4.1-javadoc.jar:" + rt_libpath + "/lib/wikisearch-query-1.4.1-javadoc.jar:" + rt_libpath + "/lib/zookeeper-3.4.3.jar";
+                  
+
                     char sstr[1000];
                     sprintf(sstr, "%s", classpath.c_str());
                     std::cout << sstr << std::endl;
@@ -264,14 +267,9 @@ namespace elly{
                     options = new JavaVMOption[1];
                     
                     
-                    std::string classpath =
-                    "-Djava.class.path=" + rt_libpath + "/bin/:" + rt_libpath + "/lib/accumulo-core-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-javadoc.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-sources.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1.jar:" + rt_libpath + "/lib/commons-collections-3.2.jar:" + rt_libpath + "/lib/commons-configuration-1.5.jar:" + rt_libpath + "/lib/commons-io-1.4.jar:" + rt_libpath + "/lib/commons-jci-core-1.0.jar:" + rt_libpath + "/lib/commons-jci-fam-1.0.jar:" + rt_libpath + "/lib/commons-lang-2.4.jar:" + rt_libpath + "/lib/commons-logging-1.0.4.jar:" + rt_libpath + "/lib/commons-logging-api-1.0.4.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-javadoc.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-sources.jar:" + rt_libpath + "/lib/examples-simple-1.4.1.jar:" + rt_libpath + "/lib/hadoop-ant-1.0.3.jar:" + rt_libpath + "/lib/hadoop-client-1.0.3.jar:" + rt_libpath + "/lib/hadoop-core-1.0.3.jar:" + rt_libpath + "/lib/hadoop-examples-1.0.3.jar:" + rt_libpath + "/lib/hadoop-minicluster-1.0.3.jar:" + rt_libpath + "/lib/hadoop-test-1.0.3.jar:" + rt_libpath + "/lib/hadoop-tools-1.0.3.jar:" + rt_libpath + "/lib/jline-0.9.94.jar:" + rt_libpath + "/lib/libthrift-0.6.1.jar:" + rt_libpath + "/lib/log4j-1.2.16.jar:" + rt_libpath + "/lib/postgresql-8.4-701.jdbc4.jar:" + rt_libpath + "/lib/slf4j-api-1.6.1.jar:" + rt_libpath + "/lib/slf4j-log4j12-1.6.1.jar:" + rt_libpath + "/lib/wikisearch-ingest-1.4.1-javadoc.jar:" + rt_libpath + "/lib/wikisearch-query-1.4.1-javadoc.jar:" + rt_libpath + "/lib/zookeeper-3.4.3.jar";
-                    
                     options[0].optionString = new char[classpath.length()];
                     strcpy(options[0].optionString, classpath.c_str());
-                    
-                    
-                    
+                                        
                     vm_args.version = JNI_VERSION_1_6;
                     vm_args.nOptions = 1;
                     vm_args.options = options;
@@ -288,16 +286,6 @@ namespace elly{
                   }
                   
                   hazy::sman::jvm ->AttachCurrentThread((void**)&env, NULL);
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
                   
                   
                     /* load and initialize a Java VM, return a JNI interface
