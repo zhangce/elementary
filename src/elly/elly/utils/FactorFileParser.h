@@ -225,7 +225,7 @@ namespace elly{
                     std::string tuffy_log = config->rt_output + "/log_tuffy.txt";
                     std::string tuffy_error = config->rt_output + "/error_tuffy.txt";
                     
-                    JavaVM *jvm;       /* denotes a Java VM */
+                    //JavaVM *jvm;       /* denotes a Java VM */
                     JNIEnv *env;       /* pointer to native method interface */
                     JavaVMInitArgs vm_args; /* JDK/JRE 6 VM initialization arguments */
                     JavaVMOption* options = new JavaVMOption[1];
@@ -253,10 +253,57 @@ namespace elly{
                     vm_args.nOptions = 1;
                     vm_args.options = options;
                     vm_args.ignoreUnrecognized = false;
+                  
+                  
+                  
+                  
+                  if(hazy::sman::jvm == NULL){
+                    
+                    //std::cout << "INIT JAVA" << std::endl;
+                    
+                    options = new JavaVMOption[1];
+                    
+                    
+                    std::string classpath =
+                    "-Djava.class.path=" + rt_libpath + "/bin/:" + rt_libpath + "/lib/accumulo-core-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-core-1.4.1.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-server-1.4.1.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-javadoc.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1-sources.jar:" + rt_libpath + "/lib/accumulo-start-1.4.1.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-javadoc.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1-sources.jar:" + rt_libpath + "/lib/cloudtrace-1.4.1.jar:" + rt_libpath + "/lib/commons-collections-3.2.jar:" + rt_libpath + "/lib/commons-configuration-1.5.jar:" + rt_libpath + "/lib/commons-io-1.4.jar:" + rt_libpath + "/lib/commons-jci-core-1.0.jar:" + rt_libpath + "/lib/commons-jci-fam-1.0.jar:" + rt_libpath + "/lib/commons-lang-2.4.jar:" + rt_libpath + "/lib/commons-logging-1.0.4.jar:" + rt_libpath + "/lib/commons-logging-api-1.0.4.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-javadoc.jar:" + rt_libpath + "/lib/examples-simple-1.4.1-sources.jar:" + rt_libpath + "/lib/examples-simple-1.4.1.jar:" + rt_libpath + "/lib/hadoop-ant-1.0.3.jar:" + rt_libpath + "/lib/hadoop-client-1.0.3.jar:" + rt_libpath + "/lib/hadoop-core-1.0.3.jar:" + rt_libpath + "/lib/hadoop-examples-1.0.3.jar:" + rt_libpath + "/lib/hadoop-minicluster-1.0.3.jar:" + rt_libpath + "/lib/hadoop-test-1.0.3.jar:" + rt_libpath + "/lib/hadoop-tools-1.0.3.jar:" + rt_libpath + "/lib/jline-0.9.94.jar:" + rt_libpath + "/lib/libthrift-0.6.1.jar:" + rt_libpath + "/lib/log4j-1.2.16.jar:" + rt_libpath + "/lib/postgresql-8.4-701.jdbc4.jar:" + rt_libpath + "/lib/slf4j-api-1.6.1.jar:" + rt_libpath + "/lib/slf4j-log4j12-1.6.1.jar:" + rt_libpath + "/lib/wikisearch-ingest-1.4.1-javadoc.jar:" + rt_libpath + "/lib/wikisearch-query-1.4.1-javadoc.jar:" + rt_libpath + "/lib/zookeeper-3.4.3.jar";
+                    
+                    options[0].optionString = new char[classpath.length()];
+                    strcpy(options[0].optionString, classpath.c_str());
+                    
+                    
+                    
+                    vm_args.version = JNI_VERSION_1_6;
+                    vm_args.nOptions = 1;
+                    vm_args.options = options;
+                    vm_args.ignoreUnrecognized = false;
+                    
+                    if(JNI_CreateJavaVM(&hazy::sman::jvm , (void**)&env, &vm_args) <0){
+                      std::cout << "<try to reuse>" << std::endl;
+                      jsize b;
+                      JNI_GetCreatedJavaVMs(&hazy::sman::jvm , 1, &b);
+                      std::cout << "</try to reuse>" << std::endl;
+                    }
+                    delete options;
+                    
+                  }
+                  
+                  hazy::sman::jvm ->AttachCurrentThread((void**)&env, NULL);
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                     /* load and initialize a Java VM, return a JNI interface
                      * pointer in env */
-                    JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
-                    delete options;
+                    //JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
+                    //delete options;
                     
                     
                     jobjectArray ret;
